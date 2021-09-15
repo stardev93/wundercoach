@@ -1,0 +1,37 @@
+h3
+  = t(:hello)
+  |&nbsp;
+  = @booking.account.greeting
+  |,
+p
+  |Ihre Gratis-Testphase f&uuml;r die Premium-Version von Wundercoach ist vor ein paar Tagen abgelaufen und die erweiterten Funktionen dieser Version stehen Ihnen nicht mehr zur Verfügung.
+p
+  |Klicken Sie auf "Jetzt upgraden", um den vollen Funktionsumfang von Wundercoach wieder nutzen k&ouml;nnen.
+
+p style="text-align: center;"
+  = link_to "https://#{@booking.account.subdomain}.wundercoach.net/de/showplans", :style => "-moz-user-select: none;background-image: none;border-radius: 8px;cursor: pointer;display: inline-block;font-size: 18px;font-weight: normal;line-height: 1.42857;margin-bottom: 0;padding: 12px 18px;text-align: center;vertical-align: middle;white-space: nowrap;background-color: #428bca;border-color: #357ebd;color: white;text-decoration: none;"
+    |Jetzt upgraden
+p style="margin-top: 20px;"
+p
+  |Oder wählen Sie im Wundercoach-Backend oben Menüpunkt "Tarif wecheln".
+p
+  |Die Premium-Version enth&auml;lt n&uuml;tzliche Funktionen, die Ihre Arbeit erleichtern und Ihr Gesch&auml;ft wachsen lassen, wie z.B. 
+  ul style="font-size: 16px;"
+    li 
+      |eine professionelle Optik Ihrer Anmeldliste durch Einbindung Ihres eigenen Logos
+    li
+      |eine suchmaschinenoptimierte Anzeige Ihrer Seminare im Internet
+    li
+      |automatischer Versand von Rechnungen
+    li
+      |Online-Bezahlung direkt bei der Buchung
+  
+p
+  |Diese und viele weitere n&uuml;tzliche Funktionen stehen jetzt nicht mehr zur Verf&uuml;gung.
+  |&nbsp;
+  = link_to "https://#{@booking.account.subdomain}.wundercoach.net/de/showplans"
+    |Klicken Sie hier, um alle wichtigen Funktionen weiter nutzen zu k&ouml;nnen.
+p
+  |Sie können die Verl&auml;ngerung auch direkt in Wundercoach vornehmen. Klicken Sie dazu in Wundercoach auf "Tarif wechseln" und folgen Sie den Anweisungen dort.
+p
+  |Wenn Sie Fragen haben, rufen sie uns gerne unter <a href="tel:+49408541070">+49 40 8541070</a> an oder senden Sie eine E-Mail an <a href="mailto:help@wundercoach.net">help@wundercoach.net</a>

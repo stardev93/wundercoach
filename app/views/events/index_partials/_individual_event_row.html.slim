@@ -1,0 +1,31 @@
+tr
+  td
+    strong
+      = link_to event
+        = event.name
+    br
+    = t(event.type)
+    = " / #{event.eventtype}"
+    br
+    = sanitize event.shortdescription.truncate(150, separator: ' ')
+
+    = render "events/index_partials/location", :event => event
+  td
+
+  td
+    = "#{t(:new_requests_for_this_event)}: #{event.requests.without_appointment.count}"
+    - if event.coaches.count > 0
+      br
+      = event.coaches.first
+  td.text-right
+    / now using decorator, so no formatting here anymore
+    / = money_to_currency(event.price)
+    = event.price
+
+  td
+    = render "onlinestatuses/button", event: event, redirect: "index", onlinestatus: event.onlinestatus, btn_size: 'btn-xs'
+    br
+    = render "planningstatuses/button", event: event, redirect: "index", planningstatus: event.planningstatus, btn_size: 'btn-xs'
+
+  td
+    = render "events/button_list", event: event

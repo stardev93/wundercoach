@@ -1,0 +1,11 @@
+.well
+  = form_for(@account, url: account_path, html: { multipart: true, data: { param: param.to_s }, class: "account dropzone dropzone-micro new_account_eventheader"}) do |f|
+    = f.hidden_field :id, value: @account.id
+    p.text-center
+      i.fa.fa-cloud-upload.fa-2x
+    p.lead.text-center
+      = text
+    .fallback
+      = f.file_field :eventheader
+      br
+      = f.submit "Upload"

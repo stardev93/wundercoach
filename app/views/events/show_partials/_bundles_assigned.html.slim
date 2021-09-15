@@ -1,0 +1,6 @@
+h4
+  = t(:included_in)
+ul.list-group
+  - event.bundleevents.each do |bundleevent|
+    - if bundleevent.event
+      = render "events/show_partials/event_small", :event => bundleevent.event, :action_link => nil

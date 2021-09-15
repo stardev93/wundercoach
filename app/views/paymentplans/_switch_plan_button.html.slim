@@ -1,0 +1,17 @@
+button.btn.btn-lg style="width: 80%;" disabled=("" if disabled) class="#{paymentplan.recommended ? 'btn-success' : 'btn-primary'}"
+  - if current_plan
+    = t(:current_plan)
+  - elsif disabled
+    = t(:activates_at, activation: l(@account.bookings.current.valid_until))
+  - elsif free
+    = t("choose_monthly")
+  - else
+    = t("choose_#{paymentplan.cycle}")
+  br
+  = number_to_currency(paymentplan.price / 100)
+  - unless paymentplan.free?
+    |&nbsp;/&nbsp;
+    = t("cycle.#{paymentplan.cycle}")
+  - if plan_expires && current_plan
+    br
+    = t(:expires_at, expiry: l(@account.bookings.current.valid_until))

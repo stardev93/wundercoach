@@ -1,0 +1,76 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  pricingset: "Pricingset"
+  pricingsets: "Pricingsets"
+  pricingsets_hint: "With pricingsets you can offer more than one price to your customers for an event in the order process, i.e. for members and non-members."
+  pricingsets_hint_addon: "You can assign pricingsets when editing or creating to events. Events with a pricingset use the price reductions of the pricingset to calculate the price and the early signup price."
+  pricingset_in_place: "This event has a pricingset assigned to offer different discounts to your customers in the checkout process. The original price will be changed depending on the chosen pricing option."
+
+  pricingset_inactive: "This event is connected to an inactive pricing-set. Activate the pricingset to use it."
+
+  new_product_pricingset: "New pricingset"
+  edit_pricingset: "Edit pricingset"
+
+  pricingset_name: "Pricingset"
+  pricingset_name_hint: "Name of the pricingset"
+
+  pricingset_active: "active"
+  pricingset_active_hint: "Activates the pricingset"
+
+  pricingset_description: Field for internal remarks
+  pricingset_description_hint: Field for internal remarks. Will not be shown to the customer.
+
+  pricingset_hint_text: Hint text for cour customers
+  pricingset_hint_text_hint: Hint text for cour customers. Is displayed in checkout dialogue when this pricingset is applied.
+
+  new_product_pricingoption: "New price option"
+  edit_product_pricingoption: "Preisoption bearbeiten"
+
+  pricingoption: "Price option"
+  pricingoptions: "Price options"
+  pricingoptions_hint: "Please enter the desired discount as a percentage or absolute number. Create two or more price options: one for the standard price without discount, and one with discount."
+  pricingoption_name: "Price option"
+  pricingoption_name_hint: "Name of the price option in the checkout."
+
+  pricingoption_comments: "Remarks (internal)"
+  pricingoption_comments_hint: "Internal remarks. Will not be shown to the customer."
+
+  pricingoption_hint_text: "Customer information"
+  pricingoption_hint_text_hint: "Remarks for this price option. Will be shown to the customer in checkout."
+
+  pricingoption_full_price_deduct: Standard price discount
+  pricingoption_price_early_signup_deduct: Discount early signup price
+
+  pricingoption_full_price_deduct_cents: Standard price discount (%{currency})
+  pricingoption_full_price_deduct_cents_hint: Standard price discount as absolute amount in %{currency}
+
+  pricingoption_price_early_signup_deduct_cents: Discount early signup price (%{currency})
+  pricingoption_price_early_signup_deduct_cents_hint: Discount on the early signup price as absolute amount in %{currency}
+
+  pricingoption_full_price_deduct_perc: "Standard price discount (%)"
+  pricingoption_full_price_deduct_perc_hint: Standard price discount as percentage amount
+
+  pricingoption_price_early_signup_deduct_perc: "Discount early signup price (%)"
+  pricingoption_price_early_signup_deduct_perc_hint: Discount early signup price as percentage amount
+
+  pricingoption_deduction: "Discount"
+  pricingoption_price_including_deduction: "Price"
+
+  select_pricing_option: "Choose pricing option..."
+  simple_form:
+    magic_submit:
+      product:
+        pricingsets:
+          "product/pricingoption":
+            show:
+              submit: Save
+              disable_with: "Saving..."
+
+  pricintoption_preset: "Active"
+  pricintoption_preset_hint: "Sets this pricingoption to default."
+  pricingoption_preset_missing: "The pricingset can not be activated because there are no associated pricingoptions, or no standard pricingoption is set. Assign pricingoptions first and activate this pricingset later."
+  pricingoption_chosen: active pricingoption
+  pricingoption_original_price: Price without discount
+  choose_pricingoption: Please choose the right pricing option
+  choose_pricingoption_during_checkout: You can choose the right pricing option during checkout.
+  choose_pricingoption_chosen: Pricing option chosen

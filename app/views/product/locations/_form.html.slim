@@ -1,0 +1,84 @@
+= simple_form_for(@product_location) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      / left column
+      .col-xs-12.col-md-6
+        = render "shared/section_header", :header_text => t(:google_location), :hint_text => t(:address_to_be_used_to_retrieve_address_from_google_maps)
+        .row
+          .col-xs-12
+            = render "shared/f_text", :form => f, :field => :location_name, :field_label => t(:location_name), :field_hint => t(:location_name_hint)
+            = f.association :account, as: :hidden
+        .row
+          .col-xs-12
+            = render "shared/f_text", :form => f, :field => :eventorganizer_name, :field_label => t(:location_eventorganizer_name), :field_hint => t(:location_eventorganizer_name_hint)
+        .row
+          .col-xs-10
+            = render "shared/f_text", :form => f, :field => :street, :field_label => t(:location_street), :field_hint => t(:location_street_hint)
+          .col-xs-2
+            = render "shared/f_text", :form => f, :field => :street_no, :field_label => t(:location_street_no)
+        .row
+          .col-xs-12.col-md-3
+            = render "shared/f_text", :form => f, :field => :zip, :field_label => t(:location_zip), :field_hint => t(:location_zip_hint)
+          .col-xs-12.col-md-9
+            = render "shared/f_text", :form => f, :field => :city, :field_label => t(:location_city), :field_hint => t(:location_city_hint)
+        .row
+          .col-xs-12.col-md-6
+            = render "shared/f_text", :form => f, :field => :state, :field_label => t(:location_state), :field_hint => t(:location_state_hint)
+          .col-xs-12.col-md-6
+            / = f.input :country, label: t(:country), hint: t(:country_hint), priority: %w(Deutschland Österreich Schweiz)
+            = render "shared/f_country", :form => f, :field => :country, :field_label => t(:location_country), :field_hint => t(:location_country_hint), :field_priority => %w(Deutschland Österreich Schweiz), :field_include_blank => t(:please_choose)
+
+        .row
+          .col-xs-12
+            = render "shared/section_header", :header_text => t(:location_directions), :hint_text => t(:location_directions_hint)
+            = f.input :directions, input_html: {rows: 10}, as: :editor, label: t(:location_directions), hint: t(:location_directions_hint)
+          .col-xs-12
+            = f.input :directionspdf, label: t(:location_directionspdf), hint: t(:location_directionspdf_hint)
+        .row
+          .col-xs-12
+            = render "shared/section_header", :header_text => t(:location_cost), :hint_text => t(:location_cost_hint)
+        .row
+          .col-xs-12
+            = f.input :cost_fixed, label: t(:location_cost_fixed), hint: t(:location_cost_fixed_hint)
+        .row
+          .col-xs-6
+            = f.input :cost_variable, label: t(:location_cost_variable), hint: t(:location_cost_variable_hint)
+          .col-xs-6
+            = f.input :cost_variable_unit, as: :select, collection: Product::Location::PRICE_UNIT_HASH.sort.map {|k,v| [t(:"#{v}"),k]}, include_blank: false, label: t(:location_cost_variable_unit), hint: t(:location_cost_variable_unit_hint)
+
+
+
+      / left column
+      .col-xs-12.col-md-6
+        .row
+          .col-xs-12
+            = render "shared/section_header", :header_text => t(:displayed_address), :hint_text => t(:address_to_be_shown_to_customer_in_checkout)
+            = f.input :displayed_address, input_html: {rows: 10}, as: :editor, label: t(:displayed_address), hint: t(:displayed_address_hint)
+        .row
+          .col-xs-12
+            = render "shared/section_header", :header_text => t(:google_maps_icon), :hint_text => t(:google_maps_icon_hint)
+        .row
+          .col-xs-12
+            = f.input :icon, as: :file
+        .row
+          .col-xs-12
+            = render "shared/section_header", :header_text => t(:location_time_zone), :hint_text => t(:location_time_zone_hint)
+        .row
+          .col-xs-12.col-md-8
+            = render "shared/f_timezone", :form => f, :field => :time_zone, :field_label => t(:location_time_zone), :field_hint => t(:location_time_zone_hint), :preset => true
+            / = f.time_zone_select :time_zone, nil, {}, {:class => "form-control select optional"}
+            / = f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :default => "Pacific Time (US & Canada)"
+
+          .col-xs-12.col-md-4
+            = render "shared/f_boolean", :form => f, :field => :show_time_zone_in_checkout, :field_label => t(:location_time_zone_show_in_checkout), :field_hint => t(:location_time_zone_show_in_checkout_hint)
+
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        - if f.object.new_record?
+          = f.button :magic_submit, cancel: product_locations_path
+        - else
+          = f.button :magic_submit, cancel: product_location_path(f.object)

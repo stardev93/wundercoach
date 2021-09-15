@@ -1,0 +1,27 @@
+- if defined? field_label
+  strong
+    = field_label
+  - if !defined? position
+    - position = 'top'
+  - if defined? field_hint
+    |&nbsp;
+    = render "shared/popover", :position => position, :popover_text => field_hint
+  br
+span.lead
+  - if defined? target
+    - link_target = target
+  - else
+    - link_target = ''
+
+  - if defined? link
+    = link_to link, target: "#{link_target}"
+      = field_value
+  - else
+    - if field_value
+      = field_value
+    - elsif defined? field_default_value
+      = field_default_value
+    - else
+      |&nbsp;
+
+p.f_ro_text_spacer

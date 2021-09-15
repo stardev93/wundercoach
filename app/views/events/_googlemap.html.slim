@@ -1,0 +1,22 @@
+- if event.geocoded?
+  .row
+    .col-xs-12
+  .row
+    .col-xs-12
+      br
+      .form-group.string.optional
+        label.string.optional.control-label for="event_googlemapslocation"
+          = "Google Maps"
+
+        div style='width: 100%;'
+          div id="map" style='width: 100%; height: 400px;'
+            = render 'events/googlemap_scripts', event: event
+- if event.googlemapslocation.present?
+  .row
+    .col-xs-12
+      a href="#{event.googlemapslocation}" target="_blank"
+        = t(:open_in_new_window)
+.row
+  .col-xs-12
+    p
+      |&nbsp;

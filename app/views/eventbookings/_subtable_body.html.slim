@@ -1,0 +1,122 @@
+= render "shared/modal_confirm"
+/ = render "eventbookings/modal_movebooking"
+- unless defined? statusfilter
+  - statusfilter = 'all'
+
+.row
+  .col-xs-12
+    span.add-item
+      .btn-group
+        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          = t(:participantlists)
+          span.caret
+        ul class="dropdown-menu"
+          li
+            = link_to event_path(@event)+".xlsx?eventbookingstatus=#{statusfilter}", :class=>""
+              i.fa.fa-file-excel-o
+              |&nbsp;
+              = t(:addresslisting) + ' (XLS)'
+          li
+            = link_to event_path(@event)+".xlsx?csvtype=email&eventbookingstatus=#{statusfilter}", :class=>""
+              i.fa.fa-file-excel-o
+              |&nbsp;
+              = t(:emaillisting) + ' (XLS)'
+          li
+            = link_to event_path(@event)+".csv?eventbookingstatus=#{statusfilter}", :class=>""
+              i.fa.fa-file-text-o
+              |&nbsp;
+              = t(:addresslisting) + ' (CSV)'
+          li
+            = link_to event_path(@event)+".csv?csvtype=email&eventbookingstatus=#{statusfilter}", :class=>""
+              i.fa.fa-file-text-o
+              |&nbsp;
+              = t(:emaillisting) + ' (CSV)'
+          li.divider
+          li
+            = link_to participantlist_event_path + ("?pdftype=participantlist"), :target => "_blank"
+              i.fa.fa-file-pdf-o
+              |&nbsp;
+              = t(:participantlist) + ' (PDF)'
+          li
+            = link_to participantlist_event_path + ("?pdftype=attendancelist"), :target => "_blank"
+              i.fa.fa-file-pdf-o
+              |&nbsp;
+              = t(:attendancelist) + ' (PDF)'
+
+
+table.table
+  thead
+    tr
+      th = t(:status)
+      th
+      th = t(:name)
+      th = t(:booking_date)
+      th = t(:price)
+      - if @event.additional_participants?
+        th = t(:additional_participants)
+      th
+      th
+        = t(:invoice)
+        br
+        = t (:paymentstatus)
+      th
+
+  tbody
+    - EventbookingDecorator.decorate_collection(@eventbookings).each do |eventbooking|
+      tr
+        td
+          = render "eventbookingstatuses/label", eventbookingstatus: eventbooking.eventbookingstatus
+        td.text-center
+          - unless eventbooking&.order&.client_order_info?.blank?
+            = render "shared/info_icon", :info_title => t(:order_client_order_info), :info_text => eventbooking&.order&.client_order_info, :info_icon => "fa-comment-o"
+        td
+          = link_to eventbooking
+            = eventbooking
+          br
+          = mail_to eventbooking.email
+          - unless eventbooking.company.blank?
+            br
+            |(
+            = eventbooking.company
+            |)
+        td
+          / - if !eventbooking.booking_date.blank?
+          = eventbooking.booking_date
+          br
+          = eventbooking.booking_time
+        td style="white-space:nowrap"
+          / = check_button(eventbooking.early_booking_applies)
+          = money_to_currency(eventbooking.order.price)
+
+        - if @event.additional_participants?
+          td
+            - if eventbooking.additional_participants.present?
+              - i = 1
+              - eventbooking.additional_participants.each_value do |participant|
+                - if participant[:firstname] != '' && participant[:lastname] != ''
+                  - i = i + 1
+                  = "#{i}. #{participant[:firstname]} #{participant[:lastname]}"
+                  br
+            - else
+              |---
+        td
+        td
+
+          - if eventbooking&.order&.product&.is_a? BundleEvent
+            = t(:BundleEvent)
+            br
+            = link_to event_path(eventbooking&.order&.product).to_s + '#orders'
+              = eventbooking&.order
+              = t(:order)
+              br
+              = render "billing/businessdocuments/invoice_controls", :eventbooking => eventbooking
+          - else
+            = render "billing/businessdocuments/invoice_controls", :eventbooking => eventbooking
+
+        td
+          = render "eventbookings/controls/eventbooking_button", :eventbooking => eventbooking
+
+.row
+  .col-xs-12
+    p &nbsp;
+    p &nbsp;

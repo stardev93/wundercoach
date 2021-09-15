@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t(:events) + Date.today.to_s) do |sheet|
+  if @csv_email
+    sheet.add_row [t(:lastname), t(:firstname), t(:email)]
+  else
+    sheet.add_row [t(:id), t(:event), t(:eventtype), t(:gross_price), t(:vat_rate), t(:vat), t(:net_price), t(:full_price), t(:price_early_signup), t(:currency), t(:start_date), t(:start_time), t(:end_date), t(:end_time), t(:duration), t(:durationunit), t(:allow_signup), t(:shortdescription), t(:longdescription), t(:slug), t(:external_signup_url), t(:external_signup_text), t(:early_signup_pricing), t(:onlinestatus), t(:planningstatus), t(:generate_invoice), t(:vat), t(:latest_signup_date), t(:early_signup_deadline), t(:eventorganizer), t(:location), t(:street), t(:streetno), t(:zip), t(:city), t(:country), t(:googlemapslocation), t(:location_latitude), t(:location_longitude), t(:eventtemplate), t(:redirect_message), t(:max_additional_participants), t(:reservation_expiry), t(:type), t(:show_remaining_seats_count)]
+  end
+  @events.each do |event|
+
+    if @csv_email
+
+    else
+      sheet.add_row [event.id, event.name, event.eventtype, event.gross_price, event.vat_rate, event.vat_sum, event.net_price, event.price, event.price_early_signup, event.currency, event.start_date, event.start_time, event.end_date, event.end_time, event.duration, event.durationunit, event.allow_signup, event.shortdescription.html_safe, event.longdescription.html_safe, event.slug, event.external_signup_url, event.external_signup_text, event.early_signup_pricing, event.onlinestatus, event.planningstatus, event.generate_invoice, event.vat_id, event.latest_signup_date, event.early_signup_deadline, event.eventorganizer, event.location, event.street, event.streetno, event.zip, event.city, event.country, event.googlemapslocation, event.latitude, event.longitude, event.eventtemplate, event.redirect_message, event.max_additional_participants, event.reservation_expiry, event.type, event.show_remaining_seats_count]
+    end
+  end
+end

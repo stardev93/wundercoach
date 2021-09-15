@@ -1,0 +1,9 @@
+= link_to new_order_path, link_params
+  i.fa.fa-user-plus
+  |&nbsp;
+  = t(:new_backend_order)
+  |&nbsp;
+
+  - if product.maxparticipants.present?
+    span.label class="#{product.maxparticipants > product.seats_booked ? 'label-success' : 'label-danger'}"
+      = product.seats_booked

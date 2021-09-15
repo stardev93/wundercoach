@@ -1,0 +1,20 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'Required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    magic_submit:
+      events:
+        eventbooking:
+          show:
+            submit: Save
+            disable_with: "saving..."
+      eventbookings:
+        eventbooking:
+          move:
+            submit: Move
+            disable_with: "moving..."

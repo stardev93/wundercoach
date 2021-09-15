@@ -1,0 +1,101 @@
+= render "shared/modal_confirm"
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:eventbookings)
+.row
+  .col-md-12
+    = render "searchform"
+    table.table
+      thead
+        tr
+          th = t(:status)
+          th
+          th = t(:participant)
+          th = t(:billing_address)
+          th
+            = t(:event)
+            br
+            = t(:booking_date)
+          th
+            = t(:price)
+            br
+            = t(:invoices)
+          th
+
+      tbody
+        - EventbookingDecorator.decorate_collection(@eventbookings).each do |eventbooking|
+          tr
+            td
+              = render "eventbookingstatuses/eventbookingstatus", eventbookingstatus: eventbooking.eventbookingstatus
+            td.text-center
+              - unless eventbooking&.order&.client_order_info?.blank?
+                = render "shared/info_icon", :info_title => t(:order_client_order_info), :info_text => eventbooking&.order&.client_order_info, :info_icon => "fa-comment-o"
+            td.nowrap
+              = link_to eventbooking_path(eventbooking)
+                = eventbooking&.address&.lastname
+                |,&nbsp;
+                = eventbooking&.address&.firstname
+              br
+              - if eventbooking.address
+                = render "addresses/mailto", :eventbooking => eventbooking
+
+              - if eventbooking.address && eventbooking&.address&.telephone.present?
+                br
+                = (eventbooking.telephone).truncate(30, omission: '...')
+              - if eventbooking.address
+                br
+                = render "addresses/address_small", address: eventbooking.address
+
+            td
+              - if eventbooking.billing_address
+                = render "addresses/address_small", address: eventbooking.billing_address
+
+            td
+              - if eventbooking.event
+                - event_url = url_for controller: 'events', id: eventbooking.event.id, action: 'show', anchor: 'eventbookings', only_path: true
+                = link_to event_url
+                  = eventbooking.event
+              - else
+                button.btn.btn-sm.text-danger.bg-danger
+                  = t(:event_not_found)
+              - if eventbooking&.order && eventbooking.order&.product&.type == "BundleEvent"
+                br
+                = link_to eventbooking.order.product
+                  |(
+                  = eventbooking.order.product
+                  |)
+
+
+
+              br
+              = eventbooking&.event&.decorate&.start_date
+              br
+              = eventbooking&.event&.decorate&.start_time
+              br
+              strong
+                = t(:booking_date)
+              br
+              - unless eventbooking.booking_date.blank?
+                = eventbooking.booking_date
+                br
+                = eventbooking.booking_time
+
+            td style="white-space:nowrap"
+
+              = eventbooking.event.price
+              - if eventbooking.early_booking_applies
+                br
+                = t(:early_booking)
+
+              br
+              = render "eventbookings/eventbooking_invoices", :eventbooking => eventbooking
+
+
+            td
+              = render "eventbookings/controls/eventbooking_button", :eventbooking => eventbooking
+
+    .row
+      .col-md-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

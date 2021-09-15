@@ -1,0 +1,37 @@
+.row
+  .col-xs-12
+    = simple_form_for(@contact) do |f|
+      = f.error_notification
+      = f.input :type, as: :hidden
+      .form-inputs
+        .row
+          .col-xs-12
+            = f.input :name, label: t(:name), required: true
+        .row
+          .col-xs-12
+            = f.input :name2, label: t(:name2)
+        .row
+          .col-md-4
+            = f.input :contact_no, label: t(:contact_no)
+
+          .col-md-4
+            = f.input :account_receivable_no, label: t(:account_receivable_no)
+          .col-md-4
+            = f.input :vat_id, label: t(:contact_vat_id)
+
+        .row
+          .col-md-6
+            = f.input :register, label: t(:register)
+          .col-md-6
+            = f.input :register_code, label: t(:register_code)
+        .row
+          .col-xs-12
+            = f.input :comments, as: :trix_editor, label: t(:comments)
+        .row
+          .col-xs-12
+            = f.association :contact_tags, input_html: { class: 'chosen-select', multiple: '' }, label: t(:contact_tags), hint: t(:contact_tag_infotext)
+
+      .form-actions
+        .row
+          .col-xs-12.text-right
+            = f.button :magic_submit, cancel: crm_contacts_path

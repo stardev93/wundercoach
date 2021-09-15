@@ -1,0 +1,20 @@
+/ synopsis
+/ Display a headline with a bootstrap page header with explanatory text and popup help text
+/ header_text (mandatory): headline text
+/ subheadline: true makes headline text smaller, as subheadline (use when not at top of page)
+/ popover_text (optional): displays popover_text in bootstrap popover
+/ hint_text (optional): displays a second row under headline with longer explanation or hints
+p &nbsp;
+.page-header.wc_section_header
+  span.h4 class="#{((!defined? subheadline) ? "wc_section_headline" : "")}"
+    - if defined? header_text
+      = header_text
+  - if defined? popover_text
+    |&nbsp;
+    = render "shared/popover", :position => "right", :popover_text => popover_text
+  - if defined? buttons
+    = buttons
+  - if defined? hint_text
+    p.lead.wc_section_lead
+      = hint_text
+p &nbsp;

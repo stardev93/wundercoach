@@ -1,0 +1,56 @@
+/ display event price information
+- if event.pricingset && defined? pricingoption
+  - event_net_price = pricingoption.net_price(event.object)
+  - event_gross_price = pricingoption.gross_price(event.object)
+  - event_vat_rate = pricingoption.vat_rate(event.object)
+  - event_vat_sum = pricingoption.vat_sum(event.object)
+  - event_early_booking_price_applies = event.early_booking_price_applies?
+  - event_early_signup_deadline = event.early_signup_deadline
+  - event_full_price = pricingoption.full_price(event.object)
+- else
+  - event_net_price = event.net_price
+  - event_gross_price = event.gross_price
+  - event_vat_rate = event.vat_rate
+  - event_vat_sum = event.vat_sum
+  - event_early_booking_price_applies = event.early_booking_price_applies?
+  - event_early_signup_deadline = event.early_signup_deadline
+  - event_full_price = event.full_price
+
+/ do we display net prices first?
+- if event.account.vat_net_first
+  span#event_net_price
+    strong
+      - if event.early_booking_price_applies?
+        = t(:net_price_early_booking)
+      - else
+        = t(:net_price)
+      |&nbsp;
+      = event_net_price
+  br
+  = t(:excluding_vat, vat_rate: event_vat_rate, vat_sum: event_vat_sum)
+  - if event_vat_rate != 0
+    br
+    = t(:corresp_gross_price, gross_price: event_gross_price)
+  - if event_early_booking_price_applies
+
+    br
+    = render "signup/info_price_early_booking", event: event, :event_full_price => event_full_price
+
+/ or do we display gross prices first
+- else
+  span#event_gross_price
+    strong
+      - if event.early_booking_price_applies?
+        = t(:gross_price_early_booking)
+      - else
+        = t(:gross_price)
+      |&nbsp;
+      = event_gross_price
+  br
+  = t(:including_vat, vat_rate: event_vat_rate, vat_sum: event_vat_sum)
+  - if event_vat_rate != 0
+    br
+    = t(:corrsp_net_price, net_price: event_net_price)
+  - if event_early_booking_price_applies
+    br
+    = render "signup/info_price_early_booking", event: event, :event_full_price => event_full_price

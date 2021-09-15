@@ -1,0 +1,10 @@
+- if defined? format
+  - case format
+    - when "number"
+      = number_with_precision(value, precision: precision, locale: I18n.locale)
+    - when "currency"
+      = money_to_currency(value)
+    - else
+      |unknown format
+- else
+  = value

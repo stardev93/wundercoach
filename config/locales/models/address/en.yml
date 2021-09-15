@@ -1,0 +1,21 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  simple_form:
+    labels:
+      address:
+        street: Street and house number
+        city: City
+        company: Company
+      billing_address:
+        street: Street and house number
+        city: City
+        company: Company
+    hints:
+      address:
+        company: Company name if applicable
+        email: Email address for communication
+        telephone: Telephone number for queries
+      billing_address:
+        company: Company name if applicable
+        email: Email address for invoicing
+        telephone: Telephone number for queries

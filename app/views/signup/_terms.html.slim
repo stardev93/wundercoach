@@ -1,0 +1,60 @@
+javascript:
+  // get the number of terms checkoxes
+  function getRequiredTermsCount() {
+    return document.querySelectorAll('.terms').length;
+  }
+
+  // get the number of checked terms checkoxes
+  function getCheckedTermsCount() {
+    return document.querySelectorAll('.terms:checked').length;
+  }
+
+  $(document).ready(function(){
+    // fire when any element with class="terms" is changed (terms checkboxes)
+    $(".terms").change(function(){
+      // compare number of terms checkboxes with number of checked terms checkboxes
+      if(getCheckedTermsCount() == getRequiredTermsCount()) {
+        // enable checkout button
+        if ("#{@order.paymentmethod.key}" == 'paypal')
+        {
+          $('#checkoutButton').hide();
+          $('#paypal-button-container').show();
+        } 
+        else {
+          $('#checkoutButton').removeAttr("disabled");
+        }
+
+      } else {
+
+        if ("#{@order.paymentmethod.key}" == 'paypal')
+        {
+          $('#checkoutButton').show();
+          $('#paypal-button-container').hide();
+
+        }
+          else{
+          $('#checkoutButton').attr("disabled", "disabled");       
+          }
+      }
+    })
+
+  })
+
+// set in account settings:
+// general terms (AGB) required
+- if account.terms_required
+  .row
+    .col-xs-4.col-xs-offset-3.col-sm-4.col-sm-offset-4.text-left
+      = f.input :terms_of_service, as: :boolean, label: t(:i_agree_to_the_terms_of_service, terms: link_to(account.terms_link_text, account.terms_link, target: '_blank')).html_safe, input_html: { class: 'terms' }
+
+// Data protection terms (GDPR) required
+- if account.gdpr_required
+  .row
+    .col-xs-4.col-xs-offset-3.col-sm-4.col-sm-offset-4.text-left
+        = f.input :gdpr_terms, as: :boolean, label: t(:i_agree_to_the_gdpr_terms, gdpr_terms: link_to(account.gdpr_link_text, account.gdpr_link, target: '_blank')).html_safe, input_html: { class: 'terms' }
+
+// revocation terms required
+- if account.revocation_required
+  .row
+    .col-xs-4.col-xs-offset-3.col-sm-4.col-sm-offset-4.text-left
+      = f.input :revocation_terms, as: :boolean, label: t(:i_agree_to_the_revocation_terms, revocation_terms: link_to(account.revocation_link_text, account.revocation_link, target: '_blank')).html_safe, input_html: { class: 'terms' }

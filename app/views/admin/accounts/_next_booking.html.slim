@@ -1,0 +1,6 @@
+- if @account.bookings.lastbooking == @account.current_booking
+  button.btn class="#{(@account.bookings.lastbooking.billable? ? 'btn-warning' : 'btn-default' )}" type="button"
+    = @account.bookings.lastbooking
+    |&nbsp;from&nbsp;
+    - unless @account.bookings.lastbooking.valid_from.blank?
+      = l @account.bookings.lastbooking.valid_from

@@ -1,0 +1,53 @@
+.btn-toolbar.pull-right role="toolbar"
+  .btn-group
+    button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+      |...
+    ul.dropdown-menu.dropdown-menu-right role="menu"
+      li
+        = link_to event_path(event)
+          i.fa.fa-eye
+          '&nbsp;
+          = t(:show)
+      li
+        = link_to edit_event_path(event)
+          i.fa.fa-edit
+          '&nbsp;
+          = t(:edit)
+      li
+        = link_to duplicate_event_path(event)
+          i.fa.fa-copy
+          '&nbsp;
+          = t(:duplicate)
+      li
+        = link_to event, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      / is ordering allowed?
+      - if event.order_allowed?
+        li.divider
+        li
+          = render "orders/order_link", product: event, new_order_path: new_event_order_path(event), link_params: {}
+      / signup through foreign url?
+      - if event.allow_signup
+        - unless event.external_signup_url.blank?
+          li
+            = link_to event.external_signup_url, target: "_blank"
+              i.fa.fa-user-plus
+              |&nbsp;
+              = t(:external_signup_url_short)
+        - else
+          li
+            = link_to signup_show_event_path(event), target: "_blank"
+              i.fa.fa-user-plus
+              |&nbsp;
+              = t(:new_website_order)
+
+
+      / signup through wundercoach url?
+      - else
+        li
+          a
+            i.fa.fa-ban
+            |&nbsp;
+            = t(:no_signup_allowed)

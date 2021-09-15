@@ -1,0 +1,17 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_text_options), :hint_text => ""
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-12
+        = f.input :shortdescription, label: t(:shortdescription), hint: t(:shortdescription_hint), as: :editor, input_html: { style: 'height: 200px;' }
+    .row
+      .col-xs-12
+        = f.input :longdescription, label: t(:longdescription), hint: t(:longdescription_hint), as: :editor, input_html: { style: 'height: 300px;' }
+    .row
+      .col-xs-12
+        = f.input :bottom_text, label: t(:bottom_text), as: :editor, input_html: { style: 'height: 200px;' }
+    .row
+      .col-xs-12
+        = f.input :contact_information, label: t(:event_contact_information), as: :editor, input_html: { style: 'height: 200px;' }, hint: t(:event_contact_information_hint)

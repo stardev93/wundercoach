@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "#{t(:eventbookings)}") do |sheet|
+  if @csv_email
+    sheet.add_row [t(:event), t(:start_date), t(:end_date), t(:lastname), t(:firstname), t(:email), t(:eventbookingstatus)]
+  else
+    sheet.add_row [t(:event), t(:start_date), t(:start_time), t(:end_date), t(:end_time), t(:lastname), t(:firstname), t(:gender), t(:telephone), t(:email), t(:company), t(:street), t(:zip), t(:city), t(:country), t(:created_at), t(:booking_date), t(:price), t(:eventbookingstatus)]
+  end
+  @event.eventbookings.each do |eventbooking|
+    if @csv_email
+      sheet.add_row [eventbooking.event, eventbooking.event.decorate.start_date, eventbooking.event.decorate.end_date, eventbooking.lastname, eventbooking.firstname, eventbooking.email, eventbooking.eventbookingstatus]
+    else
+      eventbooking_booking_date = (eventbooking.booking_date.blank? ? '' : I18n.l(eventbooking.booking_date, format: :short))
+      eventbooking_created_at = (eventbooking.created_at.blank? ? '' : I18n.l(eventbooking.created_at, format: :short))
+
+      sheet.add_row [eventbooking.event, eventbooking.event.decorate.start_date, eventbooking.event.decorate.start_time, eventbooking.event.decorate.end_date, eventbooking.event.decorate.end_time, eventbooking.lastname, eventbooking.firstname, t(:"#{eventbooking.gender}_indirect"), eventbooking.telephone, eventbooking.email, eventbooking.company, eventbooking.street, eventbooking.zip, eventbooking.city, eventbooking.country, eventbooking_created_at, eventbooking_booking_date, money_to_currency(eventbooking.order.price), eventbooking.eventbookingstatus]
+    end
+  end
+end

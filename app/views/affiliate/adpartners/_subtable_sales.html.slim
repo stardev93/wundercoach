@@ -1,0 +1,30 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h3
+        = Order.model_name.human(count: 2)
+    = render 'search_form'
+
+    table.table
+      thead
+        tr
+          th = Order.model_name.human(count: 1)
+          th.text-right = t(:price)
+          th.text-right = t(:account_commission)
+          th.text-right = t(:adpartner_commission)
+          th.text-right = t(:affiliate_commission)
+      tfoot
+        tr
+          th = t(:sum)
+          th.text-right = number_to_currency @sum[:price]
+          th.text-right = number_to_currency @sum[:account_commission]
+          th.text-right = number_to_currency @sum[:adpartner_commission]
+          th.text-right = number_to_currency @sum[:affiliate_commission]
+      tbody
+        - orders.each do |order|
+          tr
+            td = order.product
+            td.text-right = number_to_currency order.price
+            td.text-right = number_to_currency order.affiliate_commission
+            td.text-right = number_to_currency order.adpartner_commission
+            td.text-right = number_to_currency order.net_affiliate_commission

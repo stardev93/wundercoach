@@ -1,0 +1,33 @@
+table.table
+  thead
+    tr
+      th = t(:name)
+      th = t(:description)
+      th
+
+  tbody
+    - @filters.each do |filter|
+      tr
+        td = link_to filter.name, edit_filter_path(filter)
+        td = filter.to_text
+        td
+          .btn-toolbar role="toolbar"
+            .btn-group
+              button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                = t(:actions)
+                '&nbsp;
+                span.caret
+              ul.dropdown-menu role="menu"
+                li
+                  = link_to edit_filter_path(filter)
+                    i.fa.fa-edit
+                    '&nbsp;
+                    =t(:edit)
+                li
+                  = link_to filter_path(filter), data: { confirm: t(:are_you_sure_you_want_to_delete_this_filter) }, method: :delete
+                    i.fa.fa-remove
+                    '&nbsp;
+                    = t(:delete)
+.row
+  .col-xs-12
+    = will_paginate @collection, renderer: BootstrapPagination::Rails

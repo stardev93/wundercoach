@@ -1,0 +1,31 @@
+- if defined? show_spacer
+  - if show_spacer
+    .row
+      .col-xs-9
+        p.lead
+          |&nbsp;
+.row
+  .col-xs-9
+    h3
+      = headline
+    p.lead
+      = hint
+  .col-xs-3.text-right
+    - if defined? cancel_link
+      = link_to cancel_link
+        = t(:cancel)
+      ' &nbsp;
+    - if defined? edit_link
+      - if !defined? edit_anchor
+        - edit_anchor = ''
+      = link_to edit_link + edit_anchor, :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+.row
+  .col-xs-12
+    .page-header
+    p &nbsp;
+.row
+  .col-xs-12

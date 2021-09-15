@@ -1,0 +1,9 @@
+de:
+  current_commission: Aktueller Provisionssatz
+  account_commission: Kunden-Provisionssatz
+  adpartner_commission: Adpartner-Provisionssatz
+  affiliate_commission: Verbleibende Provision
+  affiliate_dashboard: Affiliate Dashboard
+
+  affiliate_participation: "Mit Ihrer Registrierung nehmen Sie am Affiliate-Programm von %{affiliate} teil."
+  invalid_token: 'Das angegebene Token ist ungültig.'

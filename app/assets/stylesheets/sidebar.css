@@ -1,0 +1,40 @@
+.wc_sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.wc_sidebar_well {
+  height: 100%;
+}
+.wc_sidebar a {
+  padding: 8px 14px 8px 8px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.wc_sidebar a:hover {
+}
+
+.wc_sidebar .closebtn {
+  font-size: 16px;
+  text-align: right;
+}
+
+#main {
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .wc_sidebar {padding-top: 15px;}
+  .wc_sidebar a {font-size: 18px;}
+}

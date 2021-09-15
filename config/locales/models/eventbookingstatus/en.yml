@@ -1,0 +1,16 @@
+en:
+  # Eventbookingstatus
+  new_bookings: 'New bookings'
+  new_booking: 'New booking'
+  new_booking_hint: 'The status new can be assigned for bookings with manual input via the backend. These are still non-binding and can be converted into confirmed bookings. Simply change the status. '
+
+  confirmed_booking: 'Confirmed bookings'
+  confirmed_bookings: 'Confirmed bookings'
+
+  waiting_booking: 'Waiting for payment'
+  waiting_bookings: 'Waiting for payment'
+
+  waitinglist_booking: 'On waiting list'
+
+  cancelled_booking: 'Cancelled booking'
+  cancelled_bookings: 'Cancelled bookings'

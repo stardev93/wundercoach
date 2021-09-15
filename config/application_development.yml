@@ -1,0 +1,34 @@
+# Add configuration values here
+# staging figaro file - https://github.com/laserlemon/figaro
+
+SECRET_KEY_BASE: 53303817926512712c37bac0c806095b2df8dff02c8cc3bf66db50eba9405cee4f46610c8bb6afe6345cc2d11006aceaa4b4b927c6763e3cbdbf21ed2bcd8cb6
+
+# Our own Mailchimp Account, for sending getting started mails
+mailchimp_api_key: 2f4e144c385421a1fe6c5a3bdea6ba6e-us12
+initial_aid_list_id: 9dc92ee911
+
+# Our Stripe keys. There are different keys for test/live
+# Stripe client test account: stefan.luetge+900@gmail.com / Test01010!
+# Verfication mobile no. +49 176 12424240
+# Find keys here: https://dashboard.stripe.com/test/apikeys
+stripe_secret_key: sk_test_q964imbJebyFI6rBkZ0vI851
+stripe_publishable_key: pk_test_z0VqEuSzrQQIf5tYPlaE1S4P
+
+# Find webhooks here https://dashboard.stripe.com/test/webhooks
+# https://UtpzquP4fbuCcdmKXHo4Q2o2WJmkjsSDy:@wundercoach-test.chargebee.com/payment_gateways/stripe_webhook
+stripe_webhook_secret: UtpzquP4fbuCcdmKXHo4Q2o2WJmkjsSDy
+
+# Client data for oauth / Stripe Connect
+# find client_id here https://dashboard.stripe.com/account/applications/settings
+stripe_client_id: ca_9e2TbGpgwZvw9XPy90CIo3DGgnEMX0Tl
+
+# Gocardless config. environment should be live in production
+# Gocardless test account for clients: stefan.luetge@gmail.com / test01010101
+gocardless_access_token: sandbox_uH1WqYuxN1xI7tF8ZUvG86XWnO7wxjdygIhnaFe4
+gocardless_environment: sandbox
+gocardless_webhook_secret: 0816cb32a443d82915df9f30df95cbf11df9842e66269814330732ad0799d620763e06f39c702a2f581d625146abbcfc1fddd148d2960b12c57102d81ae712a1
+# Client data for oauth / Gocardless Partners api
+# Gocardless-App: Wundercoach Development values
+gocardless_oauth_api_url: https://connect-sandbox.gocardless.com
+gocardless_client_id: fJT62_6R8iQ1dqKfxkeNJI7Z7w6mi2sjL-FnJaKWfEKRu3eTF0Bqn0D9KVhPXYt6
+gocardless_client_secret: M5NHB6hEoniRVzJkNIBzHqMxAkZwrxMENMh-KFoK2K_VmcrsOIYEKE43761iy6lX

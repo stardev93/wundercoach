@@ -1,0 +1,27 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        - if @account.active_campaign_integrated?
+          = t(:active_campaign_integrated_msg)
+        - else
+          = t(:active_campaign_not_integrated_msg)
+    - if @account.active_campaign_integrated?
+      - if @account.active_campaign_default_list.blank?
+        p.lead Es wurde noch keine Liste als Standardliste angegeben.
+      - else
+        p.lead = t(:transfer_contacts_to, list: @list['name'])
+
+.row
+  .col-xs-12.text-right
+    - if @account.active_campaign_integrated?
+      = link_to account_active_campaign_path, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: 'btn btn-danger'
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_account_active_campaign_path, class: 'btn btn-primary'
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;

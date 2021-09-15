@@ -1,0 +1,23 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  mailchimp: Mailchimp
+  integrate_mailchimp: Mailchimp integrieren
+  mailchimp_is_integrated: Sie haben Mailchimp in Ihren Wundercoach Account integriert
+  cancel_mailchimp_integration: Mailchimp-Integration beenden
+  transfer_data_to_mailchimp: Synchronisieren
+  edit_mailchimp_settings: Mailchimp Einstellungen ändern
+  mailchimp_api_key: Mailchimp API Key
+  mailchimp_api_key_hint: Diesen finden Sie in den Account-Einstellungen ihres Mailchimp Kontos und "Extras".
+  api_key: Mailchimp-API-Key
+  list_id: ID der zu nutzenden Liste
+  api_key_hint: Der Mailchimp-API-Key ist in Mailchimp unter "Account > Extras > API keys" zu finden
+  list_id_hint: Der Wundercoach speichert alle Kunden in einer Liste. Die ID dieser Liste kann hier eingetragen werden. Ist keine Liste eingetragen, sucht der Wundercoach nach einer Liste mit dem Namen "Wundercoach". Ist diese nicht vorhanden, wird sie neu angelegt.
+  integrate_mailchimp_first: Sie müssen einen Mailchimp-Account hinterlegen, um diese Aktion durchzuführen.
+  mailchimp_integrated_successfully: Sie haben Mailchimp erfolgreich in Ihren Account integriert.
+  mailchimp_updated_successfully: Sie haben Mailchimp erfolgreich aktualisiert.
+  mailchimp_disconnected_successfully: Sie haben Mailchimp erfolgreich von Ihrem Account getrennt.
+  simple_form:
+    magic_submit:
+      mailchimps:
+        new:
+          submit: "Mailchimp integrieren"

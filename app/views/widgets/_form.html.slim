@@ -1,0 +1,73 @@
+= simple_form_for(@widget) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :name
+    .row
+      .col-xs-12
+        = f.input :description
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :token, :field_label => t(:widget_token_label), :token_hint => t(:widget_token_hint), :field_disabled => true
+    / .row
+    /   .col-xs-12.col-sm-6
+    /     = f.input :widgettype, as: :select, collection: %i(bundle event individualevent), include_blank: false
+    /   .col-xs-12.col-sm-6
+    /     = f.input :widgetscope, as: :select, collection: %i(events eventtemplates), include_blank: false
+    .row
+      .col-md-8
+        = f.input :html, input_html: { rows: 60 }
+      .col-md-4
+        #liquid_placeholders.panel-group role="tablist" aria-multiselectable="true"
+          p = t(:available_placeholders_for_eventtemplates)
+          - Widget::Placeholder::Eventtemplate.each do |placeholder|
+            .panel.panel-default
+              .panel-heading role="tab" id="heading_#{placeholder}"
+                h4.panel-title
+                  a role="button" data-toggle="collapse" data-parent="#liquid_placeholders" href="#eventtemplate_#{placeholder}" aria-expanded="true" aria-controls="eventtemplate_#{placeholder}"
+                    i.fa.fa-bars
+                    |&nbsp;
+                    = placeholder
+              .panel-collapse.collapse id="eventtemplate_#{placeholder}" role="tabpanel" aria-labelledby="heading_#{placeholder}"
+                .panel-body
+                  p = t("liquid_placeholders.eventtemplate.#{placeholder}.description")
+
+          p
+            |&nbsp;
+          p
+            = t(:available_placeholders_for_events)
+          - Widget::Placeholder::Event.each do |placeholder|
+            .panel.panel-default
+              .panel-heading role="tab" id="heading_#{placeholder}"
+                h4.panel-title
+                  a role="button" data-toggle="collapse" data-parent="#liquid_placeholders" href="#event_#{placeholder}" aria-expanded="true" aria-controls="event_#{placeholder}"
+                    = placeholder
+              .panel-collapse.collapse id="event_#{placeholder}" role="tabpanel" aria-labelledby="heading_#{placeholder}"
+                .panel-body
+                  p = t("liquid_placeholders.event.#{placeholder}.description")
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        = f.button :magic_submit, cancel: widgets_path
+
+/ jquery to enable tab key in textarea html
+javascript:
+  $(document).delegate('textarea', 'keydown', function(e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == 9) {
+      e.preventDefault();
+      var start = this.selectionStart;
+      var end = this.selectionEnd;
+      var text = $(this).val();
+      var selText = text.substring(start, end);
+      $(this).val(
+        text.substring(0, start) +
+        "\t" + selText.replace(/\n/g, "\n\t") +
+        text.substring(end)
+      );
+      this.selectionStart = this.selectionEnd = start + 1;
+    }
+  });

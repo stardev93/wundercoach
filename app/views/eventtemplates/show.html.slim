@@ -1,0 +1,44 @@
+- back_button = render "shared/button", path: eventtemplates_path, link_text: t(:back), icon: "", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+- duplicate_button = render "shared/button", path: duplicate_eventtemplate_path(@eventtemplate), link_text: t(:duplicate), icon: "fa-copy", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:duplicate_eventtemplate_hint)
+- create_event_button = render "shared/button", path: eventtemplate_createevent_path(@eventtemplate), link_text: t(:create_event_from_eventtemplate), icon: "fa-copy", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:create_event_from_eventtemplate_hint)
+- new_eventtemplate_button = render "shared/button", path: new_eventtemplate_path, link_text: t(:add_eventtemplate), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:create_eventtemplate_hint)
+
+= render "shared/form_header",
+         header_text: @eventtemplate,
+         buttons: duplicate_button + ' ' + create_event_button + ' ' + new_eventtemplate_button + ' ' + back_button
+
+.row
+  .col-xs-12
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#eventtemplatedata" aria-controls="eventtemplatedata" role="tab" data-toggle="tab"
+          = t(:eventtemplate)
+      li
+        a href="#events" aria-controls="events" role="tab" data-toggle="tab"
+          = t(:events)
+      li
+        a href="#eventtemplateseo" aria-controls="eventtemplateseo" role="tab" data-toggle="tab"
+          = t(:eventtemplate_seo)
+      li
+        a href="#embed" aria-controls="embed" role="tab" data-toggle="tab"
+          = t(:embed)
+
+.row
+  .col-xs-12
+    / Tab panes
+    .tab-content
+      #eventtemplatedata.tab-pane.active role="tabpanel"
+        = render "eventtemplates/show"
+
+      #events.tab-pane role="tabpanel"
+
+        = render "events/subtable", events: @events
+
+      #eventtemplateseo.tab-pane role="tabpanel"
+        = render "eventtemplates/seo"
+
+      #embed.tab-pane role="tabpanel"
+        - if can? :access, Feature.find_by(key: 'website_integration_javascript')
+          = render "eventtemplates/integrations"
+        - else
+          = render "layouts/not_in_plan_text"

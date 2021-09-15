@@ -1,0 +1,5 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # seminare
+  seminars: Seminare
+  add_seminar: "Seminar hinzufügen"

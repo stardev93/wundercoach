@@ -1,0 +1,54 @@
+= simple_form_for(@account, url: updateshort_path) do |f|
+  = f.error_notification
+
+  // = render "shared/section_header", :headertext => t(:account_data), :hint_text => t(:account_data_hint)
+
+  .form-inputs
+    .row
+      .col-md-12
+        = f.input :name, placeholder: :account_name, required: true, label: t(:account_name), hint: t(:account_name_hint)
+
+    .row
+      .col-md-10
+        = f.input :street, required: true, label: t(:street), hint: t(:street_hint)
+      .col-md-2
+        = f.input :streetno, required: true, label: t(:streetno), hint: t(:streetno_hint)
+
+    .row
+      .col-md-3
+        = f.input :zip, required: true, label: t(:zip), hint: t(:zip_hint)
+      .col-md-9
+        = f.input :city, required: true, label: t(:city), hint: t(:city_hint)
+    .row
+      .col-md-12
+        = f.input :country, required: true, priority: ["Deutschland", "Österreich", "Schweiz"], label: t(:country), hint: t(:country_hint)
+    .row
+      .col-md-12
+        = f.input :email_billing_address, required: true, label: t(:email_signup_address), hint: t(:email_signup_address_hint)
+
+
+    .row
+      .col-md-2
+        = f.input :gender, as: :select, collection: %i(female male), label: t(:gender), include_blank: t(:please_choose), hint: t(:gender_hint)
+      .col-md-5
+        = f.input :firstname, label: t(:firstname), hint: t(:firstname_hint)
+      .col-md-5
+
+        = f.input :lastname, label: t(:lastname), hint: t(:lastname_hint)
+
+    .row
+      .col-md-12
+        = f.input :vat_number, label: t(:vat_number), hint: t(:vat_number_hint)
+  / .form-inputs
+  /   = f.input :invoice_no_start, label: t(:invoice_no_start), hint: t(:invoice_no_start_hint)
+  /   = f.input :cancellation_no_start, label: t(:cancellation_no_start), hint: t(:cancellation_no_start_hint)
+  /   = f.input :vat_included, as: :boolean, label: t(:vat_included), hint: t(:vat_included_hint)
+
+  .form-actions
+    .row
+      .col-xs-6.text-left
+        = link_to showplans_path, class: "btn btn-default"
+          = t(:cancel)
+
+      .col-xs-6.text-right
+        = f.button :magic_submit

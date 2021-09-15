@@ -1,0 +1,9 @@
+- if !defined? size
+  - size = ''
+- if user.Userstatus
+  - if user.Userstatus.key == 'active'
+    = link_to user_toggle_path(user), :class => "btn btn-success #{size}"
+      = user.Userstatus
+  - else
+    = link_to user_toggle_path(user), :class => "btn btn-danger #{size}"
+      = user.Userstatus

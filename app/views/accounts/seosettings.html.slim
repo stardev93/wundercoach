@@ -1,0 +1,33 @@
+= render "accounts/form_header",
+          :headline => t(:seo_settings),
+          :hint => t(:seo_settings_hint),
+          :edit_link => seosettingsedit_path
+
+.row
+  .col-xs-12
+    = render "shared/f_ro_pre", :field_value => @account.tracking_code, :field_label => t(:tracking_code), :field_hint => t(:tracking_code_hint), :field_empty => t(:tracking_code_empty)
+.row
+  .col-xs-12.col-sm-6
+    = render "shared/f_ro_boolean", :field_value => @account.tracking_code_active, :field_label => t(:tracking_code_active), :field_hint => t(:tracking_code_active_hint)
+    span.lead
+      = @account.tracking_code_active ? t(:tracking_code_is_active_hint) : t(:tracking_code_is_inactive_hint)
+  .col-xs-12.col-sm-6
+    = render "shared/f_ro_text", :field_value => t("#{@account.tracking_code_location}"), :field_label => t(:tracking_code_location), :field_hint => t(:tracking_code_location_hint)
+
+.row
+  .col-xs-12
+    = render "shared/section_header", :header_text => t(:robots_txt), :hint_text => t(:robots_txt_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_pre", :field_value => @account.robots_txt, :field_label => t(:robots_txt), :field_hint => t(:robots_txt_hint)
+
+    p &nbsp;
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to seosettingsedit_path, :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;

@@ -1,0 +1,20 @@
+de:
+  simple_form:
+    "yes": 'Ja'
+    "no": 'Nein'
+    required:
+      text: 'Pflichtfeld'
+      mark: '*'
+    error_notification:
+      default_message: "Bitte prüfen Sie die folgenden Probleme:"
+    magic_submit:
+      events:
+        eventbooking:
+          show:
+            submit: Speichern
+            disable_with: "speichere..."
+      eventbookings:
+        eventbooking:
+          move:
+            submit: Verschieben
+            disable_with: "verschiebe..."

@@ -1,0 +1,91 @@
+= render "shared/form_header",
+          header_text: t(:available_payment_methods),
+          hint_text: t(:available_payment_methods_hint)
+
+.row
+  .col-md-12
+    ul.list-group
+      - Paymentmethod.all.each do |paymentmethod|
+        - paymentterm = Paymentterm.find_by(paymentmethod_id: paymentmethod.id, context: 'checkout')
+        - accountpaymentmethod = Accountpaymentmethod.find_by(paymentmethod: paymentmethod)
+        li.list-group-item
+          .row
+            .col-xs-12.col-sm-8 id="paymentmethod_#{paymentmethod.key}"
+              / style="#{accountpaymentmethod&.is_active ? 'border-left: 4px solid #FF0000;' : ''}"
+              / - if accountpaymentmethod&.is_active
+              /   i.fa.fa-check-circle.text-success.fa-2x
+              /   |&nbsp;
+              strong
+                = paymentmethod
+              br
+              / = paymentterm.description unless paymentterm.nil?
+              - if paymentterm
+                = best_in_place paymentterm,
+                  :description,
+                  tabindex: "1",
+                  :as => :textarea,
+                  :place_holder => t(:click_to_edit),
+                  display_with: :simple_format,
+                  :ok_button => t(:save),
+                  :cancel_button => t(:cancel),
+                  :inner_class => "form-control",
+                  :ok_button_class => "btn btn-primary btn-sm text-right",
+                  :cancel_button_class => "btn btn-secondary btn-sm text-right"
+            .col-xs-12.col-sm-4.text-right
+              / Do we have an accountpaymentmethod record assigned?
+              - if accountpaymentmethod
+                / Is the accountpaymentmethod active?
+                - if accountpaymentmethod.is_active
+                  / allow deactivation
+                  = link_to deactivate_accountpaymentmethod_path(accountpaymentmethod), :id => "paymentmethod_deactivate_#{paymentmethod.key}"
+                    = t(:deactivate)
+                  |&nbsp;
+                  span.label.label-success
+                    = t(:active)
+                  / allow configuration for sofort only
+                  - if paymentmethod.key == "sofort"
+                    |&nbsp;
+                    = link_to account_paymentmethods_sofort_path do
+                      = t(:configure)
+                  / allow configuration for paypal only
+                  - if paymentmethod.key == "paypal"
+                    |&nbsp;
+                    = link_to account_paymentmethods_paypal_path do
+                      = t(:configure)
+                - else
+                  = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_activate_#{paymentmethod.key}"
+                    = t(:activate)
+              - else
+                - case paymentmethod.key
+                  - when "cc"
+                    - if @account.stripe_integrated?
+                      = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_activate_#{paymentmethod.key}"
+                        = t(:activate)
+                    - else
+                      = link_to stripe_oauth_redirect_path(locale: nil), class: %w(btn btn-sm btn-primary), :id => "paymentmethod_integrate_now_#{paymentmethod.key}" do
+                        = t(:integrate_now)
+                  - when "paypal"
+                    - if @account.paypal_integrated?
+                      = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_activate_#{paymentmethod.key}"
+                        = t(:activate)
+                    - else
+                      = link_to account_paymentmethods_paypal_path, class: %w(btn btn-sm btn-primary), :id => "paymentmethod_integrate_now_#{paymentmethod.key}" do
+                        = t(:integrate_now)
+                  - when "sofort"
+                    - if @account.sofort_integrated?
+                      = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_integrate_now_#{paymentmethod.key}"
+                        = t(:integrate_now)
+                    - else
+                      = link_to account_paymentmethods_sofort_path, class: %w(btn btn-sm btn-primary), :id => "paymentmethod_integrate_now_#{paymentmethod.key}" do
+                        = t(:integrate_now)
+
+                  - when "direct_debit"
+                    - if @account.gocardless_integrated?
+                      = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_activate_#{paymentmethod.key}"
+                        = t(:activate)
+                    - else
+                      = link_to gocardless_oauth_redirect_path(locale: nil), class: %w(btn btn-sm btn-primary), :id => "paymentmethod_integrate_now_#{paymentmethod.key}" do
+                        = t(:integrate_now)
+                  - else
+                    = link_to activate_accountpaymentmethod_path(paymentmethod), :id => "paymentmethod_activate_#{paymentmethod.key}"
+                      = t(:activate)

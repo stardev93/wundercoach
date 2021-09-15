@@ -1,0 +1,39 @@
+pre only here: signup/orders/info_price_confirm
+- unless @order&.pricingoption.nil?
+  - pricingoption = Product::Pricingoption.find(@order.pricingoption)
+  - if pricingoption
+
+    - if @account.vat_net_first
+      .row
+        .col-xs-12.text-right
+          span.lead.event_net_price
+            strong
+              = t(:net_price)
+              |&nbsp;
+              = @order.net_price
+      .row
+        .col-xs-12.text-right
+          span.lead.event_vat_sum
+            = t(:excluding_vat, vat_rate: @order.vat_rate, vat_sum: @order.vat_sum)
+      .row
+        .col-xs-12.text-right
+          span.lead.event_gross_price
+            - if @order.vat_rate != 0
+              = t(:corresp_gross_price, gross_price: @order.gross_price)
+    - else
+      .row
+        .col-xs-12.text-right
+          span.lead.event_gross_price
+            strong
+              = t(:gross_price)
+              |&nbsp;
+              = @order.gross_price
+      .row
+        .col-xs-12.text-right
+          span.lead.event_vat_sum
+            = t(:including_vat, vat_rate: @order.vat_rate, vat_sum: @order.vat_sum)
+      .row
+        .col-xs-12.text-right
+          span.lead.event_net_price
+            - if @order.object.vat_rate != 0
+              = t(:corrsp_net_price, net_price: @order.net_price)

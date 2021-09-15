@@ -1,0 +1,75 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  smtpservers: SMTP servers
+  smtpserver: SMTP server
+  smtpserver_hint: Configure your SMTP server. The SMTP server is used by your Wundercoach to send emails to your participants.
+  edit_smtpserver: "Configure SMTP server"
+
+  smtpserver_activation_failed: The SMTP server could not be activated. Please check the settings.
+  smtpserver_activation_successful: The SMTP server was successfully activated.
+
+  smtpserver_standard: Standard SMTP server
+  smtpserver_standard_hint: The integrated Wundercoach SMTP server allows you to start sending emails without any further configuration. Enter your Email-Adress to which your recipients can reply to, as well as the disppayed name. Wundercoach will send emails with your name, but will still use go@wundercoach.net as the sender address.
+
+  smtpserver_from_name: "From name"
+  smtpserver_from_name_hint: "Enter the name you would like to display as the senders name."
+  smtpserver_replyto_address: "Antwortadresse"
+  smtpserver_replyto_address_hint: "Reply-to adress"
+
+  smtpserver_custom_authentication: Authentication
+  smtpserver_custom_authentication_hint: "Preferred authentication method"
+  smtpserver_custom_starttls: "STARTTLS Auto"
+  smtpserver_custom_starttls_hint: "Automatic checking or STARTTLS on your SMTP-Server."
+  smtpserver_custom_openssl: "OpenSSL Verify Mode"
+  smtpserver_custom_openssl_hint: "Sets the way OpenSSL certificates are validated."
+
+  simple_form:
+    magic_submit:
+      accounts:
+        smtpserver:
+          smtpserversettingsedit:
+            submit: "Save settings"
+            disable_with: "saving..."
+    labels:
+      address:
+        name: Name
+        description: Location
+        server: Servername
+
+  server: Servername
+
+  smtpserver_wundercoach_standard_name: Wundercoach Standard SMTP-Server
+  smtpserver_wundercoach_standard_description: Use the integrated Wundercoach-SMTP server to start sending emails without any further configuration. Enter your Email-Adress to which your recipients can reply to, as well as the disppayed name. Wundercoach will send emails with your name, but will still use go@wundercoach.net as the sender address.
+
+  smtpserver_custom_name: Your own SMTP-Server
+  smtpserver_custom_description: Send emails using your own SMTP server. Click on 'edit' and configure Wudnercoach to use your own MTP-server. This is the recommended way to send emails.
+  smtpserver_custom_settings: Settings SMTP server
+  smtpserver_custom_settings_hint: Enter the settings for your own SMTP server here
+  smtpserver_custom_sender_settings: Your sender settings
+  smtpserver_custom_sender_settings_hint: Enter your From-settings
+  smtpserver_custom_from_address: From address
+  smtpserver_custom_from_address_hint: This address will be used as From address when sending emails
+  smtpserver_custom_from_name: From name
+  smtpserver_custom_from_name_hint: This will be used as From name when sending emails
+  smtpserver_custom_replyto_address: Reply-to-address
+  smtpserver_custom_replyto_address_hint: This address will be used as reply-to-address when your recipient replies. Please keep in mind that many email programs ignore this setting.
+
+
+  smtpserver_custom_server_settings: Your server settings
+  smtpserver_custom_server_settings_hint: Configure your own SMTP-Server
+  smtpserver_custom_server: Server name
+  smtpserver_custom_server_hint: The domain name of your SMTP server, i.e. mail.mydomain.com. YOu can also enter an IP address.
+  smtpserver_custom_port: Port
+  smtpserver_custom_port_hint: The port your SMTP server uses for sending emails. Usual values are 465 or 587. If in doubt ask your IT personnel or your email provider.
+  smtpserver_custom_ssl: Use SSL
+  smtpserver_custom_ssl_hint: Does your server support encrypted connections.
+  smtpserver_custom_username: Username
+  smtpserver_custom_username_hint: The username for your SMTP server.
+  smtpserver_custom_password: Password
+  smtpserver_custom_password_hint: The Passwordfor for your SMTP server.
+
+  smtpserver_test_settings: Send test email
+  smtpserver_testmail_sent: "A test email has been sent to %{recipient_email}. Please check your inbox."
+  smtpserver_configure_settings: Configure
+  smtpserver_testing_settings: Testing settings for
+  smtpserver_this_is_a_test_email_to: Test email to

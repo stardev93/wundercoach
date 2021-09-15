@@ -1,0 +1,29 @@
+.row
+  .col-md-12
+    h3
+      = t(:planning)
+      |&nbsp;
+      = @event
+.row
+  .col-md-9 id="calendar" data-event="#{session[:event_id]}"
+  .col-md-3
+    ul.list-group
+      li.list-group-item.disabled
+        = t(:events)
+      li.list-group-item
+        .input-group.bootstrap-timepicker
+          span.input-group-addon
+            i.glyphicon.glyphicon-time
+          = time_field_tag "event_start_time"
+      - @eventsessions.unplanned.each do |eventsession|
+        li.list-group-item.dragable id="#{eventsession.id}" style="cursor: move;"
+          .row
+            .col-md-1
+              i.fa.fa-arrows
+            .col-md-10
+              = link_to eventsession.name, eventsession
+              br
+              = l eventsession.start_date, format: :default, id: "timepicker"
+              br
+              = eventsession.status
+          / = event.start_date.strftime(t(:date.formats.default))

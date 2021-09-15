@@ -1,0 +1,51 @@
+.row.signup-header-zone
+  .col-xs-12
+    .row
+      .col-xs-12
+        = simple_form_for(@order, url: signup_order_path, method: :put) do |f|
+          = f.error_notification
+          = f.input :price_cents, as: :hidden, id: "order_price_cents"
+          = f.input :pricingoption, as: :hidden, id: "order_pricingoption"
+          = f.input :pricingoptiontext, as: :hidden, id: "order_pricingoptiontext"
+          .form-inputs
+            .row
+              .col-xs-12
+                = render "shared/section_header", headertext: t(:participant_data), hint: (@order.product.additional_participants? ? t(:participant_data_multi_hint) : t(:participant_data_hint))
+
+                - if @order.product.free_seats? && @order.product.show_free_seats?
+                  p.lead
+                    = t(:remaining_seats_count, free_seats: @order.product.seats_free)
+
+            .row
+              .col-xs-12
+                span
+                  = t(:mandatory_field_info)
+
+            = render "address_form", f: f, product: @order.product
+
+            - unless @order.product.free?
+              .row
+                .col-md-12
+                  label
+                    = t(:i_need_a_different_billing_address)
+                    br
+                    input#billing_address_toggle type="checkbox" autocomplete="off" name="different_billing_address" checked=(@order.billing_address.persisted? || @order.billing_address.errors.any?)
+
+              .row#eventbooking_billing_fields style=('display: none;' if @order.billing_address&.new_record? && @order.billing_address.errors.empty?)
+                .col-md-12
+                  = render "shared/section_header", header_text: t(:billing_information), hint_text: t(:i_need_a_different_billing_address_hint)
+                  = render "billing_address_form", f: f
+
+          .form-actions
+            .row
+              .col-sm-6.col-sm-push-6.col-xs-12.text-right
+                p = f.button :magic_submit, class: 'btn btn-default btn-lg signup-button signup-submit signup-create-eventbooking'
+              .col-sm-6.col-sm-pull-6.col-xs-12
+                br
+                = link_to (@account.index_path.blank? ? signup_index_path : @account.index_path), class: "btn btn-default btn-lg signup-button signup-back"
+                  = t(:back)
+
+        javascript:
+          $('#billing_address_toggle').change(function() {
+              $('#eventbooking_billing_fields').toggle();
+          });

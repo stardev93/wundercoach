@@ -1,0 +1,8 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # mailskin
+  mailskin: "Email skin"
+  mailskins: "Email skins"
+  mailskin_infotext: "Email skins are templates that can be used as email backgrounds."
+  enter_htmlbody_here: "Enter the HTML code of the email template"
+  enter_textbody_here: "Enter the text part of the email template"

@@ -1,0 +1,138 @@
+- if logged_in? && current_user.internal? && current_tenant
+  nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+    .navbar-header
+      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navigation-one" aria-expanded="false" aria-controls="navbar"
+        span.sr-only = t(:toggle_navigation)
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      = link_to root_path, class: "navbar-brand" do
+        = image_tag("logo.png", style: "height:40px;")
+    .collapse.navbar-collapse#navigation-one
+      = render "dashboard/getting_started"
+      = render "shared/not_in_plan_modal"
+      ul.nav.navbar-nav
+        li = link_to t(:dashboard), root_path
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown"
+            = t(:events)
+            span.caret
+          ul.dropdown-menu
+            = nav_item :events
+            li
+              = link_to events_path + '?q[type_eq]=BundleEvent'
+                = t(:bundle_events)
+            = nav_item :eventtemplates
+            = nav_item :eventtypes
+            / - unless ActsAsTenant.current_tenant.affiliate
+            /   li = link_to Product::Tag.model_name.human(count: 2), product_tags_path
+            li
+              = link_to product_locations_path
+                = t(:event_locations)
+              li
+                = link_to t(:tags), product_tags_path
+
+            li
+              = link_to product_pricingsets_path
+                = t(:pricingsets)
+            li.divider
+            - if current_tenant.id == 660 || current_tenant.id == 1101 || current_tenant.name == 'Silicon Planet GmbH'
+              = nav_item :items
+              li.divider
+            = nav_item :eventbookings
+            li
+              = link_to billing_businessdocuments_path
+                = t(:invoices)
+            = nav_item :coaches, Coach
+            li.divider
+            li = link_to t(:signup_list), signup_index_path, target: "_blank"
+            li = link_to t(:widgets), widgets_path
+            li.divider
+            = nav_item :mailtemplates
+            = nav_item :mailskins
+        - if current_tenant.id == 660 || current_tenant.id == 1101 || current_tenant.id == 86 || current_tenant.name == 'Silicon Planet GmbH'
+          li.dropdown
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              = t(:contacts)
+              span.caret
+            ul.dropdown-menu
+              li
+                = link_to crm_contacts_path
+                  = t(:contacts)
+              li
+                = link_to crm_contact_tags_path
+                  = t(:tags)
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown"
+            = t(:marketing)
+            span.caret
+          ul.dropdown-menu
+            = nav_item :campaigns
+            = nav_item :target_groups
+            = nav_item :filters
+            = nav_item :mailchimp
+            li = link_to "ActiveCampaign", account_active_campaign_path
+        - if @account.affiliate && can?(:read, @account.affiliate)
+          li = link_to t(:affiliate_dashboard), affiliate_dashboard_path
+
+      ul.nav.navbar-nav.pull-right style="margin-right: 150px;"
+        li = link_to t(:change_plan), showplans_path
+        li
+          a#getting_started_link href="#" type="button" data-toggle="modal" data-target="#getting_started"
+            span#getting_started_popover
+              = t(:getting_started)
+
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown" href="#"
+            = t(:settings)
+            b.caret
+          ul.dropdown-menu.pull-right
+            = nav_item :settings, Account
+              i.fa.fa-cog
+              |&nbsp;
+              = t(:accountsettings)
+            = nav_item :iframe, Account
+              i.fa.fa-globe
+              |&nbsp;
+              = t(:website_integration_headline)
+            = nav_item edit_user_path(current_user), current_user
+              i.fa.fa-cog
+              |&nbsp;
+              = t(:usersettings)
+              |&nbsp;
+              = current_user.firstname
+              |&nbsp;
+              = current_user.lastname
+            = nav_item user_changepassword_path(current_user), current_user
+              i.fa.fa-lock
+              |&nbsp;
+              = t(:change_password)
+            = nav_item users_path, current_user
+              i.fa.fa-user
+              |&nbsp;
+              = t(:users)
+
+            li
+              = link_to users_messages_path
+                i.fa.fa-envelope-o
+                |&nbsp;
+                = t(:messages)
+                - if current_user.unread_message_count
+                  |&nbsp;
+                  span.badge style="background-color: #337ab7;"
+                    = current_user.unread_message_count
+            li.divider
+            li
+              = link_to logout_url(subdomain: EXTERNAL_SUBDOMAIN)
+                i.fa.fa-sign-out
+                |&nbsp;
+                = t(:sign_out)
+        - if current_user.has_role? 'admin'
+          li = link_to t(:backend), admin_dashboard_path + "?backend[clear]"
+        = render "shared/language_chooser"
+        - if current_user.unread_message_count > 0
+          = render "shared/sidebar_opener"
+
+  = render "layouts/accountmessages", account: @account, remaining_days: @account.current_booking.remaining_days, total_days: @account.bookings.current.total_days
+  = render "shared/notify"

@@ -1,0 +1,6 @@
+.row
+  .col-md-12
+    = render "eventbookings/subtable_headline"
+      span.add-item
+        = render "orders/order_link", product: event, new_order_path: new_event_order_path(event), link_params: {}
+    = render "eventbookings/subtable_body"

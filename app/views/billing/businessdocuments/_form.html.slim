@@ -1,0 +1,67 @@
+= simple_form_for(@businessdocument, url: billing_businessdocument_path) do |f|
+  = f.error_notification
+  .well
+    .form-inputs
+      = f.simple_fields_for :address do |address|
+        = f.hidden_field :invoice_number, hidden: true
+        = render "addresses/form", f: address
+    .row
+      .col-xs-12
+        hr
+    .row
+      .col-xs-12.col-md-6
+        .row
+          .col-md-12
+            = f.input :invoice_number, label: t(:invoice_number)
+        .row
+          .col-md-12
+            = f.input :recipient_name1, label: t(:recipient_name1)
+        .row
+          .col-md-12
+            = f.input :recipient_name2, label: t(:recipient_name2)
+        .row
+          .col-md-12
+            = f.input :recipient_person, label: t(:recipient_person)
+        .row
+          .col-md-12
+            = f.input :recipient_street, label: t(:recipient_street)
+        .row
+          .col-md-4
+            = f.input :recipient_zip, label: t(:recipient_zip)
+          .col-md-8
+            = f.input :recipient_city, label: t(:recipient_city)
+        .row
+          .col-md-12
+            = f.input :recipient_country, priority: ["Deutschland", "Österreich", "Schweiz"], label: t(:recipient_country)
+        .row
+          .col-md-12
+            = f.input :recipient_email, label: t(:recipient_email)
+
+
+      .col-xs-12.col-md-6
+        .row
+          .col-md-12
+            = f.input :name, label: t(:subject)
+        .row
+          .col-md-6
+            = f.input :invoice_date, as: :date_picker, locale: :de, label: t(:invoice_date), hint: t(:invoice_date_hint), :input_html => { :value => f.object.invoice_date}, class: "datepicker"
+          .col-md-6
+            = f.input :due_date, as: :date_picker, locale: :de, label: t(:due_date), hint: t(:due_date_hint), :input_html => { :value => f.object.due_date}, class: "datepicker"
+        .row
+          .col-md-6
+            = f.association :paymentstatus, include_blank: false, label: t(:paymentstatus)
+          .col-md-6
+            = f.input :paymentdate, as: :date_picker, locale: :de, label: t(:paymentdate), hint: t(:paymentdate_hint), :input_html => { :value => f.object.paymentdate}, class: "datepicker"
+        .row
+          .col-md-6
+            = f.input :account_receivable_no, label: t(:account_receivable_no), hint: t(:account_receivable_no_hint)
+          .col-md-6
+            = f.input :costcenter, label: t(:costcenter), hint: t(:costcenter_hint)
+        .row
+          .col-md-12
+            = f.input :comments
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: billing_businessdocument_path(@businessdocument)

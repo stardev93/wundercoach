@@ -1,0 +1,25 @@
+= f.simple_fields_for :billing_address do |billing_address|
+  .row
+    .col-md-12
+      = billing_address.input :company, label: t(:order_company_or_instituion_name), hint: t(:order_company_or_instituion_name_hint)
+  .row
+    .col-md-5
+      = billing_address.input :lastname, required: true
+    .col-md-5
+      = billing_address.input :firstname, required: true
+    .col-md-2
+      = billing_address.input :gender, as: :select, collection: %i(noinfo female male diverse), include_blank: "--", required: true
+  .row
+    .col-md-12
+      = billing_address.input :street, required: true
+  .row
+    .col-md-3
+      = billing_address.input :zip, required: true
+    .col-md-9
+      = billing_address.input :city, required: true
+  .row
+    .col-md-12
+      = billing_address.input :country, priority: %w(Deutschland), include_blank: false, required: true
+  .row
+    .col-md-12
+      = billing_address.input :email, required: true

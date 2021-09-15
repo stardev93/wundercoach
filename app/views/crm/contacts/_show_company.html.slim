@@ -1,0 +1,38 @@
+address
+  .row
+    .col-xs-12.col-sm-8
+      p
+        strong = t(:name)
+        br
+        span.lead
+          = best_in_place @contact, :name, tabindex: "1", :as => :input, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+        '&nbsp;
+        / = url_for @contact
+
+      p
+        strong = t(:name2)
+        br
+        span.lead
+          = best_in_place @contact, :name2, tabindex: "2", :as => :input, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+        '&nbsp;
+
+    .col-xs-12.col-sm-4
+      address
+        p
+          strong = t(:vat_id)
+          br
+          span.lead
+            = best_in_place @contact, :vat_id, tabindex: "3", :as => :input, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+          '&nbsp;
+        p
+          strong = t(:contact_no)
+          br
+          span.lead
+            = best_in_place @contact, :contact_no, tabindex: "4", :as => :input, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+          '&nbsp;
+        p
+          strong = t(:account_receivable_no)
+          br
+          span.lead
+            = best_in_place @contact, :account_receivable_no, tabindex: "5", :as => :input, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+          '&nbsp;

@@ -1,0 +1,45 @@
+- back_button = render "shared/button", path: product_pricingsets_path, link_text: t(:back), icon: "fa-arrow-left", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+
+- edit_button = render "shared/button", path: edit_product_pricingset_path(@product_pricingset), link_text: t(:edit), icon: "fa-edit", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit)
+
+- new_button = render "shared/button", path: new_product_pricingset_path, link_text: t(:new_product_pricingoption), icon: "", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:new_product_pricingoption)
+
+- delete_button = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => product_pricingset_path(@product_pricingset), :delete_text => t(:delete)
+
+- active_state = render "product/pricingsets/active_state", :pricingset => @product_pricingset
+
+= render "shared/form_header",
+         header_text: (@product_pricingset.name + active_state).html_safe, hint_text: @product_pricingset.description,
+         buttons: delete_button + ' ' + edit_button + ' ' + new_button + ' ' + back_button
+
+
+
+- new_product_pricingoption_button = render "shared/button", path: "#", link_text: t(:new_product_pricingoption), icon: "", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:new_product_pricingoption), onclick_script: "javascript: toggleNewProductPricingoptionForm()"
+
+= render "shared/form_subheader",
+         header_text: @product_pricingset, hint_text: t(:pricingoptions_hint),
+         buttons: new_product_pricingoption_button
+
+javascript:
+  function toggleNewProductPricingoptionForm() {
+    $('#new_product_pricingoption').toggle();
+    $('#product_pricingoption_name').focus();
+
+  }
+
+
+/ subform for creating new pricingoptions
+.row#new_product_pricingoption style="display: none;"
+  .col-xs-12
+    - @product_pricingoption = Product::Pricingoption.new
+    - @product_pricingoption.pricingset = @product_pricingset
+    = render 'product/pricingoptions/form'
+
+
+/ list of pricingoptions
+.row
+  .col-xs-12
+    p &nbsp;
+.row
+  .col-xs-12
+    = render "product/pricingoptions/subtable", :product_pricingset => @product_pricingset

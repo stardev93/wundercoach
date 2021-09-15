@@ -1,0 +1,47 @@
+.row
+  .col-lg-12.text-center
+    = image_tag "logo.png", style: "width: 100px; margin: 0px 0px 30px 0px;"
+.row
+  .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12
+    p.lead.text-center
+      = t(:create_free_trial_account_now_subheadline)
+    - url = @affiliate ? register_create_for_affiliate_path(@affiliate.token) : register_create_path
+    = simple_form_for(@form, as: :account, url: url, method: :post) do |f|
+      = f.error_notification
+      .form-inputs
+        = invisible_captcha
+        = f.input :name
+        = render "shared/f_gender", :form => f, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+        = f.input :firstname
+        = f.input :lastname
+        = f.input :homepage, required: false
+        = f.fields_for :creator do |creator|
+          = creator.input :email
+          = creator.input :password, label: t(:new_password_label)
+        = f.input :terms_of_service, as: :boolean, label: t(:accept_terms_label).html_safe
+        = f.input :privacy_policy_terms, as: :boolean, label: t(:accept_privacy_policy_terms, register_privacy_url: register_privacy_url).html_safe
+
+        div style="display: none;"
+          = f.input :free, input_html: { value: nil }
+        br
+        = submit_tag t(:create_free_trial_account_now_btn), class: 'btn btn-warning btn-lg', style: "width: 100%;"
+    .form-group
+      p
+        |&nbsp;
+      p.text-center
+        span style="color: #c8c8c8;"
+          = t(:do_you_have_a_login)
+          br
+        = link_to login_path, style: "color: #c8c8c8;"
+          = t(:login_here)
+
+= render "paymentplans/termsofservice"
+footer style="width: inherit; margin: auto;"
+  p.text-muted.text-center style="color: #c8c8c8; width: inherit;"
+    '(C) Wundercoach UG
+    '&nbsp;|
+    = link_to "https://wundercoach.net/datenschutz/", style: "color:#c8c8c8", target: "_blank"
+      = t(:privacy_policy)
+    '&nbsp;|
+    = link_to "https://wundercoach.net/impressum/", style: "color: #c8c8c8;", target: "_blank"
+      = t(:imprint)

@@ -1,0 +1,62 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+default: &default
+  adapter:  mysql2
+  encoding: utf8
+  database: wundercoach_dev
+  username: root
+  password: root
+
+development:
+  adapter:  mysql2
+  encoding: utf8
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  #<<: *default
+  #database: db/development.sqlite3
+
+staging:
+  adapter:  mysql2
+  encoding: utf8
+  database: wundercoach_staging
+  username: wundercoach_staging
+  password: WUnDeRc0AcH!
+  host: localhost
+
+staging_live:
+  adapter:  mysql2
+  encoding: utf8
+  database: wundercoach_live
+  username: wundercoachremote
+  password: wUnDeRc0AcH%
+  host: 10.135.216.84
+
+production:
+  adapter:  mysql2
+  encoding: utf8
+  database: <%= ENV['LIVE_DATABASE_NAME'] %>
+  username: <%= ENV['LIVE_DATABASE_USERNAME'] %>
+  password: <%= ENV['LIVE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['LIVE_DATABASE_HOST'] %>
+#  database: wundercoach
+#  username: wcoach
+#  password: p7ptkAtPpJL7tjo
+  # database: wundercoach_live
+  # username: wundercoachremote
+  # password: wUnDeRc0AcH%
+  # host: 10.135.216.84
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/test.sqlite3

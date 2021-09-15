@@ -1,0 +1,67 @@
+= simple_form_for(@coach) do |f|
+  = f.error_notification
+
+  .row
+    .col-xs-12
+      .row
+        .col-xs-12.col-sm-3
+          .form-inputs
+            = f.input :lastname, label: t(:lastname), hint: t(:lastname_hint)
+        .col-xs-12.col-sm-3
+          .form-inputs
+            = f.input :firstname, label: t(:firstname), hint: t(:firstname_hint)
+        .col-xs-12.col-sm-3
+          .form-inputs
+            = f.input :title, label: t(:coach_title), hint: t(:coach_title_hint)
+        .col-xs-12.col-sm-3
+          .form-inputs
+            = render "shared/f_gender", :form => f, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+
+      .row
+        .col-xs-12.col-sm-3
+          .row
+            .col-xs-12
+              .form-inputs
+                = f.input :image, label: t(:image), hint: t(:image_hint)
+          .row
+            .col-xs-12
+              .form-inputs
+                = render "shared/f_boolean", :form => f, :field => :active, :field_label => t(:coach_active), :field_hint => t(:coach_active_hint)
+                / = f.input :active, as: :boolean, label: t(:coach_active), hint: t(:coach_active_hint)
+
+        .col-xs-12.col-sm-9
+          .row
+            .col-xs-12
+              .form-inputs
+                = f.input :tel, label: t(:tel), hint: t(:tel_hint)
+          .row
+            .col-xs-12
+              = f.input :email, label: t(:email), hint: t(:email_hint)
+          .row
+            .col-xs-9
+              = f.input :homepage_url, label: t(:coach_homepage_url), hint: t(:coach_homepage_url_hint)
+            .col-xs-3
+              = render "shared/f_boolean", :form => f, :field => :homepage_url_target_blank, :field_label => t(:coach_homepage_url_target_blank), :field_hint => t(:coach_homepage_url_target_blank_hint)
+          .row
+            .col-xs-12.col-sm-6
+              .form-inputs
+                = f.input :price, label: t(:coach_price), hint: t(:coach_price_hint)
+            .col-xs-12.col-sm-6
+              .form-inputs
+                = f.input :price_unit, as: :select, collection: Coach::PRICE_UNIT_HASH.sort.map {|k,v| [t(:"#{v}"),k]}, include_blank: false, label: t(:coach_price_unit), hint: t(:coach_price_unit_hint)
+
+          .row
+            .col-xs-12
+              .form-inputs
+                = f.input :label, label: t(:coach_label), hint: t(:coach_label_hint)
+            .col-xs-12.
+              .form-inputs
+                = f.input :description, label: t(:coach_description), hint: t(:coach_description_hint)
+
+
+  .row
+    .col-xs-12.col-sm-12
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: coaches_path

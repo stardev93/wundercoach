@@ -1,0 +1,14 @@
+= simple_form_for(@durationunit) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key
+    = f.input :name_plural
+    = f.input :name_singular
+    = f.input :description
+    = f.input :sortorder
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: durationunits_path

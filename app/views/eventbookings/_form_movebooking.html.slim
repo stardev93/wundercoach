@@ -1,0 +1,15 @@
+= simple_form_for(@eventbooking, url: eventbookings_movetoevent_path(@eventbooking), method: :post) do |f|
+  .row
+    .col-xs-12
+      = f.error_notification
+
+  .form-inputs
+
+    / = f.association :event, as: :hidden
+    = f.association :event, collection: EventDecorator.decorate_collection(Event.with_includes.future_events.no_eventtemplates.by_start_date), label_method: :info_row, input_html: { class: 'chosen-select', multiple: false }, label: t(:move_eventbooking_choose_target_event), hint: t(:move_eventbooking_choose_target_event_hint)
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        / -  cancel_url = url_for controller: 'events', id: @eventbooking.event.id, action: 'show', anchor: 'eventbookings', only_path: true
+        = f.button :magic_submit, cancel: eventbooking_path(@eventbooking)

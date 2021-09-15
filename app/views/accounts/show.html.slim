@@ -1,0 +1,79 @@
+- edit_button = render "shared/button", path: edit_settings_path, link_text: t(:edit), icon: "", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit)
+
+= render "shared/form_header",
+         header_text: t(:account_information), hint_text: t(:account_information_hint),
+         buttons: edit_button
+.row
+  .col-sm-12
+    = render "shared/datarow", label: t(:account_name), value: @account.name
+    = render "shared/datarow", label: t(:account_number), value: @account.accountnumber
+
+    - if @account.name_addon != ''
+      = render "shared/datarow", label: t(:name_addon), value: @account.name_addon
+    = render "shared/datarow", label: t(:street), value: "#{@account.street} #{@account.streetno}"
+    = render "shared/datarow", label: t(:zip_city), value: "#{@account.zip} #{@account.city}"
+    = render "shared/datarow", label: t(:country), value: @account.country_name
+    = render "shared/datarow", label: t(:account_time_zone), value: @account.time_zone, :field_hint => t(:account_time_zone_hint)
+    / = render "shared/f_ro_timezone", :field_value => @account.time_zone, :field_label => t(:account_time_zone), :field_hint => t(:account_time_zone_hint)
+
+    p &nbsp;
+
+= render "accounts/form_header",
+          headline: t(:account_contact_information),
+          hint: t(:account_contact_information_hint),
+          edit_link: edit_settings_path,
+          edit_anchor: '#account_contact_information',
+          show_spacer: true
+
+.row
+  .col-sm-12
+    p
+      |&nbsp;
+    = render "shared/datarow", label: t(:contact), value: t(:"#{@account.gender}_indirect") + " #{@account.firstname} #{@account.lastname}"
+
+    = render "shared/datarow", label: t(:tel1), value: @account.tel1
+    - if @account.tel2 != ''
+      = render "shared/datarow", label: t(:tel2), value: @account.tel2
+
+    - if @account.fax != ''
+      = render "shared/datarow", label: t(:fax), value: @account.fax
+    = render "shared/datarow", label: t(:email), value: @account.email
+
+= render "accounts/form_header",
+          headline: t(:account_billing_information),
+          hint: t(:account_billing_information_hint),
+          edit_link: edit_settings_path,
+          edit_anchor: '#account_billing_information',
+          show_spacer: true
+
+.row
+  .col-sm-12
+    p
+      |&nbsp;
+    = render "shared/datarow", label: t(:email_billing_address), value: @account.email_billing_address
+    = render "shared/datarow", label: t(:vat_number), value: @account.vat_number
+
+= render "accounts/form_header",
+          headline: t(:integration),
+          hint: t(:integration_hint),
+          edit_link: edit_settings_path,
+          edit_anchor: '#account_integration_information',
+          show_spacer: true
+.row
+  .col-sm-12
+    p
+      |&nbsp;
+    / = render "shared/datarow", label: Account.human_attribute_name(:notification_url), value: @account.notification_url
+    = render "shared/datarow", label: t(:account_api_token), value: @account.token, hint: t(:account_api_token_hint)
+    p.text-right
+      = render "shared/button", path: generate_token_path, link_text: t(:account_api_token_generate), icon: "", classes: "btn btn-sm btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:account_api_token_generate_hint)
+      |&nbsp;
+      = render "eventtemplates/btn_copy_to_clipboard", element: 'token'
+.row
+  .col-md-12.text-right
+    hr
+    = link_to edit_settings_path, class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;

@@ -1,0 +1,55 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @userrole
+        span.add-item
+          = link_to new_userrole_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_userrole)
+      p.lead
+        = @userrole.user
+        br
+        = @userrole.role
+        br
+
+  .row
+    .col-md-12
+      p.h3
+        'Userrole
+        = t(:data)
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong =t(:user)
+          br
+          span.lead = @userrole.user
+          '&nbsp;
+        p
+          strong =t(:role)
+          br
+          span.lead = @userrole.role
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to @userrole, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      ' &nbsp;
+      = link_to edit_userrole_path(@userrole), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to userroles_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back)

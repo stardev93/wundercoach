@@ -1,0 +1,81 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  activerecord:
+    attributes:
+      defaults:
+        name: Name
+        name2: Name2
+        description: Beschreibung
+        onlinestatus: Onlinestatus
+        vat: "MwSt."
+        vat_rate: "MwSt.-Satz"
+        firstname: Vorname
+        digimember_id: Produkt-ID
+        price: Preis
+        maxparticipants: Anz. Plätze
+        early_signup_pricing: Frühbucherrabatt ermöglichen
+        price_early_signup: Frühbucherpreis
+        generate_invoice: Automatische Rechnungstellung
+        commission_relative: Prozentualer Provisionsbetrag
+        commission_absolute: Absoluter Provisionsbetrag
+        affiliate_commission_relative: Prozentualer Provisionsbetrag
+        affiliate_commission_absolute: Absoluter Provisionsbetrag
+        full_price: Voller Preis
+  simple_form:
+    labels:
+      defaults:
+        name: Name
+        onlinestatus: Veröffentlichungsstatus
+        vat: MwSt.
+        allow_signup: Online-Anmeldung erlauben
+        firstname: Vorname
+        lastname: Nachname
+        street: Straße
+        zip: PLZ
+        city: Stadt
+        country: Land
+        email: E-Mail
+        website: Website
+        name_addon: Firmenzusatz
+        url: URL
+        digimember_id: Produkt-ID
+        notification_url: "Benachrichtigungs-URL"
+        eventtype: Veranstaltungsart
+        slug: Suchmaschinenfreundliche URL
+        price: Preis
+        maxparticipants: Anz. Plätze
+        early_signup_pricing: Frühbucherrabatt ermöglichen
+        price_early_signup: Frühbucherpreis
+        generate_invoice: Automatische Rechnungstellung
+        commission_relative: Prozentualer Provisionsbetrag
+        commission_absolute: Absoluter Provisionsbetrag
+        affiliate_commission_relative: Prozentualer Provisionsbetrag
+        affiliate_commission_absolute: Absoluter Provisionsbetrag
+        gender: Anrede
+        telephone: Telefon
+        recipient1: Erster Empfänger
+        recipient2: Zweiter Empfänger
+        comments: Kommentare
+        currency: Währung
+    hints:
+      defaults:
+        onlinestatus: Entscheidet, ob das Seminar oder die Veranstaltung im Internet sichtbar ist oder nicht.
+        vat: enthaltene MwSt.
+        allow_signup: Wenn aktiv können sich Ihre Kunden online für diese Veranstaltung anmelden. Die Anzeige in der Anmeldungsansicht ist davon nicht betroffen.
+        bottom_text: Schlusstext am Ende der Einzelseite
+        digimember_id: Wird nach einer erfolgreichen Bestellung beim Senden von Benachrichtigungen mit übergeben. Wenn Sie dieses Feld leer lassen, wir keine Benachrichtigung gesendet.
+        notification_url: Externe Anwendungen können über erfolgte Bestellungen informiert werden, indem ein Teil der Bestellungsdaten an die URL gesendet werden.
+        eventtype: Typ des Seminars. Sie können eigene Veranstaltungsarten unter dem Menüpunkt 'Seminare' anlegen.
+        slug: "Suchmaschinen bewerten Seiten besser, wenn Sie eine aussagekräftige URL haben. Die URL wird nur einmal beim ersten Speichern automatisch generiert und kann dann manuell geändert werden. Um die URL zu löschen und neu zu generieren, leeren Sie das Feld und klicken Sie auf 'Speichern'."
+        price: Regulärer Preis
+        maxparticipants: Maximale Anzahl Teilnehmer
+        early_signup_pricing: Ermöglichen Sie Frühbucherrabatt für dieses Event oder nicht.
+        price_early_signup: Frühbucherpreis. Gilt bis zu dem angegebenen Datum.
+        generate_invoice: Für neue Anmeldungen wird automatisch eine Rechnung  erstellt und versendet.
+    options:
+      defaults:
+        gender:
+          male: Herr
+          female: Frau
+          diverse: Divers
+          noinfo: "Keine Angabe"

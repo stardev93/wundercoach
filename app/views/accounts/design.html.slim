@@ -1,0 +1,44 @@
+- if @account.logo.blank?
+  = render "accounts/form_header",
+          :headline => t(:design_information),
+          :hint => t(:design_information_hint),
+          :edit_link => design_edit_path
+- else
+  = render "accounts/form_header",
+          :headline => t(:design_information),
+          :hint => t(:design_information_hint)
+.row
+  .col-xs-12
+    label
+      = t(:account_logo)
+  - if @account.logo.blank?
+    .col-xs-12
+      .alert.alert-info
+        = t(:you_havent_uploaded_a_logo_yet)
+
+- if @account.logo.blank?
+  .row
+    .col-xs-12
+      = render "accounts/dzmicro", account: @account, param: "account[logo]", text: t(:drop_logo_here_to_upload)
+      p
+  .row
+    .col-md-12.text-right
+      = link_to design_edit_path
+        button.btn.btn-primary
+          i.fa.fa-edit
+          |&nbsp;
+          = t(:edit)
+
+- else
+  .row
+    .col-xs-12.text-center
+      p
+        = image_tag @account.logo.url, :width => "120px;"
+        |&nbsp;
+  .row
+    .col-xs-12.text-center
+      p
+        = link_to accountlogoremove_path, :class => "btn btn-danger"
+          i.fa.fa-remove
+          |&nbsp;
+          = t(:remove)

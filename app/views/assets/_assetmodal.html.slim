@@ -1,0 +1,31 @@
+.modal.fade id="#{modalid}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            |&times;
+          span class="sr-only"
+            |Close
+        .modal-title id="myModalLabel"
+          span.h4 #{modal_title}
+          br
+          = t (:uploaded_by)
+          |&nbsp;#{asset.user}&nbsp;
+          = t (:on)
+          |&nbsp;#{asset.created_at.strftime("%d %b. %Y %H:%M")}
+      .modal-body
+        a href="#" data-dismiss="modal"
+          / = link_to asset.asset(:original), :target => '_blank'
+          = image_tag asset.asset(:medium),  :class => "img-responsive"
+      .modal-footer
+        .row
+          .col-md-8.text-left
+            = link_to asset.asset(:original), :target => '_blank'
+              = t(:download_file)
+              |&nbsp;(
+              = asset.size_mb
+              |&nbsp;MB)
+          .col-md-4.text-right
+            button.btn.btn-default type="button" data-dismiss="modal"
+              |Close

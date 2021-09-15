@@ -1,0 +1,216 @@
+{{stylesheet}}
+<div id="wundercoach_embedded">
+  <div class="row event_body_zone">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+                <h4 class="event_headline">Fest terminierte Seminare</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Datum</th>
+            <th class="event_th">Thema</th>
+            <th class="event_th">Trainer</th>
+            <th class="event_th">Ort</th>
+            <th class="text-right event_th">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for event in events%}
+            <tr class="event_tr">
+              <td class="event_td">
+               von:<br />
+                <span class="event_start_date">{{event.start_date}}</span>
+                <br />bis:<br />
+                <span class="event_end_date">{{event.end_date}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_name">{{event.show_link}}</span>
+                <br>
+                {{event.shortdescription}}
+                  {% if event.type == "BundleEvent" %}
+<p>
+<table class="table">
+<tr>
+<th>Name</th>
+<th>Start</th>
+<th>Ende</th>
+<th>Ort</th>
+</tr>
+          {% for subevent in event.subevents_assigned%}
+<tr>
+<td>{{subevent.name}}</td>
+<td>{{subevent.start_date}}<br>{{subevent.start_time}}</td>
+<td>{{subevent.end_date}}<br>{{subevent.end_time}}</td>
+<td>{{subevent.get_location}}</td>
+</tr>
+
+          {% endfor %}
+</table>
+</p>
+                  {% endif %}
+
+              </td>
+              <td class="event_td">
+                <span class="event_coach">
+
+          {% for coach in event.coaches_assigned%}
+{{coach.gender_indirect}} {{coach.firstname}} {{coach.lastname}}
+{% if coach.homepage_url != blank %}
+<br>
+<a target="_blank" href="{{coach.homepage_url}}">Homepage</a>
+{% endif %}
+          {% endfor %}
+</span>
+              </td>
+              <td class="event_td">
+                <span class="event_location">
+                  {% if event.eventorganizer %}
+                    {{event.eventorganizer}}
+                    <br />
+                  {% endif %}
+                  {% if event.location %}
+                    {{event.location}}
+                    <br />
+                  {% endif %}
+                  {% if event.city %}
+                    {{event.city}}
+                    <br>
+                  {% endif %}
+                </span>
+              </td>
+              <td class="text-right event_td" nowrap="nowrap">
+                <span class="event_price">{{event.price}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_signup"></span>
+                <p>
+                  {{event.signup_link}}
+                </p>
+                <p>
+                  {{event.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="wundercoach_embedded">
+  <div class="row event_body_zone">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+                <h4 class="event_headline">Berufsbegleitende Zertifikatsweiterbildungen</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Thema</th>
+            <th class="text-right event_th">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for bundle in bundles%}
+            <tr class="event_tr">
+              <td class="event_td">
+                <span class="event_name">
+                  {{bundle.show_link}}
+<h1>{{bundle.subevents}}</h1>
+                </span>
+                <br>
+                {{bundle.shortdescription}}
+              </td>
+              <td class="text-right event_td" nowrap="nowrap">
+                <span class="event_price">{{bundle.price}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_signup"></span>
+                <p>
+                  {{bundle.signup_link}}
+                </p>
+                <p>
+                  {{bundle.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="wundercoach_embedded">
+  <div class="row event_body_zone">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+                <h4 class="event_headline">Mobile Seminare</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Thema</th>
+            <th class="event_th">Trainer</th>
+            <th class="event_th">Ort</th>
+            <th class="text-right event_th">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for event in individual_events%}
+            <tr class="event_tr">
+              <td class="event_td">
+                <span class="event_name">
+                  {{event.show_link}}
+                </span>
+                <br>
+                {{event.shortdescription}}
+              </td>
+              <td class="event_td">
+                <span class="event_coach">{{event.coaches}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_location">
+                  {% if event.eventorganizer %}
+                    {{event.eventorganizer}}
+                    <br />
+                  {% endif %}
+                  {% if event.location %}
+                    {{event.location}}
+                    <br />
+                  {% endif %}
+                  {% if event.city %}
+                    {{event.city}}
+                    <br>
+                  {% endif %}
+                </span>
+              </td>
+              <td class="text-right event_td" nowrap="nowrap">
+                <span class="event_price">nach Absprache</span>
+              </td>
+              <td class="event_td">
+                <span class="event_signup"></span>
+                <p>
+                  {{event.request_link}}
+                </p>
+                <p>
+                  {{event.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

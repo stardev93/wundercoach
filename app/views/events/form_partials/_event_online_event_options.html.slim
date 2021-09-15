@@ -1,0 +1,20 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:webinar_options), :hint_text => t(:webinar_options_hint)
+.row.well
+  .col-xs-12
+    = render "shared/f_text", :form => f, :field => :webinar_url, :field_label => t(:webinar_url), :field_hint => t(:webinar_url_hint)
+  .col-xs-12
+    = render "shared/f_text", :form => f, :field => :webinar_provider, :field_label => t(:webinar_provider), :field_hint => t(:webinar_provider_hint)
+  .col-xs-12.col-sm-4
+    = render "shared/f_datetimepicker", :form => f, :field => :webinar_url_valid_from, :field_label => t(:webinar_url_valid_from), :field_hint => t(:webinar_url_valid_from_hint)
+  .col-xs-12.col-sm-4
+    = render "shared/f_text", :form => f, :field => :webinar_username, :field_label => t(:webinar_username), :field_hint => t(:webinar_username_hint)
+  .col-xs-12.col-sm-4
+    = render "shared/f_text", :form => f, :field => :webinar_pw, :field_label => t(:webinar_pw), :field_hint => t(:webinar_pw_hint)
+  .col-xs-12
+    = render "shared/f_textarea", :form => f, :field => :webinar_additional_information, :field_label => t(:webinar_additional_information), :field_hint => t(:webinar_additional_information_hint), :field_rows => 5
+  .col-xs-12
+    = render "shared/f_textarea", :form => f, :field => :webinar_additional_information_short, :field_label => t(:webinar_additional_information_short), :field_hint => t(:webinar_additional_information_short_hint), :field_rows => 5
+  .col-xs-12
+    = render "shared/f_text", :form => f, :field => :webinar_help_url, :field_label => t(:webinar_help_url), :field_hint => t(:webinar_help_url_hint)

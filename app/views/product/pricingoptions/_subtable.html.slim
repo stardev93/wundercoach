@@ -1,0 +1,20 @@
+ul.list-group style="margin-bottom: 0px;"
+  li.list-group-item
+    .row
+      .col-sm-1.col-md-1.col-lg-1
+        strong
+          = t(:position)
+      .col-sm-11.col-md-2.col-lg-2
+        strong
+          = t(:pricingoption_name)
+      .col-sm-12.col-md-3.col-lg-4
+        strong
+          = t(:pricingoption_comments)
+      .col-sm-12.col-md-3.col-lg-3.text-right
+        strong
+          = t(:pricingoption_deduction)
+      .col-sm-12.col-md-2.col-lg-2.text-right
+
+ul.list-group.acts_as_list data-url="#{sort_product_pricingoptions_path}"
+  - Product::PricingoptionDecorator.decorate_collection(product_pricingset.pricingoptions.by_position).each do |pricingoption|
+    = render "product/pricingoptions/card", :pricingoption => pricingoption

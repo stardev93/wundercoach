@@ -1,0 +1,15 @@
+tr
+  td colspan="4"
+  td.text-right = t(:sum_net)
+  td.text-right = @businessdocument.decorate.net_sum
+  td
+tr
+  td colspan="4"
+  td.text-right = t(:sum_vat)
+  td.text-right = @businessdocument.decorate.vat_sum
+  td
+tr
+  th colspan="4"
+  th.text-right = t(:sum_gross)
+  th.text-right = @businessdocument.decorate.gross_sum
+  th

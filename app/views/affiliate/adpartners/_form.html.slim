@@ -1,0 +1,24 @@
+= simple_form_for(@adpartner, url: @adpartner.persisted? ? affiliate_adpartner_path(@adpartner) : affiliate_adpartners_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :name_addon
+    = f.input :lastname
+    = f.input :firstname
+    = f.input :street
+    = f.input :zip
+    = f.input :city
+    = f.input :country
+    = f.input :email
+    = f.input :website
+    .row
+      .col-xs-12.col-sm-6
+        = f.input :commission_relative, as: :percentage
+      .col-xs-12.col-sm-6
+        = f.input :commission_absolute, as: :currency
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: affiliate_adpartners_path

@@ -1,0 +1,46 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @pdf_template
+      span.add-item
+        = link_to new_pdftemplate_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_pdf_template)
+.row
+  / - unless @pdf_template.bgfile.exists?
+  /   .col-xs-3
+  /     p.lead
+  /       = render "pdftemplates/dzmicro", pdf_template: @pdf_template, param: "pdf_template[bgfile]", text: t(:drop_background_here_to_upload)
+  / - else
+  .col-xs-3
+    p
+      = image_tag @pdf_template.header.url(:thumb), width: "100%;"
+      = image_tag @pdf_template.footer.url(:thumb), width: "100%;"
+    p
+      / = link_to pdf_template_removebgfile_path(@pdf_template), class: "btn btn-danger"
+      /   = t(:remove_bgfile)
+  .col-xs-9
+    .row
+      .col-xs-12
+        p.lead
+          p.lead
+            = @pdf_template.description
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @pdf_template, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_pdftemplate_path(@pdf_template), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to pdftemplates_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

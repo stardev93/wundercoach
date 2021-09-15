@@ -1,0 +1,29 @@
+li.list-group-item
+  .row
+    .col-xs-9
+      strong
+        = pricingset
+    .col-xs-3.text-right
+      = render "shared/button", path: product_pricingsets_assign_path(pricingset, event), link_text: t(:assign), icon: "", classes: "btn btn-xs btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:assign)
+
+  .row
+    .col-xs-12
+      = pricingset.description
+      / br
+      / = pricingset.hint_text
+  - pricingset.pricingoptions.each do |pricingoption|
+    .row
+      .col-xs-6
+        = pricingoption
+      .col-xs-3.text-right
+        .row
+          .col-xs-12
+            - if pricingoption.full_price_deduct
+              = pricingoption.full_price_deduct
+            - else
+              = pricingoption.full_price_deduct_perc
+            |/
+            - if pricingoption.price_early_signup_deduct
+              = pricingoption.price_early_signup_deduct
+            - else
+              = pricingoption.price_early_signup_deduct_perc

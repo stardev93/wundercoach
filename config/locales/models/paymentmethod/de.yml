@@ -1,0 +1,15 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  paymentmethods: Bezahlarten
+  paymentmethod: Bezahlart
+  allowed_paymentmethods: "erlaubte Bezahlarten"
+  available_payment_methods: "Bezahlarten"
+  available_payment_methods_hint: "Hier konfigurieren Sie die Bezahlarten, mit denen Ihre Kunden bei der Buchung bezahlen können. Klicken Sie auf den Beschreibungstext, um ihn zu bearbeiten. Der Text wird Ihren Kunden neben der Bezahlart im Bestellablauf angezeigt."
+  active_payment_methods: "aktivierte Bezahlarten"
+  available_until: 'möglich bis'
+  available_until_hint: 'Datum bis zu dem die Bezahlung mit dieser Bezahlart möglich ist.'
+  advance_payment: 'Vorkasse'
+  choose_a_paymentmethod: 'Bitte wählen Sie ein Bezahlart.'
+  credit_card: Kreditkarte
+  sepa_direct_debit: SEPA Lastschrift
+  configure: konfigurieren

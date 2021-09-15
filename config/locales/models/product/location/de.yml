@@ -1,0 +1,81 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  location: Ort
+  location_infotext: Verwalten Sie hier die einzelnen Orte Ihrer Veranstaltungen. Bearbeiten Sie Ihre Veranstaltungen und weisen Sie diesen die Orte zu.
+  locations: Orte
+  event_location: Veranstaltungsort
+  event_location_hint: Ort, an dem die Veranstaltung stattfindet
+  event_locations: Veranstaltungsorte
+  open_in_google_maps: In Google Maps öffnen
+  add_location: Ort hinzufügen
+  new_location: Neuer Ort
+  edit_location: Veranstaltungsort bearbeiten
+  edit_location_hint: Veranstaltungsort bearbeiten
+  location_eventorganizer_name: Veranstalter
+  location_eventorganizer_name_hint: Name des Veranstalters. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_name: Ortsbezeichnung
+  location_name_hint: Ortsbezeichnung für den Veranstaltungsort. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_icon: Icon für Google maps
+  location_icon_hint: Verwenden Sie Ihr Logo oder ein anderes Bild als Icon für Google Maps.
+
+  location_street: Strasse
+  location_street_hint: Straße der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_street_no: Haus-Nr.
+  location_street_no_hint: Haus-Nr. der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_zip: Postleitzahl
+  location_zip_hint: Postleitzahl der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_city: Stadt
+  location_city_hint: Stadt der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_state: Bundesland
+  location_state_hint: Bundesland der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_country: Land
+  location_country_hint: Land der Veranstaltungsanschrift. Wird genutzt, um die Adresse über Google Maps zu ermitteln.
+  location_latitude: Breitengrad
+  location_latitude_hint: Der Breitengrad des Ortes
+  location_longitude: Längengrad
+  location_longitude_hint: Der Längengrad des Ortes
+
+  location_address: Veranstaltungsadresse
+  add_product_location: Neue Adresse
+  google_location: Google Maps Adresse
+  address_to_be_used_to_retrieve_address_from_google_maps: Adressdaten zur Ermittlung der in Google Maps angezeigten Position
+  address_to_be_shown_to_customer_in_checkout: Adresse wie sie im Bestellvorgang für Ihre Kunden angezeigt wird.
+  displayed_address: Angezeigte Adresse
+  displayed_address_hint: In Ihrer Seminarliste und im Bestellvorgang angezeigte Seminaradresse. Kann von den Adressdaten abweichen, die für die Google Maps-Anzeige verwendet werden. Lassen Sie das Feld leer, um die Adresse automatisch von Wundercoach generieren zu lassen.
+
+  icon: Icon
+  google_maps_icon: Google Maps Icon
+  google_maps_icon_hint: Icon zur Anzeige auf Google Maps. Nutzen Sie ein nicht zu großes Bild, z.B. 32px x 32px.
+  google_maps_icon_not_uploaded: Kein Icon hochgeladen
+  google_maps_icon_upload_to_display_marker: Laden Sie ein Bild (min. 32px x 32px, Format .png, jpg oder .gif) hoch um es als Icon auf Google Maps anzuzeigen.
+  google_maps_icon_drop_here_to_upload: Ziehen Sie ein Bild (min. 32px x 32px, Format .png, jpg oder .gif) hierher, um es hochzuladen.
+  location_icon_delete: Icon löschen
+  location_icon_successfully_deleted: Das Icon wurde erfolgreich gelöscht
+
+  location_time_zone: Zeitzone
+  location_time_zone_hint: Die Zeitzone dieses Veranstaltungsortes
+  location_time_zone_help: Weisen Sie Ihren Veranstaltungsorten eine Zeitzone zu und aktivieren Sie die Anzeige im Bestellvorgang, um Ihren Kunden im Bestellvorgang die Zeitzone der Veranstaltung anzuzeigen.
+  location_time_zone_show_in_checkout: Zeitzone anzeigen
+  location_time_zone_show_in_checkout_hint: Soll die Zeitzone dieses Veranstaltungsortes im Bestellvorgang angezeigt werden?
+  location_time_zone_show_in_checkout_help: Legt fest, ob die Zeitzone des Veranstaltungsortes im Bestellvorgang angezeigt wird. Dies ist hilfreich, wenn Ihre Teilnehmer aus verschiedenen Zeitzonen kommen. Diese Einstellung kann in der einzelnen Veranstaltung überschrieben werden.
+
+  location_directions: Anfahrtsbeschreibung
+  location_directions_hint: Anfahrtsbeschreibung, wird dem Kunden im Bestellvorgang angezeigt
+  location_directionspdf: Anfahrtskizze zum Download (PDF)
+  location_directionspdf_hint: Anfahrtskizze zum Download im PDF-Format. Das Dokument wird im Checkout angezeigt.
+  location_directionspdf_not_uploaded: Keine Anfahrtskizze (PDF) hochgeladen
+  location_directionspdf_upload_to_display_directionspdf: Laden Sie ein PDF-Datei mit einer Anfahrtskizze hoch. Die Anfahrtskizze kann bei am Ende des Bestellvorgangs heruntergeladen werden.
+  location_directionspdf_drop_here_to_upload: Ziehen Sie eine PDF-Datei hierher, um sie hochzuladen.
+  location_directionspdf_delete: Anfahrtskizze löschen
+  location_directionspdf_successfully_deleted: Die Anfahrtskizze wurde erfolgreich gelöscht.
+
+  location_cost: Kosten
+  location_cost_hint: Kosten des Veranstaltungsortes. Geben Sie variable und fixe Kosten für die Nutzung des Veranstaltungsortes an.
+  location_cost_fixed: Fixe Kosten
+  location_cost_fixed_hint: Fixe Kosten für die Nutzung des Veranstaltungsortes
+  location_cost_variable: Variable Kosten
+  location_cost_variable_hint: Variable Kosten pro Einheit für die Nutzung des Veranstaltungsortes
+  location_cost_variable_unit: Einheit
+  location_cost_variable_unit_hint: Einheit der variablen Kosten
+
+  no_location_chosen: Kein Veranstaltungsort ausgewählt

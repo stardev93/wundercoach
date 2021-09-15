@@ -1,0 +1,82 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  activerecord:
+    attributes:
+      eventtemplate:
+        name: Seminar name
+        full_price: Full price
+  simple_form:
+    labels:
+      eventtemplate:
+        name: Seminar name
+    hints:
+      eventtemplate:
+        name: Name of the seminar. Determines under which name the seminar is shown in the Wundercoach and also your website.
+    magic_submit:
+      eventtemplates:
+        eventtemplate:
+          editseo:
+            submit: "Save"
+            disable_with: "Saving"
+        propagation:
+          show:
+            submit: "Copy content"
+            disable_with: "Copying..."
+  # eventtemplate
+  eventtemplate: Seminar template
+  eventtemplates: Seminar templates
+  eventtemplate_infotext: "From seminar templates, you can create as many seminars as you like, under 'Actions' select 'Create seminar'. "
+  add_eventtemplate: "New seminar template"
+
+  create_event: "Seminar from template"
+  create_eventtemplate_hint: "Create a new seminar"
+  create_event_from_eventtemplate_hint: "Creates a new seminar from this template"
+  duplicate_eventtemplate_hint: Duplicates the current eventtemplate
+  goto_eventtemplate: "Show template"
+  this_event_was_created_from_an_eventtemplate: This seminar was created from a template. Click here to access the template.
+
+  eventtemplate_seo: "Search engines"
+  meta_title: "Meta title"
+  meta_title_hint: "The title appears in the headline on Google and other search engines in the list of search results. Maximum length: approx. 50-60 characters. "
+  meta_description: "Meta description"
+  meta_description_hint: "The description appears on Google and other search engines in the search results list. Maximum length: about 155 characters."
+  meta_keywords: "Meta keywords"
+  meta_keywords_hint: "Your preferred keywords, where theseminar should be found. They appear only in the source code of your seminar page, and are ignored by major search engines. You can leave this field empty. "
+  use_tracking: "Use tracking code"
+  use_tracking_hint: "If you want to use the Google Analytics tracking code, add it in your account settings under SEO settings."
+  slug: "Search engline friendly URL"
+  slug_hint: "Search engines evaluate pages better if they have meaningful URLs instead of IDs. Leave this field empty and Wundercoach will automatically generate the right unique URLs for you."
+  slug_widget_warning: "Please note: If you change the URL of an eventtemplate, you must also change all widgets in your websites that use this eventtemplate. Otherwise the eventtemplate will not be found anymore."
+
+  eventtemplate_langingpage: "Landing page"
+
+  create_event_from_eventtemplate: "Create new seminar"
+
+  tracking_code_active: "The tracking for this seminar is activated."
+  tracking_code_inactive: "The tracking for this seminar is not activated."
+  eventtemplate_landingpage: "Landing page"
+  edit_eventtemplate: edit Seminar template
+  are_you_sure_you_want_to_delete_this_eventtemplate: Are you sure you want to delete this seminar template?
+  eventtemplate_was_successfully_deleted: "The eventtemplate was successfully deleted."
+  eventtemplate_was_successfully_duplicated: "The eventtemplate was successfully duplicated."
+  eventtemplate_early_booking_needs_price: "An early booking price is required to activate early booking."
+  copy_eventtemplate_elements_to_events: Copy contents
+  copy_eventtemplate_elements_to_events_hint: Copies activated elements of this template to assigned seminars. Existing contents in seminars will be overwritten. Please not that this action cannot be undone.
+  copy_name: Copy name description
+  copy_name_hint: Copy name to all assigned seminars.
+  copy_shortdescription: Copy short description
+  copy_shortdescription_hint: Copy short description to all assigned seminars.
+  copy_longdescription: Copy description
+  copy_longdescription_hint: Copy description to all assigned seminars.
+  copy_bottom_text: Copy end text
+  copy_bottom_text_hint: Copy end text to all assigned seminars.
+  copy_full_price_cents: Copy price
+  copy_full_price_cents_hint: Copy price to all assigned seminars.
+  copy_early_signup_pricing: Copy allow early signup
+  copy_early_signup_pricing_hint: Copy setting for "allow early signup" to all assigned seminars.
+  copy_price_early_signup_cents: Copy early booking price
+  copy_price_early_signup_cents_hint: Copy early booking price to all assigned seminars.
+  copy_price_early_signup_cents_restriction_hint: The early booking price will only be copied if the target events already contain an early booking price.
+  copy_text_fields: Text fields
+  copy_price_fields: Price fields
+  copy_subevents_were_successfully_updated: The assigned events were updated.

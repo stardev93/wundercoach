@@ -1,0 +1,11 @@
+span.event_price_free
+  - if event.is_a? FreeEvent
+    = t(:free_of_charge)
+  - else
+    span.event_price
+      = render "signup/info_price", :event => event
+
+  - if event.multipricing?
+    span.event_multipricing
+      br
+      = render "signup/events/multipricing", :event => event

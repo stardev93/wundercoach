@@ -1,0 +1,41 @@
+= simple_form_for(@product_pricingoption) do |f|
+  = f.error_notification
+  = f.input :account_id, as: :hidden
+  = f.input :pricingset_id, as: :hidden
+
+  .form-inputs
+    .row
+      .col-xs-10
+        = render "shared/f_text", :form => f, :field => :name, :field_label => t(:pricingoption_name), :field_hint => t(:pricingoption_name_hint)
+      .col-xs-2
+        = render "shared/f_boolean", :form => f, :field => :preset, :field_label => t(:pricingoption_preset), :field_hint => t(:pricingoption_preset_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :hint_text, :field_label => t(:pricingoption_hint_text), :field_hint => t(:pricingoption_hint_text_hint)
+    .row
+      .col-xs-12
+        .row
+          .col-xs-6.well
+            .row
+              .col-xs-6
+                = render "shared/f_text", :form => f, :field => :full_price_deduct, :field_label => t(:pricingoption_full_price_deduct_cents, :currency => current_tenant.default_currency_iso_code), :field_hint => t(:pricingoption_full_price_deduct_cents_hint, :currency => current_tenant.default_currency_iso_code)
+              .col-xs-6
+                = render "shared/f_text", :form => f, :field => :price_early_signup_deduct, :field_label => t(:pricingoption_price_early_signup_deduct_cents, :currency => current_tenant.default_currency_iso_code), :field_hint => t(:pricingoption_price_early_signup_deduct_cents_hint, :currency => current_tenant.default_currency_iso_code)
+          / .col-xs-2.text-center
+          /   label
+          /     = t(:or)
+
+          .col-xs-6.well
+            .row
+              .col-xs-6
+                = render "shared/f_text", :form => f, :field => :full_price_deduct_perc, :field_label => t(:pricingoption_full_price_deduct_perc), :field_hint => t(:pricingoption_full_price_deduct_perc_hint)
+              .col-xs-6
+                = render "shared/f_text", :form => f, :field => :price_early_signup_deduct_perc, :field_label => t(:pricingoption_price_early_signup_deduct_perc), :field_hint => t(:pricingoption_price_early_signup_deduct_perc_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :comments, :field_label => t(:pricingoption_comments), :field_hint => t(:pricingoption_comments_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: product_pricingset_path(f.object.pricingset)

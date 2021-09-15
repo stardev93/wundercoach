@@ -1,0 +1,147 @@
+= render "shared/form_header",
+         header_text: t(:invoices),
+         buttons: nil
+
+.row
+  .col-xs-12
+    = search_form_for(@q, class: "form-inline wc-form-inline", method: :get, url: admin_accountinvoices_path) do |f|
+      / = form_tag admin_accountinvoices_path, class: "form-inline wc-form-inline", method: :get
+      .form-group.wc-form-group
+        = f.search_field :recipient_name_1_or_recipient_name_2_cont, class: "form-control optional", placeholder: t(:recipient_name_1)
+      .form-group.wc-form-group
+        = f.search_field :invoice_number_eq, class: "form-control optional", placeholder: t(:invoice_number)
+      .form-group.wc-form-group
+        = f.input :invoice_date_gteq, as: :date_picker, label: false, hint: false, placeholder: t(:from_date)
+      .form-group.wc-form-group
+        = f.input :invoice_date_lteq, as: :date_picker, label: false, hint: false, placeholder: t(:end_date)
+      .form-group.wc-form-group
+        = link_to admin_accountinvoices_path(format: :zip), class: "btn btn-link"
+          = t(:download)
+        = link_to admin_accountinvoices_path + '?filter=reset', class: "btn btn-link"
+          = t(:show_all)
+        button type="submit" class="btn btn-primary"
+          i.fa.fa-search
+
+      - if params[:search] && params[:search] != ''
+        |&nbsp;
+        .form-group
+          = link_to admin_accountinvoices_path, class: "btn btn-default"
+            i.fa.fa-times
+
+.row
+  .col-xs-12
+    p
+      |&nbsp;
+
+.row
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th style="white-space:nowrap"
+            = sort_link(@q, :invoice_number, t(:invoice_number))
+          th style="white-space:nowrap"
+            = sort_link(@q, :invoice_date, t(:invoice_date))
+          th style="white-space:nowrap"
+            = sort_link(@q, :account_name, t(:account_name))
+          / th = t(:recipient_name_1)
+          th = t(:accountinvoicetype)
+          / th = t(:accountinvoicestatus)
+          / th = t(:pdf_file_name)
+          th
+            = t(:paymentmethod)
+            br
+            = sort_link(@q, :paymentdate, t(:paymentdate))
+          th.text-right
+            = t (:paymentplan_unit_price)
+            br
+            = t (:vat)
+            br
+            = t(:invoice_gross_total)
+          th
+          th
+
+      tbody
+        - @accountinvoices.each do |accountinvoice|
+          tr
+            td
+              = link_to admin_accountinvoice_path(accountinvoice)
+                = accountinvoice.invoice_number
+            / td = accountinvoice.recipient_name_1
+            td
+              - unless accountinvoice.invoice_date.blank?
+                = l accountinvoice.invoice_date, format: :default
+              td
+                - if accountinvoice.account
+                  = link_to admin_account_path(accountinvoice.account)+'#accountinvoices'
+                    = accountinvoice.account
+                - else
+                  - account = Account.with_deleted.find(accountinvoice.account_id)
+                  = account
+                  |&nbsp;deleted_at:&nbsp;
+                  = account.deleted_at
+
+
+            td = accountinvoice.accountinvoicetype
+            / td = accountinvoice.accountinvoicestatus
+            / td = accountinvoice.pdf_file_name
+            td
+              = accountinvoice.paymentmethod
+              br
+              - unless accountinvoice.paymentdate.blank?
+                = l accountinvoice.paymentdate, format: :default
+            td.text-right
+              = number_with_precision(accountinvoice.get_net_sum / 100, precision: 2, locale: I18n.locale)
+              |&nbsp;&euro;
+              br
+              = number_with_precision(accountinvoice.get_vat_sum / 100, precision: 2, locale: I18n.locale)
+              |&nbsp;&euro;
+              br
+              = number_with_precision(accountinvoice.get_gross_sum / 100, precision: 2, locale: I18n.locale)
+              |&nbsp;&euro;
+            td nowrap="nowrap"
+              = link_to admin_accountinvoices_download_path(accountinvoice), :target => "_blank"
+                i.fa.fa-download
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to admin_accountinvoices_pdf_path(accountinvoice), :target => "_blank"
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:open_pdf)
+                    li
+                      = link_to admin_accountinvoices_download_path(accountinvoice), :target => "_blank"
+                        i.fa.fa-download
+                        '&nbsp;
+                        = t(:download_pdf)
+
+                    li
+                      = link_to admin_accountinvoices_createnew_path(accountinvoice)
+                        i.fa.fa-gear
+                        '&nbsp;
+                        = t(:regenerate)
+
+                    li
+                      = link_to admin_accountinvoice_path(accountinvoice)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_admin_accountinvoice_path(accountinvoice)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to admin_accountinvoice_path(accountinvoice), data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

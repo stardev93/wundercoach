@@ -1,0 +1,31 @@
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div style="text-align: center;"><h1>Teilnahmebestätigung</h1></div>
+<div><br></div>
+<div style="text-align: center;"><h2>{{address.firstname}} {{address.lastname}}</h2></div>
+<div style="text-align: center;"><h2>{{address.compny}}</h2></div>
+<div style="text-align: center;"><br>hat am {{event.start_date}} erfolgreich an dem Seminar</div>
+<div><br></div>
+<div style="text-align: center;"><h2>{{event.name}}</h2></div>
+<div><br></div>
+<div style="text-align: center;"><br>teilgenommen.</div>
+<div><br></div>
+<div><br></div>
+<table>
+  <tr>
+    <td style="text-align: right;width: 33%;">Glaubitz, 01.12.2018</td>
+    <td style="width: 33%;"></td>
+    <td style="text-align: left;width: 33%;">Andreas Rümpel, Verbandsvorsitzender</td>
+  </tr>
+</table>
+<div><br></div>
+<table>
+  <tr>
+    <td style="text-align: right;width: 25%;">&nbsp;</td>
+    <td style="padding:20px;text-align: center;width: 50%;background-color: #FF0000;color: #FFFFFF;font-weight: normal;">Gefördert durch das Bundesministerium des Inneren im Rahmen des Bundesprogramms „Zusammenhalt durch Teilhabe“</td>
+    <td style="text-align: left;width: 25%;">&nbsp;</td>
+  </tr>
+</table>

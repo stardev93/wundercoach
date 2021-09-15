@@ -1,0 +1,15 @@
+- if defined? field_label
+  strong
+    = field_label
+- if !defined? position
+  - position = 'right'
+- if defined? field_hint
+  |&nbsp;
+  = render "shared/popover", :position => position, :popover_text => field_hint
+- if defined? field_label
+  br
+  span.lead
+|&nbsp;
+input type="checkbox" class="js-switch" checked=field_value readonly="true"
+|&nbsp;
+p.f_ro_text_spacer

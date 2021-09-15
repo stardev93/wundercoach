@@ -1,0 +1,66 @@
+@media (min-width: 768px) {
+  .notconfirmed, .notconfirmedhelper {
+    position: relative;
+    background: #aca398;
+  }
+  .notconfirmed:after {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .notconfirmed:before {
+    left: 0;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .notconfirmed:after {
+    border-color: #f8f4ee;
+    border-left-color: #aca398;
+    border-width: 14px;
+    margin-top: -14px;
+  }
+  .notconfirmed:before {
+    border-left-color: #f8f4ee;
+    border-width: 14px;
+    margin-top: -14px;
+  }
+  .notconfirmedhelper:after, .notconfirmedhelper:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .notconfirmedhelper:after {
+    border-color: #ffffff;
+    border-left-color: red;
+    border-width: 14px;
+    margin-top: -14px;
+  }
+  .notconfirmedhelper:before {
+    border-left-color: red;
+    border-width: 14px;
+    margin-top: -14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .notconfirmed, .notconfirmedhelper {
+    position: none;
+    background: red;
+    min-height: 60px;
+  }
+}

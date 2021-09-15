@@ -1,0 +1,30 @@
+= simple_form_for(@account) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :name_addon
+    = f.input :comments
+    = f.input :zip
+    = f.input :city
+    = f.input :street
+    = f.input :streetno
+    = f.input :country
+    = f.input :gender
+    = f.input :firstname
+    = f.input :lastname
+    = f.input :tel1
+    = f.input :tel2
+    = f.input :fax
+    = f.input :email
+    = f.input :homepage
+    = f.input :logo
+    = f.input :email_billing_address
+    = f.association :paymentplan
+    = f.association :accountstatus
+    = f.input :vat_number
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: accounts_path

@@ -1,0 +1,11 @@
+= simple_form_for(@mailchimp, url: mailchimp_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :api_key, label: t(:api_key), hint: t(:api_key_hint)
+    = f.input :list_id, label: t(:list_id), hint: t(:list_id_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: marketing_path

@@ -1,0 +1,41 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # mailskin
+  mailtemplate: "E-Mail Textvorlage"
+  mailtemplates: "E-Mail Textvorlagen"
+  mailtemplate_infotext: "E-Mail Textvorlagen sind Standardtexte, die vom System versendet werden."
+  mailskin: "Briefpapier"
+  mailskin_hint: "Briefpapier, dass für den Versand dieser Vorlage verwendet werden soll."
+  new_mailtemplate: Neue E-Mail Vorlage
+  edit_mailtemplate: "E-Mail Textvorlage bearbeiten"
+  edit_mailtemplate_hint: "Bearbeiten Sie hier Ihre E-Mailtextvorlage. Ziehen Sie die Platzhalter aus der Liste rechts in die Felder 'Betreffzeile' und 'E-Mail-Text', um z.B. Veranstaltungsnamen mit dem Text zu mischen."
+
+  key: "Schlüssel"
+  key_hint: "Der Schlüssel zum Auffinden der Vorlagen. Kann für Systemvorlagen nicht geändert werden."
+  is_system: "Systemvorlage"
+  is_system_hint: "Macht eine Vorlage zu einer Systemvorlage, wenn aktiv geschaltet."
+
+  name_hint: "Name der Vorlage"
+
+  subject: "Betreffzeile"
+  subject_hint: "Betreffzeile der E-Mail. Sie können Platzhalter aus der Liste rechts in dieses Feld ziehen, um den Veranstaltungsnamen etc. auszugeben."
+
+  message: "E-Mail-Text"
+  message_hint: "Ihr Nachrichentext. Sie können Platzhalter aus der Liste rechts in dieses Feld ziehen, um den Veranstaltungsnamen etc. auszugeben."
+  sender: "Absender - Adresse"
+  sender_hint: "E-Mailadresse des Absenders"
+
+  reply_to: "Antwort-E-Mailadresse"
+  reply_to_hint: "E-Mailadresse, an die die Antwort des Empfängers gesendet werden soll. Leer lassen, wenn die Absender-Adresse benutzt werden soll."
+
+  mail_sent_to_all: Die Mail wird an alle gesendet.
+  send_to_all: An alle senden
+
+  send_test: Testmail an mich senden
+  test_mail_has_been_sent: Die Test-E-Mail wurde versendet.
+  mailtemplate_delete_error: 'Die E-Mail Textvorlage konnte nicht entfernt werden, da sie vom Wundercoach für den automatischen Mailversand benötigt wird.'
+  mail_has_been_sent_to: "Die E-Mail wurde an %{email} versendet."
+  send_to: "senden an %{email}"
+  preview: Preview
+  send_email: "E-Mail senden"
+  mail_to: "E-Mail an"

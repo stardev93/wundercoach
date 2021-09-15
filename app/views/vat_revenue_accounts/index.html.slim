@@ -1,0 +1,67 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = t(:vat_revenue_accounts)
+      / span.add-item
+      /   = link_to new_vat_revenue_account_path, class: "btn btn-primary"
+      /     i.fa.fa-plus
+      /     | &nbsp;
+      /     = t(:add_vat_revenue_account)
+      span.add-item
+        = link_to invoicedesign_path, class: "btn btn-default"
+          i.fa.fa-arrow-left
+          | &nbsp;
+          = t(:back)
+    p.helper_text
+      = t(:vat_revenue_account_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag vat_revenue_accounts_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to vat_revenue_accounts_path, class: "btn btn-link"
+                = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th = t(:vat)
+          th = t(:revenue_account)
+          / th = t(:name)
+          th
+
+      tbody
+        - @vat_revenue_accounts.each do |vat_revenue_account|
+          tr
+            td
+              = link_to edit_vat_revenue_account_path(vat_revenue_account)
+                = vat_revenue_account.vat
+            td = vat_revenue_account.revenue_account
+            / td = vat_revenue_account.name
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to edit_vat_revenue_account_path(vat_revenue_account)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to vat_revenue_account, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

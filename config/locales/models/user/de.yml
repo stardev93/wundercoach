@@ -1,0 +1,97 @@
+de:
+  users: Benutzer
+  user: Benutzer
+  users_infotext: Richten Sie hier neue Benutzer ein, ändern Sie Passwörter und aktivieren Sie die Anzeige der letzten Nachricht für einzelne Benutzer.
+  usersettings: Benutzereinstellungen
+  participant: "Teilnehmer"
+  participants: "Teilnehmer"
+  add_user: "neuer Benutzer"
+  create_user: "Benutzer anlegen"
+  edit_user: "Benutzer bearbeiten"
+  create_account: "Anlegen"
+  do_you_have_a_login: "Sie haben bereits einen Zugang?"
+  login_here: "Hier geht's zur Anmeldung"
+  login: "Anmelden"
+  back_to_login: "Zurück zur Anmeldung"
+  email: "E-Mail"
+  new_password: "Neues Passwort"
+  new_password_repeat: "Neues Passwort wiederholen"
+  new_password_label: "Ihr Passwort (mind. 6 Zeichen)"
+  new_password_hint: "Vergeben Sie ein Passwort, dass leicht zu merken, schwer zu raten und mind. 6 Zeichen lang ist."
+  password: "Passwort"
+  change_password: "Passwort ändern"
+  stay_logged_in: "angemeldet bleiben"
+  forgot_password: "Passwort vergessen?"
+  no_account_yet: "Mit wenigen Klicks loslegen!"
+  no_account_cta: "Registrieren Sie sich jetzt kostenlos und legen Sie sofort los!"
+  createaccount_now: "Zugang erstellen"
+  create_free_trial_account_now_btn: "Jetzt kostenlos ausprobieren"
+  create_free_trial_account_now_headline: "Jetzt Seminare online verkaufen!"
+  create_free_trial_account_now_subheadline: "Registrieren Sie sich jetzt kostenlos und legen Sie sofort los!"
+  imprint: "Impressum"
+  privacy_policy: "Datenschutz"
+  terms_and_conditions: "Vertragsbedingungen"
+  useruploads: "Dateien"
+
+  please_provide_your_email_address: "Bitte geben Sie Ihre E-Mail-Adresse an"
+  account_creation_notice: "Ihr Wundercoach-Konto wurde erstellt. Bitte prüfen Sie Ihren Posteingang und bestätigen Sie Ihre E-Mail-Adresse."
+  user_incomplete_notice: "Bitte füllen Sie Ihr Userprofil vollständig aus."
+
+  internal_activation_needed: Bitte aktivieren Sie zunächst Ihren Account. Wir haben Ihnen eine Bestätigungsemail zugeschickt.
+  internal_activation_needed_email_subject: "Wundercoach E-Mail-Bestätigung"
+  internal_activation_needed_your_password_is: "Ihr Passwort ist: %{password}"
+  internal_activation_needed_please_change_your_password_soon: Bitte ändern Sie das Passwort zeitnah.
+  internal_activation_needed_welcome_to_wundercoach: "Willkommen bei Wundercoach"
+  internal_activation_needed_thank_you_for_signing_up: "Vielen Dank, dass Sie den Wundercoach ausprobieren!"
+  internal_activation_needed_copy_url_to_browser: "Oder kopieren Sie diese URL in Ihren Webbrowser und drücken Sie Enter"
+  internal_activation_needed_please_confirm_email_text: "Bitte bestätigen Sie Ihre E-Mail-Adresse durch Klick auf den Button"
+  internal_activation_click_here: "Hier klicken"
+  internal_activation_needed_reason: "Sie erhalten diese E-Mail, weil Sie mit dieser Adresse bei wundercoach.net registriert sind."
+
+  internal_activation_successful: Der Benutzer wurde intern aktiviert. Vorher versendete Anmeldelinks sind damit ungültig. Vergeben Sie ein Passwort und senden Sie es dem User zu.
+
+  simple_form:
+    options:
+      user:
+        gender:
+          male: Herr
+          female: Frau
+          diverse: Divers
+          noinfo: "Keine Angabe"
+    labels:
+      user:
+        firstname: "Vorname"
+        lastname: "Nachname"
+        email: 'E-Mail'
+        gender: "Anrede"
+        password: 'Passwort'
+        password_repeat: "Passwort wiederholen"
+        country: "Land"
+        edit:
+          username: 'Benutzernamen ändern'
+          password: 'Passwort ändern'
+  roles: Rollen
+  role: Rolle
+  are_you_sure_you_want_to_delete_this_user: "Wollen Sie diesen Benutzer wirklich löschen?"
+  user_street: "Strasse"
+  user_street_no: "Nr."
+  user_zip: "PLZ"
+  user_city: "Ort"
+  user_country: "Land"
+  reset_password: "Passwort zurücksetzen"
+  enter_your_email_address_and_we_will_send_a_new_password: "Hier können Sie sich Ihr Passwort zurücksetzen. Geben Sie Ihre E-Mailadresse ein und klicken Sie auf \"Passwort zusenden\"."
+  email_address: "E-Mail-Adresse"
+  send_password: "Passwort zusenden"
+  enter_a_new_password_for: "Geben Sie eine neues Passwort ein für"
+
+  instructions_have_been_sent_to_your_email: "Wir haben Ihnen eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts gesendet."
+  reset_password_mail_subject: "Setzen Sie Ihr Passwort zurück"
+  password_reset: Das Passwort wurde geändert.
+
+  user_created_confirm_email: 'Benutzer wurde erfolgreich erstellt. Der Benutzer muss seine E-Mail-Adresse bestätigen.'
+  password_successfully_set: 'Ihr Passwort wurde erflgreich eingerichtet.'
+  password_instructions_sent: 'Die Anweisungen zur Änderung des Passwortes wurden an %{email} versendet.'
+  has_message: "Neue Nachrichten anzeigen"
+  has_message_hint: "Legt fest, ob dem Benutzer neue Nachrichten angezeigt werden"
+  user_time_zone: "Zeitzone"
+  user_time_zone_hint: "Zeitzone des Benutzers"

@@ -1,0 +1,19 @@
+/ divide a form into subsections by adding subheader for edit and show forms
+/ input:
+/ header_text = the headline
+/ buttons = a collection of buttons to display
+.page-header.form-header-margin
+  .row
+    .col-xs-8
+      span.h4.wc_form_subheadline
+        = header_text
+    .col-xs-4.text-right
+      - if defined? buttons
+        = buttons
+  .row
+    .col-xs-10
+      = hint_text if defined? hint_text
+
+.row
+  .col-xs-12
+    p &nbsp;

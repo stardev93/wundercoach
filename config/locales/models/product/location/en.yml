@@ -1,0 +1,80 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  location: Location
+  location_infotext: Manage all the locations where your events take place here. Edit the events and assgin the locations to each of them
+  locations: Locations
+  event_location: Eventlocation
+  event_location_hint: Location where this event takes place
+  event_locations: Eventlocations
+  open_in_google_maps: Open in Google map
+  add_location: Add location
+  new_location: New location
+  edit_location: Edit location
+  edit_location_hint: Edit location
+  location_eventorganizer_name: Eventorganizer
+  location_eventorganizer_name_hint: Name of eventorganizer, used to retrieve the location from google maps.
+  location_name: Location name
+  location_name_hint: Name of location, used to retrieve the location from google maps.
+  location_icon: Icon for Google maps
+  location_icon_hint: Upload your logo or any other image as an icon for Google Maps.
+
+  location_street: Street
+  location_street_hint: Street of location address, used to retrieve the location from google maps.
+  location_street_no: Street-No.
+  location_street_no_hint: Street-No. of location address, used to retrieve the location from google maps.
+  location_zip: Zip
+  location_zip_hint: Zip of location address, used to retrieve the location from google maps.
+  location_city: City
+  location_city_hint: City of location address, used to retrieve the location from google maps.
+  location_state: State
+  location_state_hint: State of location address, used to retrieve the location from google maps.
+  location_country: Country
+  location_country_hint: Country of location address, used to retrieve the location from google maps.
+  location_latitude: Latitude
+  location_latitude_hint: The location's latitude
+  location_longitude: Longitude
+  location_longitude_hint: The location's longitude
+
+  location_address: Location address
+  add_product_location: New address
+  google_location: Google maps adress
+  address_to_be_used_to_retrieve_address_from_google_maps: Adress to retrieve map position from Google Maps
+  address_to_be_shown_to_customer_in_checkout: Adresse as it is shown to your customers in checkout
+  displayed_address: Displayed address
+  displayed_address_hint: Address displayed in your seminar list and in checkout. This address may differ from the address you are actually using for calculating the address via Google Maps. Leave this field empty to let Wundercoach generate the content.
+
+  icon: Icon
+  google_maps_icon: Google Maps Icon
+  google_maps_icon_hint: Will be displayed on Google Maps. Use a smaller image, i.e. 32px x 32px.
+  google_maps_icon_not_uploaded: No Icon uploaded
+  google_maps_icon_upload_to_display_marker: Upload a picture (min. 32px x 32px, Format .png, jpg oder .gif) to display it as an icon on your Google map.
+  google_maps_icon_drop_here_to_upload: Drag and drop an image file (min. 32px x 32px, Format .png, jpg oder .gif) here to upload it.
+  location_icon_delete: Delete icon
+  location_icon_successfully_deleted: Icon successfully deleted
+
+  location_time_zone: Timezone
+  location_time_zone_hint: The timezone in which this location is located
+  location_time_zone_help: Use this setting to assign a timezone to the location and show it in the checkout
+  location_time_zone_show_in_checkout: Show timezone in checkout
+  location_time_zone_show_in_checkout_hint: Display the locations timezone in checkout?
+  location_time_zone_show_in_checkout_help: Decides if the location's timezone will be shown in checkout. Turn this setting to \"On\", if your participants come from different timezone. This setting can be overruled in the settings of each individual event.
+
+  location_directions: Directions
+  location_directions_hint: Directions will be shown in checkout
+  location_directionspdf: Directions PDF for download
+  location_directionspdf_hint: Directions for downloading as PDF. The document will be displayed in checkout.
+  location_directionspdf_not_uploaded: No Directions (PDF) uploaded
+  location_directionspdf_upload_to_display_directionspdf: Upload Directions (PDF). The PDF can be downloaded at the end of the checkout.
+  location_directionspdf_drop_here_to_upload: Drag PDF-file here to upload.
+  location_directionspdf_delete: Delete directions PDF
+  location_directionspdf_successfully_deleted: The directions PDF has been deleted successfully.
+
+  location_cost: Cost
+  location_cost_hint: Location cost. Enter fixed and variable cost for using the location.
+  location_cost_fixed: Fix cost
+  location_cost_fixed_hint: Fixed cost for using the location
+  location_cost_variable: Variable cost
+  location_cost_variable_hint: Variable cost for using the location
+  location_cost_variable_unit: Unit
+  location_cost_variable_unit_hint: Unit of variable cost
+  no_location_chosen: No location chosen

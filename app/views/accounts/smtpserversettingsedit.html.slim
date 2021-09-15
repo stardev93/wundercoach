@@ -1,0 +1,5 @@
+- case @smtpserver.key
+  - when "wundercoach_standard"
+    = render "accounts/smtpserversettings_form_wundercoach_standard", :smtpserver => @smtpserver
+  - when "custom"
+    = render "accounts/smtpserversettings_form_custom", :smtpserver => @smtpserver

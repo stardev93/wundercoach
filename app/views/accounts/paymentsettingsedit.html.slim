@@ -1,0 +1,14 @@
+= render "accounts/form_header",
+              :headline => t(:available_payment_methods), :hint => t(:available_payment_methods_hint),
+              :cancel_link => seosettings_path
+= simple_form_for(@accountpaymentmethod) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :api_key, label: t(:api_key), hint: t(:api_key_hint), input_html: { style: 'height: 240px;' }
+    = f.input :user_id, label: t(:user_id), hint: t(:user_id_hint), input_html: { style: 'height: 240px;' }
+    = f.input :project_id, label: t(:project_id), hint: t(:project_id_hint), input_html: { style: 'height: 240px;' }
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: seosettings_path

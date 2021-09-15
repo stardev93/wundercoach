@@ -1,0 +1,42 @@
+tr class="bundle-bookings-#{order.id}" style="display: none;"
+  td colspan="5" style="border-top: none;"
+    |&nbsp;
+tr class="bundle-bookings-#{order.id}" style="display: none;"
+  th style="border-top: none;"
+    |&nbsp;
+  th style="border-top: none;"
+    = t(:eventbookings)
+  th style="border-top: none;"
+    = t(:participant)
+  th style="border-top: none;"
+    - if order.is_bundle_order?
+      = order.is_bundle_order?
+      = t(:invoice)
+  th style="border-top: none;"
+
+
+- order.eventbookings.no_bundles.each do |eventbooking|
+  tr class="bundle-bookings-#{order.id}" style="display: none;"
+    td style="border-top: none;"
+      |&nbsp;
+    td
+      = link_to eventbooking.event
+        = eventbooking.event
+      br
+      = eventbooking&.event&.decorate.start_date
+      |&nbsp;-&nbsp;
+      = eventbooking&.event&.decorate.end_date
+    td
+      - if eventbooking&.address
+        = link_to eventbooking
+          = eventbooking&.address&.decorate.participant
+
+    td
+      / show invoices for eventbookings only for subevents
+      - if order.is_bundle_order?
+        - eventbooking&.businessdocumentpositions.each do |businessdocumentposition|
+          = link_to billing_businessdocument_path(businessdocumentposition&.businessdocument)
+            = businessdocumentposition&.businessdocument&.decorate.info
+            br
+    td
+      |&nbsp;

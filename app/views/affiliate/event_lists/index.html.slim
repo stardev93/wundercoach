@@ -1,0 +1,63 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = Affiliate::EventList.model_name.human(count: 2)
+      span.add-item
+        = link_to new_affiliate_event_list_path, class: "btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_event_list)
+    p.helper_text
+      = t(:affiliate_event_list_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag affiliate_event_lists_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to affiliate_event_lists_path, class: "btn btn-link"
+                = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th = Affiliate::EventList.human_attribute_name(:name)
+          th = Affiliate::EventList.human_attribute_name(:description)
+          th
+
+      tbody
+        - @event_lists.each do |affiliate_event_list|
+          tr
+            td = affiliate_event_list.name
+            td = affiliate_event_list.description
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to affiliate_event_list_path(affiliate_event_list)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_affiliate_event_list_path(affiliate_event_list)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to affiliate_event_list, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

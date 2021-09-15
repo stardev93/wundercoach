@@ -1,0 +1,444 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  simple_form:
+    labels:
+      event:
+        name: Seminar name
+        enable_crm: Enable CRM
+        show_remaining_seats_count: Show remaining seats
+    hints:
+      event:
+        name: Name of the seminar. Determines under which name the seminar is shown in the Wundercoach and also your website.
+        enable_crm: Should the booking data get passed to integrated customer relationship management tools?
+        show_remaining_seats_count: Choose whether your customers should know how many seats are still available in this seminar.
+    magic_submit:
+      events:
+        event:
+          new:
+            submit: "Create new seminar"
+          new_individual:
+            submit: "Create new seminar"
+            disable_with: "Saving new event..."
+          new_individual_agreed_event:
+            submit: "Create appointment from request"
+            disable_with: "Saving appointment..."
+          new_individual_agreed_event_from_event:
+            submit: "Create appointment"
+            disable_with: "Saving appointment..."
+          new_free:
+            submit: "Create new free seminar"
+            disable_with: "Saving free seminar..."
+          new_bundle:
+            submit: "Create bundle"
+            disable_with: "Saving bundle..."
+          new_online:
+            submit: "Create new online seminar"
+            disable_with: "Saving online seminar..."
+    options:
+      event:
+        eventbookings:
+          gender:
+            male: Mr
+            female: Ms
+            diverse: diverse
+            noinfo: "No info"
+          billing_gender:
+            male: Mr
+            female: Ms
+            diverse: diverse
+            noinfo: "No info"
+  activerecord:
+    models:
+      event:
+        one: Seminar
+        other: Seminars
+      event/tag:
+        one: Tag
+        other: Tags
+    attributes:
+      event:
+        location: Location
+    errors:
+      models:
+        event:
+          attributes:
+            paymentmethods:
+              only_eur_supported: 'Direct debit and "SOFORT Überweisung" are currently only available in Euro.'
+
+  event_was_successfully_created: "The event has been successfully created."
+  event_was_successfully_updated: "The event has been successfully saved."
+  event_was_successfully_deleted: "The event has been successully deleted."
+  event_was_successfully_duplicated: "The event has been successfully duplicated."
+  event_map_coordinates_were_successfully_recalculated: "The coordinates have been successfully updated."
+
+  # Different Event Types
+  standard_event: 'Open event'
+  StandardEvent: 'Open event'
+  new_standard_event: 'New open event'
+  edit_standard_event: 'Edit open event'
+
+  individual_event: 'Individual event'
+  IndividualEvent: 'Individual event'
+  new_individual_event: 'New individual event'
+  edit_individual_event: 'Edit individual event'
+
+  free_event: 'Free event'
+  FreeEvent: 'Free event'
+  new_free_event: 'New free event'
+  edit_free_event: 'Edit free event'
+
+  online_event: 'Online seminar'
+  OnlineEvent: 'Online seminar'
+  new_online_event: 'New online seminar'
+  edit_online_event: 'Edit online seminar'
+
+  bundle_event: 'Event bundle'
+  bundle_events: 'Event bundles'
+  BundleEvent: 'Event bundle'
+  new_bundle_event: 'New event bundle'
+  edit_bundle_event: 'Edit event bundle'
+  bundleevent_startdate_from_subevent_hint: "The start date is taken from assigned seminars"
+  bundleevent_enddate_from_subevent_hint: "The end date is taken from assigned seminars"
+  bundleevent_maxparticipants_from_subevent_hint: "The maximum no. of participants is taken from assigned seminars"
+  bundleevent_latest_signup_date_from_subevent_hint: "The latest signup date is equal to the earliest latest signup date of the assigned seminars."
+  eventbundle_locations_see_subevents: "The event locations are displayed in the list of events for this bundle"
+
+  IndividualAgreedEvent: 'Coaching appointment'
+  Eventtemplate: 'Eventtemplate'
+
+  event_attributes:
+    type: "Seminar type"
+
+  # lessons
+  event: Seminar
+  events: Seminars
+  event_name_short: Subject
+  eventtype: Seminar type
+  eventtypes: Seminar types
+  eventype_explanation: "Create your own Seminar types to filter seminars"
+  events_next_week: "Upcoming seminars"
+  no_next_events: "No upcoming seminars"
+  add_event: "Add new seminar"
+  add_event_hint: "Click here to create new seminar"
+  included_in: "Included in"
+  assigned_events: Assigned seminars
+  unassigned_events: Unassigned seminars
+
+  event_back_hint: "Goes back to signup list"
+  new_event: "New seminar"
+  new_event_from_template: "New seminar from template"
+  edit_event: "Edit seminar"
+  duplicate: "Duplicate"
+  open_in_planner: "Appointment calendar"
+  upcoming_individual_events: Upcoming coaching appointments
+
+  currency: Currency
+  currency_hint: Please exclusively use Euro, if you want to create invoices with the Wundercoach
+
+  name: Name
+  name_hint: "Name of the seminar"
+  eventdescription: "Description"
+  event_comments: "Comments"
+  event_comments_hint: "Internal comments for this event"
+  recipient: "Recipient"
+  invoice_date: "Invoice date"
+
+  colorcode: "Colorcode"
+  colorcode_hint: "Color code of the seminar for internal classification"
+  onlinestatus: "Online status"
+  onlinestatus_hint: "Puts the seminar online or offline (visible in the signup list)"
+
+  planningstatus: "Planning status"
+  planningstatus_hint: "Scheduling status of the seminar. Here you can determine for your own planning whether the seminar appointment is already firmly planned or not. Note: The seminar appears online in the signup list in both cases. "
+  eventtemplate_id: "template"
+  event_eventtemplate_hint: "Assigned template of this seminar. Assigning a new template to a seminar changes the appearance of this seminar in the template-widgets in your website. The content of the seminar will not be modified."
+  is_online: "Online"
+  shortdescription: "Short description"
+  shortdescription_hint: "Summary for list view"
+  longdescription: "Description"
+  longdescription_hint: "Complete description"
+  start: "Start"
+  end: "End"
+  start_date: "Start date"
+  start_date_day: "Start date (day)"
+  start_date_month: "Start date (month)"
+  start_date_year: "Start date (year)"
+  start_date_hours: "Start date (hour)"
+  start_date_minutes: "Start date (minute)"
+  start_time: "Start time"
+  start_date_time: "Start date & -time"
+  start_date_time_hint: "Start date of the seminar incl. time."
+
+  event_date: "Date"
+  start_date_hint: "Start date of the seminar incl. exact time"
+  reservation_expiry: 'Expiration of reservation'
+  reservation_expiry_hint: Determines the deadline to pay the invoice before the reservation expires. Applies to prepayment.
+  reservation_expiry_day: "Expiration of reservation (day)"
+  reservation_expiry_month: "Expiration of reservation (month)"
+  reservation_expiry_year: "Expiration of reservation (year)"
+  reservation_expiry_hours: "Expiration of reservation (hour)"
+  reservation_expiry_minutes: "Expiration of reservation (minute)"
+
+  end_date: "End date"
+  end_date_hint: "End date of the seminar inc. exact time"
+  end_date_day: "End date (day)"
+  end_date_month: "End date (month)"
+  end_date_year: "End date (year)"
+  end_date_day: "End date (day)"
+  end_date_hours: "End date (hour)"
+  end_date_minutes: "End date (minute)"
+  end_time: "End time"
+  end_date_time: "End date & -time"
+  end_date_time_hint: "End date of the seminar incl. time."
+
+  duration: "Duration"
+  duration_hint: "Seminar duration"
+
+  durationunit: "Unit eventduration"
+  durationunit_hint: "Currency of the seminar duration"
+
+
+  maxparticipants: "Max. participants"
+  maxparticipants_hint: "Maximum number of participants"
+  max_additional_participants: 'Number of additional participants per booking'
+  max_additional_participants_short: 'Add. participants'
+  max_additional_participants_hint: 'Each additional participant will be provided with fields for name and title.'
+
+  seats_booked: "Bookings"
+  max_additional_participants_only_for_free_events: "Additional participants are only allowed for free events. Early booking price and price must be zero if you want to allow additional participants."
+  booking_count: "Bookings"
+
+  waitinglist: Waiting list
+  waiting_list_count: "Waiting list"
+  latest_signup_date: "Latest signup date"
+  latest_signup_date_empty: "no date given"
+  latest_signup_date_hint: "Last possible date to register incl. exact time"
+
+  latest_signup_date_day: "Latest signup date (day)"
+  latest_signup_date_month: "Latest signup (month)"
+  latest_signup_date_year: "Latest signup (year)"
+  latest_signup_date_hours: "Latest signup (hour)"
+  latest_signup_date_minutes: "Latest signup (minute)"
+
+  price: "Price"
+  net_price: "Net price"
+  gross_price: "Gross price"
+  net_price_early_booking: "Net price early booking"
+  gross_price_early_booking: "Gross price early booking"
+
+  event_gross_price_hint: "Regular price incl. VAT."
+  event_net_price_hint: "Regular price excl. VAT."
+  event_price_hint: "Regular price"
+  event_price: "Price"
+  vat: "VAT"
+  vat_hint: "Included VAT"
+  event_vat_included: "incl. Vat?"
+  event_vat_included_hint: Shows if the price is including VAT (Gross-Price) or not (Net-Price). You can set this Option globally in your Account settings.
+
+  price_early_signup: "Early booking price"
+  price_early_signup_hint: "Early booking price. Valid up to the specified date."
+  price_early_hint: "Regular price"
+  price_early_signup_until: "Early booking price valid until"
+  after_that: "after that"
+
+
+  early_signup_deadline: "Early signup until"
+  early_signup_deadline_hint: "Date / Time until early booking price is valid. The early booking price is displayed until this date."
+  early_signup_pricing: "Allow early signup"
+  early_signup_pricing_hint: "Allow or disallow early booking price for this seminar"
+  early_signup_deadline_day: "Early signup until (day)"
+  early_signup_deadline_month: "Early signup until (month)"
+  early_signup_deadline_year: "Early signup until (year)"
+  early_signup_deadline_hours: "Early signup until (hours)"
+  early_signup_deadline_minutes: "Early signup until (minutes)"
+
+  eventtype_hint: "Type of the seminar. You can set up your own seminar types under the menu point 'seminars'"
+
+  eventsessions: "Sessions"
+  event_eventbookings: "Bookings"
+  event_eventbookings_hint: Bookings of this event
+
+  bottom_text: "End text"
+  bottom_text_hint: "Text displayed at the bottom part of the seminar page"
+
+  external_signup: External signup
+  external_signup_hint: Enter options for external signup here, in case signups for this seminar should take place on another website.
+  external_signup_url: "URL external signup"
+  external_signup_url_short: "Signup (ext.)"
+  external_signup_url_hint: "Link to external booking form (if you want to use an external registration service)"
+  external_signup_text: "Text for external signup link"
+  external_signup_text_hint: "Text displayed for external booking link"
+  external_event_list: "Public signup list"
+  internal_signup_url: "Signup"
+  redirect_message: 'Redirect message'
+  redirect_message_hint: 'This meessage shows up after redirecting from the signup list to an external supplier.'
+  default_redirect_text: "You will be redirected to the seminar organizer's website in a matter of seconds."
+  eventdesigner: Seminar designer
+  pages: Pages
+  pagetypes: Page types
+  uploads: File manager
+  tools: Tools
+
+  event_planning: "Planning"
+  no_signup_allowed: "No online signup"
+
+  event_name_options: "Name"
+
+  event_text_options: "Seminar texts"
+  event_text_options_hint: "Texts for this event"
+
+  event_pricing_options: "Price options"
+  event_pricing_options_hint: "Price options for ths event"
+  event_gross_pricing_hint: "You are using gross prices. Please enter all prices incl. VAT."
+  event_net_pricing_hint: "You are using net prices. Please enter all prices excl. VAT."
+
+  event_planning_options: Seminar timing
+  event_planning_options_hint: "Seminar timing settings"
+
+  event_location_options: "Event location"
+  event_location_options_hint: "The location where the event takes place. You can enter the location information here or select it from the list of locations."
+
+  event_online_options: "Online-Seminar"
+  event_online_options_hint: "Online seminar informations. Add a URL where your participants can join the event."
+
+  event_date_options: "Date options"
+  event_date_options_hint: "Date settings for this event."
+  event_publishing_options: Publishing
+  event_publishing_options_hint: Publishing-settings for this seminar
+
+  event_preview: "Preview"
+  event_coach_options: Coaches
+  event_bundle_options: Seminar bundles
+
+  event_signup_options: "Signup options"
+  signed_up_for: "Signed up for"
+  generate_invoice: "Automatic invoicing"
+  generate_invoice_hint: "An invoice will be automatically created and sent for new registrations."
+
+  event_location: "Seminar location"
+  event_location_hint: "Name of the seminar location"
+  location: "Location"
+  location_hint: "The location of the seminar"
+  event_state: State
+  event_state_hint: State of location address.
+
+  googlemapslocation: "Google Maps link"
+  googlemapslocation_hint: "Link on Google Maps"
+  google_map: "Google Map"
+
+  eventorganizer: Event Organizer
+  eventorganizer_hint: Organizer of this event
+
+  webinar_options: Online seminar options
+  webinar_options_hint: Enter options for the online seminar. The information can be sent with the signup confirmation email.
+  webinar_url: Signup-link
+  webinar_url_hint: Signup-link for participants
+  webinar_url_valid_from: Signup enabled from
+  webinar_url_valid_from_hint: Signup-link is enabled from Date / Time
+  webinar_provider: Provider
+  webinar_provider_hint: The provider of the online event, i.e. Zoom or Microsoft Teams
+  webinar_help_url: Help-link
+  webinar_help_url_hint: Link to signup help for participants
+  webinar_username: Username
+  webinar_username_hint: Username for signing up to the online seminar (leave blank if not required)
+  webinar_pw: Password
+  webinar_pw_hint: Password for signing up to the online seminar (leave blank if not required)
+  webinar_additional_information: Information for the online seminar
+  webinar_additional_information_hint: Information for the online seminar. Will be displayed in the checkout dialogue. Enter information how the participants will receive their signup information. If left empty, a standard text will be displayed
+  webinar_additional_information_hint_default: This is an online seminar. You will receive the access data before the event starts
+  webinar_additional_information_short: Information for the online seminar for list view
+  webinar_additional_information_short_hint: Information for the online seminar. Will be displayed in the checkout dialogue in list view. If left empty, a standard text will be displayed
+
+  checkout_enter_your_data: "Participant data"
+  sign_up: "Register now"
+  details: "Details"
+  event_invoicing_options: 'Seminar invoicing options'
+  create_new_event_from_template: "Create seminar template"
+
+  event_cancelled: 'The seminar was canceled. Please cancel the bookings and inform your customers. '
+  cancel_event: "Cancel"
+
+  add_individual_event: New individual event
+  new_requests_for_this_event: New requests for this coaching
+
+  free_of_charge: Free of charge
+  event_is_free_of_charge: The participation is free of charge
+  add_free_event: Create free Seminar
+
+  mail_sent_to_all: Mail is being sent to all participants.
+  do_you_really_want_to_send_this_to_everyone: This mail will be sent to all participants. Do you want to send it now?
+  event_not_found: The seminar could not be found.
+  order_of_product: "Order of seminar %{product}"
+
+  participantlists: Participant list
+  participantlist: Participant list
+
+  attendancelists: Attendant lists
+  attendancelist: Attendant list
+
+  signature: Signature
+
+  emaillisting: Email list
+  addresslisting: Address list
+
+  info_given_later: "Information follows"
+  free_seats: Available seats
+  open_in_new_window: Open in new window
+  event_search_hint: E.g. the name of a seminar, a tag, and seminar location etc.
+  recalculate_map: Recalculate location
+  search_by_type: Type
+  search_by_coach: Coach/Trainer
+
+  event_was_successfully_duplicated: The event was successfully duplicated. The Copy is offline and can now be edited and adjusted.
+  show_remaining_seats_count: Show remaining seats
+  full_price: "Full price"
+  full_price_hint: "The full price of this event without early booking or volume discount."
+  current_price: "Current price"
+  current_price_hint: "The current price incl. all discounts"
+
+  allow_signup: "Allow signup"
+  eventexport: "Export events"
+  start_date_from: "Startdate from"
+  start_date_to: "Startdate to"
+  event_search_form: "Event search"
+  from_today: "from today"
+  this_week: "this week"
+  this_month: "this month"
+  next_month: "next month"
+  this_quarter: "this qurter"
+  next_quarter: "next quarter"
+  this_year: "this year"
+  next_year: "next year"
+  date_ranges: "Date ranges"
+  all_active: "All dates"
+  overview: Overview
+  textoptions: "Text options"
+  event_subevents: Events
+  included_subevents: Included events
+  included_subevents_hint: This event consists of several events
+  unassigned_subevents: Unassigned events
+  event_list: "List"
+  event_calendar: "Calender"
+
+  event_product_tags: "Keywords"
+  event_product_tags_hint: "Add keywords to this event. Keywords can be used for filtering in the event list view and on your website."
+
+  subevent_assigned: The event was added to the bundle
+  subevent_unassigned: The event was remved from the bundle
+  subevent_already_in_bundle: The event is already part of the bundle
+
+  event_eventtemplate_hint: "The assigned eventtemplate for this event."
+  event_no_eventtemplate_assigned: No eventtemplate assigned
+  event_use_product_location: Use seminar locations
+  event_use_product_location_hint: If on, the seminar location is taken from the list of seminar locations, otherwise from the seminar itself.
+  event_use_product_location_from_event: Event location is displayed from event
+  event_use_product_location_from_location: Event location is displayed from list of event locations
+
+  product_location: Seminar location
+  product_location_hint: Pick a seminar location from the list of locations. Create a seminar location and assign it to this event.
+
+  event_open_webinar_url: "Open signup-link"
+  event_join_webinar: "Join online-event"
+  event_open_webinar_help_url: "Open help link"
+  event_contact_information: Contact information
+  event_contact_information_hint: Contact information for questions

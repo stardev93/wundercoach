@@ -1,0 +1,444 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  simple_form:
+    labels:
+      event:
+        name: Seminarbezeichnung
+        enable_crm: CRM aktivieren
+        show_remaining_seats_count: Verbleibende Plätze anzeigen
+    hints:
+      event:
+        name: Name des Seminars. Unter diesem Namen wird Ihr Seminar in Wundercoach geführt und erscheint auch auf Ihrer Website.
+        enable_crm: Sollen Buchungsdaten als neue Kontakte an integrierte Customer Relationship Management Tools weitergereicht werden?
+        show_remaining_seats_count: Wählen Sie, ob Ihre Kunden wissen sollen, wieviele Plätze in diesem Seminar noch frei sind.
+    magic_submit:
+      events:
+        event:
+          new:
+            submit: "Seminar anlegen"
+          new_individual:
+            submit: "Seminar anlegen"
+            disable_with: "Seminar wird gespeichert"
+          new_individual_agreed_event:
+            submit: "Termin aus Anfrage erstellen"
+            disable_with: "Termin wird erstellt"
+          new_individual_agreed_event_from_event:
+            submit: "Termin erstellen"
+            disable_with: "Termin wird erstellt"
+          new_free:
+            submit: "Kostenloses Seminar anlegen"
+            disable_with: "Kostenloses Seminar wird gespeichert"
+          new_bundle:
+            submit: "Seminarpaket anlegen"
+            disable_with: "Seminarpaket wird gespeichert"
+          new_online:
+            submit: "Online-Seminar anlegen"
+            disable_with: "Online-Seminar wird gespeichert"
+    options:
+      event:
+        eventbookings:
+          gender:
+            male: Herr
+            female: Frau
+            diverse: Divers
+            noinfo: "Keine Angabe"
+          billing_gender:
+            male: Herr
+            female: Frau
+            diverse: Divers
+            noinfo: "Keine Angabe"
+  activerecord:
+    models:
+      event:
+        one: Seminar
+        other: Seminare
+      event/tag:
+        one: Tag
+        other: Tags
+    attributes:
+      event:
+        location: Veranstaltungsort
+    errors:
+      models:
+        event:
+          attributes:
+            paymentmethods:
+              only_eur_supported: Im Moment bieten wir Online-Bezahlung per Sofortüberweisung oder SEPA Lastschriftmandat nur in Euro an.
+  event_was_successfully_created: "Das Seminar wurde erfolgreich angelegt."
+  event_was_successfully_updated: "Das Seminar wurde erfolgreich gespeichert."
+  event_was_successfully_deleted: "Das Seminar wurde erfolgreich gelöscht."
+  event_map_coordinates_were_successfully_recalculated: "Die Koordinaten wurden erfolgreich aktualisiert."
+
+  # Different Event Types
+  standard_event: 'Offenes Seminar'
+  StandardEvent: 'Offenes Seminar'
+  new_standard_event: 'Neues offenes Seminar'
+  edit_standard_event: 'Offenes Seminar bearbeiten'
+
+  individual_event: 'Individueller Termin'
+  IndividualEvent: 'Individueller Termin'
+  new_individual_event: 'Neues individuelles Seminar'
+  edit_individual_event: 'Individelles Seminar bearbeiten'
+
+  free_event: 'Kostenloses Seminar'
+  FreeEvent: 'Kostenloses Seminar'
+  new_free_event: 'Neues kostenloses Seminar'
+  edit_free_event: 'Kostenloses Seminar bearbeiten'
+
+  online_event: 'Online-Seminar'
+  OnlineEvent: 'Online-Seminar'
+  new_online_event: 'Neues Online-Seminar'
+  edit_online_event: 'Online-Seminar bearbeiten'
+
+  bundle_event: 'Seminarpaket'
+  bundle_events: 'Seminarpakete'
+  BundleEvent: 'Seminarpaket'
+  new_bundle_event: 'Neues Seminarpaket'
+  edit_bundle_event: 'Seminarpaket bearbeiten'
+  bundleevent_startdate_from_subevent_hint: "Das Startdatum ergibt sich aus den zugeordneten Seminaren"
+  bundleevent_enddate_from_subevent_hint: "Das Enddatum ergibt sich aus den zugeordneten Seminaren"
+  bundleevent_maxparticipants_from_subevent_hint: "Die max. Teilnehmeranzahl ergibt sich aus den zugeordneten Seminaren"
+  bundleevent_latest_signup_date_from_subevent_hint: "Das Datum des Anmeldeschlusses entspricht dem frühesten Anmeldeschluss der zugeordneten Seminare"
+  eventbundle_locations_see_subevents: "Die Veranstaltungsorte werden in der Liste der Einzelevents angezeigt"
+
+  IndividualAgreedEvent: 'Coachingtermin'
+  Eventtemplate: 'Seminarvorlage'
+
+  event_attributes:
+    type: Veranstaltungstyp
+
+  # lessons
+  event: Seminar
+  events: Seminare
+  event_name_short: Thema
+  eventtypes: Veranstaltungsarten
+  eventype_explanation: "Erstellen Sie eigene Veranstaltungsarten, um danach filtern zu können."
+  events_online: "Seminare online"
+  events_next_week: Anstehende Events
+  no_next_events: "Keine Seminare in den nächsten Tagen"
+  add_event: "Neues Seminar anlegen"
+  add_event_hint: "Klicken Sie hier, um ein neues Seminar anzulegen"
+  included_in: "Enthalten in"
+  assigned_events: Zugewiesene Seminare
+  unassigned_events: Verfügbare Seminare
+
+  event_back_hint: "Geht zurück zur Anmeldeliste"
+  new_event: "Neues Seminar"
+  new_event_from_template: "Neues Seminar aus Vorlage"
+  edit_event: "Seminar bearbeiten"
+  duplicate: "Duplizieren"
+  open_in_planner: "Terminkalender"
+  upcoming_individual_events: Kommende Coaching Termine
+
+  currency: Währung
+  currency_hint: Bitte verwenden Sie ausschließlich Euro, wenn Sie über den Wundercoach Rechnungen stellen möchten.
+
+  name: Name
+  name_hint: "Name des Seminars"
+  eventdescription: "Beschreibung"
+  event_comments: "Bemerkungen"
+  event_comments_hint: "Interne Bemerkungen zu dem Event"
+  recipient: "Empfänger"
+  invoice_date: "Belegdatum"
+
+  colorcode: "Farbcode"
+  colorcode_hint: "Farbcode des Seminars zur internen Klassifizierung"
+  onlinestatus: "Onlinestatus"
+  onlinestatus_hint: "Schaltet das Seminar online oder offline (sichtbar in der Anmeldungsansicht)"
+
+  planningstatus: "Planungsstatus"
+  planningstatus_hint: "Terminplanungsstatus des Seminars. Hier können Sie für Ihre eigene Planung festlegen, ob der Termin des Seminars bereits fest geplant ist oder nicht. Hinweis: Das Seminar erscheint trotzdem online in Ihrer Anmeldeliste."
+  eventtemplate_id: "Vorlage"
+  event_eventtemplate_hint: "Zugeordnete Vorlage dieses Seminars. Durch Ändern der Vorlage ändert sich die Zuordnung dieses Seminars in den Seminarvorlagen-Widgets auf Ihrer Website. Inhalte des Seminars ändern sich dadurch nicht."
+  is_online: "Online"
+  shortdescription: "Kurztext"
+  shortdescription_hint: "Zusammenfassung für Listenansicht"
+  longdescription: "Beschreibung"
+  longdescription_hint: "Kompletter Beschreibungstext für die Einzelseite"
+  start: "Start"
+  end: "Ende"
+  start_date: "Startdatum"
+  start_date_day: "Startdatum (Tag)"
+  start_date_month: "Startdatum (Monat)"
+  start_date_year: "Startdatum (Jahr)"
+  start_date_hours: "Startdatum (Stunde)"
+  start_date_minutes: "Startdatum (Minute)"
+
+  start_time: "Uhrzeit Start"
+  start_date_time: "Startdatum & -zeit"
+  start_date_time_hint: "Startdatum des Seminars inkl. Uhrzeit."
+
+  event_date: "Datum"
+  start_date_hint: "Startdatum des Seminars inkl. Uhrzeit."
+  reservation_expiry: 'Verfall der Reservierung'
+  reservation_expiry_hint: 'Angabe, bis wann die Rechnung bezahlt werden muss, damit die Buchung gültig bleibt. Gilt für Vorkasse.'
+  reservation_expiry_day: "Verfall der Reservierung (Tag)"
+  reservation_expiry_month: "Verfall der Reservierung (Monat)"
+  reservation_expiry_year: "Verfall der Reservierung (Jahr)"
+  reservation_expiry_hours: "Verfall der Reservierung (Stunde)"
+  reservation_expiry_minutes: "Verfall der Reservierung (Minute)"
+
+  duration: "Dauer"
+  duration_hint: "Dauer des Seminars"
+
+  durationunit: "Einheit Seminardauer"
+  durationunit_hint: "Einheit der Seminardauer"
+
+  maxparticipants: "Anz. Plätze"
+  maxparticipants_hint: "Maximale Anzahl Teilnehmer"
+  max_additional_participants: 'Anzahl zusätzlicher Teilnehmer pro Buchung'
+  max_additional_participants_short: 'zusätzl. Teilnehmer'
+  max_additional_participants_hint: 'Pro zusätzlichem Teilnehmer werden bei der Anmeldung Felder für Namen und Anrede bereitgestellt.'
+
+  seats_booked: "Buchungen"
+  max_additional_participants_only_for_free_events: "Zusätzliche Teilnehmer sind nur für kostenlose Events erlaubt. Frühbucherpreis und Preis müssen 0 sein, wenn Sie zusätzliche Teilnehmer erlauben wollen."
+  booking_count: "Buchungen"
+
+  waitinglist: 'Warteliste'
+  waiting_list_count: "Warteliste"
+  latest_signup_date: "Anmeldeschluß"
+  latest_signup_date_empty: "kein Datum"
+  latest_signup_date_hint: "Tag der letzten Anmeldemöglichkeit inkl. Uhrzeit"
+
+  latest_signup_date_day: Anmeldeschluß (Tag)
+  latest_signup_date_month: Anmeldeschluß (Monat)
+  latest_signup_date_year: Anmeldeschluß (Jahr)
+  latest_signup_date_hours: Anmeldeschluß (Stunde)
+  latest_signup_date_minutes: Anmeldeschluß (Minute)
+
+  price: "Preis"
+  net_price: "Preis netto"
+  gross_price: "Preis brutto"
+  net_price_early_booking: "Frühbucherpreis netto"
+  gross_price_early_booking: "Frühbucherpreis brutto"
+
+  event_gross_price_hint: "Regulärer Preis inkl. MwSt."
+  event_net_price_hint: "Regulärer Preis exkl. MwSt."
+  event_price_hint: "Regulärer Preis"
+  event_price: "Seminargebühr"
+  vat: "MwSt."
+  vat_hint: "enthaltene MwSt."
+  event_vat_included: "inkl. MwSt.?"
+  event_vat_included_hint: Gibt an, ob die MwSt. in dem Preis enthalten ist (Brutto-Preis) oder nicht (Netto-Preis). Diese Option wird global in den Kontoeinstellungen festgelegt.
+
+  price_early_signup: "Frühbucherpreis"
+  price_early_signup_hint: "Frühbucherpreis. Gilt bis zu dem angegebenen Datum."
+  price_early_hint: "regulärer Preis"
+  price_early_signup_until: "Frühbucherpreis gültig bis"
+  after_that: "danach"
+
+  early_signup_deadline: "Frühbucherrabatt bis"
+  early_signup_deadline_hint: "Datum / Uhrzeit bis zu der der Frühbucherrabatt gültig ist. Der Frühbucherpreis wird bis zu diesem Datum angezeigt."
+  early_signup_pricing: "Frühbucherrabatt ermöglichen"
+  early_signup_pricing_hint: "Für diesen Event Frühbucherrabatt zulassen J/N."
+  early_signup_deadline_day: "Frühbucherrabatt bis (Tag)"
+  early_signup_deadline_month: "Frühbucherrabatt bis (Monat)"
+  early_signup_deadline_year: "Frühbucherrabatt bis (Jahr)"
+  early_signup_deadline_hours: "Frühbucherrabatt bis (Stunde)"
+  early_signup_deadline_minutes: "Frühbucherrabatt bis (Minuten)"
+
+  eventtype: "Veranstaltungsart"
+  eventtype_hint: "Art des Veranstaltung. Sie können eigene Veranstaltungsarten unter dem Menüpunkt 'Seminare' anlegen."
+
+  eventsessions: "Sitzungen"
+  event_eventbookings: "Anmeldungen"
+  event_eventbookings_hint: Anmeldungen dieser Veranstaltung
+
+  bottom_text: "Schlusstext"
+  bottom_text_hint: "Text der auf der unteren Seite der Seminarseite angezeigt wird"
+
+  external_signup: Externe Anmeldung
+  external_signup_hint: Stellen Sie hier Optionen für eine externe Anmeldung ein, wenn die Anmeldungen für dieses Seminar auf einer anderen Websie stattfinden sollen.
+  external_signup_url: "URL für externe Anmeldung"
+  external_signup_url_short: "Anmeldung (ext.)"
+  external_signup_url_hint: "Link auf ein externes Buchungsformular (falls Sie ein externes Registrierungssystem ausserhalb von Wundercoach nutzen)"
+  external_signup_text: "Linktext externe Anmeldung"
+  external_signup_text_hint: "Text, der in dem Link auf ein externes Buchungsformular angezeigt wird."
+  external_event_list: "öffentliche Anmeldeliste"
+  internal_signup_url: "Anmeldung"
+  redirect_message: 'Weiterleitungs-Benachrichtigung'
+  redirect_message_hint: 'Diese Nachricht wird angezeigt, wenn von der Anmeldeliste zu einem externen Anbieter weitergeleitet wird.'
+  default_redirect_text: 'Sie werden in wenigen Sekunden zur Website des Seminarveranstalters weitergeleitet.'
+
+  eventdesigner: Seminardesigner
+  units: Einheiten
+  pages: Seiten
+  pagetypes: Seitentypen
+  uploads: Dateimanager
+  tools: Werkzeuge
+
+  event_planning: "Planung"
+  no_signup_allowed: "Online-Anmeldung inaktiv"
+
+  event_name_options: "Name"
+
+  event_text_options: "Seminartexte"
+  event_text_options_hint: "Texte zu diesem Seminar"
+
+  event_date_options: "Termine"
+  event_date_options_hint: "Termineinstellungen für diese Veranstaltung."
+  event_publishing_options: Veröffentlichung
+  event_publishing_options_hint: Einstellungen für die Veröffentlichung des Seminares
+  event_pricing_options: "Preisoptionen"
+  event_pricing_options_hint: "Preiseinstellungen dieser Veranstaltung"
+  event_gross_pricing_hint: "Sie verwenden Brutto-Preise. Geben Sie daher alle Preise als Brutto-Preise inkl. MwSt. ein."
+  event_net_pricing_hint: "Sie verwenden Netto-Preise. Geben Sie daher alle Preise als Netto-Preise ohne MwSt. ein."
+
+  event_planning_options: "Terminplanung"
+  event_planning_options_hint: "Einstellungen zur Terminplanung"
+
+  event_location_options: "Veranstaltungsort"
+  event_location_options_hint: "Informationen zum Veranstaltungsort. Sie können einen Ort eingeben oder einen Ort aus der Liste der Orte zuweisen."
+
+  event_online_options: "Online-Zugang"
+  event_online_options_hint: "Anmeldedaten zum Online-Seminar. Geben Sie eine URL an, unter der sich Ihre Teilnehmer anmelden können."
+
+  event_preview: "Vorschau"
+  event_coach_options: Trainer
+  event_bundle_options: Seminarpakete
+
+  event_signup_options: "Anmeldungsoptionen"
+  signed_up_for: "angemeldet für"
+  generate_invoice: "Automatische Rechnungstellung"
+  generate_invoice_hint: "Für neue Anmeldungen wird automatisch eine Rechnung  erstellt und versendet."
+
+  event_location: "Veranstaltungsort"
+  event_location_hint: "Bezeichnung des Veranstaltungsortes"
+  location: "Ort"
+  location_hint: "Bezeichnung des Ortes"
+  event_state: Bundesland
+  event_state_hint: Bundesland der Veranstaltungsanschrift.
+
+  googlemapslocation: "Google Maps Link"
+  googlemapslocation_hint: "Link auf Google Maps"
+  google_map: "Google Map"
+
+  eventorganizer: Veranstalter
+  eventorganizer_hint: Ausrichter der Veranstaltung
+
+  webinar_options: Optionen Online-Seminar
+  webinar_options_hint: Stellen Sie hier die Optionen für Ihr Online-Seminar ein. Die Daten können mit der E-Mail zur Anmeldebestägigung versendet werden.
+  webinar_url: Anmeldelink
+  webinar_url_hint: Anmeldelink zur Teilnahme am Online-Event
+  webinar_url_valid_from: Anmeldung möglich ab
+  webinar_url_valid_from_hint: Datum / Uhrzeit, ab dem der Anmeldink gültig ist
+  webinar_provider: Provider
+  webinar_provider_hint: Provider, über den das Seminar durchgeführt wird, z.B. Zoom oder Microsoft Teams
+  webinar_help_url: Hilfe-Link
+  webinar_help_url_hint: Link zur Online-Hilfe für Teilnehmer
+  webinar_username: Benutzername
+  webinar_username_hint: Benutzername für die Anmeldung zum Online-Seminar (leerlassen falls nicht erforderlich)
+  webinar_pw: Passwort
+  webinar_pw_hint: Passwort für die Anmeldung zum Online-Seminar (leerlassen falls nicht erforderlich)
+  webinar_additional_information: Information zum Online-Seminar für Detailsansicht
+  webinar_additional_information_hint: Information zum Online-Seminar für die Anmeldung. Wird in der Detailansicht im Checkout angezeigt. Geben Sie Informationen an, wie z.B. dass der Teilnehmer die Zugangsdaten nach der Anmeldung per E-Mail erhält. Wenn Sie das Feld leer lassen wird ein Standard-Hinweis angezeigt.
+  webinar_additional_information_hint_default: Dies ist ein Online-Seminar. Die Zugangsdaten erhalten Sie rechtzeitig vor Beginn
+  webinar_additional_information_short: Information zum Online-Seminar für Listenansicht
+  webinar_additional_information_short_hint: Kurz-Information zum Online-Seminar für die Anmeldung. Wird in der Listenansicht im Checkout angezeigt. Wenn Sie dieses Feld leer lassen, erscheint ein Standard-Hinweis
+
+  checkout_enter_your_data: "Teilnehmerdaten"
+  sign_up: "Jetzt anmelden"
+  details: "Details"
+  event_invoicing_options: 'Abrechnungsoptionen'
+  create_new_event_from_template: "Seminarvorlage anlegen"
+
+  event_cancelled: 'Das Seminar wurde abgesagt. Bitte stornieren Sie die Buchungen und informieren Sie ihre Kunden.'
+  cancel_event: "Absagen"
+  add_individual_event: Individuellen Event anlegen
+  new_requests_for_this_event: Neue Anfragen für dieses Coaching
+
+  free_of_charge: kostenlos
+  event_is_free_of_charge: Die Teilnahme ist kostenlos
+  add_free_event: Kostenloses Seminar anlegen
+
+  mail_sent_to_all: Mail wird an alle Teilnehmer gesendet.
+  do_you_really_want_to_send_this_to_everyone: Sie sind im Begriff, diese Mail an alle Teilnehmer zu senden. Dieser Vorgang kann nicht abgebrochen werden. Möchten Sie diese Mail jetzt senden?
+  event_not_found: Das Seminar konnte nicht gefunden werden.
+
+  participantlists: Teilnehmerlisten
+  participantlist: Teilnehmerliste
+
+  attendancelists: Anwesenheitslisten
+  attendancelist: Anwesenheitsliste
+
+  signature: Unterschrift
+
+  emaillisting: E-Mail-Liste
+  addresslisting: "Adressliste"
+
+  info_given_later: "Information folgt"
+  order_of_product: "Teilnahme an Seminar %{product}"
+  free_seats: Freie Plätze
+  open_in_new_window: In neuem Fenster öffnen
+  event_search_hint: z.B. der Name eines Seminars, ein Tag, ein Veranstaltungsort etc.
+  recalculate_map: Standort neu berechnen
+  search_by_type: Seminartyp
+  search_by_coach: Coach/Trainer
+
+  end_date: "Enddatum"
+  end_date_hint: "Enddatum des Seminars inkl. Uhrzeit."
+  end_date_day: "Enddatum (Tag)"
+  end_date_month: "Enddatum (Monat)"
+  end_date_year: "Enddatum (Jahr)"
+  end_date_day: "Enddatum (Tag)"
+  end_date_hours: "Enddatum (Stunde)"
+  end_date_minutes: "Enddatum (Minute)"
+  end_time: "Uhrzeit Ende"
+  end_date_time: "Enddatum & -zeit"
+  end_date_time_hint: "Enddatum des Seminars inkl. Uhrzeit."
+
+  event_was_successfully_duplicated: Das Seminar wurde erfolgreich dupliziert. Das kopierte Seminar ist offline und kann jetzt bearbeitet und angepasst werden.
+  show_remaining_seats_count: Verbleibende Plätze anzeigen
+  full_price: "Regulärer Preis"
+  full_price_hint: "Der reguläre Preis dieses Events ohne Frühbucher- oder Mengenrabatte"
+  current_price: "Aktueller Preis"
+  current_price_hint: "Der aktuelle Preis dieses Events mit den z.Z. gültigen Rabatten"
+
+  allow_signup: "Anmeldung erlauben"
+  signup_allowed: "Anmeldung erlaubt"
+  signup_not_allowed: "Anmeldung gesperrt"
+  eventexport: "Veranstaltungen export"
+  start_date_from: "Startdatum von"
+  start_date_to: "Startdatum bis"
+  event_search_form: "Veranstaltungssuche"
+  from_today: "ab heute"
+  this_week: "diese Woche"
+  this_month: "dieser Monat"
+  next_month: "nächster Monat"
+  this_quarter: "dieses Quartal"
+  next_quarter: "nächstes Quartal"
+  this_year: "dieses Jahr"
+  next_year: "nächstes Jahr"
+  date_ranges: "Zeiträume"
+  all_active: "Alle Daten"
+  overview: Übersicht
+  textoptions: Textoptionen
+  event_subevents: Seminare
+  included_subevents: Enthaltene Seminare
+  included_subevents_hint: Diese Veranstaltung besteht aus mehreren Terminen
+  unassigned_subevents: Verfügbare Seminare
+  event_list: "Liste"
+  event_calendar: "Kalender"
+
+  event_product_tags: "Schlagworte"
+  event_product_tags_hint: "Weisen Sie der Veranstaltung Schlagworte zu. Sie können in der Listenansicht danach filtern, und auch die Ausgabe auf Ihrer Website damit filterbar machen."
+
+  subevent_assigned: Die Veranstaltung wurde zu dem Paket hinzugefügt.
+  subevent_unassigned: Die Veranstaltung wurde aus dem Paket entfernt.
+  subevent_already_in_bundle: Die Veranstaltung ist bereits in dem Paket enthalten.
+
+  event_eventtemplate_hint: "Die diesem Seminar zugeordnete Seminarvorlage."
+  event_no_eventtemplate_assigned: Keine Seminarvorlage zugeordnet
+  event_use_product_location: Veranstaltungsorte benutzen
+  event_use_product_location_hint: Legt fest, ob der Veranstaltungsort dieser Veranstaltung aus der Liste der Veranstaltungsorte oder aus der Veranstaltung selbst angezeigt wird.
+  event_use_product_location_from_event: Der Veranstaltungsort wird aus der Veranstaltung angezeigt
+  event_use_product_location_from_location: Der Veranstaltungsort wird aus der Liste der der Veranstaltungsorte angezeigt
+
+  product_location: Veranstaltungsort
+  product_location_hint: Wählen Sie einen Veranstaltungsort aus der Liste der Veranstaltungsorte. Legen Sie einen Veranstaltungsort an, um ihn der Veranstaltung zuzuweisen.
+
+  event_open_webinar_url: "Teilnahmelink aufrufen"
+  event_join_webinar: "An Online-Event teilnehmen"
+  event_open_webinar_help_url: "Hilfe-Link aufrufen"
+  event_contact_information: Kontaktinformation
+  event_contact_information_hint: Kontaktinformation für Rückfragen

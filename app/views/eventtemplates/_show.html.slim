@@ -1,0 +1,105 @@
+.row
+  .col-xs-12
+    .well
+      .row
+        .col-xs-12
+          address
+            p
+              strong = t(:slug)
+              br
+              span.lead = @eventtemplate.slug
+              '&nbsp;
+        .col-xs-12
+          address
+            p
+              strong = t(:shortdescription)
+              br
+              span.lead = sanitize @eventtemplate.shortdescription
+              '&nbsp;
+      .row
+        .col-xs-3
+            p
+              strong = t(:start_date)
+              br
+              span.lead
+                / - unless @eventtemplate.start_date.blank?
+                /  = l @eventtemplate.start_date, format: :default
+              '&nbsp;
+
+            p
+              strong = t(:eventtype)
+              br
+              span.lead = @eventtemplate.eventtype
+              '&nbsp;
+        .col-xs-3
+            p
+              strong = t(:maxparticipants)
+              br
+              span.lead = @eventtemplate.maxparticipants
+              '&nbsp;
+
+        .col-xs-6
+          .row
+            .col-xs-6
+              p
+                strong = Eventtemplate.human_attribute_name(:full_price)
+                br
+                span.lead = money_to_currency(@eventtemplate.full_price)
+                '&nbsp;
+            .col-xs-6
+              p
+                strong = t(:price_early_signup)
+                br
+                - if @eventtemplate.price_early_signup
+                  span.lead = money_to_currency(@eventtemplate.price_early_signup)
+                - else
+                  |---
+                '&nbsp;
+            .col-md-6
+              / p
+              /   strong = t(:early_signup_deadline)
+              /   br
+              /   span.lead
+              /     / - unless @eventtemplate.early_signup_deadline.blank?
+              /     /   = l @eventtemplate.early_signup_deadline, format: :short
+              /     /   br
+              /     /   = l @eventtemplate.early_signup_deadline, format: :time
+              /   '&nbsp;
+            .col-xs-12
+              = render "events/pricingoptions", :event => @eventtemplate
+
+      .row
+        .col-xs-12
+          p
+            strong = t(:tags)
+          - @eventtemplate.product_taggings.each do |tagging|
+            btn.btn.btn-default.btn-xs
+              = tagging
+            |&nbsp;
+      .row
+        .col-md-12
+          p
+            address
+              p
+                strong = t(:comments)
+              br
+              span.lead = sanitize @eventtemplate.comments
+              '&nbsp;
+
+    .row
+      .col-xs-12.text-right
+
+        = link_to eventtemplates_path, class: "btn btn-default"
+          i.fa.fa-arrow-left
+          '&nbsp;
+          = t(:back)
+        '&nbsp;
+        = link_to @eventtemplate, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+            i.fa.fa-remove
+            '&nbsp;
+            = t(:delete)
+        '&nbsp;
+        = link_to edit_eventtemplate_path(@eventtemplate), class: "btn btn-primary"
+          i.fa.fa-edit
+          '&nbsp;
+          = t(:edit)

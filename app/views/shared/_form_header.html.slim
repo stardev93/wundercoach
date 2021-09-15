@@ -1,0 +1,23 @@
+/ form header for edit and show forms
+/ inputtextile:
+/ header_text = the forms name i.e. headline
+/ hint_text = the forms hint text to show under the headline
+/ buttons = a collection of buttons to display
+.page-header.form-header-margin
+  .row
+    .col-xs-12
+      h1.wc_form_headline
+        - if defined? header_text
+          = header_text
+      - if defined? hint_text
+        p.lead
+          = hint_text
+    .col-xs-12.text-right
+      - if defined? buttons
+        = buttons
+
+.row
+  .col-xs-12
+    p &nbsp;
+.row
+  .col-xs-12

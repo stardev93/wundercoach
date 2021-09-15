@@ -1,0 +1,95 @@
+/ coach address (small)
+.row
+  .col-md-12
+    br
+    br
+    .invoice style="font-size: 9px;"
+      = simple_format @businessdocument.account.invoice_from_small
+
+/ address row
+.row
+  / customer address
+  .col-xs-6.recipient_address_box
+    - if @businessdocument.address
+      / integrate to BusinessdocumentDecorator later, there is a solution: recipient_address
+      / address stored in businessdocument.address and businessdocument.order.address
+      = render "billing/businessdocuments/pdf/address_from_order", :@businessdocument => @businessdocument
+    - else
+      / address stored in businessdocument
+      = render "billing/businessdocuments/pdf/address_from_contact", :@businessdocument => @businessdocument
+
+  / sender address
+  - unless @businessdocument.account.invoice_from.blank?
+    .col-xs-6.sender_address_box
+      .invoice
+        = sanitize @businessdocument.account.invoice_from
+
+/ invoice info
+.row style="padding-top: 30px;"
+  / invoice number
+  .col-xs-6
+    h5
+      strong
+        - if @businessdocument.cancellation?
+          = t(:cancellation_for, invoice_number: @businessdocument.predecessor.invoice_number)
+          br
+        - else
+          = t(:invoice_no, invoice_number: @businessdocument.invoice_number)
+          br
+      br
+      = @businessdocument.name
+
+  / invoice details
+  .col-xs-6.text-right.details_box
+    - unless @businessdocument.account.tax_id.blank?
+      .row
+        .col-xs-6.text-left
+          = t(:tax_id)
+          |:&nbsp;
+        .col-xs-6.text-left
+          = sanitize @businessdocument.account.tax_id
+    - if @businessdocument.account_receivable_no
+      .row
+        .col-xs-6.text-left
+          = t(:account_receivable_no)
+          |:&nbsp;
+        .col-xs-6.text-left
+          = sanitize @businessdocument.account_receivable_no
+    / - if @businessdocument.contact_no
+    /   .row
+    /     .col-xs-6.text-left
+    /       = t(:contact_no)
+    /       |:&nbsp;
+    /     .col-xs-6.text-left
+    /       = sanitize @businessdocument.contact_no
+    .row
+      .col-xs-6.text-left
+        = t(:invoice_number)
+        |:&nbsp;
+      .col-xs-6.text-left
+        = @businessdocument.invoice_number
+    .row
+      .col-xs-6.text-left
+        = t(:invoice_date)
+        |:&nbsp;
+      .col-xs-6.text-left
+        = l @businessdocument.invoice_date, locale: :de
+    - if @businessdocument.paymentmethod
+      .row
+        .col-xs-6.text-left
+          = t(:paymentmethod)
+          |:&nbsp;
+        .col-xs-6.text-left
+          = @businessdocument.paymentmethod
+
+.row style="height:50px;"
+
+/ Table
+.row
+  .col-xs-12
+    = render "billing/businessdocumentpositions/subtable.pdf", :@businessdocumentpositions => @businessdocument.businessdocumentpositions
+/ Comments
+- unless @businessdocument.comments.blank?
+  .row
+    .col-xs-12
+      = sanitize @businessdocument.comments

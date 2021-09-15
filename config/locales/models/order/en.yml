@@ -1,0 +1,51 @@
+en:
+  order: Order
+  order_hint: Order description
+  orders: Orders
+  orders_hint: List of orders for this event
+  new_order: New registration
+  new_backend_order: New registration (Backend)
+  new_website_order: New registration (Website)
+  new_orders: New registrations
+  new_order_for: "New registrations for\"%{product}\""
+  order_infotext: Registrations for seminars and seminar packages
+  order_for: "Registration for \"%{product}\""
+  order_index_headline: Registration for
+  order_creation_successful: The participant got registered successfully.
+  order_update_successful: The registration got updated successfully.
+  order_delete_successful: The registration got deleted successfully.
+  order_status:
+    confirmed: Confirmed
+    paid: Paid
+    waiting_for_payment: Waiting for payment
+  cannot_invoice_free_product: Cannot invoice free products.
+  signup_participant: "Register participant"
+  order_client_order_info_checkout: "Message"
+  order_client_order_info_checkout_hint: "Please enter additional information that you would like to tell us."
+  order_client_order_info: "Information"
+  order_client_order_info_hint: "Additional information from the participant for this order"
+  order_date: Order date
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      order:
+        one: Registration
+        other: Registrations
+    attributes:
+      order:
+        order_date: Registration date
+  # SimpleForm Translations
+  simple_form:
+    magic_submit:
+      event:
+        orders:
+          new:
+            submit: "Register participant"
+            disable_with: "Participant is registered..."
+      bundle:
+        orders:
+          new:
+            submit: "Register participant"
+            disable_with: "Participant is registered..."
+  order_company_or_instituion_name: Company / Authority / Institute
+  order_company_or_instituion_name_hint: Name of the Company / Authority / Institute for which the signup is made.

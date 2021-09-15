@@ -1,0 +1,30 @@
+= simple_form_for(@event) do |f|
+  = f.error_notification
+
+.row
+  .col-xs-12
+    = render "shared/section_header", :header_text => t(:event_location)
+.row
+  .col-xs-6
+      p
+        strong = t(:location)
+        br
+        span.lead = @event.location
+        '&nbsp;
+      p
+        strong = t(:street)
+        br
+        span.lead = "#{@event.street} #{@event.streetno}"
+        '&nbsp;
+      p
+        strong = t(:zip)
+        br
+        span.lead = "#{@event.zip} #{@event.city}"
+        '&nbsp;
+      p
+        strong = t(:country)
+        br
+        span.lead = @event.country_name
+        '&nbsp;
+  .col-xs-6
+    = render "events/googlemap", event: @event

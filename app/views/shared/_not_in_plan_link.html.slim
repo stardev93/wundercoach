@@ -1,0 +1,6 @@
+a href="#" data-toggle="modal" data-target="#not_in_plan_modal"
+  - if defined? icon
+    i.fa class="#{icon}"
+    '&nbsp;
+  - if defined? text
+    = t(:"#{text}")

@@ -1,0 +1,95 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = @campaign
+      - if @campaign.syncable?
+        span.add-item
+          = link_to sync_campaign_path(@campaign), class: 'btn btn-default', method: :post, data: { confirm: t(:all_data_will_by_synced_to_mailchimp) }
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:start_campaign)
+
+.row
+  .col-xs-12
+    hr style="padding:0px; margin: 5px;"
+    address
+      p.h3 = "#{t(:participant_count)}: #{@campaign.participant_count}"
+
+- if @campaign.synced?
+  .row
+    .col-xs-12
+      p.lead = t(:campaign_synced_info_text)
+- else
+  .row
+    .col-xs-12.text-right
+      hr
+      = link_to @campaign, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: 'btn btn-danger'
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      ' &nbsp;
+      = link_to edit_campaign_path(@campaign), class: 'btn btn-primary'
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to campaigns_path, class: 'btn btn-default'
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back)
+
+  .row
+    .col-md-6
+      h4 = t(:target_groups_assigned)
+      hr
+      - if @campaign.target_groups.empty?
+        p = t(:campaign_needs_a_target_group)
+      - else
+        ul.list-group
+          - @campaign.target_groups.each do |target_group|
+            li.list-group-item
+              .row
+                .col-xs-12
+                  p.lead = target_group
+                  ul
+                    - target_group.filters.each do |filter|
+                      li = filter.decorate.to_text
+                .col-sm-4
+                  = link_to new_campaign_target_group_filter_path(@campaign, target_group_id: target_group)
+                    i.fa.fa-plus
+                    |&nbsp;
+                    = t(:new_filter)
+                .col-sm-4
+                  = link_to target_group_path(target_group)
+                    i.fa.fa-edit
+                    |&nbsp;
+                    = t(:edit)
+                .col-sm-4
+                  = link_to remove_target_group_campaign_path(@campaign, target_group_id: target_group), method: :post
+                    i.fa.fa-remove
+                    |&nbsp;
+                    = t(:remove)
+
+    .col-md-6
+      h4 = t(:target_groups_available)
+      hr
+      ul.list-group
+        - @available_target_groups.each do |target_group|
+          li.list-group-item
+            .row
+              .col-xs-12
+                p.lead = target_group
+                ul
+                  - target_group.filters.each do |filter|
+                    li = filter.decorate.to_text
+              .col-xs-12
+                = link_to add_target_group_campaign_path(@campaign, target_group_id: target_group), method: :post
+                  = t(:assign)
+        li.list-group-item
+          .row
+            .col-xs-12
+              = link_to new_campaign_target_group_path(@campaign)
+                i.fa.fa-plus
+                '
+                = t(:new_target_group)

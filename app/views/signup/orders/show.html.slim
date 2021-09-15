@@ -1,0 +1,28 @@
+/ ##########################################
+/ event thank you for signing up
+= render "signup/orders/signup_thankyou", :event => @order.product.decorate
+
+/ ##########################################
+/ event signup details
+= render "signup/orders/signup_details", :event => @order.product.decorate
+
+/ ##########################################
+/ event basic details start- & end-date basic location
+= render "signup/products/info_row", :event => @order.product.decorate
+
+
+/ ##########################################
+/ event participant details
+= render "signup/orders/participant_information", :address => @address, :order => @order
+
+/ ##########################################
+/ event signup email information
+= render "signup/orders/signup_mails", :event => @order.product.decorate, :order => @order
+
+/ ##########################################
+/ event signup contact info from event or account
+= render "signup/orders/signup_contact_information", :event => @order.product.decorate
+
+/ ##########################################
+/ bundle details zone
+= render "signup/eventbundles/subevents", :event => @order.product.decorate

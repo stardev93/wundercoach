@@ -1,0 +1,18 @@
+- if @businessdocument.address.company
+  = @businessdocument.address.company
+  br
+= @businessdocument.address.firstname
+|&nbsp;
+= @businessdocument.address.lastname
+- if @businessdocument.contact
+  |&nbsp;
+  = link_to crm_contact_path(@businessdocument.contact)
+    i.fa.fa.fa-external-link
+br
+= @businessdocument.address.street
+br
+= @businessdocument.address.country
+|&nbsp;-&nbsp;
+= @businessdocument.address.zip
+|&nbsp;
+= @businessdocument.address.city

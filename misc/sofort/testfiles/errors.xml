@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<errors>
+    <error>
+        <code>8054</code>
+        <message>All products deactivated due to errors, initiation aborted.</message>
+    </error>
+    <su>
+        <errors>
+            <error>
+                <code>8014</code>
+                <message>Invalid amount.</message>
+                <field>amount</field>
+            </error>
+        </errors>
+    </su>
+</errors>

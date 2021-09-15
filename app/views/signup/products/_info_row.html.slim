@@ -1,0 +1,17 @@
+/ ##########################################
+/ event basic details
+/ start- & end-date
+/ basic location for standard events, bundleevents, onlineevents
+- unless event.is_a? IndividualEvent
+  .row.signup-detail-zone
+    .col-xs-12
+      .well.signup_well
+        .row
+          .col-xs-6.col-sm-4.signup_col_start_date
+            = render "signup/products/start_date", :event => event
+
+          .col-xs-6.col-sm-4.signup_col_end_date
+            = render "signup/products/end_date", :event => event
+
+          .col-xs-12.col-sm-4.signup_col_location
+            = render "signup/products/location_info_short", :event => event

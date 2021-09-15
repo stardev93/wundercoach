@@ -1,0 +1,28 @@
+= f.simple_fields_for :address do |address|
+  .row
+    .col-xs-12.col-sm-5
+      = address.input :lastname, label: t(:lastname), hint: t(:lastname_hint)
+    .col-xs-12.col-sm-5
+      = address.input :firstname, label: t(:firstname), hint: t(:firstname_hint)
+    .col-xs-12.col-sm-2
+      = render "shared/f_gender", :form => address, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+
+  .row
+    .col-md-12
+      = address.input :company, label: t(:company), hint: t(:company_hint), required: false
+  .row
+    .col-md-6
+      = address.input :email, label: t(:email), hint: t(:email_hint)
+    .col-md-6
+      = address.input :telephone, label: t(:tel), hint: t(:tel_hint), required: false
+  .row
+    .col-md-3
+      = address.input :zip, label: t(:zip), hint: t(:zip_hint)
+    .col-md-9
+      = address.input :city, label: t(:city), hint: t(:city_hint)
+  .row
+    .col-md-12
+      = address.input :street, label: t(:street), hint: t(:street_hint)
+  .row
+    .col-md-12
+      = address.input :country, priority: %w(Deutschland), label: t(:country), hint: t(:country_hint)

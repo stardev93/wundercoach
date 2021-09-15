@@ -1,0 +1,17 @@
+/ vat is included in product price
+tr
+  td colspan="4"
+  td.text-right = t(:sum_net)
+  td.text-right = @businessdocument.decorate.net_sum
+  td
+tr
+  td colspan="4"
+    / = @businessdocument.decorate.vat_sums.each { |key, value| "#{key}br#{value}" }
+  td.text-right = t(:sum_vat_included)
+  td.text-right = @businessdocument.decorate.vat_sum
+  td
+tr
+  th colspan="4"
+  th.text-right = t(:sum_gross)
+  th.text-right = @businessdocument.decorate.gross_sum
+  th

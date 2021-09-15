@@ -1,0 +1,11 @@
+= simple_form_for(@userrole) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user, label: t(:user)
+    = f.association :role, label: t(:role)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: userroles_path

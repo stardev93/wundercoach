@@ -1,0 +1,16 @@
+ul.list-group
+  li.list-group-item
+    .row
+      .col-xs-12
+        strong
+          = t(:pricingset_name)
+
+      / .col-xs-6
+      /   strong
+      /     = t(:pricingoption_description)
+      /     br
+      /     = t(:pricingoption_hint_text)
+
+  - pricingsets.each do |pricingset|
+
+    = render "product/pricingsets/card", :pricingset => pricingset, :event => event

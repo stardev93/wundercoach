@@ -1,0 +1,19 @@
+de:
+  edit_adpartner: Edit ad partner
+  add_adpartner: Create new ad partner
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      adpartner:
+        one: Ad partner
+        other: Ad partners
+    attributes:
+      adpartner: ~
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      adpartner: ~
+    hints:
+      adpartner: ~
+
+  commission: Commission

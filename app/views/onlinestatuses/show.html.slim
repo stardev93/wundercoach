@@ -1,0 +1,65 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = @onlinestatus
+      span.add-item
+        = link_to new_onlinestatus_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_onlinestatus)
+    p.lead
+      = @onlinestatus.key
+      br
+      = @onlinestatus.name
+      br
+      = @onlinestatus.description
+      br
+      = @onlinestatus.position
+      br
+
+.row
+  .col-md-12
+    p.h3
+      'Onlinestatus
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong =t(:key)
+        br
+        span.lead = @onlinestatus.key
+        '&nbsp;
+      p
+        strong =t(:name)
+        br
+        span.lead = @onlinestatus.name
+        '&nbsp;
+      p
+        strong =t(:description)
+        br
+        span.lead = @onlinestatus.description
+        '&nbsp;
+      p
+        strong =t(:position)
+        br
+        span.lead = @onlinestatus.position
+        '&nbsp;
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to @onlinestatus, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_onlinestatus_path(@onlinestatus), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to onlinestatuses_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

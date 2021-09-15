@@ -1,0 +1,98 @@
+.row
+  .col-sm-12
+    = render "shared/section_header", header_text: t(:event_location), :hint_text => ""
+
+.row.well
+  .col-md-12
+
+    .row
+      .col-xs-10
+        = render "shared/f_boolean", :form => f, :field => :use_product_location, :field_label => t(:event_use_product_location), :field_hint => t(:event_use_product_location_hint), :field_id => "event_use_product_location"
+      .col-xs-2
+        = render "shared/button", path: product_locations_path, target: "_blank", link_text: t(:event_locations), icon: "", classes: "btn btn-default product_location", datatoggle: "tooltip", dataplacement: "top", title: t(:event_locations)
+
+    .row.product_location
+      .col-xs-12.product_location
+        / check plan
+        - if can? :access, Feature.find_by(key: 'manage_event_locations')
+          .row
+            .col-xs-12
+              = render "shared/f_chosen", :form => f, :field => :product_location, :field_label => t(:product_location), :field_collection => Product::LocationDecorator.decorate_collection(Product::Location.all.by_name), field_label_method: :location_info, :field_hint => t(:product_location_hint), :field_include_blank => t(:no_location_chosen)
+        - else
+          / reset use_product_location to false
+          - f.object.use_product_location = false
+          = f.input :use_product_location, as: :hidden
+          = render "shared/feature_check", text: t(:not_in_plan_text)
+
+    .row.event_location
+      .col-xs-12
+        .row
+          .col-xs-12
+            = f.input :eventorganizer, label: t(:eventorganizer), hint: t(:eventorganizer_hint)
+
+        .row
+          .col-xs-12
+            = f.input :location, label: t(:location), hint: t(:location_hint)
+        .row
+          .col-xs-10
+            = f.input :street, label: t(:street), hint: t(:street_hint)
+          .col-xs-2
+            = f.input :streetno, label: t(:streetno), hint: t(:streetno_hint)
+        .row
+          .col-xs-3
+            = f.input :zip, label: t(:zip), hint: t(:zip_hint)
+          .col-xs-9
+            = f.input :city, label: t(:city), hint: t(:city_hint)
+        .row
+          .col-xs-12
+            = f.input :country, priority: ["Deutschland", "Österreich", "Schweiz"], label: t(:country), hint: t(:country_hint), include_blank: true
+        .row
+          .col-xs-12
+            = f.input :googlemapslocation, label: t(:googlemapslocation), hint: t(:googlemapslocation_hint)
+        .row
+          .col-xs-6
+            = f.input :latitude, label: t(:latitude), hint: t(:latitude_hint)
+          .col-xs-6
+            = f.input :longitude, label: t(:longitude), hint: t(:longitude_hint)
+
+        - if f.object.geocoded? && f.object.full_street_address
+          .row
+            .col-xs-12
+              = link_to regenerate_map_event_path(f.object), method: "put", class: "btn btn-default btn-success"
+                i.fa.fa-refresh
+                '&nbsp;
+                = t(:recalculate_map)
+        .row
+          .col-sm-12
+            = render "events/googlemap", event: f.object
+
+javascript:
+  $(document).ready(function(){
+
+    $("#button_delete_product_location").click(function(event) {
+      event.preventDefault();
+      $("#event_product_location_id").prepend("<option value='' >&nbsp;</option>");
+      $("#event_product_location_id").val('').trigger('chosen:updated');
+
+      $("#event_product_location_id option[value='']").attr('selected', true);
+    });
+
+    if($('#event_use_product_location').is(':checked')) {
+      $('.product_location').show();
+      $('.event_location').hide();
+    } else {
+      $('.product_location').hide();
+      $('.event_location').show();
+    }
+
+  });
+  $('#event_use_product_location').change(function() {
+    if(this.checked) {
+      $('.product_location').show();
+      $('.event_location').hide();
+
+    } else {
+      $('.product_location').hide();
+      $('.event_location').show();
+    }
+  });

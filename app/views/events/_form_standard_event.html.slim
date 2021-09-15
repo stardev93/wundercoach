@@ -1,0 +1,19 @@
+= simple_form_for(@event) do |f|
+  = f.error_notification
+  .form-inputs
+
+    = render "events/form_partials/event_name_fields", :f => f
+
+    = render 'events/form_partials/planning_options_event', f: f
+
+    = render 'events/form_partials/event_pricing_options', f: f
+
+    = render 'events/form_partials/event_invoicing_options', f: f
+
+    = render 'events/form_partials/event_text_options', f: f
+
+    = render 'events/form_partials/event_signup_options', f: f
+
+    = render 'events/form_partials/event_location_options', f: f
+
+  = render 'events/form_partials/event_form_actions', f: f, event: @event

@@ -1,0 +1,24 @@
+(function() {
+  // insert event list
+  document.getElementById("widget_id_<%= "#{@widget.id}" %>").insertAdjacentHTML("afterend", <%= raw(%[<div id="wundercoach_wrapper">#{@html}</div>].to_json) %>)
+  // insert filter
+  document.getElementById("widget_id_<%= "#{@widget.id}" %>").insertAdjacentHTML("afterend", <%= raw render('filter').to_json %>)
+  // filter ajax logic
+  jQuery("#wc_filter_form").submit(function(event) {
+    event.preventDefault();
+    jQuery.ajax({
+      url: "<%= "#{api_v1_filtered_list_url(locale: nil)}?" %>" + jQuery(this).serialize() + "&callback=?",
+      dataType: "jsonp"
+    });
+  });
+  jQuery('#form-reset-button').click(function(){
+    jQuery('#wc_filter_form')[0].reset();
+    jQuery("#wc_filter_form").submit(function(event) {
+      event.preventDefault();
+      jQuery.ajax({
+        url: "<%= "#{api_v1_filtered_list_url(locale: nil)}?" %>" + jQuery(this).serialize() + "&callback=?",
+        dataType: "jsonp"
+      });
+    });
+  });
+})();

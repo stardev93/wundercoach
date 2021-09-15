@@ -1,0 +1,40 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # onlinestatus
+  message: Message
+  messages: Messages
+  messages_infotext: "Messages are displayed to all users in the Wundercoach backend, if the field \"online\" is set to active and date\\time in \"Show message from\" have been reached."
+  user_messages_infotext: "Your Wundercoach-news"
+  messages_hint: Nachrichten
+  message_subject: Subject
+  message_subject_hint: Subject line of the message.
+  message_body: Message body
+  message_body_hint: Message body of the message.
+  message_valid_from: Show message from
+  message_valid_from_hint: "Date/time from which on the message will be displayed. Field \"Message online\" must be activated as well."
+  message_online: Message online
+  message_online_hint: "Controls if the message is displayed to the users of wundercoach. Date/time in field \"Show message from\" must be reached as well."
+  new_message: New message
+  new_message_hint: Creates a new message.
+
+  message_publish: "Publish"
+  message_publish_hint: "Publishes the message in the users dashboard"
+  message_published: "Published"
+  message_published_hint: "Has the message been published?"
+  message_published_at: "Date published"
+  message_published_at_hint: "Date the message was published."
+  message_pushed_at: "Distribution date"
+  message_pushed_at_hint: "Date of distribution to user message board in backend"
+  message_mute: "Hide"
+  message_mute_hint: "Hides the message from the users dashboard"
+  message_publishing_successful: "The message has been successfully published. It is now displayed in the users dashboards"
+
+  message_unread_message_count: No. of messages
+  message_unread_message_count_hint: Number of unread messages
+
+  message_no_unread_messages: No unread messages
+  message_show_all_messages: Show all messages
+  user_message_read_more: "read more"
+  user_message_mark_as_read: "mark as read"
+
+  you_have_n_new_messages: "You have %{n} new messages"

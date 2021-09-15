@@ -1,0 +1,21 @@
+= simple_form_for(@smtpserver) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key
+    = f.input :name
+    = f.input :description
+    = f.input :server
+    = f.input :port
+    = f.input :ssl
+    = f.input :username
+    = f.input :password
+    = f.input :from_address
+    = f.input :from_name
+    = f.input :replyto_address
+    = f.input :active
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: smtpservers_path

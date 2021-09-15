@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-xs-12
+      p.lead = sanitize @event.redirect_message
+      p.lead
+        = t(:if_not_redirected_click_here)
+        = link_to t(:here), @event.external_signup_url
+        |.
+javascript:
+  window.setTimeout(function(){
+    window.location.href = "#{@event.external_signup_url}";
+  }, 5000);

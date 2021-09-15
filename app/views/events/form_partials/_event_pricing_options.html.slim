@@ -1,0 +1,28 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_pricing_options), :hint_text => "#{(f.object.vat_included? ? t(:event_gross_pricing_hint) : t(:event_net_pricing_hint))}"
+
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-6
+        = f.input :full_price, label: "#{(f.object.vat_included? ? t(:gross_price) : t(:net_price))}", hint: "#{(f.object.vat_included? ? t(:event_gross_price_hint) : t(:event_net_price_hint))}"
+        / t(:event_price_hint)
+      .col-xs-12.col-sm-6
+        = f.input :currency, as: :currency_picker
+
+
+    .row
+      .col-xs-12.col-sm-6
+        = f.association :vat, collection: current_tenant.vats, label_method: :to_s, include_blank: false
+      .col-xs-12.col-sm-6
+        = f.association :pricingset, collection: Product::Pricingset.all, label: t(:pricingset), hint: t(:pricingsets_hint), include_blank: t(:select_pricing_option)
+
+    .row
+      .col-md-12
+        = f.input :early_signup_pricing
+    .row.event_early_signup_pricing_toggle style="#{@event.early_signup_pricing ? "" : "display: none;"};"
+      .col-xs-12.col-sm-4
+        = f.input :price_early_signup
+      .col-xs-12.col-md-4
+        = f.input :early_signup_deadline, label: t(:early_signup_deadline), as: :date_time_picker

@@ -1,0 +1,15 @@
+= simple_form_for(@asset) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: t(:name)
+    = f.file_field :asset
+    = f.input :comments, label: t(:comments)
+    = f.input :status, label: t(:status), collection: [ :online, :offline], include_blank: false
+    = f.association :event
+    = f.association :eventsession
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: assets_path

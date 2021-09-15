@@ -1,0 +1,35 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-info-circle
+        | &nbsp;
+        = @request
+
+    p.lead
+      = sanitize @request.message
+
+    - if @request.email.present?
+      p.lead
+      = mail_to @request.email
+        i.fa.fa-envelope-o
+        '&nbsp;
+        = t(:contact_customer)
+    - if @request.tel.present?
+      p.lead
+      = link_to "tel:#{@request.tel}"
+        i.fa.fa-phone
+        '&nbsp;
+        = @request.tel
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @request, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to :back, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

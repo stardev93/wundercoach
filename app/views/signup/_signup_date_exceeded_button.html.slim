@@ -1,0 +1,5 @@
+- if event.latest_signup_date.present?
+  button.btn.btn-info.event_btn_latest_signup_date_exceeded class="#{button_type == 'large' ? 'btn-lg' : 'btn-sm'}" style="width: #{width}"
+    i.fa.fa-ban.icon_sign_up.event_icon_latest_signup_date_exceeded
+    '&nbsp;
+    = t(:latest_signup_date_exceeded)

@@ -1,0 +1,64 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @vat_revenue_account
+      span.add-item
+        = link_to new_vat_revenue_account_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_vat_revenue_account)
+    p.lead
+      = @vat_revenue_account.account
+      br
+      = @vat_revenue_account.vat
+      br
+      = @vat_revenue_account.name
+      br
+      = @vat_revenue_account.revenue_account
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Vat revenue account
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:account)
+        br
+        span.lead = @vat_revenue_account.account
+        '&nbsp;
+      p
+        strong = t(:vat)
+        br
+        span.lead = @vat_revenue_account.vat
+        '&nbsp;
+      p
+        strong = t(:name)
+        br
+        span.lead = @vat_revenue_account.name
+        '&nbsp;
+      p
+        strong = t(:revenue_account)
+        br
+        span.lead = @vat_revenue_account.revenue_account
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @vat_revenue_account, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_vat_revenue_account_path(@vat_revenue_account), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to vat_revenue_accounts_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

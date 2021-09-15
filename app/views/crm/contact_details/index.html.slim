@@ -1,0 +1,65 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = t(:contact_details)
+      span.add-item
+        = link_to new_crm_contact_detail_path, class: "btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_crm_contact_detail)
+    p.helper_text
+      = t(:crm_contact_detail_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag crm_contact_details_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to crm_contact_details_path, class: "btn btn-link"
+                = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th = t(:account)
+          th = t(:contact)
+          th = t(:detail_value)
+          th = t(:detail_type)
+          th
+
+      tbody
+        - @contact_details.each do |crm_contact_detail|
+          tr
+            td = link_to crm_contact_detail.account, crm_contact_detail
+            td = crm_contact_detail.contact
+            td = crm_contact_detail.detail_value
+            td = crm_contact_detail.detail_type
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group.pull-right
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to crm_contact_detail_path(crm_contact_detail)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_crm_contact_detail_path(crm_contact_detail)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to crm_contact_detail, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

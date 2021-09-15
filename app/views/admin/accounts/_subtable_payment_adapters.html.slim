@@ -1,0 +1,35 @@
+.row
+  .col-md-12
+
+    table.table.table-hover
+      thead
+        tr
+          th
+            = t (:payment_adapter)
+          th
+            = t (:info)
+          th
+            = t (:created_at)
+          th
+
+      tbody
+        - @payment_adapters.each do |payment_adapter|
+          tr
+            td
+              = payment_adapter
+            td
+              = payment_adapter.payment_info
+            td
+              - unless payment_adapter.created_at.blank?
+                = l payment_adapter.created_at, format: :short
+
+            td
+              / = link_to edit_admin_payment_adapter_path(payment_adapter), class: "btn btn-default"
+              /   = t(:edit)
+              = link_to admin_payment_adapter_path(payment_adapter), data: { confirm: t(:are_you_sure_you_want_to_delete_this_payment_adapter) }, method: :delete, class: "btn btn-default"
+                = t(:delete)
+
+
+.row
+  .col-xs-12
+    = will_paginate @payment_adapters, renderer: BootstrapPagination::Rails, :link_path => admin_account_path(@account), :params => {:anchor => "payment_adapters"}, :param_name => "payment_adapterspage"

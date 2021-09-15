@@ -1,0 +1,52 @@
+- new_contact_tag = render "shared/button", path: new_crm_contact_tag_path, link_text: t(:new), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:new)
+= render "shared/form_header",
+          :header_text => t(:contact_tags),
+          :hint_text => t(:contact_tag_infotext),
+          :buttons => new_contact_tag
+
+.row.well
+  .col-xs-12
+    = render "shared/form_search", :search_path => crm_contact_tags_path
+
+.row.well
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th = t(:name)
+          th.text-center
+            = t(:contact_count)
+          th
+
+      tbody
+        - @contact_tags.each do |crm_contact_tag|
+          - contact_filter_path = crm_contacts_path + '?q[contact_tags_id_eq]=' + crm_contact_tag.id.to_s
+          tr
+            td
+              = link_to contact_filter_path
+                = crm_contact_tag.name
+            td.text-center
+              span.badge
+                = crm_contact_tag.contacts.count
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group.pull-right
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to contact_filter_path
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_crm_contact_tag_path(crm_contact_tag)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = render "shared/delete_button", :button_type => 'btn-link', :delete_url => crm_contact_tag_path(crm_contact_tag), :delete_text => t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

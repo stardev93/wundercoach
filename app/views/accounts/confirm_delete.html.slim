@@ -1,0 +1,19 @@
+= simple_form_for(@account, url: account_path, method: :delete) do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-12
+        .alert.alert-danger
+          strong
+            = t("account.delete_confirmation_warning_headline")
+          br
+          = t("account.delete_confirmation_warning")
+        .input-group
+          label for="account[delete_confirmation]" = t("account.delete_confirmation")
+          = f.input_field :delete_confirmation, placeholder: t(:account_number), required: true, class: "string required form-control"
+        = f.hint t("account.delete_confirmation_hint")
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: settings_path

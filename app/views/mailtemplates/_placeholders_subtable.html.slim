@@ -1,0 +1,51 @@
+.row
+  .col-md-12
+    .page-header
+      h3
+        i.fa.fa-map-pin
+        | &nbsp;
+        =  t(:placeholders)
+      .panel-group id="accordion" role="tablist" aria-multiselectable="true"
+        - i = 0
+        - Placeholder.by_objecttype.group(:objecttype).each do |placeholder_objecttype|
+          - i = i + 1
+          .panel.panel-default
+            .panel-heading role="tab" id="heading_#{placeholder_objecttype.objecttype}"
+              h4 class="panel-title"
+                a class="#{(i==1 ? '' : 'collapsed')}" role="button" data-toggle="collapse" data-parent="#accordion" href="##{placeholder_objecttype.objecttype}" aria-expanded="#{(i==1 ? 'true' : '')}" aria-controls="#{placeholder_objecttype.objecttype}"
+                  = t(:"#{placeholder_objecttype.objecttype}")
+            .panel-collapse.collapse class="#{(i==1 ? 'in' : '')}" id="#{placeholder_objecttype.objecttype}" role="tabpanel" aria-labelledby="heading_#{placeholder_objecttype.objecttype}"
+
+              ul.list-group.placeholders style="overflow-y: scroll;height: 458px;"
+                - @placeholders.objecttype_filter(placeholder_objecttype.objecttype).by_name.by_sortorder.each do |placeholder|
+                  li.list-group-item
+                    span.tplitem title="#{placeholder.name}" data-value="#{placeholder.name}" draggable="true"
+                      i.fa.fa-arrows
+                      |&nbsp;
+                      = t(:"#{placeholder.name[1..-2].split(".")[0]}")
+                      |.
+                      = t(:"#{placeholder.name[1..-2].split(".")[1]}")
+                      br
+                      small
+                        = placeholder.name
+                        br
+                        = placeholder.description
+
+
+javascript:
+  function createAccordionIcons(){
+      $("#accordion .panel-title a").each(function(){
+          if($(this).hasClass("collapsed")){
+              $(this).prepend("<span class='fa fa-plus' style='padding-right:8px;'></span>");
+          } else {
+              $(this).prepend("<span class='fa fa-minus' style='padding-right:8px;'></span>");
+          }
+      });
+  }
+  createAccordionIcons();
+
+  $('.collapse').on('shown.bs.collapse', function(){
+      $(this).parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+  }).on('hidden.bs.collapse', function(){
+      $(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+  });

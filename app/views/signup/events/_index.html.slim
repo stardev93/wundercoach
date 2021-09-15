@@ -1,0 +1,33 @@
+.row.event_body_zone
+  .col-sm-12.hidden-xs
+    table.table.event_table
+      thead.event_thead
+        tr
+          td colspan="6"
+            h4.event_headline = t(:events)
+        tr.event_tr
+          th.event_th
+            = t(:start)
+            |&nbsp;/&nbsp;
+            = t(:end)
+          th.event_th = t(:event_name_short)
+          th.event_th = t(:coach)
+          th.event_th = t(:location)
+          th.text-right.event_th = t(:event_price)
+          th.event_th
+
+      tbody.event_tbody
+        - @events.each do |event|
+          = render 'signup/events/row', event: event.decorate
+
+  .col-md-12.visible-xs
+    ul.list-group
+      li.list-group-item
+        h4.event_headline = t(:events)
+      - @events.each do |event|
+        = render 'signup/events/row_xs', event: event.decorate
+
+javascript:
+  function toggleSubevents(id) {
+    $('#' + id).toggle();
+  }

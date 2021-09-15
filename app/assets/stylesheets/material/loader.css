@@ -1,0 +1,11 @@
+#loader-container {
+    background: #EDF0F1 url('../images/wundercoach_spinner.gif') no-repeat center center;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-size: 125px 87px;
+}

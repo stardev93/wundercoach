@@ -1,0 +1,15 @@
+= simple_form_for(@paymentterm) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :account
+    = f.association :paymentmethod
+    / = f.input :context
+    = f.input :context, as: :select, :collection => (Paymentterm::CONTEXTS.map { |key, val| [t(:"#{key}"), val] }), :include_blank => false, label: t(:type)
+    = f.input :name
+    = f.input :description
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: paymentterms_path

@@ -1,0 +1,39 @@
+.row
+  .col-md-12
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#accounts" aria-controls="accounts" role="tab" data-toggle="tab"
+          = Account.model_name.human(count: 2)
+      li
+        a href="#adpartners" aria-controls="adpartners" role="tab" data-toggle="tab"
+          = Adpartner.model_name.human(count: 2)
+      li
+        a href="#tags" aria-controls="tags" role="tab" data-toggle="tab"
+          = Affiliate::Tag.model_name.human(count: 2)
+      li
+        a href="#eventlists" aria-controls="eventlists" role="tab" data-toggle="tab"
+          = Affiliate::EventList.model_name.human(count: 2)
+      li
+        a href="#events" aria-controls="events" role="tab" data-toggle="tab"
+          = Event.model_name.human(count: 2)
+      li
+        a href="#orders" aria-controls="orders" role="tab" data-toggle="tab"
+          = Order.model_name.human(count: 2)
+.row
+  .col-md-12
+    .well
+      p
+        |&nbsp;
+      .tab-content
+        .tab-pane.active role="tabpanel" id="accounts"
+          = render "affiliate/subtable", affiliate: @affiliate
+        .tab-pane role="tabpanel" id="adpartners"
+          = render "affiliate/adpartners/subtable", affiliate: @affiliate
+        .tab-pane role="tabpanel" id="tags"
+          = render "affiliate/tags/subtable", affiliate: @affiliate
+        .tab-pane role="tabpanel" id="eventlists"
+          = render "affiliate/event_lists/subtable", event_lists: @event_lists
+        .tab-pane role="tabpanel" id="events"
+          = render "affiliate/events/subtable", events: @events
+        .tab-pane role="tabpanel" id="orders"
+          = render "affiliate/orders/subtable", orders: @orders

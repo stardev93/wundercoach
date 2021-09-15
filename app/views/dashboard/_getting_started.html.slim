@@ -1,0 +1,99 @@
+div class="modal fade" id="getting_started" tabindex="-1" role="dialog" aria-labelledby="getting_startedLabel"
+  div class="modal-dialog modal-lg" role="document"
+    div class="modal-content"
+      div class="modal-header"
+        .row
+          .col-xs-12.col-sm-6
+            span.h3
+              |&nbsp;&nbsp;&nbsp;
+              = t(:get_started)
+          .col-xs-12.col-sm-6.text-right
+            label
+              span class="font-weight: normal;"
+                = t(:dont_show_get_started_again)
+              |&nbsp;
+              input.icheck-me.hide-modal-forever type="checkbox" data-skin="square" data-color="blue"
+            |&nbsp;
+            |&nbsp;
+            |&nbsp;
+            button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true"
+                |&times;
+            br
+      div class="modal-body"
+        / .row
+        /   .col-xs-12
+        /     p.lead Rufen Sie uns an. Wir helfen Ihnen, Wundercoach in Betrieb zu nehmen.
+        /     p.lead Wir binden Wundercoach in Ihre Website ein und helfen bei allen weiteren Fragen, damit Sie sofort loslegen können.
+        /     p.lead
+        /       strong Tel Supporthotline: 040/8541070
+        /     p.lead oder schreiben Sie eine Email an #{mail_to('help@wundercoach.net')}:
+
+        p
+          = render "dashboard/startup_task",
+            :icon => "hat.png",
+            :headline => t(:getting_started_first_event_headline),
+            :text => t(:getting_started_first_event_text),
+            :button_text => t(:getting_started_first_event_link_text),
+            :button_url => new_event_path,
+            :step_done => Event.all.exists?
+        p
+          = render "dashboard/startup_task",
+            :icon => "earth.png",
+            :headline => t(:getting_started_website_integration_headline),
+            :text => t(:getting_started_website_integration_text),
+            :button_text => t(:getting_started_website_integration_link_text),
+            :button_url => iframe_path,
+            :step_done => @account.websiteintegration_done
+        p  
+          = render "dashboard/startup_task",
+            :icon => "university.png",
+            :headline => t(:getting_started_account_data_headline),
+            :text => t(:getting_started_account_data_text),
+            :button_text => t(:getting_started_account_data_link_text),
+            :button_url => edit_settings_path,
+            :step_done => @account.billing_data_completed?
+        p
+          = render "dashboard/startup_task", 
+            :icon => "pdf.png", 
+            :headline => t(:getting_started_online_billing_headline), 
+            :text => t(:getting_started_online_billing_text), 
+            :button_text => t(:getting_started_online_billing_link_text), 
+            :button_url => invoicedesign_path, 
+            :step_done => @account.invoicedesign_done?
+        p
+          = render "dashboard/startup_task", 
+            :icon => "pdf.png", 
+            :headline => t(:getting_started_online_payment_headline), 
+            :text => t(:getting_started_online_payment_text), 
+            :button_text => t(:getting_started_online_payment_link_text), 
+            :button_url => invoicedesign_path, 
+            :step_done => @account.invoicedesign_done?
+        p
+          = render "dashboard/startup_task", 
+            :icon => "pdf.png", 
+            :headline => t(:getting_started_google_ranking_headline), 
+            :text => t(:getting_started_google_ranking_text), 
+            :button_text => t(:getting_started_google_ranking_link_text), 
+            :button_url => invoicedesign_path, 
+            :step_done => @account.invoicedesign_done?
+
+
+      div class="modal-footer"
+        button type="button" class="btn btn-default" data-dismiss="modal"
+          =t(:close)
+javascript:
+  $(function() {
+    if($(".icheck-me").length > 0){
+      $(".icheck-me").each(function(){
+        var $el = $(this);
+        var skin = ($el.attr('data-skin') !== undefined) ? "_" + $el.attr('data-skin') : "",
+        color = ($el.attr('data-color') !== undefined) ? "-" + $el.attr('data-color') : "";
+        var opt = {
+          checkboxClass: 'icheckbox' + skin + color,
+          radioClass: 'iradio' + skin + color,
+        }
+        $el.iCheck(opt);
+      });
+    }
+  });

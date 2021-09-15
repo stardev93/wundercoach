@@ -1,0 +1,28 @@
+= simple_form_for(@placeholder, url: (@placeholder.new_record? ? admin_placeholders_path : admin_placeholder_path)) do |f|
+  = f.error_notification
+  .row
+    .col-xs-12.col-sm-6
+      .form-inputs
+        .row
+          .col-xs-12
+            = f.input :name, label: t(:name)
+        .row
+          .col-xs-6
+            = f.input :display_name, label: t(:display_name)
+          .col-xs-6
+            = f.input :objecttype, collection: [[t(:event), 'event'], [t(:eventbooking), 'eventbooking']], :label => t(:object_type) ,:include_blank => false
+        .row
+          .col-xs-6
+            = f.input :sortorder, label: t(:sortorder_label)
+          .col-xs-6
+            = f.input :localisation_type, as: :select, include_blank: false, collection: Placeholder.localisation_types.keys
+    .col-xs-12.col-sm-6
+        .row
+          .col-xs-12
+            = f.input :description, :as => :text, :input_html => { 'rows' => 12 }, label: t(:description)
+
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_placeholders_path

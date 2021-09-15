@@ -1,0 +1,86 @@
+.modal.fade id="contact_duplicates" tabindex="-1" role="dialog" aria-labelledby="contact_duplicates" aria-hidden="true"
+  .modal-dialog style="width: 80%;"
+    .modal-content
+      .modal-header
+        .modal-title id="contact_duplicates"
+          .row
+            .col-xs-12.col-sm-3
+              span.h4 = t(:invoice_contact)
+            .col-xs-12.col-sm-6
+              - if @businessdocument.address
+                / integrate to BusinessdocumentDecorator later, there is a solution: recipient_address
+                / address stored in businessdocument.address and businessdocument.order.address
+                = render "billing/businessdocuments/address_from_order", :@businessdocument => @businessdocument
+              - else
+                / address stored in businessdocument
+                = render "billing/businessdocuments/address_from_contact", :@businessdocument => @businessdocument
+              br
+              = @businessdocument.recipient_email
+            .col-xs-12.col-sm-3.text-right
+              = link_to billing_businessdocuments_createcontact_path(@businessdocument), class: "btn btn-default"
+                  i.fa.fa-user-plus
+                  '&nbsp;
+                  = t(:create_contact)
+      .modal-body
+        .div style="margin:4px 4px; padding:4px; height: 340px; overflow-x: hidden; overflow-x: auto;"
+          span.h4 = t(:existing_contacts)
+          - Crm::ContactDecorator.decorate_collection(@contacts).each do |contact|
+            ul.list-group
+              li.list-group-item
+                .row
+                  .col-xs-12.col-sm-1
+                    = contact.account_receivable_no
+                  .col-xs-12.col-sm-9
+                    = link_to crm_contact_path(contact), target: "_blank"
+                      = contact
+                      |&nbsp;
+                      i.fa.fa-external-link
+                  .col-xs-12.col-sm-2.text-right
+                    p
+                      = link_to billing_businessdocuments_assigncontact_path(@businessdocument, contact), class: "btn btn-sm btn-default"
+                        i.fa.fa-user-plus
+                        |&nbsp;
+                        = t(:assign_contact_to_invoice)
+                - contact.contact_addresses.primary_first.each do |contact_address|
+                  .row
+                    .col-xs-12.col-sm-1
+                      |&nbsp;
+                    .col-xs-12.col-sm-2
+                      strong
+                        - unless contact_address.address_type.blank?
+                          = t(:"#{contact_address.address_type}")
+                        - else
+                          = t(:address)
+                      br
+                      - if contact_address.is_primary
+                        |(
+                        = t(:primary_address)
+                        |)
+                    .col-xs-12.col-sm-7
+                      = contact_address.street
+                      br
+                      = contact_address.zip
+                      |&nbsp;
+                      = contact_address.city
+                      br
+                    .col-xs-12.col-sm-2.text-right
+                      / = link_to crm_contact_path(contact) + '?address_id=' + contact_address.id.to_s, target: "_blank", class: "btn btn-sm btn-default"
+                      / = link_to billing_businessdocuments_assigncontact_path(@businessdocument, contact) + '?address_id=' + contact_address.id.to_s, class: "btn btn-sm btn-default"
+                      /   = t(:assign_contact_to_invoice)
+              - contact.contact_details.each do |contact_detail|
+                li.list-group-item
+                  .row
+                    .col-xs-12.col-sm-1
+                      |&nbsp;
+                    .col-xs-12.col-sm-2
+                      strong
+                        - if contact_detail && !contact_detail.detail_type.blank?
+                          = t(:"#{contact_detail.detail_type}")
+                    .col-xs-12.col-sm-5
+                      = contact_detail.detail_value
+      .modal-footer
+        .row
+          .col-md-8.text-left
+          .col-md-4.text-right
+            button.btn.btn-default type="button" data-dismiss="modal"
+              = t(:cancel)

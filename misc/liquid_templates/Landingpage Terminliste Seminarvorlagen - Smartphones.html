@@ -1,0 +1,150 @@
+<!-- Landingpage Terminliste Seminarvorlagen (Liste für Smartphones)
+Dieses Widget zeigt die Seminare einer Seminarvorlage an. Benutzen Sie diese Vorlage, um Ihre zu den Inhalten einer Seminarvorlage auch eine Liste der Termine dieser Vorlage auf Ihren Landingpages und Produktseiten auszugeben. Sie können Sie auch mit dem Widget "Landingpage für Seminarvorlagen" kombinieren, mit dem Sie zusätzlich die Termine der Seminare ausgeben können.
+Die Darstellung erolgt als Liste und ist für Smartphones gut geeignet. -->
+{{stylesheet}}
+<!-- angezeigt auf Smartphones, kleiner als 992px Bildschirmbreite -->
+<div class="row visible-xs-* hidden-sm hidden-md hidden-lg event_list_smartphone">
+  <div class="col-xs-12">
+    <ul class="list-group event_group">
+      <li class="list-group-item event_item">
+        <h4 class="event_headline">Fest terminierte Seminare</h4>
+      </li>
+      {% for event in events%}
+        <li class="list-group-item event_item">
+          <span class="event_name_label"><strong>Veranstaltung</strong></span>
+          <br />
+          <span class="event_name">{{event.show_link}}</span>
+        </li>
+        <li class="list-group-item text-center event_item">
+          {{event.signup_link}}
+          <br />
+          {{event.details_link}}
+        </li>
+        <li class="list-group-item event_item">
+          <span class="event_shortdescription_label"><strong>Beschreibung</strong></span>
+          <br />
+          <span class="event_shortdescription">
+            {{event.shortdescription}}
+          </span>
+        </li>
+        {% if event.early_signup_pricing %}
+          <li class="list-group-item event_item">
+            <div class="row">
+              <div class="col-xs-6">
+                <span class="event_price_early_signup_label">
+                  <strong>Frühbucherpreis</strong>
+                </span>
+                <br />
+                <span class="event_price_early_signup">
+                  {{event.price}}
+                </span>
+                <br />
+                <span class="event_full_price">
+                  danach: {{event.full_price}}
+                </span>
+              </div>
+              <div class="col-xs-6">
+                <span class="event_early_signup_deadline_label">
+                  <strong>gültig bis</strong>
+                </span>
+                <br />
+                <span class="event_early_signup_deadline">
+                  {{event.early_signup_deadline_date}}
+                  <br />
+                  {{event.early_signup_deadline_time}}
+                </span>
+              </div>
+              <div class="col-xs-6">
+
+              </div>
+            </div>
+          </li>
+        {% else %}
+          <li class="list-group-item event_item">
+            <span class="event_price_label">
+              <strong>Preis</strong>
+            </span>
+            <br />
+            <span class="event_full_price">
+              {{event.price}}
+            </span>
+          </li>
+        {% endif %}
+        <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-6">
+              <span class="event_start_date_label">
+                <strong>Startdatum</strong>
+              </span>
+              <br />
+              <span class="event_start_date">
+                {{event.start_date}}
+              </span>
+            </div>
+            <div class="col-xs-6">
+              <span class="event_end_date_label">
+                <strong>Enddatum</strong>
+              </span>
+              <br />
+              <span class="event_end_date">
+                {{event.end_date}}
+              </span>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item event_item">
+          <span class="event_coach_label"><strong>Trainer</strong></span>
+          <br />
+          <span class="event_coach">
+            {{event.coaches}}
+          </span>
+        </li>
+        <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="event_location_label">
+                <strong>Veranstaltungsort</strong>
+              </span>
+            </div>
+            {% if event.location %}
+              <div class="col-xs-12">
+                <span class="event_location_name">
+                  {{event.location}}
+                </span>
+              </div>
+            {% endif %}
+            {% if event.eventorganizer %}
+              <div class="col-xs-12">
+                <span class="event_location_eventorganizer">
+                  {{event.eventorganizer}}
+                </span>
+              </div>
+            {% endif %}
+            {% if event.street %}
+              <div class="col-xs-12">
+                <span class="event_location_street">
+                  {{event.street}}
+                </span>
+              </div>
+            {% endif %}
+            {% if event.city %}
+              <div class="col-xs-12">
+                <span class="event_location_zip">
+                  {{event.zip}}
+                </span>
+                &nbsp;
+                <span class="event_location_city">
+                  {{event.city}}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {% else %}
+        <li class="list-group-item event_item">
+          <h4 class="event_headline">Zur Zeit sind keine Termine geplant.</h4>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

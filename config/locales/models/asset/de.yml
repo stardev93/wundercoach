@@ -1,0 +1,13 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # assets
+  assets: "Uploads"
+  asset: "Upload"
+  asset_name: "Dateiname"
+  asset_status: "Status"
+  download_file: "Datei herunterladen"
+  uploaded_by_on: "hochgeladen von %{username} am %{created_at}"
+  are_you_sure_you_want_to_delete_this_asset: "Wollen Sie diese Datei wirklich löschen?"
+  assets_uploaded_to_this_event: "Dateien zu diesem Event"
+  drop_files_here_to_upload: "Dateien zum Hochladen hierher ziehen"
+  assets_infotext: "Laden Sie Dateien hoch und stellen Sie diese Ihren Teilnehmern zur Verfügung. Ziehen Sie die Dateien einfach auf die Fläche unten."

@@ -1,0 +1,20 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  edit_adpartner: Adpartner bearbeiten
+  add_adpartner: Neuen Adpartner anlegen
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      adpartner:
+        one: Adpartner
+        other: Adpartner
+    attributes:
+      adpartner: ~
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      adpartner: ~
+    hints:
+      adpartner: ~
+
+  commission: Provision

@@ -1,0 +1,11 @@
+= simple_form_for(@mailskinasset) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :mailskin, label: t(:mailskin), hint: t(:mailskin_hint), include_blank: false
+    = f.input :mailskinasset, label: t(:mailskinasset), hint: t(:mailskinasset_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: mailskinassets_path

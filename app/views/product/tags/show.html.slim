@@ -1,0 +1,55 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = @tag
+      span.add-item
+        = link_to new_product_tag_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_tag)
+
+.row
+  .col-xs-12.text-right
+    p &nbsp;
+    = link_to @tag, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    '&nbsp;
+    = link_to edit_product_tag_path(@tag), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to product_tags_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+
+.row
+  .col-xs-12
+    |&nbsp;
+
+
+.row
+  .col-md-12
+    hr
+    ul.nav.nav-tabs role="tablist"
+      li class="active"
+        a href="#eventlist" aria-controls="eventlist" role="tab" data-toggle="tab"
+          = t(:events)
+      li
+        a href="#eventtemolatelist" aria-controls="eventtemolatelist" role="tab" data-toggle="tab"
+          = t(:eventtemplates)
+
+.row
+  .col-md-12
+    .well
+      p
+        |&nbsp;
+      .tab-content
+        .tab-pane.active role="tabpanel" id="eventlist"
+          = render "event/tags/eventlist", :events => @events
+        .tab-pane role="tabpanel" id="eventtemolatelist"
+          = render "event/tags/eventtemplatelist", :eventtemplates => @eventtemplates

@@ -1,0 +1,40 @@
+nav.navbar.navbar-default
+  .navbar-form.navbar-left style="width: 100%;"
+    .row
+      .col-xs-12
+        .form-group style="width: 100%;"
+          = simple_form_for :eventbooking, url: eventbookings_path, method: :get do |f|
+            .row
+              .col-xs-12.col-sm-3
+                = f.label :search, required: false
+                br
+                = f.input_field :search, class: 'form-control', value: @filters['search']
+              .col-xs-12.col-sm-3
+                = f.label :start_date, required: false
+                br
+                = f.input_field :start_date, class: 'form-control',
+                          as: :date_picker,
+                          value: @filters['start_date']
+              .col-xs-12.col-sm-3
+                = f.label :end_date, required: false
+                br
+                = f.input_field :end_date, class: 'form-control',
+                          as: :date_picker,
+                          value: @filters['end_date']
+              .col-xs-12.col-sm-3.text-right
+                label
+                  |&nbsp;
+                br
+                = f.button :button, class: "button btn btn-primary", name: nil
+                  i.fa.fa-search
+                - unless @filters.empty?
+                  = link_to eventbookings_path(clear: :filter), class: "btn btn-link"
+                    = t(:show_all)
+            .row
+              .col-xs-12.col-sm-3
+                |&nbsp;
+            .row
+              .col-xs-12.col-sm-9
+                = render "eventbookingstatuses/eventbookingstatus_buttons"
+              .col-xs-12.col-sm-3.text-right
+                = render "eventbookings/download_button"

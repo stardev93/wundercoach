@@ -1,0 +1,71 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @smtpserver
+      span.add-item
+        = link_to new_smtpserver_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_smtpserver)
+.row
+  .col-xs-12
+    address
+      p
+        strong = t(:name)
+        br
+        span.lead = @smtpserver.name
+        '&nbsp;
+      p
+        strong = t(:description)
+        br
+        span.lead = @smtpserver.description
+        '&nbsp;
+      p
+        strong = t(:server)
+        br
+        span.lead = @smtpserver.server
+        '&nbsp;
+      p
+        strong = t(:port)
+        br
+        span.lead = @smtpserver.port
+        '&nbsp;
+      p
+        strong = t(:ssl)
+        br
+        span.lead = @smtpserver.ssl
+        '&nbsp;
+      p
+        strong = t(:username)
+        br
+        span.lead = @smtpserver.username
+        '&nbsp;
+      p
+        strong = t(:password)
+        br
+        span.lead 
+          |********
+        '&nbsp;
+      p
+        strong = t(:active)
+        br
+        span.lead = @smtpserver.active
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @smtpserver, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_smtpserver_path(@smtpserver), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to smtpservers_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

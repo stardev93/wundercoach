@@ -1,0 +1,15 @@
+= simple_form_for(@feature, url: (@feature.new_record? ? admin_features_path : admin_feature_path)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key, label: t(:key), hint: t(:key_hint)
+    = f.input :name, label: t(:name), hint: t(:name_hint)
+    = f.input :description, label: t(:description), hint: t(:description_hint), as: :editor, input_html: { style: 'height: 200px;' }
+    = f.input :position, as: :hidden, label: t(:position), hint: t(:position_hint)
+    = f.association :appversion, label: t(:version), hint: t(:version_hint), include_blank: false
+    = f.input :fieldtype, label: t(:type), collection: [ "string", "integer", "float", "boolean"], include_blank: false
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_features_path

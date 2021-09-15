@@ -1,0 +1,14 @@
+  - if address.company.present?
+    = truncate(address.company, :length => 30, :separator => ' ', omission: '...')
+    br
+  = t(:"#{address.gender}_indirect")
+  |&nbsp;
+  = address.fullname
+  br
+  = address.street
+  br
+  = address.zip
+  '&nbsp;
+  = address.city
+  br
+  = address.country_name

@@ -1,0 +1,12 @@
+.row
+  .col-xs-6.text-left.footer
+    = I18n.localize Date.today
+  .col-xs-6.text-right.footer
+    p
+      = t(:page) 
+      |&nbsp;
+      span class="page"
+      |&nbsp;
+      = t(:page_of)
+      |&nbsp;
+      span class="topage"

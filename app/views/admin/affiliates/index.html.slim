@@ -1,0 +1,87 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:affiliates)
+      span.add-item
+        = link_to new_admin_affiliate_path, :class=>"btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_affiliate)
+    p.helper_text
+      = t(:affiliate_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag admin_affiliates_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to affiliates_path, class: "btn btn-link"
+                = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th
+            = t (:name)
+          th
+            = t (:name_addon)
+          th
+            = t (:lastname)
+          th
+            = t (:firstname)
+          th
+            = t (:street)
+          th
+            = t (:zip)
+          th
+            = t (:city)
+          th
+            = t (:country)
+          th
+            = t (:email)
+          th
+
+      tbody
+        - @affiliates.each do |affiliate|
+          tr
+            td = link_to affiliate.name, admin_affiliate_path(affiliate)
+            td = affiliate.name_addon
+            td = affiliate.lastname
+            td = affiliate.firstname
+            td = affiliate.street
+            td = affiliate.zip
+            td = affiliate.city
+            td = affiliate.country
+            td = affiliate.email
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to admin_affiliate_path(affiliate)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_admin_affiliate_path(affiliate)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to admin_affiliate_path(affiliate), data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

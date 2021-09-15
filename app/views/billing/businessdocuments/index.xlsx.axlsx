@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t(:invoices)) do |sheet|
+  sheet.add_row [t(:invoicetype), t(:invoice_number), t(:invoice_date), t(:invoicestatus), t(:paymentstatus), t(:recipient), t(:due_date), t(:currency), t(:sum_net), t(:sum_vat), t(:total_price)]
+
+  @businessdocuments.each do |businessdocument|
+    sheet.add_row [businessdocument.invoicetype, businessdocument.invoice_number, businessdocument.invoice_date, businessdocument.invoicestatus, businessdocument.paymentstatus, businessdocument.address, businessdocument.due_date, businessdocument.currency, businessdocument.net_sum, businessdocument.vat_sum, businessdocument.gross_sum]
+  end
+end

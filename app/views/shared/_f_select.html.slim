@@ -1,0 +1,21 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+
+- if defined? field_disabled
+  - disabled = field_disabled
+- else
+  - diabled = false
+
+- if defined? field_include_blank
+  - include_blank = field_include_blank
+- else
+  - include_blank = false
+
+= form.input field, as: :select, collection: field_collection, include_blank: include_blank, label: label, hint: hint, disabled: disabled, readonly: disabled

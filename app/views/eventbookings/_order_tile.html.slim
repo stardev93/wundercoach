@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => order, :field_label => t(:order), :field_hint => t(:order_hint)
+
+.row
+  .col-xs-12
+    .row
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => order.order_date + " " + order.order_time, :field_label => t(:booking_date), :field_hint => t(:booking_date_hint)
+
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => order.price, :field_label => t(:price), :field_hint => t(:price_hint)
+
+    .row
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => @eventbooking.eventbookingstatus, :field_label => t(:eventbookingstatus), :field_hint => t(:eventbookingstatus_hint)
+
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => order.paymentmethod, :field_label => t(:paymentmethod), :field_hint => t(:paymentmethod_hint)

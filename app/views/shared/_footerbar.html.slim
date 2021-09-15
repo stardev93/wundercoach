@@ -1,0 +1,85 @@
+- unless current_user.has_message
+  - last_message = current_user.get_last_message.decorate
+  nav.navbar.navbar-default.navbar-fixed-bottom.wc_footerbar id="Messageboard"
+    .row
+      .col-xs-12
+        p
+          |&nbsp;
+        .container
+          .row
+            .col-xs-10
+              span.h4
+                = last_message.subject
+            .col-xs-2.text-right
+              button.btn.btn-link type="button" aria-label="Close" id="closeMessageboard"
+                i.fa.fa-close
+              strong
+                = last_message.valid_from_date(@account.get_time_zone)
+              |&nbsp;
+              button.btn.btn-link type="button" aria-label="Minimize" id="minimizeMessageboard" style="display:none;"
+                i.fa.fa-caret-down
+              button.btn.btn-link type="button" aria-label="Maximize" id="maximizeMessageboard"
+                i.fa.fa-caret-up
+              |&nbsp;
+
+    .row
+      .col-xs-12
+        .container
+          .row
+            .col-xs-10
+              .row
+                .col-xs-11
+                  - show_read_more = last_message.body.length > 250
+                  - if show_read_more
+                    p id="teaser_text"
+                      = last_message.get_body_teaser
+                      button.btn.btn-link href="#" id="readMore"
+                        = t(:read_more)
+                    hr
+                  - else
+                    p.full_text id="full_text"
+                      p
+                        = sanitize last_message.body
+
+
+  javascript:
+    function maximizeMessageboard() {
+      var viewport = $(window).height();
+      var menuebar = $("#navigation-one").height();
+      $("#Messageboard").height(viewport - menuebar);
+      $('#minimizeMessageboard').show();
+      $('#maximizeMessageboard').hide();
+      $('#teaser_text').hide();
+      $('#full_text').show();
+    }
+
+    function minimizeMessageboard() {
+      $("#Messageboard").height('140px');
+      $('#minimizeMessageboard').hide();
+      $('#maximizeMessageboard').show();
+      $('#teaser_text').show();
+      $('#full_text').hide();
+    }
+
+    // $('#closeMessageboard').on('click', function(){
+    //   $("#Messageboard").remove();
+    //   $.ajax
+    //   ({
+    //       url: "#{mutemessages_path}",
+    //       data: {"id": "#{current_user.id}"},
+    //       type: 'get'
+    //   });
+    // });
+
+    $('#readMore').on('click', function(){
+      maximizeMessageboard();
+      $(this).hide();
+    });
+
+    $('#maximizeMessageboard').on('click', function(){
+      maximizeMessageboard();
+    });
+
+    $('#minimizeMessageboard').on('click', function(){
+      minimizeMessageboard();
+    });

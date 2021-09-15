@@ -1,0 +1,10 @@
+- cancel_button = render "shared/button", path: mailtemplates_path, link_text: t(:cancel), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+= render "shared/form_header",
+         header_text: @mailtemplate, hint_text: t(:edit_mailtemplate_hint),
+         buttons: cancel_button
+.row
+  .col-xs-8
+    = render 'form'
+  .col-xs-4
+    .well
+      = render "mailtemplates/placeholders_subtable"

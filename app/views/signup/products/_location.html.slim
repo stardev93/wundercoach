@@ -1,0 +1,16 @@
+/ give location information
+- if !event.get_location.blank? or !event.get_eventorganizer.blank?
+  span.h3
+    = t(:event_location)
+p.lead
+  - if event.get_eventorganizer.present?
+    = event.get_eventorganizer
+    br
+  - if event.get_location.present?
+    = event.get_location
+    br
+  - if event.get_zip_and_city.present?
+    = event.get_zip_and_city
+    br
+  - if event.get_country.present?
+    = event.get_country

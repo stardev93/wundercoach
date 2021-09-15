@@ -1,0 +1,6 @@
+en:
+  roles: Roles
+  role: Role
+  roles_assigned: "Assigned roles"
+  role_was_successfully_assigned: 'The role was successfully assigned.'
+  role_was_successfully_revoked: 'The role was successfully revoked.'

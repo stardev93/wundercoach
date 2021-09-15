@@ -1,0 +1,15 @@
+= simple_form_for(@eventtype) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key, label: t(:key)
+    = f.input :name, label: t(:name)
+    = f.input :description, label: t(:description)
+    = f.input :colorcode, label: t(:colorcode), as: :minicolors, input_html: { \
+      data: { minicolors: { theme: :bootstrap, position: :left } } }, \
+      hint: t(:colorcode_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: eventtypes_path

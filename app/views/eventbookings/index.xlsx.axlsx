@@ -1,0 +1,27 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Eventbookings") do |sheet|
+  if @csv_email
+    sheet.add_row [t(:lastname), t(:firstname), t(:email)]
+  else
+    sheet.add_row [t(:id), t(:event), t(:start_date), t(:start_time), t(:end_date), t(:end_time), t(:lastname), t(:firstname), t(:gender), t(:telephone), t(:email), t(:company), t(:street), t(:zip), t(:city), t(:country), t(:created_at), t(:booking_date), t(:price), t(:currency), t(:eventbookingstatus), t(:location), t(:eventorganizer), t(:street), t(:streetno), t(:zip), t(:city), t(:location_state), t(:country), t(:googlemapslocation)]
+  end
+  @eventbookings.each do |eventbooking|
+
+    if @csv_email
+      sheet.add_row [eventbooking.lastname, eventbooking.firstname, eventbooking.email]
+    else
+      eventbooking_booking_date = (eventbooking.booking_date.blank? ? '' : I18n.l(eventbooking.booking_date, format: :short))
+      eventbooking_created_at = (eventbooking.created_at.blank? ? '' : I18n.l(eventbooking.created_at, format: :short))
+
+      sheet.add_row [eventbooking.id, eventbooking.event, eventbooking.event.decorate.start_date, eventbooking.event.decorate.start_time, eventbooking.event.decorate.end_date, eventbooking.event.decorate.end_time, eventbooking.lastname, eventbooking.firstname, t(:"#{eventbooking.gender}_indirect"), eventbooking.telephone, eventbooking.email, eventbooking.company, eventbooking.street, eventbooking.zip, eventbooking.city, eventbooking.country, eventbooking_created_at, eventbooking_booking_date, money_to_currency(eventbooking.order.price), eventbooking.order.currency, eventbooking.eventbookingstatus, eventbooking.event.decorate.get_location,
+      eventbooking.event.decorate.get_eventorganizer,
+      eventbooking.event.decorate.get_street,
+      eventbooking.event.decorate.get_streetno,
+      eventbooking.event.decorate.get_zip,
+      eventbooking.event.decorate.get_city,
+      eventbooking.event.decorate.get_state,
+      eventbooking.event.decorate.get_country,
+      eventbooking.event.decorate.get_googlemapslocation]
+    end
+  end
+end

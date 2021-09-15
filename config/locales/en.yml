@@ -1,0 +1,396 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  sign_out: "sign out"
+  edit: "Edit"
+  new: "New"
+  save: "Save"
+  delete: "Delete"
+  back: "Back"
+  show: "Show"
+  delete_error: "An error occured. The record could not be deleted."
+  update_error: "The record could not be updated."
+  create_error: "The record could not be created."
+  close: "Close"
+  copy: "Copy"
+  record_copy: "Copy"
+  learn_more: "Learn more"
+  ok: "OK"
+  value: "value"
+  copy_to_clipboard: "Copy to clipboard"
+  embed: Embed
+  payment: Payment method
+  simple_form:
+    magic_submit:
+      default:
+        new:
+          submit: "Create a new %{model}"
+          retry: "Try creating once again"
+          disable_with: "Creating&#133;"
+        edit:
+          submit: "Save changes"
+          retry: "Try saving once again"
+          disable_with: "Saving&#133;"
+      cancel:
+        format: "%{submit_button} or %{cancel_link}"
+        cancel: "Cancel"
+      accounts:
+        account:
+          register:
+            submit: Create account
+            disable_with: Creating...
+          doregister:
+            retry: ...please try again
+          upload:
+            submit: Save changes
+            disable_with: Saving...
+      signup:
+        eventbooking:
+          new:
+            submit: "save and next"
+            disable_with: "saving..."
+            retry: "save again and next"
+      crm:
+        contacts:
+          crm/contact_detail:
+              show:
+                disable_with: "saving..."
+          crm/contact_address:
+            show:
+              disable_with: "saving..."
+      billing:
+        businessdocuments:
+          account:
+            datevexport:
+              submit: export
+              disable_with: "exporting..."
+
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%d-%m-%Y"
+      long: "%B %d, %Y"
+      short: "%d.%m.%Y"
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: About 1 hour
+        other: About %{count} hours
+      about_x_months:
+        one: About 1 month
+        other: About %{count} months
+      about_x_years:
+        one: About 1 year
+        other: About %{count} years
+      almost_x_years:
+        one: Almost 1 year
+        other: Almost %{count} years
+      half_a_minute: Half a minute
+      less_than_x_minutes:
+        one: Less than a minute
+        other: lLess than %{count} minutes
+      less_than_x_seconds:
+        one: Less than 1 second
+        other: Less than %{count} seconds
+      over_x_years:
+        one: Over 1 year
+        other: Over %{count} years
+      x_days:
+        one: 1 day
+        other: "%{count} days"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 month
+        other: "%{count} months"
+      x_seconds:
+        one: 1 second
+        other: "%{count} seconds"
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: You need to agree to the terms in order to proceed
+      blank: Can't be blank
+      present: Must be blank
+      confirmation: Doesn't match %{attribute}
+      empty: Can't be empty
+      equal_to: Must be equal to %{count}
+      even: Must be even
+      exclusion: Is reserved
+      greater_than: Must be greater than %{count}
+      greater_than_or_equal_to: Must be greater than or equal to %{count}
+      inclusion: Is not included in the list
+      invalid: Is invalid
+      less_than: Must be less than %{count}
+      less_than_or_equal_to: Must be less than or equal to %{count}
+      not_a_number: Is not a number
+      not_an_integer: Must be an integer
+      odd: Must be odd
+      record_invalid: 'Validation failed: %{errors}'
+      restrict_dependent_destroy:
+        one: Cannot delete record because a dependent %{record} exists
+        many: Cannot delete record because dependent %{record} exist
+      taken: Has already been taken
+      too_long:
+        one: Is too long (maximum is 1 character)
+        other: Is too long (maximum is %{count} characters)
+      too_short:
+        one: Is too short (minimum is 1 character)
+        other: Is too short (minimum is %{count} characters)
+      wrong_length:
+        one: Is the wrong length (should be 1 character)
+        other: Is the wrong length (should be %{count} characters)
+      other_than: Must be other than %{count}
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ", and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%d.%m.%Y, %H:%M"
+      long: "%A, %d. %B %Y, %H:%M"
+      short: "%d.%m.%Y"
+      time: "%H:%M"
+    pm: pm
+  you_need_to_be_logged_in: "You need to be logged in to acces this page."
+  logged_out: 'You have logged out.'
+
+  success: "Success"
+  attention: "Attention"
+  notice: "Notice"
+
+  datepicker:
+    dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
+    pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
+  timepicker:
+    dformat: '%R'                   # display format of the time (this is the default, can be ommited)
+    pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
+  dayViewHeaderFormat: 'MMMM YYYY'  # picking format of the time (this is the default, can be ommited)
+  are_you_sure_you_want_to_delete_this_object: "Do you really want to delete this record?"
+  configure: Configure
+  activate: Activate
+  deactivate: Deactivate
+  all: All
+  no: "No"
+  view: View
+  will_paginate:
+    previous_label: "Prev"
+    next_label: "Next"
+  functions: Functions
+  pricing: Pricing
+  paymentplanfeatures: "Rate-Function"
+  continue: Continue
+  mail_all: Mail all
+  is_not_an_email: Is not a valid email address
+  email_or_password_invalid: "The Email address or the password is invalid."
+  monthly: Monthly
+  nothing_selected: Nothing selected
+  id: Id
+  male: "Male"
+  male_indirect: "Mr"
+  female: "Female"
+  female_indirect: "Ms"
+  diverse: " "
+  diverse_indirect: " "
+  noinfo: " "
+  noinfo_indirect: " "
+  please_choose: "Please choose"
+  choose: "Choose"
+  account_not_found_in_signup_index_action: "No customer record found."
+  get_started: "Get started..."
+  dont_show_get_started_again: "Don't show again"
+  cancel: Cancel
+  send: 'Send'
+  print: 'Print'
+  create_pdf: 'create PDF'
+  signup: 'Signup'
+  search: 'Search'
+  searchterm: 'search term'
+  here: Here
+  telephone: Telephone
+  yearly: Yearly
+  change: Change
+  yes: yes
+  no: No
+  messaging: Messages
+  assign: Assign
+  assign_successful: Your assign has been successful.
+  unassign: Unassign
+  unassign_successful: Your unassign has been successful.
+  order_confirmed: Registration confirmed
+  done: "Done"
+  creation_successful: "Your data has been saved."
+  update_successful: "Your changes have been saved."
+  delete_successful: "Data successfully deleted."
+  filter_successful: "Filter applied"
+  appointments: Appointments
+  integration: Integration
+  integration_hint: Connect external applcations to the Wondercoach
+  current_month: Current Month
+  last_month: Last Month
+
+  event_management: Seminar management
+  add_model: "Add %{model}"
+  edit_model: "Edit %{model}"
+  type: Type
+  page: Page
+  pages: Pages
+  page_of: of
+  per_hour: "per hour"
+  per_day: "per hour"
+  until: until
+  page_not_found_error: "This page could not be found..."
+  error_404: "404"
+  page_not_found_error_message: "The page your were trying to access could not be found. The link leading to this page might be broken, or the page does no longer exist. Try to go back to the previous page."
+  internal_server_error: "This shouldn't have happened..."
+  error_500: "500"
+  internal_server_error_message: "Please excuse this error. An internal server error occurred. We are trying to fix this problem."
+  back_to_previous_page: "Go back to previous page"
+  click_to_edit: "Click here to edit"
+  oclock: ""
+  from: from
+  until: until
+  slug_invalid: "The URL is invalid. Only the characters a-z, 0-9 and - are allowed"
+  download: Download
+  event_not_found_error_message: "The event your were trying to access could not be found. The link leading to this page might be broken, or the page does no longer exist."
+  maybe_you_wanted_to_go_here: "Maybe you wanted to go here"
+  from_date: Date from
+  to_date: Date until
+  count: Count
+  filtered: filtered

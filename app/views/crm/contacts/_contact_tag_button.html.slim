@@ -1,0 +1,43 @@
+- filter_active = ''
+- all_active = ''
+
+- session_contact_tags_id_eq = session[:q]['contact_tags_id_eq'] if !session[:q]['contact_tags_id_eq'].nil? && session[:q]['contact_tags_id_eq'] != ''
+
+- if session_contact_tags_id_eq
+
+  - filter_active = 'active btn-primary'
+  - range_button_text = Crm::ContactTag.find(session[:q]['contact_tags_id_eq'])
+
+- else
+
+  - filter_active = ''
+  - range_button_text = t(:all)
+  - all_active = 'active btn-primary'
+
+
+.form-group.form-inline
+  .row
+    .col-xs-12
+      label
+        = t(:contact_tag)
+  .row
+    .col-xs-12
+      = f.input :contact_tags_id_eq, as: :select, collection: Crm::ContactTag.order(:name), label: false, include_blank: t(:please_choose), required: false, class: "form-control optional", style: "width: 100%", input_html: { class: 'chosen-select' }
+      / .btn-group
+      /   button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="#{filter_active}"
+      /     = range_button_text
+      /     |&nbsp;
+      /     span.caret
+      /   ul.dropdown-menu
+      /     li
+      /       = link_to crm_contacts_path + '?q[contact_tags_id_eq]=', :class => "#{all_active}"
+      /         = t(:all)
+      /
+      /     - Crm::ContactTag.order(:name).distinct.all.each do |contact_tag|
+      /       - if (session[:q]['contact_tags_id_eq'] || []).include? (contact_tag.id.to_s)
+      /         - active = 'btn-primary active'
+      /       - else
+      /         - active = ''
+      /       li
+      /         = link_to crm_contacts_path + '?q[contact_tags_id_eq]=' + contact_tag.id.to_s, :class => "#{active}"
+      /           = contact_tag

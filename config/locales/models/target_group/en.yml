@@ -1,0 +1,18 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  pick_a_target_group: "Choose a target group for your campaign or create a new one"
+  target_group_needs_a_filter: The target group needs criteria to define the customers belonging to it.
+  add_target_group: Create new target group
+  target_groups_assigned: Assigned target group
+  target_groups_available: Available target group
+  new_target_group: New target group
+  target_groups: Target groups
+  target_group_name_hint: Name of the target group, e.g. "participants of coachings in Hamburg"
+  filters_assigned: Asigned filters
+  filters_available: Available filters
+  target_group_has_n_participants: "%{participant_count} participants belong to this targe group."
+  simple_form:
+    magic_submit:
+      target_groups:
+        new:
+          submit: "Create new target group"

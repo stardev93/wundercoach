@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    title wundercoach
+    = favicon_link_tag "favicon.ico"
+    javascript:
+      window.I18n = #{I18n.backend.send(:translations)[I18n.locale][:js].to_json.html_safe}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  body style="padding-top: 60px;padding-bottom: 60px;"
+    = render "shared/freshdesk"
+    .page-wrap.d-flex.flex-row.align-items-center
+      .container
+        .jumbotron.text-center
+          = link_to root_path
+            = image_tag("logo.png", style: "height:80px;")
+          = yield

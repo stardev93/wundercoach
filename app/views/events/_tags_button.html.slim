@@ -1,0 +1,38 @@
+- filter_active = ''
+- all_active = ''
+
+- session_product_tags_id_eq = session[:q]['product_tags_id_eq'] if !session[:q]['product_tags_id_eq'].nil? && session[:q]['product_tags_id_eq'] != ''
+
+- if session_product_tags_id_eq
+  - filter_active = 'active btn-primary'
+  - range_button_text = Product::Tag.find(session_product_tags_id_eq)
+- else
+  - filter_active = ''
+  - range_button_text = t(:all)
+  - all_active = 'active btn-primary'
+
+
+.form-group.form-inline
+  .row
+    .col-xs-12
+      label
+        = t(:tags)
+  .row
+    .col-xs-12
+      .btn-group
+        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="#{filter_active}"
+          = range_button_text
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu
+          li
+            = link_to events_path+'?q[product_tags_id_eq]=', :class => "#{all_active}"
+              = t(:all)
+            - Product::Tag.by_name.all.each do |tag|
+              - if session[:q]['product_tags_id_eq'].to_i == tag.id
+                - active = 'btn-primary active'
+              - else
+                - active = ''
+              li
+                = link_to events_path+"?q[product_tags_id_eq]=" + tag.id.to_s, class: "#{active}"
+                  = tag

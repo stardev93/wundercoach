@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    = form_tag search_path, class: "form-inline wc-form-inline", method: :get
+      .form-group.wc-form-group
+        = text_field_tag :search, params[:search], placeholder: t(:searchterm), class: "form-control", style: "width: 100%;"
+      .form-group
+        button type="submit" class="btn btn-primary"
+          i.fa.fa-search
+
+      - if params[:search] && params[:search] != ''
+        |&nbsp;
+        .form-group
+          = link_to search_path, class: "btn btn-default"
+            i.fa.fa-times
+/ .row
+/   .col-xs-12
+/     p
+/       |&nbsp;
+/     hr

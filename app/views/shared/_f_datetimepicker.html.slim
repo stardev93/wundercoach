@@ -1,0 +1,11 @@
+/ display a datetimepicker
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+= form.input field, label: label, hint: hint, as: :date_time_picker

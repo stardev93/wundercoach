@@ -1,0 +1,5 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  placeholders: Platzhalter
+  placeholder: Platzhalter
+  placeholder_infotext: "Platzhalter für die Verwendung in Emailvorlagen"

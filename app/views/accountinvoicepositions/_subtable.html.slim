@@ -1,0 +1,10 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h4
+        = t(:accountinvoicepositions)
+
+    - if accountinvoice.is_de?
+      = render "accountinvoicepositions/accountinvoicepositions_table_de", :accountinvoicepositions => @accountinvoice.accountinvoicepositions, :accountinvoice => @accountinvoice
+    - else
+      = render "accountinvoicepositions/accountinvoicepositions_table_eu_and_world", :accountinvoicepositions => @accountinvoice.accountinvoicepositions, :accountinvoice => @accountinvoice

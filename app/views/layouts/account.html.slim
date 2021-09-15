@@ -1,0 +1,36 @@
+/ This layout contains the account navigation on the left
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    title wundercoach
+    = favicon_link_tag "favicon.ico"
+    javascript:
+      window.I18n = #{I18n.backend.send(:translations)[I18n.locale][:js].to_json.html_safe}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = render "shared/userguiding"
+
+  body style="padding-top: 60px;padding-bottom: 80px;"
+    = render "shared/freshdesk"
+    .container
+      = render "shared/sidebar"
+      = render "shared/navigation"
+      = render "shared/flash"
+      .row
+        .col-md-12
+          .page-header style="border: 0px;"
+            span.h1
+              = t(:accountsettings)
+              br
+              = @account.name
+      .row
+        .col-md-3.col-xs-12
+          .well
+            = render "accounts/navigation"
+        .col-md-9.col-xs-12
+          .well
+            = yield

@@ -1,0 +1,54 @@
+address
+  .row
+    .col-xs-12.col-sm-8
+      .row
+        .col-xs-4
+          p
+            strong = t(:lastname)
+            br
+            span.lead
+              = best_in_place @contact, :lastname, tabindex: "1", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+            '&nbsp;
+        .col-xs-4
+          p
+            strong = t(:firstname)
+            br
+            span.lead
+              = best_in_place @contact, :firstname, tabindex: "2", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+            '&nbsp;
+        .col-xs-4
+          p
+            strong = t(:gender)
+            br
+            span.lead
+              / = t(:"#{@contact.gender}_indirect")
+              = best_in_place @contact, :gender, tabindex: "3", :as => :select, :collection => {"male" => t(:male_indirect), "female" => t(:female_indirect), "diverse" => t(:diverse_indirect),  "noinfo" => t(:noinfo_indirect)}, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right", :place_holder => '...'
+            '&nbsp;
+
+    .col-xs-12.col-sm-4
+      .row
+        .col-md-12
+          / do not show company fields when contact is part of a company
+          - unless @contact.company
+            p
+              strong = t(:vat_id)
+              br
+              span.lead
+                = best_in_place @contact, :vat_id, tabindex: "4", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+
+              '&nbsp;
+            p
+              strong = t(:contact_no)
+              br
+              span.lead
+                = best_in_place @contact, :contact_no, tabindex: "5", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+              '&nbsp;
+            p
+              strong = t(:account_receivable_no)
+              br
+              span.lead
+                = best_in_place @contact, :account_receivable_no, tabindex: "6", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+              '&nbsp;
+  .row
+    .col-md-12
+      = render "crm/contact_tags/contact_tags"

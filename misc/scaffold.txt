@@ -1,0 +1,67 @@
+be rails g scaffold Accountstatus key:string:unique sortorder:integer name:string comments:text  --force
+
+be rails g scaffold Account name:string name_addon:string comments:string zip:string city:string street:string streetno:string country:string gender:string firstname:string lastname:string tel1:string tel2:string fax:string email:string homepage:string logo:attachment email_billing:string email_billing_address:string paymentplan:references accountstatus:references accountnumber:integer vat_number:string:unique invoice_no_start:integer --force
+
+
+be rails g scaffold paymentplan name:string comments:text key:string:unique price_m:float price_y:float sortorder:integer --force
+be rails g scaffold booking account:references name:string comments:text key:string:unique price_m:float price_y:float valid_until:date active:boolean paymentcycle:string currency:string --force
+be rails g scaffold invoice account:references name:string street:string street_no:string zip:string city:string country:string comments:text invoice_date:date invoice_number:integer paymentmethod:string paymentdate:date paymentstatus:string --force
+be rails g scaffold invoiceposition invoice:references name:string description:text position:integer amount:float unit:string price:float --force
+
+
+be rails g scaffold Companystatus name:string comments:text key:string:unique --force
+be rails g scaffold Company account:references name:string name_addon:string comments:string zip:string city:string street:string streetno:string country:string gender:string firstname:string lastname:string tel1:string tel2:string fax:string email:string homepage:string logo:string companystatus:references companynumber:integer vat_number:string:unique --force
+
+be rails g scaffold Contactstatus name:string comments:text key:string:unique --force
+be rails g scaffold Contact lastname:string firstname:string desc:text gender:string tel:string email:string password:string account:references contactstatus:references --force
+
+rails g scaffold lessontype name:string:unique comments:text key:string:unique --force
+rails g scaffold lessontemplate name:string comments:text shortdescription:text start_date:date duration:integer durationunit:string --force
+
+rails g migration add_fields_to_user lastname:string firstname:string gender:string
+rails g migration add_account_to_user account:references
+rails g migration add_role_to_user role:references
+
+rails g scaffold eventtype key:string:unique name:string:unique description:text --force
+
+rails g scaffold durationunit key:string:unique name_plural:string name_singular:string description:text sortorder:integer:unique --force
+
+rails g scaffold event name:string shortdescription:text longdescription:text start_date:date duration:float maxparticipants:integer latest_signup_date:date price:float early_signup_pricing:boolean price_early_signup:float early_signup_deadline:date durationunit:references eventtype:references --force
+
+rails g scaffold eventstatus key:string:unique name:string:unique description:text --force
+
+rails g scaffold eventsession name:string comments:text start_date:date start_time_hour:string start_time_minute:string end_date:date end_time_hour:string end_time_minute:string position:integer duration:float durationunit:references sessioncode:string:unique event:references --force
+
+rails g scaffold paymentstatus key:string:unique name:string:unique comment:text image:string
+rails g scaffold paymentmethod key:string:unique name:string:unique comment:text
+rails g scaffold eventbookingstatus key:string:unique name:string:unique description:text
+
+rails g scaffold eventbooking account:references event:references user:references eventbookingstatus:references booking_date:date price:float price_early_signup:float early_booking_applies:boolean paymentmethod:references payment_date:date paymentstatus:references company:string lastname:string firstname:string gender:string tel:string email:string zip:string city:string street:string street_no:string country:string billing_address:boolean billing_company:string billing_lastname:string billing_firstname:string billing_gender:string billing_email:string billing_zip:string billing_city:string billing_street:string billing_street_no:string billing_country:string --force
+
+rails g scaffold eventpaymentmethod event:references paymentmethod:references
+
+rails g scaffold mailtemplate name:string:unique subject:string message:text sender:string reply_to:string --force
+
+rails g scaffold unit name:string content:text comments:text status:string
+
+rails g scaffold tool name:string description:text url:string classname:string
+
+rails g scaffold asset name:string asset:attachment comments:text status:string
+rails g scaffold unitasset unit:references asset:references
+
+rails g scaffold pagetype key:string:unique sortorder:integer name:string comments:text  --force
+rails g scaffold page name:string content:text comments:text status:string pagetype:references --force
+rails g scaffold unitpage unit:references page:references position:integer --force
+
+
+rails g scaffold eventsessionbookings event:references eventsession:references usere:references eventsessionbookingstatus:string --force
+
+rails g migration add_fields_to_event eventstatus:references allow_signup:boolean external_signup_url:string external_signup_text:string bottom_text:text
+
+rails g scaffold userole user:references role:references
+
+rails g migration add_geolocation_to_event latitude:float longitute:float
+
+rails g scaffold eventtemplate name:string shortdescription:text longdescription:text duration:float maxparticipants:integer price:float price_early_signup:float durationunit:references eventtype:references allow_signup:boolean external_signup_url:string external_signup_text:text bottom_text:text account:references early_signup_pricing:boolean colorcode:string generate_invoice:boolean location:string street:string zip:string city:string country:string googlemapslocation:string streetno:string latitude:string longitude:string coach:references --force
+
+rails g migration addFieldsToFilter comparator:string price:float location:string latitude:float longitute:float campaign:references eventtype:references

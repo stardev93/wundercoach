@@ -1,0 +1,102 @@
+/*
+ * Default Style
+ */
+
+#wundercoach_embedded body {
+  color: #000000;
+}
+#wundercoach_embedded a {
+  color: #000000;
+}
+#wundercoach_embedded a:hover {
+  color: #AAAAAA;
+}
+#wundercoach_embedded .event_header_zone {
+  background: #FFFFFF; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#FFFFFF, #CCCCCC); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#FFFFFF, #CCCCCC); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#FFFFFF, #CCCCCC); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#FFFFFF, #CCCCCC); /* Standard syntax */
+}
+#wundercoach_embedded .event_header_image {
+  display: block;
+  margin: auto;
+  height: auto;
+  max-width: 100%;
+}
+#wundercoach_embedded .signup-breadcrumb-zone {
+   padding: 19px 0px 19px 0px;
+}
+#wundercoach_embedded .event_body_zone {
+  background-color: #FFFFFF;
+}
+#wundercoach_embedded .event_footer_zone {
+  background-color: #FFFFFF;
+}
+#wundercoach_embedded .event_container {
+}
+#wundercoach_embedded .event_desktop {
+}
+#wundercoach_embedded .event_list_smartphone {
+}
+#wundercoach_embedded .event_table {
+  background-color: #FFFFFF;
+}
+#wundercoach_embedded .event_thead {}
+#wundercoach_embedded .event_tr {}
+#wundercoach_embedded .event_th {
+  color: #000000;
+  font-weight: bold;
+}
+#wundercoach_embedded .event_tbody {}
+#wundercoach_embedded .event_td {}
+
+#wundercoach_embedded .event_group {
+}
+#wundercoach_embedded .event_item {
+}
+
+#wundercoach_embedded .event_headline {
+  color: #000000;
+  font-weight: bold;
+}
+#wundercoach_embedded .event_name {}
+#wundercoach_embedded .event_shortdescription {}
+#wundercoach_embedded .event_start_date {}
+#wundercoach_embedded .event_end_date {}
+#wundercoach_embedded .event_coach {}
+#wundercoach_embedded .event_location {}
+#wundercoach_embedded .event_location_name {}
+#wundercoach_embedded .event_location_eventorganizer {}
+#wundercoach_embedded .event_location_street {}
+#wundercoach_embedded .event_location_zip {}
+#wundercoach_embedded .event_location_city {}
+#wundercoach_embedded .event_price {}
+#wundercoach_embedded .event_full_price {}
+#wundercoach_embedded .event_price_early_signup {}
+#wundercoach_embedded .event_early_signup_deadline {}
+#wundercoach_embedded .event_signup {}
+#wundercoach_embedded .event_btn_signup {
+  color: #000000;
+  background-color: #CCCCCC;
+}
+#wundercoach_embedded .event_btn_signup:hover {
+  background-color: #333333;
+}
+#wundercoach_embedded .event_btn_details {
+  color: #000000;
+  background-color: #CCCCCC;
+}
+#wundercoach_embedded .event_btn_details:hover {
+  color: #000000;
+  background-color: #333333;
+}
+#wundercoach_embedded .event_btn_signup_early {}
+#wundercoach_embedded .event_btn_signup_early_cta {}
+#wundercoach_embedded .event_btn_signup_early_text {}
+#wundercoach_embedded .event_btn_fully_booked {
+  background-color: #CCCCCC;
+}
+#wundercoach_embedded .event_btn_fully_booked:hover {
+  background-color: #333333;
+}

@@ -1,0 +1,42 @@
+.row.signup-payment-data-zone
+  .col-xs-12
+    .well.signup_well
+      .row
+        .col-xs-12
+          = event.checkout_headline
+      .row
+        .col-sm-4.col-xs-12
+          p.lead
+            - unless event.start_date.blank?
+              label
+                = t(:start_date)
+              br
+              = event.start_date
+              br
+              = event.start_time
+        .col-sm-4.col-xs-12
+          p.lead
+            - unless event.end_date.blank?
+              label
+                = t(:end_date)
+              br
+              = event.end_date
+              br
+              = event.end_time
+        .col-sm-4.col-xs-12
+          p.lead
+            label
+              = t(:event_location)
+            br
+            = event.location
+            - unless event.city.blank?
+              br
+              = event.street
+              |&nbsp;
+              = event.streetno
+              br
+              = event.zip
+              |&nbsp;
+              = event.city
+              br
+              = event.country_name

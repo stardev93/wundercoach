@@ -1,0 +1,53 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  creditcard_integrated: Sie haben die Kreditkartenzahlung erfolgreich aktiviert.
+  direct_debit_integrated: Die Zahlung per SEPA-Lastschriftmandat wurde erfolgreich aktiviert.
+  choose_your_payment_method: Wählen Sie Ihre bevorzugte Zahlungsart
+  choose_your_payment_method_hint: Wählen Sie hier Ihre bevorzugte Zahlungsart und konfigurieren Sie sie für die Zahlung Ihrer Wundercoach-Rechnungen.
+  are_you_sure_you_want_to_delete_this_payment_adapter: "Sind Sie sicher, dass Sie diese Zahlungsart löschen wollen? Wenn keine Zahlungsart eingerichtet ist, wird Ihr Account am Ende der aktuellen Rechnungsperiode deaktiviert."
+  billing: Billing
+  activerecord:
+    models:
+      PaymentAdapter: Zahlart
+      StripePaymentAdapter: Kreditkarten Zahlung
+      GocardlessPaymentAdapter: Sepa Lastschriftmandat
+      PaypalPaymentAdapter: Paypal
+  stripe:
+    an_error_occured: "Beim Hinterlegen der Kreditkarte trat folgendes Problem auf:"
+    try_again_later: "Ihre Anfrage kann im Moment nicht verarbeitet werden. Bitte probieren Sie es später noch einmal. Dies kann z.B. passieren, wenn uns besonders viele Anfragen gleichzeitig erreichen."
+    we_take_care_of_it: "Ihre Anfrage konnte nicht verarbeitet werden. Wir untersuchen die Ursache und kümmern uns darum."
+    card_error:
+      invalid_number: Die eingegebene Nummer ist keine gütlige Kreditkartennummer.
+      invalid_expiry_month: Das angegebene Ablaufdatum ist ungültig.
+      invalid_expiry_year: Das angegebene Ablaufdatum ist ungültig.
+      invalid_cvc: Die Kartenprüfnummer ist ungültig.
+      incorrect_number: Die Kartennummer ist falsch.
+      expired_card: The Karte ist abgelaufen.
+      incorrect_cvc: Die Kartenprüfnummer ist falsch.
+      incorrect_zip: Die Postleitzahl konnte nicht verifiziert werden.
+      card_declined: Die Kreditkarte wurde abgelehnt.
+      missing: Es ist keine Kreditkarte hinterlegt.
+      processing_error: Bei der Verarbeitung trat ein Fehler auf.
+  gocardless:
+    error_occured: Beim Anlegen des Sepa-Lastschriftmandats trat ein Fehler auf.
+    error_message: Unser Support-Team wird in diesem Moment darüber informiert und wird sich darum kümmern. Wir bedauern dies und bitten die entstandenen Unannehmlichkeiten zu entschuldigen.
+    not_finished_message: Das Sepa-Lastschriftmandat konnte nicht angelegt werden. Bitte probieren Sie es erneut und wenden Sie sich gegebenenfalls an den Support.
+  simple_form:
+    magic_submit:
+      payment_adapters:
+        account:
+          index:
+            submit: "aktivieren"
+            disable_with: "aktiviere..."
+          gocardless_success:
+            submit: "aktivieren"
+            disable_with: "aktiviere..."
+  gocardless_successfully_integrated: "Gocardless wurde erfolgreich integriert!"
+  gocardless_error_cancelled: " Der Vorgang wurde abgebrochen. Fehlermeldung von Gocardless: %{error}"
+  sepa_already_activated: "SEPA wurde bereits aktiviert"
+  integrate_now: Jetzt integrieren
+  activate_now: Jetzt aktivieren
+  credit_card_payment: Zahlung per Kreditkarte
+  sepa_direct_debit_payment: Zahlung per SEPA-Lastschrift
+  sepa_direct_debit_delete: "Zahlungsart löschen"
+  credit_card_delete: "Zahlungsart löschen"

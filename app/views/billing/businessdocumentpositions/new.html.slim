@@ -1,0 +1,120 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:please_choose)
+
+.row
+  .col-xs-12
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab"
+          = t(:events)
+      li
+        a href="#bundles" aria-controls="bundles" role="tab" data-toggle="tab"
+          = t(:bundles)
+      li
+        a href="#items" aria-controls="items" role="tab" data-toggle="tab"
+          = t(:items)
+
+    .tab-content
+      .tab-pane.active role="tabpanel" id="invoices"
+        p
+          table.table
+            tr
+              th
+                = t(:name)
+              th
+                = t(:start_date)
+              th
+                = t(:end_date)
+              th
+                = t(:vat)
+              th
+                = t(:price)
+              th
+            - EventDecorator.decorate_collection(@events).each do |event|
+              tr
+                td
+                  = event.name
+                td.nowrap
+                  = event.start_date
+                td.nowrap
+                  = event.end_date
+                td.nowrap
+                  = event.vat
+                td.nowrap
+                  = event.price
+                td.nowrap
+                  = link_to billing_businessdocument_path(@businessdocument) + '?event=' + event.id.to_s
+                    = t(:choose)
+
+      .tab-pane role="tabpanel" id="bundles"
+        p
+          table.table
+            tr
+              th
+                = t(:name)
+              th.nowrap
+                = t(:start_date)
+              th.nowrap
+                = t(:end_date)
+              th
+                = t(:vat)
+              th.nowrap
+                = t(:price)
+              th.nowrap
+            / - BundleDecorator.decorate_collection(@bundles).each do |bundle|
+            - EventDecorator.decorate_collection(@bundleevents).each do |bundleevent|
+              tr
+                td
+                  = bundleevent.name
+                  |&nbsp;
+                  / = link_to bundle_path(bundle)
+                  /   i.fa.fa.fa-external-link
+                  |&nbsp;
+                  |&nbsp;
+                  / = render "bundles/sublist_events", :bundle => bundleevent
+
+                td.nowrap
+                  = bundleevent.start_date
+                td.nowrap
+                  = bundleevent.end_date
+                td.nowrap
+                  = bundleevent.vat
+                td.nowrap
+                  = bundleevent.price
+                td.nowrap
+                  = link_to billing_businessdocument_path(@businessdocument) + '?bundle=' + bundleevent.id.to_s
+                    = t(:please_choose)
+
+      .tab-pane role="tabpanel" id="items"
+        p
+          table.table
+            tr
+              th
+                = t(:name)
+              th.nowrap
+                = t(:unit)
+              th.nowrap
+                = t(:vat)
+              th.nowrap
+                = t(:price)
+              th.nowrap
+            - ItemDecorator.decorate_collection(@items).each do |item|
+              tr
+                td
+                  = item.name
+                  |&nbsp;
+                  = link_to item_path(item)
+                    i.fa.fa.fa-external-link
+
+                td.nowrap
+                  = item.unit
+                td.nowrap
+                  = item.vat
+                td.nowrap
+                  = item.price
+                td.nowrap
+                  = link_to billing_businessdocument_path(@businessdocument) + '?item=' + item.id.to_s
+                    = t(:please_choose)

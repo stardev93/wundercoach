@@ -1,0 +1,39 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  bundle: "Seminar bundle"
+  bundles: "Seminar bundles"
+  edit_bundle: Edit seminar bundle
+  add_bundle: Create new seminar bundle
+  add_bundle_hinz: Creates a new seminar bundle
+  new_bundle: new seminar bundle
+  bundle_infotext: Seminar bundles allow you to bundle different seminars in one package at a one single price.
+  eventbooking_is_part_of_a_bundle: This eventbooking is part of a seminar bundle
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      bundle:
+        one: Seminar bundle
+        other: Seminar bundles
+    attributes:
+      bundle:
+        shortdescription: Short description
+        longdescription: Long description
+        bottom_text: Final text
+        price: Price
+        events: Contained seminars
+        currency: Currency
+        generate_invoice: Automatic invoice
+        paymentmethods: Allowed payment methods
+        allow_signup: Allow online registration
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      bundle: ~
+    hints:
+      bundle:
+        name: Name of the seminar bundle
+        price: Regular price
+        currency: "Please exclusively use Euro, if you want to create invoices with the Wundercoach"
+        generate_invoice: An invoice is automatically created and sent for new registrations.
+        allow_signup: If enabled, your customers can register online for this seminar.
+                        #Formulierung / Auswahlmöglichkeiten überarbeiten für allow_signup

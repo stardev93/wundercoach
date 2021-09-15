@@ -1,0 +1,101 @@
+de:
+  upload_your_own_headerimage_in_account_settings: "Hier können Sie ein eigenes Titelbild hochladen"
+  thank_you: "Vielen Dank!"
+  choose_payment_method: "Wie möchten Sie bezahlen?"
+  choose_your_paymenttype: "Wählen Sie eine Bezahlart."
+  available_paymentmethods: "Mögliche Bezahlarten"
+  payment_by: "Die Bezahlung erfolgt per %{paymentmethod}"
+  if_not_redirected_click_here: "Wenn Sie nicht innerhalb von 5 Sekunden weitergeleitet werden, klicken Sie bitte "
+  please_check_for_errors: "Die Bestellung konnte nicht fortgesetzt werden. Bitte prüfen Sie Ihre Eingaben."
+
+  individually_bookable_events: Persönliche Coachings
+  on_request: Auf Anfrage
+  send_request: Anfrage schicken
+  confirm_participation: Teilnahme bestätigen
+  payment_not_applied: Bezahlung entfällt
+  fully_booked: Ausgebucht
+  latest_signup_date_exceeded: "Anmeldeschluss erreicht"
+  event_search_name: "Bezeichnung"
+  this_week: "Diese Woche"
+  next_week: "Nächste Woche"
+  this_month: "Diesen Monat"
+  next_month: "Nächsten Monat"
+  the_month_after_next_month: "Übernächsten Monat"
+  show_all: "Alle Anzeigen"
+  event_search: "Veranstaltungssuche"
+  start_search: "Suchen"
+  show_more: "Mehr anzeigen"
+  show_less: "Weniger anzeigen"
+  early_booking_aplies: "Jetzt mit Frühbucherrabatt buchen"
+
+  checkout_participant_information: "Teilnehmerdaten"
+  checkout_payment_information: "Bezahlung"
+  checkout_summary_information: "Bestätigung"
+  order_now: "Bestellung bestätigen"
+  pay_with_sepa: Bezahlung per SEPA Lastschriftmandat
+  order_with_costs: Kostenpflichtig bestellen
+
+  show_on_google_maps: "In Google Maps öffnen"
+
+
+  signup_orders_confirm_data_check_headline: Daten überprüfen
+  signup_orders_confirm_data_check: Bitte überprüfen Sie Ihre eingegebenen Daten, bevor Sie Ihre Bestellung bestätigen.
+  signup_for: "Anmeldung für"
+  event_date_information: "Das Seminar findet statt am"
+  continue_with_payment: "Weiter zur Bezahlung"
+  you_will_be_redirected_to_sofort: Bei Bestätigung werden Sie zu sofort.com weitergeleitet.
+  you_will_be_redirected_to_paypal: Bei Bestätigung werden Sie zu paypal.com weitergeleitet.
+  mandatory_field_info: "Die mit (*) markierten Felder sind Pflichtfelder."
+
+  you_signed_up_successfully: "Sie haben sich erfolgreich angemeldet."
+  your_booking_confirmation_for: "Dies ist Ihre Buchungsbestätigung für die Veranstaltung"
+  we_have_sent_an_confirmation_email: "Wir haben Ihnen eine Buchungsbestätigung per E-Mail gesendet."
+  we_have_sent_you_a_bill: "Wir haben Ihnen eine Rechnung gesendet."
+
+  booking_confirmation_map_link_headline: "Adresse und Link zur Anfahrtskizze"
+  please_click_here_to_open_google_maps: "Link zur Anfahrtskizze"
+
+  booking_contact_information_headline: "Kontakt"
+  booking_contact_information_text: "Für Rückfragen wenden Sie sich an"
+
+  i_agree_to_the_terms_of_service: "Ich erkläre mich mit den %{terms} einverstanden."
+  i_agree_to_the_gdpr_terms: "Ich akzeptiere die %{gdpr_terms}."
+  i_agree_to_the_revocation_terms: "Ich akzeptiere die %{revocation_terms}."
+
+
+  account_not_found: Veranstalter nicht gefunden
+  account_not_found_hint: Wenn Sie der Besitzer dieser Seite sind, prüfen Sie bitte die korrekte Einbindung.
+  transaction_no_confirmation: 'Wir haben noch keine Bestätigung für ihre Überweisung erhalten.'
+  card_rejected: 'Ihre Karte wurde nicht akzeptiert.'
+
+  simple_form:
+    magic_submit:
+      signup:
+        orders:
+          order:
+            payment:
+              submit: "Bezahlart wählen"
+              disable_with: "Bezahlart wird gespeichert..."
+            set_payment:
+              submit: "Bezahlart wählen"
+              disable_with: "Bezahlart wird gespeichert..."
+            edit:
+              submit: Speichern und weiter
+              disable_with: "Kontaktdaten werden gespeichert..."
+        invoice:
+          payment:
+            disable_with: "Sie werden weitergeleitet..."
+        request:
+          new_request:
+            submit: Anfrage absenden
+            disable_with: Sende Anfrage...
+        set_payment:
+          disable_with: Wähle Bezahlart...
+    options:
+      eventbooking:
+        invoices:
+          gender:
+            male: Herr
+            female: Frau
+            diverse: Divers
+            noinfo: "Keine Angabe"

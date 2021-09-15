@@ -1,0 +1,23 @@
+strong
+  = t(:location)
+p.lead
+  = event.eventorganizer
+  br
+  = event.location
+  br
+  = event.street
+  |&nbsp;
+  = event.streetno
+  br
+  = event.zip
+  |&nbsp;
+  = event.city
+  br
+  = event.country_name
+  br
+- if event.googlemapslocation
+  strong
+    = t(:googlemapslocation)
+  p.lead
+    = link_to event.googlemapslocation, :target => '_blank'
+      = event.googlemapslocation

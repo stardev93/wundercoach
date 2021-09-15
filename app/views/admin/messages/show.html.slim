@@ -1,0 +1,42 @@
+- back_button = render "shared/button", path: admin_messages_path, link_text: t(:back), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+/ - new_button = link_to "i.fa.fa-plus #{t(:add_product_location)}", new_product_location_path, class: "btn btn-default"
+- new_button = render "shared/button", path: new_admin_message_path, link_text: t(:new_message), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:new_message_hint)
+
+- publish_button = render "shared/button", path: admin_message_publish_path, link_text: t(:message_publish), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:message_publish_hint)
+
+- mute_button = render "shared/button", path: admin_message_mute_path, link_text: t(:message_mute), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:message_mute_hint)
+
+= render "shared/form_header",
+         header_text: t(:message),
+         buttons:  publish_button + ' ' + mute_button + ' ' + new_button + ' ' + back_button
+
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => @message.subject, :field_label => t(:message_subject), :field_hint => t(:message_subject_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => @message.body.html_safe, :field_label => t(:message_body), :field_hint => t(:message_body_hint)
+
+.row
+  .col-xs-4
+    = render "shared/f_ro_text", :field_value => @message.published_at, :field_label => t(:message_published_at), :field_hint => t(:message_published_at_hint)
+  .col-xs-4
+    = render "shared/f_ro_text", :field_value => @message.pushed_at, :field_label => t(:message_pushed_at), :field_hint => t(:message_pushed_at_hint)
+  .col-xs-4
+    = render "shared/f_ro_text", :field_value => @message.published?, :field_label => t(:message_published), :field_hint => t(:message_published_hint)
+
+
+.row
+  .col-xs-12.text-right
+
+    = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => admin_message_path(@message), :delete_text => t(:delete)
+    ' &nbsp;
+    = link_to edit_admin_message_path(@message), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to admin_messages_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

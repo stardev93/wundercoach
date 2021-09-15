@@ -1,0 +1,10 @@
+- if can? :access, Feature.find_by(key: "customer_branding")
+  title = @account.custom_checkout_title
+  - if @account.favicon.exists?
+    = favicon_link_tag @account.favicon.url(:icon), type: 'image/png'
+    = favicon_link_tag @account.favicon.url(:touch_icon), rel: 'apple-touch-icon', type: 'image/png'
+  - else
+    = favicon_link_tag 'favicon.ico'
+- else
+  title = @account&.checkout_title_fallback
+  = favicon_link_tag 'favicon.ico'

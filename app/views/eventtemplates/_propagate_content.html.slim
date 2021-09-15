@@ -1,0 +1,57 @@
+.modal.fade id="modalpropagate" tabindex="-1" role="dialog" aria-labelledby="ModalPropagate" aria-hidden="true" style="background-color: rgba(0,0,0,.0001) !important;"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .modal-title id="myModalLabel"
+          span.h4
+            = t(:copy_eventtemplate_elements_to_events)
+          p
+            = t(:copy_eventtemplate_elements_to_events_hint)
+
+      .modal-body
+        .row
+          .col-xs-12
+            p.lead
+            = simple_form_for(@propagation_form, url: updateevents_eventtemplate_path) do |f|
+              = f.input :id, as: :hidden
+
+              .panel-group id="accordion" role="tablist" aria-multiselectable="true"
+                .panel.panel-default
+                  .panel-heading role="tab" id="heading_copy_text_options"
+                    h4.panel-title
+                      a.collapsed role="button" data-toggle="collapse" data-parent="#accordion" href="#copy_text_options" aria-expanded="true" aria-controls="copy_text_options" style="text-decoration: none;"
+                        = t(:copy_text_fields)
+                  .panel-collapse.collaps.in id="copy_text_options" role="tabpanel" aria-labelledby="heading_copy_text_options"
+                    .panel-body
+                      ul.list-group
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_name, :field_label => t(:copy_name), :field_hint => t(:copy_name_hint)
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_shortdescription, :field_label => t(:copy_shortdescription), :field_hint => t(:copy_shortdescription_hint)
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_longdescription, :field_label => t(:copy_longdescription), :field_hint => t(:copy_longdescription_hint)
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_bottom_text, :field_label => t(:copy_bottom_text), :field_hint => t(:copy_bottom_text_hint)
+
+                .panel.panel-default
+                  .panel-heading role="tab" id="heading_copy_price_options"
+                    h4.panel-title
+                      a.collapsed role="button" data-toggle="collapse" data-parent="#accordion" href="#copy_price_options" aria-expanded="false" aria-controls="copy_price_options" style="text-decoration: none;"
+                        =t(:copy_price_fields)
+                  .panel-collapse.collapse id="copy_price_options" role="tabpanel" aria-labelledby="heading_copy_price_options"
+                    .panel-body
+                      ul.list-group
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_full_price_cents, :field_label => t(:copy_full_price_cents), :field_hint => t(:copy_full_price_cents_hint)
+                        / activate when eventtemplates allow for offset (not absolute dates) for field early_signup_deadline
+                        / li.list-group-item
+                        /   = render "shared/f_boolean", :form => f, :field => :copy_early_signup_pricing, :field_label => t(:copy_early_signup_pricing), :field_hint => t(:copy_early_signup_pricing_hint)
+                        li.list-group-item
+                          = render "shared/f_boolean", :form => f, :field => :copy_price_early_signup_cents, :field_label => t(:copy_price_early_signup_cents), :field_hint => t(:copy_price_early_signup_cents_hint) + ' ' + t(:copy_price_early_signup_cents_restriction_hint)
+
+              .row
+                .col-xs-6.text-left
+                  button.btn.btn-default type="button" data-dismiss="modal"
+                    = t(:cancel)
+                .col-xs-6.text-right
+                  = f.button :magic_submit

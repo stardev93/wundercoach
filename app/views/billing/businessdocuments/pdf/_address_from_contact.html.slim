@@ -1,0 +1,16 @@
+= @businessdocument.recipient_name1
+- if @businessdocument.recipient_name2
+  br
+  = @businessdocument.recipient_name2
+- if @businessdocument.recipient_person
+  br
+  = @businessdocument.recipient_person
+
+br
+= @businessdocument.recipient_street
+br
+- if @businessdocument.recipient_country
+  br
+  = @businessdocument.recipient_country
+  |&nbsp;-&nbsp;
+= "#{@businessdocument.recipient_zip} #{@businessdocument.recipient_city}"

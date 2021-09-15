@@ -1,0 +1,29 @@
+javascript:
+  $(document).ready(function(){
+    $('.object_delete').click(function () {
+      var url = $(this).attr('data-url');
+      // alert($('#deletelink').attr('href'));
+      $('#deletelink').attr('href', url);
+      $('#deletelink').html = url;
+      //$("#deleteForm").attr("action", url);
+    });
+  });
+.modal.fade id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true" style="background-color: rgba(0,0,0,.0001) !important;"
+  .modal-dialog
+    .modal-content
+      / .modal-header
+      /   .modal-title id="myModalLabel"
+      /     span.h4
+      /       |Delete?
+      .modal-body
+        p.lead
+          = info_text
+        .row
+          .col-xs-12.text-right
+            = link_to "#", id: "deletelink", method: :delete, class: "btn btn-danger"
+                i.fa.fa-remove
+                '&nbsp;
+                = t(:delete)
+            |&nbsp;
+            button.btn.btn-default type="button" data-dismiss="modal"
+              = t(:cancel)

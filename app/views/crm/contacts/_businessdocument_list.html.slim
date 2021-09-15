@@ -1,0 +1,69 @@
+table.table
+  thead
+    tr
+      th = t(:document_number)
+      th = t(:invoice_date)
+      th = t(:recipient)
+      th = t(:paymentstatus)
+      th = t(:paymentmethod)
+      th.text-right = t(:sum_gross)
+      th
+
+  tbody
+    - @businessdocuments.each do |businessdocument|
+      tr
+        td
+          = document_type_indicator(businessdocument)
+          |&nbsp;
+          - if businessdocument.invoice_number.present?
+            = link_to businessdocument.invoice_number, billing_businessdocument_path(businessdocument)
+          - else
+            = link_to billing_businessdocument_path(businessdocument)
+              = t(:draft)
+        td
+          - unless businessdocument.invoice_date.blank?
+            = l businessdocument.invoice_date, format: :default
+        td
+          / - if businessdocument.address.present?
+          = businessdocument.decorate.recipient_address
+        td
+          = render "billing/businessdocuments/businessdocument_status", :businessdocument => businessdocument
+          / = payment_indicator(businessdocument) if businessdocument.is_invoice?
+        td
+          = businessdocument.paymentmethod if businessdocument.type == 'Billing::Invoice'
+        td.text-right
+          = money_to_currency(businessdocument.gross_sum)
+        td
+          .btn-toolbar role="toolbar"
+            .btn-group
+              button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                |...
+              ul.dropdown-menu role="menu"
+                li
+                  = link_to billing_businessdocument_path(businessdocument)
+                    i.fa.fa-eye
+                    '&nbsp;
+                    = t(:show)
+                - if can? :edit, businessdocument
+                  li
+                    = link_to edit_billing_businessdocument_path(businessdocument)
+                      i.fa.fa-edit
+                      '&nbsp;
+                      = t(:edit)
+                - if(can? :duplicate, businessdocument) && businessdocument.can_duplicate?
+                  li
+                    = link_to duplicate_billing_businessdocument_path(businessdocument)
+                      i.fa.fa-copy
+                      '&nbsp;
+                      = t(:duplicate)
+                - if can? :destroy, businessdocument
+                  li
+                    = link_to billing_businessdocument_path(businessdocument), data: { confirm: t(:do_you_want_to_delete_this_businessdocument)}, method: :delete
+                      i.fa.fa-remove
+                      '&nbsp;
+                      = t(:delete)
+
+.row
+  .col-md-12
+    / = will_paginate @collection, renderer: BootstrapPagination::Rails
+    = will_paginate @businessdocuments, renderer: BootstrapPagination::Rails, :link_path => crm_contact_path(@contact), :params => {:anchor => "invoices"}, :param_name => "businessdocumentspage"

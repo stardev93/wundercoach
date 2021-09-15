@@ -1,0 +1,182 @@
+.row
+  .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+    .well style="padding: 0px;"
+      = simple_form_for @paymentplan, url: chooseplan_path(@paymentplan), method: :post, html: { id: "eventbooking_billing_address" } do |f|
+        ul.list-group
+          li.list-group-item style="border: 0px;"
+            p.lead.text-center
+              = t(:you_are_booking_the_plan)
+            h1.text-center
+              = @paymentplan.name
+            h3.text-center.choose_discount
+              = number_to_currency(@paymentplan.price / 100)
+              |&nbsp;
+              small style=""
+                - if @paymentplan.cycle.present?
+                  = t("cycle.#{@paymentplan.cycle}")
+                - else
+                  |&nbsp;
+          li.list-group-item style="border: 0px;"
+            .row
+              .col-xs-12
+                p.lead
+                  label
+                    - if @paymentplan.free?
+                      = t(:account_billing_to_free)
+                    - else
+                      = t(:account_billing_to)
+                  br
+                  = @account.name
+                  |&nbsp;
+                  = link_to accountdata_path, class: "btn btn-xs btn-default"
+                    = t(:change)
+
+                  br
+                  = @account.street
+                  |&nbsp;
+                  = @account.streetno
+                  br
+                  = @account.zip
+                  |&nbsp;
+                  = @account.city
+                  br
+                  = @account.country_name
+            .row
+              .col-xs-12
+                span.lead
+                  label = t(:price)
+
+                - if @paymentplan.free?
+                  .row
+                    .col-xs-12
+                      span.lead
+                        = t(:free_usage)
+                - else
+                  .row
+                    .col-xs-6
+                      span.lead
+                        = t(@paymentplan.is_gross ? :net_total : :price_total_net)
+                        |:&nbsp;
+                    .col-xs-6.text-right
+                      span.lead
+                        = number_to_currency(@paymentplan.net_price)
+                  .row
+                    .col-xs-6
+                      span.lead
+                        = t(:plus_vat_amount)
+                        |:&nbsp;
+                    .col-xs-6.text-right
+                      span.lead
+                        = number_to_currency(@paymentplan.gross_price - @paymentplan.net_price)
+                  .row
+                    .col-xs-6
+                      span.lead
+                        strong
+                          = t(@paymentplan.is_gross ? :gross_total : :price_total_gross)
+                          |:&nbsp;
+                    .col-xs-6.text-right
+                      span.lead
+                        strong
+                          = number_to_currency(@paymentplan.gross_price)
+          / hide payment options when plan chosen is a free plan
+          - unless @paymentplan.free?
+            form#eventbooking_billing_address
+              li.list-group-item style="border: 0px;"
+                span.lead
+                  label
+                    = t(:choose_payment_method)
+
+              li.list-group-item
+                span.lead style="height: 50px;display: block;"
+                  input(type="radio"
+                        id="cc"
+                        name="adapter"
+                        value=StripePaymentAdapter.last&.id
+                        data-button="#{StripePaymentAdapter.all.empty? ? "stripe" : "pay" }"
+                        checked=@account.payment_adapter.is_a?(StripePaymentAdapter)
+                        class="icheck-me"
+                        data-skin="square"
+                        data-color="blue")
+                    |&nbsp;
+                    span style="margin-top: -1px;vertical-align: middle;" = t(:creditcard)
+                    - unless @stripe_apdater.nil?
+                      span.pull-right style="margin-top: -1px;vertical-align: middle;" = @stripe_apdater.payment_info
+              li.list-group-item
+                span.lead style="height: 50px;display: block;"
+                  input(type="radio"
+                      id="sepa"
+                      name="adapter"
+                      value=GocardlessPaymentAdapter.last&.id
+                      data-button="#{GocardlessPaymentAdapter.all.empty? ? "gocardless" : "pay" }"
+                      checked=@account.payment_adapter.is_a?(GocardlessPaymentAdapter)
+                      class="icheck-me"
+                      data-skin="square"
+                      data-color="blue")
+                  |&nbsp;
+                  span style="margin-top: -1px;vertical-align: middle;" = t(:sepa_direct_debit)
+                  - unless @gc_apdater.nil?
+                    span.pull-right style="margin-top: -1px;vertical-align: middle;" = @gc_apdater.payment_info
+              - if InvoicePaymentAdapter.all.any?
+                li.list-group-item
+                  span.lead
+                    input(type="radio"
+                        id="invoice"
+                        name="adapter"
+                        value=InvoicePaymentAdapter.last&.id
+                        data-button="#{InvoicePaymentAdapter.all.empty? ? "invoice" : "pay" }"
+                        checked=@account.payment_adapter.is_a?(InvoicePaymentAdapter)
+                        class="icheck-me"
+                        data-skin="square"
+                        data-color="blue")
+                    |&nbsp;
+                    span style="margin-top: -1px;vertical-align: middle;" = t(:bank_transfer)
+                    / - unless @gc_apdater.nil?
+                      / span.pull-right style="margin-top: -1px;vertical-align: middle;"
+                      /   = @gc_apdater.payment_info
+
+          li.list-group-item.text-center style="border: 0px;"
+            .row
+              .col-xs-12
+                #payment-buttons
+                  .pay
+                    - if @paymentplan.free?
+                      = link_to chooseplan_path(@paymentplan), style: "width: 80%;", class: "btn btn-success btn-lg", method: 'post'
+                        = t(:order_for_free)
+                    - elsif @account.payment_adapter.present?
+                      = f.submit class: "btn btn-success btn-lg", style: "width: 80%;", value: t(:order_with_costs)
+                    - else
+                      p.lead = t(:choose_a_paymentmethod)
+                  .stripe style="display: none;"
+                    = render "payment_adapters/stripe", path_to_create_action: stripe_checkout_path(@paymentplan.id), button_text: t(:order_with_costs)
+                  .gocardless style="display: none;"
+                    = render "payment_adapters/gocardless", redirect_action: gocardless_checkout_initiation_path(@paymentplan.id), button_text: t(:order_with_costs)
+
+          li.list-group-item.text-center style="border: 0px;"
+            br
+            = link_to t(:back), showplans_path
+
+javascript:
+  $(function() {
+    if($(".icheck-me").length > 0){
+      $(".icheck-me").each(function(){
+        var $el = $(this);
+        var skin = ($el.attr('data-skin') !== undefined) ? "_" + $el.attr('data-skin') : "",
+        color = ($el.attr('data-color') !== undefined) ? "-" + $el.attr('data-color') : "";
+        var opt = {
+          checkboxClass: 'icheckbox' + skin + color,
+          radioClass: 'iradio' + skin + color,
+        }
+        $el.iCheck(opt);
+      });
+    }
+  });
+  $(function() {
+    var toggleButton = function (){
+      var button = $(this).data("button");
+      $("#payment-buttons > div").hide();
+      $("#payment-buttons").find("." + button).show();
+    }
+
+    $('input').on('ifChanged', toggleButton);
+    $("input:checked").each(toggleButton);
+  });

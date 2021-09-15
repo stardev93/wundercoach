@@ -1,0 +1,21 @@
+/ display invoices for eventbooking
+/ 1. display link to new invoice for bundle
+/ 2. display link to new partial invoice for eventbooking if order bundle
+/ relations
+/ order->businessdocument !Kill this later, do not use it now
+/ eventbooking -> businessdocumentpositions (has_many)
+/ order -> businessdocumentpositions (has_many)
+
+/#ToDo: Limit partial invoicing to premium users & above
+
+- order = eventbooking.order
+
+/ allow creation
+.row
+  .col-xs-12
+    / - if order&.product&.is_a? BundleEvent
+    - Billing::BusinessdocumentpositionDecorator.decorate_collection(eventbooking.businessdocumentpositions.joins(:businessdocument).order("businessdocuments.invoice_number DESC")).each do |businessdocumentposition|
+      .row
+        .col-xs-12
+          = link_to billing_businessdocument_path(businessdocumentposition.businessdocument)
+            = businessdocumentposition.businessdocument.info

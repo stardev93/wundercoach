@@ -1,0 +1,63 @@
+= simple_form_for(@eventbooking) do |f|
+
+  - if @eventbooking.event.seats_limited?
+    - if @eventbooking.event.seats_booked >= @eventbooking.event.maxparticipants
+      div.alert.alert-warning =t(:max_eventbookings_reached)
+    - else
+      div.alert.alert-success
+        = @eventbooking.event.seats_free
+        |&nbsp;
+        = t(:seats_free)
+
+  = f.error_notification
+
+  .form-inputs
+
+    = f.association :event, as: :hidden
+    - if @eventbooking.order && @eventbooking.order.businessdocuments.count > 0
+      .row
+        .col-xs-12
+          .alert.alert-info
+            = t(:eventbooking_already_has_invoice)
+      .row
+        .col-xs-12.col-sm-6
+          = render "shared/f_ro_text", :field_value => @eventbooking&.order&.client_order_info, :field_label => t(:order_client_order_info), :field_hint => t(:order_client_order_info_hint)
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/section_header", header_text: t(:participant_data), :hint_text => ""
+        = f.simple_fields_for :address do |address|
+          = render "addresses/form", f: address
+      .col-xs-12.col-sm-6
+        = render "shared/section_header", header_text: t(:billing_address), :hint_text => ""
+        = f.simple_fields_for :billing_address do |billing_address|
+          = render "addresses/form", f: billing_address
+        / = render "orders/billing_address_form", f: billing_address
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", header_text: t(:eventbooking_information), :hint_text => ""
+    .row
+      .col-xs-12.col-sm-3
+        = f.simple_fields_for :order do |f|
+          = f.input :price
+      .col-xs-12.col-sm-3
+        = f.input :booking_date, as: :date_time_picker, label: t(:booking_date), hint: t(:booking_date_hint)
+      .col-xs-12.col-sm-3
+        = f.association :eventbookingstatus, include_blank: false, label: t(:eventbookingstatus), hint: t(:eventbookingstatus_hint)
+      .col-xs-12.col-sm-3
+        = f.input :early_booking_applies, label: t(:early_booking_applies), hint: t(:early_booking_applies_hint)
+    .row
+      .col-xs-12
+        = f.input :comment, input_html: { style: 'height: 200px;' }, label: t(:comment), hint: t(:comment_hint)
+
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        / -  cancel_url = url_for controller: 'events', id: @eventbooking.event.id, action: 'show', anchor: 'eventbookings', only_path: true
+        = f.button :magic_submit, cancel: eventbooking_path(@eventbooking)
+
+javascript:
+  $('#eventbooking_billing_address').change(function() {
+    $('#eventbooking_billing_fields').toggle();
+  });

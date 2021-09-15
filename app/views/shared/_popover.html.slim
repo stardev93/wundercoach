@@ -1,0 +1,6 @@
+- if !defined? title_text
+  - title_text = ''
+- if !defined? position
+  - position = 'top'
+a tabindex="0" class="btn btn-xs btn-default" role="button" data-placement="#{position}" data-toggle="popover" data-trigger="hover" title="#{title_text}" data-content="#{popover_text}"
+  i.fa.fa-question

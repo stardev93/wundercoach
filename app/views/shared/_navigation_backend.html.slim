@@ -1,0 +1,66 @@
+nav class="navbar navbar-default"
+  .container-fluid
+    /! Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to root_path, class: "navbar-brand"
+        = image_tag "logo.png", :style => "width: 60px;"
+    /! Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.nav-pills
+        li class="#{controller_name == "dashboard" && action_name == 'index' ? 'active' : ''}"
+          = link_to admin_dashboard_path + "?backend[clear]"
+            = t(:dashboard)
+            span.sr-only (current)
+        li class="#{controller_name == "accounts" && action_name == 'index' ? 'active' : ''}"
+          = link_to admin_accounts_path + "?backend[clear]"
+            = t(:accounts)
+        li class="#{controller_name == "bookings" && action_name == 'index' ? 'active' : ''}"
+          = link_to admin_bookings_path + "?backend[clear]"
+            = t(:bookings)
+        li class="#{action_name == 'invoices' ? 'active' : ''}"
+          = link_to admin_accountinvoices_path + "?backend[clear]"
+            = t(:invoices)
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown"
+            = t(:service)
+            span.caret
+          ul.dropdown-menu
+            li class="#{action_name == 'paymentplanfeatures' ? 'active' : ''}"
+              = link_to admin_paymentplanfeatures_path + "?backend[clear]"
+                = t(:paymentplanfeatures)
+            li.divider
+            li class="#{action_name == 'paymentplans' ? 'active' : ''}"
+              = link_to admin_paymentplans_path + "?backend[clear]"
+                = t(:paymentplans)
+            li class="#{action_name == 'features' ? 'active' : ''}"
+              = link_to admin_features_path + "?backend[clear]"
+                = t(:features)
+            li class="#{action_name == 'appversions' ? 'active' : ''}"
+              = link_to admin_appversions_path + "?backend[clear]"
+                = t(:appversions)
+            li.divider
+            li class="#{action_name == 'placeholder' ? 'active' : ''}"
+              = link_to admin_placeholders_path
+                = t(:placeholder)
+            li class="#{action_name == 'message' ? 'active' : ''}"
+              = link_to admin_messages_path
+                = t(:messages)
+
+
+        / li = link_to t(:rails_admin), rails_admin_path
+      ul.nav.navbar-nav.pull-right.nav-pills
+        li
+          = link_to logout_url(subdomain: EXTERNAL_SUBDOMAIN)
+            i.fa.fa-sign-out
+            |&nbsp;
+            = t(:logout)
+        li
+          = link_to root_path
+            i.fa.fa-times
+            |&nbsp;
+            = t(:close)

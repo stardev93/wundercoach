@@ -1,0 +1,21 @@
+= form_for(@asset, html: { multipart: true, class: "dropzone dropzone-micro new_asset well"}) do |f|
+
+  - if @event
+    = f.hidden_field :event_id, value: @event.id
+  - if @eventsession
+    = f.hidden_field :eventsession_id, value: @eventsession.id
+  = f.hidden_field :status, value: "online"
+  p.lead.text-center
+    br
+    i.fa.fa-cloud-upload
+    |&nbsp;
+    = t(:drop_files_here_to_upload)
+  div.fallback
+    = f.file_field :asset
+    br
+    = f.submit "Upload"
+
+  - if @response_view
+    input type="hidden" class="responseview" value="#{}{@response_view}" id="responseview"
+  - else
+    input type="hidden" class="responseview" value="taskassetlist" id="responseview"

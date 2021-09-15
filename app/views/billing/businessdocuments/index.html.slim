@@ -1,0 +1,69 @@
+.page-header
+  span.h1
+    = t(:invoices)
+
+.nav.navbar.navbar-default
+  .navbar-form.navbar-left style="width: 100%; border: 0 none;"
+    .row
+      .col-xs-12
+        .form-group style="width: 100%;"
+          = simple_form_for :invoice, url: billing_businessdocuments_path, method: :get do |f|
+            .row
+              .col-xs-10
+                = f.label t(:search), required: false
+                br
+                = f.input_field :search, class: 'form-control', value: @filters['search'], style: "width: 100%;"
+              .col-xs-2
+                = f.label t(:search), required: false
+                br
+                = f.button :button, class: "button btn btn-primary", name: nil, style: "width: 100%;"
+                  i.fa.fa-search
+                - unless @filters.empty?
+                  = link_to billing_businessdocuments_path(clear: :filter), class: "btn btn-link"
+                    = t(:show_all)
+            .row
+              .col-xs-12
+                |&nbsp;
+            .row
+              .col-xs-12.col-sm-2
+                = f.label t(:start_date), required: false
+                br
+                = f.input_field :start_date, class: 'form-control',
+                          as: :date_picker,
+                          value: @filters['start_date']
+              .col-xs-12.col-sm-2
+                = f.label t(:end_date), required: false
+                br
+                = f.input_field :end_date, class: 'form-control',
+                          as: :date_picker,
+                          value: @filters['end_date']
+              .col-xs-12.col-sm-2
+                = f.label t(:type), required: false
+                br
+              	= f.input_field :invoicetype, class: 'form-control',
+                          collection: @invoicetypes, label_method: :first,
+                          value_method: :second, selected: @filters['invoicetype'],
+                          include_blank: t(:all)
+              .col-xs-12.col-sm-2
+                = f.label :status, required: false
+                br
+                = f.input_field :paymentstatus, class: 'form-control',
+                                collection: @paymentstatuses, label_method: :first,
+                                value_method: :second, selected: @filters['paymentstatus'],
+                                include_blank: t(:all)
+              .col-xs-12.col-sm-2
+                = f.label t(:paymentmethod), required: false
+                br
+                = f.input_field :paymentmethod, class: 'form-control',
+                                collection: @paymentmethods, label_method: :first,
+                                value_method: :second, selected: @filters['paymentmethod'],
+                                include_blank: t(:all)
+              .col-xs-12.col-sm-2.text-right
+                = render "billing/businessdocuments/download_button"
+            .row
+              .col-xs-12
+                |&nbsp;
+
+.row
+  .col-xs-12
+    = render 'businessdocument_list'

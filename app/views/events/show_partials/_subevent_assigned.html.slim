@@ -1,0 +1,13 @@
+h4
+  = t(:included_subevents)
+ul.list-group
+  li.list-group-item
+    .row
+      .col-xs-12.text-right
+        strong
+          |Summe:&nbsp;
+          = event.get_subevent_total
+
+  - assignedevents.each do |assignedevent|
+    - action_link = link_to t(:remove), unassignsubevent_event_path(event.id, assignedevent.id)
+    = render "events/show_partials/event_small", :event => assignedevent.subevent, :action_link => action_link

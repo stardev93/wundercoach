@@ -1,0 +1,52 @@
+de:
+  order: Bestellung
+  order_hint: Bestellungszeichnung
+  orders: Bestellungen
+  orders_hint: Liste der Bestellungen zu diesem Seminar
+  new_order: Neue Anmeldung
+  new_backend_order: Neue Anmeldung (Backend)
+  new_website_order: Neue Anmeldung (Website)
+  new_orders: Neue Anmeldungen
+  new_order_for: "Neue Anmeldung für \"%{product}\""
+  order_infotext: Anmeldungen für Seminare und Seminar-Pakete
+  order_for: "Anmeldung für \"%{product}\""
+  order_index_headline: Anmeldung für
+  order_creation_successful: Der Teilnehmer wurde angemeldet
+  order_update_successful: Die Anmeldung wurde erfolgreich aktualisiert
+  order_delete_successful: Die Anmeldung wurde gelöscht
+  order_status:
+    confirmed: Bestellt
+    paid: Bezahlt
+    waiting_for_payment: Auf Zahlungseingang wartend
+  cannot_invoice_free_product: Für kostenlose Produkte können keine Rechnungen generiert werden.
+  signup_participant: "Teilnehmer anmelden"
+  order_client_order_info_checkout: "Mitteilungen"
+  order_client_order_info_checkout_hint: "Geben Sie zusätzliche Infos ein, die Sie uns gerne mitteilen möchten"
+  order_client_order_info: "Zusatzinformationen"
+  order_client_order_info_hint: "Zusatzinformationen des Teilnehmers zu dieser Bestellung"
+  order_date: Bestelldatum
+
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      order:
+        one: Anmeldung
+        other: Anmeldungen
+    attributes:
+      order:
+        order_date: Bestelldatum
+  # SimpleForm Translations
+  simple_form:
+    magic_submit:
+      event:
+        orders:
+          new:
+            submit: "Teilnehmer anmelden"
+            disable_with: "Teilnehmer wird angemeldet ..."
+      bundle:
+        orders:
+          new:
+            submit: "Teilnehmer anmelden"
+            disable_with: "Teilnehmer wird angemeldet ..."
+  order_company_or_instituion_name: Firma / Behörde / Institut
+  order_company_or_instituion_name_hint: Name der Firma / Behörde / Institut für die die Anmeldung erfolgt.

@@ -1,0 +1,22 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  edit_adpartner_website: Website bearbeiten
+  add_website: Neue Website anlegen
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      adpartner/website:
+        one: Website
+        other: Websites
+    attributes:
+      adpartner/website:
+        commission_relative: Prozentualer Provisionsbetrag
+        commission_absolute: Absoluter Provisionsbetrag
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      adpartner/website: ~
+    hints:
+      adpartner/website: ~
+
+  commission: Provision

@@ -1,0 +1,70 @@
+- new_button = render "shared/button", path: new_user_path, link_text: t(:add_user), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:add_user)
+
+= render "shared/form_header",
+         header_text: t(:users), hint_text: t(:users_infotext),
+         buttons: new_button
+
+.row
+  .col-xs-12.well
+    = render "shared/form_search", :search_path => users_path
+
+
+.row
+  .col-xs-12.well
+    table.table
+      thead
+        tr
+          th = t(:name)
+          th = t(:email)
+          th = t(:user_time_zone)
+          th.text-center = t(:active)
+          th
+
+      tbody
+        - @users.each do |user|
+          tr
+            td
+              = link_to user_path(user)
+                = user.lastname
+                |,&nbsp;
+                = user.firstname
+            td = user.email
+            td = user.get_time_zone
+            td.text-center
+              / = render "shared/l_ro_boolean", :field_value => user.has_message
+              - if user.activation_state == 'pending'
+                = link_to activate_internal_path(user)
+                  = t(:activate)
+              - else
+                = t(:active)
+            td
+              .text-right
+                .btn-toolbar role="toolbar"
+                  .btn-group
+                    button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                      |...
+                    ul.dropdown-menu role="menu"
+                      li
+                        = link_to user_path(user)
+                          i.fa.fa-eye
+                          '&nbsp;
+                          = t(:show)
+                      li
+                        = link_to edit_user_path(user)
+                          i.fa.fa-edit
+                          '&nbsp;
+                          = t(:edit)
+                      li
+                        = link_to user_changepassword_path(user)
+                          i.fa.fa-lock
+                          '&nbsp;
+                          = t(:change_password)
+                      li
+                        = render "shared/delete_button", :button_type => 'btn-link', :delete_url => user_path(user), :delete_text => t(:delete)
+
+
+
+
+.row
+  .col-md-12
+    = will_paginate @collection, renderer: BootstrapPagination::Rails

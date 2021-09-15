@@ -1,0 +1,51 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          = @eventtype
+        span.add-item
+          = link_to new_eventtype_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_eventtype)
+      p.lead
+        = @eventtype.description
+        br
+      p
+        strong = t(:colorcode)
+        br
+        .colorcode_small style="background-color: #{@eventtype.colorcode}; height: 30px; width: 30px; border-style: solid; border-width: 1px;"
+
+  .row
+    .col-md-12
+      address
+        p
+          strong = t(:key)
+          br
+          span.lead = @eventtype.key
+          '&nbsp;
+        p
+          strong = t(:name)
+          br
+          span.lead = @eventtype.name
+          '&nbsp;
+        p
+          strong = t(:description)
+          br
+          span.lead = @eventtype.description
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_eventtype_path(@eventtype), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to eventtypes_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

@@ -1,0 +1,6 @@
+a.pull-left data-toggle="modal" data-trigger="hover" data-target="##{asset.id}" style="cursor: pointer;"
+  - if asset.asset.exists?
+    = image_tag asset.asset(:thumb), :class => "media-object img-responsive"
+  - else
+    = image_tag "default_thumb.png", :class => "media-object img-responsive"
+= render "assets/assetmodal", :modalid => asset.id, :modal_title => asset.name, :asset => asset

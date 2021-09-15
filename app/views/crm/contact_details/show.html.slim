@@ -1,0 +1,64 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @crm_contact_detail
+      span.add-item
+        = link_to new_crm_contact_detail_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_crm_contact_detail)
+    p.lead
+      = @crm_contact_detail.account
+      br
+      = @crm_contact_detail.contact
+      br
+      = @crm_contact_detail.detail_value
+      br
+      = @crm_contact_detail.detail_type
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Contact detail
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:account)
+        br
+        span.lead = @crm_contact_detail.account
+        '&nbsp;
+      p
+        strong = t(:contact)
+        br
+        span.lead = @crm_contact_detail.contact
+        '&nbsp;
+      p
+        strong = t(:detail_value)
+        br
+        span.lead = @crm_contact_detail.detail_value
+        '&nbsp;
+      p
+        strong = t(:detail_type)
+        br
+        span.lead = @crm_contact_detail.detail_type
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @crm_contact_detail, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_crm_contact_detail_path(@crm_contact_detail), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to crm_contact_details_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

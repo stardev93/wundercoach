@@ -1,0 +1,74 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:eventtypes)
+      span.add-item
+        = link_to new_eventtype_path, :class=>"btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:new_eventtype)
+    p.lead
+      = t(:eventype_explanation)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag eventtypes_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to eventtypes_path, class: "btn btn-link"
+                = t(:show_all)
+
+
+    table.table
+      thead
+        tr
+          th
+            = t (:color)
+          th
+            = t (:name)
+          th
+            = t (:description)
+          th
+
+      tbody
+        - @eventtypes.each do |eventtype|
+          tr
+            td
+              - unless eventtype.colorcode.blank?
+                p.lead.color_box style="background-color: #{eventtype.colorcode};"
+                  |&nbsp;
+            td = link_to eventtype.name, eventtype
+            td = eventtype.description
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to eventtype_path(eventtype)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        =t(:show)
+                    li
+                      = link_to edit_eventtype_path(eventtype)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        =t(:edit)
+                    li
+                      = link_to eventtype, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+
+    .row
+      .col-md-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

@@ -1,0 +1,24 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:new_request)
+
+    = simple_form_for(@request) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :lastname, label: t(:lastname)
+        = f.input :firstname, label: t(:firstname)
+        = f.input :gender, as: :select, collection: %i(noinfo female male diverse), include_blank: "--", label: t(:gender)
+        = f.input :tel, label: t(:tel)
+        = f.input :email, label: t(:email)
+        = f.input :message, label: t(:request_message)
+        div style="display: none;"
+          = f.input :free, input_html: { value: nil }
+        = f.association :event, as: :hidden
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: false

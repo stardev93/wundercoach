@@ -1,0 +1,63 @@
+table.table
+  tr
+    th
+      = t(:billing_address)
+    th
+      = t(:order_date)
+    th.text-right
+      = t(:price)
+      br
+      = t(:paymentmethod)
+    th
+      = t(:participants)
+    th
+      |&nbsp;
+
+  - OrderDecorator.decorate_collection(event.orders.confirmed.order('order_date DESC')).each do |order|
+    - first_eventbooking = order.get_first_booking
+    tr
+      td
+
+        - if order.billing_address
+          = render "addresses/address_small", :address => order.billing_address
+        - else
+          - if order.address
+            = render "addresses/address_small", :address => order.address
+      td
+        - if order.decorate.order_date
+          = order.decorate.order_date
+          / br
+          / = order.decorate.order_time
+      td.text-right
+        = order.decorate.price
+
+        br
+        = order.decorate.paymentmethod
+      td
+        - order.eventbookings.each do |eventbooking|
+          = eventbooking
+          br
+      td
+        span.pull-right
+          = render "eventbookings/controls/eventbooking_button", :eventbooking => first_eventbooking unless first_eventbooking.nil?
+        |&nbsp;
+        span.pull-right
+          button.btn.btn-sm.btn-default.btn-toggle-rows id="#{order.id}"
+            = t(:details)
+            |&nbsp;
+            i.fa.fa-caret-right class="btn-icon-#{order.id}"
+            i.fa.fa-caret-down class="btn-icon-#{order.id}" style="display: none;"
+    tr
+      td colspan="5"
+        table.table
+          = render "eventbookings/order_list_businessdocuments", :order => order
+
+          = render "eventbookings/order_list_signups", :order => order
+
+javascript:
+  $('.btn-toggle-rows').on('click', function (e) {
+    e.preventDefault();
+    id = this.id;
+    $('.bundle-bookings-' + id).toggle();
+    $('.btn-icon-' + id).toggle();
+  });

@@ -1,0 +1,42 @@
+- short_comment_text = sanitize @contact.comments, :tags => %w(br a p)
+- short_comment_text = truncate short_comment_text, :length => 200
+javascript:
+  $(document).ready(function(){
+    $(".togglelink").click(function(){
+        $(".toggle").toggle();
+    });
+  });
+
+.row
+  .col-md-12
+    span
+      strong
+        = t(:comments)
+
+    / span.add-item
+    /   button.btn.btn-xs.btn-default.togglelink.toggle
+    /     i.fa.fa-arrow-down
+    /     |&nbsp;
+    /     = t(:more)
+    /   button.btn.btn-xs.btn-default.togglelink.toggle style="display: none;"
+    /     i.fa.fa-arrow-up
+    /     |&nbsp;
+    /     = t(:less)
+
+/ div.lead.toggle style="display: none;"
+div.toggle
+  / = sanitize @contact.comments
+  = best_in_place @contact, :comments, tabindex: "6", :as => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel', :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right", :place_holder => '...'
+/ div.lead.toggle
+/   = short_comment_text
+
+/ div
+/   span.add-item
+/     button.btn.btn-xs.btn-default.togglelink.toggle
+/       i.fa.fa-arrow-down
+/       |&nbsp;
+/       = t(:more)
+/     button.btn.btn-xs.btn-default.togglelink.toggle style="display: none;"
+/       i.fa.fa-arrow-up
+/       |&nbsp;
+/       = t(:less)

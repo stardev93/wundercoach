@@ -1,0 +1,80 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:website_integration_headline)
+      p.lead
+        = t(:website_integration_text)
+      p.lead.text-right
+        - if @account.websiteintegration_done
+          = link_to toggle_websiteintegration_path, class: "btn btn-default"
+            del.text-muted
+              = t(:website_integration_headerimage_button_done)
+              |&nbsp;
+              i.fa.fa-check
+        - else
+          = link_to toggle_websiteintegration_path, class: "btn btn-primary"
+            = t(:website_integration_headerimage_button_not_done)
+
+.row
+  .col-xs-12
+    h3 = t(:website_integration_headerimage_headline)
+    p.lead = t(:website_integration_headerimage_text)
+  .col-xs-12
+    p
+      = link_to event_design_path, class: "btn btn-primary"
+        = t(:eventdesign_change)
+      |&nbsp;
+      = render "events/signup_preview_btn"
+      - if @account.eventheader.exists?
+        span.text-muted
+          |&nbsp;
+          |&nbsp;
+          i.fa.fa-check
+          |&nbsp;
+          = t(:done)
+
+hr
+
+.row
+  .col-xs-12
+    h3 = t(:website_integration_standard_headline)
+    p.lead = t(:website_integration_standard_text)
+  .col-xs-12
+    pre
+      = signup_index_url
+    = t(:website_integration_standard_preview)
+    br
+    br
+    = render "events/signup_preview_btn"
+
+hr
+
+.row
+  .col-xs-12
+    h3 = t(:website_integration_widget_headline)
+    p.lead = t(:website_integration_widget_text)
+  .col-xs-12
+    p
+      = link_to t(:open_widgets_page), widgets_path, class: "btn btn-primary"
+
+hr
+
+.row
+  .col-xs-12
+    h3 = t(:website_integration_iframe_headline)
+    p.lead = t(:website_integration_iframe_text)
+  .col-xs-12
+    pre
+      = %(<iframe height="1200px" width="100%" style="border: 0px;" name="wundercoach" src="#{signup_index_url}"></iframe>)
+hr
+
+.row
+  .col-xs-12
+    h3 = t(:website_integration_wordpress_headline)
+    p.lead = t(:website_integration_wordpress_text)
+  .col-xs-12
+    pre
+      = link_to "https://wundercoach.net/wordpress-plugin-seminarverwaltung/", target: "_blank"
+        |https://wundercoach.net/wordpress-plugin-seminarverwaltung/
+    br

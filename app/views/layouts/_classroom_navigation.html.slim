@@ -1,0 +1,57 @@
+- if current_user
+  nav.navbar.navbar-inverse.navbar-default.navbar-fixed-top role="navigation" style="min-height: 30px;"
+    .container
+      .navbar-header
+        = link_to root_path, class: "navbar-brand" do
+          = image_tag("logo.png", style: "width:30px;")
+      .collapse.navbar-collapse#navigation-one
+        ul.nav.navbar-nav style="margin-top: 0px;"
+          li
+            = link_to t(:close), event_path(@eventsession.event)
+          li
+            = link_to @eventsession.event, event_path(@eventsession.event)
+          li.dropdown
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              = t(:tools)
+              span.caret
+              ul.dropdown-menu
+                li
+                  =link_to t(:participants), events_path
+                li
+                  =link_to t(:video), events_path
+                li
+                  =link_to t(:whiteboard), events_path
+                li
+                  =link_to t(:files), events_path
+
+        ul.nav.navbar-nav.pull-right style="margin-top: 0px;"
+          li
+            = link_to "English", locale: "en"
+          li
+            = link_to "Deutsch", locale: "de"
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              i.fa.fa-user &nbsp;
+              = t(:accountsettings)
+              b.caret
+            ul.dropdown-menu
+              li
+                = link_to settings_path
+                 i.fa.fa-cog
+                 |&nbsp;
+                 = t (:accountsettings)
+              li
+                = link_to user_path(current_user)
+                 i.fa.fa-cog
+                 |&nbsp;
+                 = t (:edit_usersettings)
+              li
+                = link_to user_path(current_user)
+                 i.fa.fa-lock
+                 |&nbsp;
+                 = t (:change_password)
+              li
+                = link_to logout_path
+                  i.fa.fa-sign-out
+                  |&nbsp;
+                  = t (:sign_out)

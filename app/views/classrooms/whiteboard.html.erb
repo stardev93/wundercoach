@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <!-- jQuery 1.x is required; if you already have it included in your page, no need to include this -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <!-- AWW widget -->
+        <script type="text/javascript" src="https://awwapp.com/static/1.0/aww.min.js"></script>
+        <!-- Connection to the whiteboard sharing service -->
+        <script type="text/javascript" src="https://awwapp.com/nowjs/now.js"></script>
+        <!-- CSS styles used by the widget -->
+        <link rel="stylesheet" type="text/css" href="https://awwapp.com/static/1.0/aww.css"/>
+    </head>
+    <body>
+        <!-- the whiteboard widget will be shown inside this element -->
+        <div id="wrapper" style="width: 600px; height: 300px;"></div>
+
+        <script type="text/javascript">
+            $(function() {
+                /* initialize the whiteboard widget on #wrapper element */
+                var aww = $('#wrapper').awwCanvas({
+                    /* the API key you get when you sign up */
+                    apiKey: "#{@eventsession.token}",
+                    /* pick any unique string as your board ID */
+                    singleBoardId: '723cfbae-8e76-41b4-bcd8-9c1489d4c3a6'
+                });
+            });
+        </script>
+    </body>
+</html>

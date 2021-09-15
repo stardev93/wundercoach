@@ -1,0 +1,5 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  paymentterm: Zahlungsbedingung
+  paymentterms: Zahlungsbedingungen
+  paymentterms_hint: Zahlungsbedingungen werden in Ihrem Bestellvorgang neben den verfügbaren Zahlungsmethoden angezeigt.

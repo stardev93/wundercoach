@@ -1,0 +1,14 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  paymentmethods: Payment methods
+  paymentmethod: Payment method
+  allowed_paymentmethods: "Allowed payment methods"
+  available_payment_methods: "Payment methods"
+  available_payment_methods_hint: "Please configure the payment methods that your customers can choose when booking events. Click on the description text to edit it. The text is displayed in the checkout dialogue."
+  active_payment_methods: "Activated payment methods"
+  available_until: 'Available until'
+  available_until_hint: "Deadline for paying with this payment method"
+  advance_payment: 'Advance payment'
+  choose_a_paymentmethod: 'Please choose a payment method'
+  payment_via_creditcard: Payment via credit card
+  give_sepa_direct_debit_mandate: Give SEPA direct debit mandate

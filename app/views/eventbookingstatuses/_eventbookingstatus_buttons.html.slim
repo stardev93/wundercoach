@@ -1,0 +1,12 @@
+label
+  = t(:eventbookingstatus)
+br
+.btn-group
+  - Eventbookingstatus.joins(:eventbookings).where.not(key: 'new').with_translations.distinct.each do |eventbookingstatus|
+    - if (@filters["by_status"] || []).include? (eventbookingstatus.id.to_s)
+      - active = 'btn-primary active'
+    - else
+      - active = ''
+
+    = link_to eventbookings_path+'?eventbookingstatus='+eventbookingstatus.id.to_s, class: "btn btn-default #{active}"
+        = eventbookingstatus

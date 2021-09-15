@@ -1,0 +1,85 @@
+= simple_form_for(@account, url: account_path) do |f|
+  = f.error_notification
+  - submit_button = f.button :magic_submit, cancel: settings_path
+
+  = render "shared/form_header",
+         header_text: t(:account_information), hint_text: t(:account_information_hint),
+         buttons: nil
+
+  .form-inputs
+    = f.input :name, placeholder: :account_name, required: true, label: t(:account_name), hint: t(:account_name_hint)
+    = f.input :name_addon, label: t(:name_addon), hint: t(:name_addon_hint)
+
+    .row
+      .col-xs-12.col-sm-10
+        = f.input :street, required: true, label: t(:street), hint: t(:street_hint)
+      .col-xs-12.col-sm-2
+        = f.input :streetno, required: true, label: t(:streetno), hint: t(:streetno_hint)
+
+    .row
+      .col-xs-12.col-sm-3
+        = f.input :zip, required: true, label: t(:zip), hint: t(:zip_hint)
+      .col-xs-12.col-sm-9
+        = f.input :city, required: true, label: t(:city), hint: t(:city_hint)
+    .row
+      .col-xs-12
+        = f.input :country, required: true, priority: ["Deutschland"], label: t(:country), hint: t(:country_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_timezone", :form => f, :field => :time_zone, :field_label => t(:account_time_zone), :field_hint => t(:account_time_zone_hint), :preset => true
+    .row
+      .col-xs-12.text-right
+        = render "shared/f_submit_button", :button => submit_button
+  .row
+    .col-xs-12
+      a name="account_contact_information"
+      p.lead &nbsp;
+
+  = render "shared/form_header",
+         header_text: t(:account_contact_information), hint_text: t(:account_contact_information_hint),
+         buttons: nil
+
+  .form-inputs
+    .row
+      .col-xs-12.col-sm-2
+        = f.input :gender, as: :select, collection: %i(female male), include_blank: false
+      .col-xs-12.col-sm-5
+        = f.input :firstname
+      .col-xs-12.col-sm-5
+        = f.input :lastname
+    .row
+      .col-xs-12
+        = f.input :tel1, label: t(:tel1), hint: t(:tel1_hint)
+        = f.input :tel2, label: t(:tel2), hint: t(:tel2_hint)
+        = f.input :fax, label: t(:fax), hint: t(:fax_hint)
+        = f.input :email, label: t(:email), hint: t(:email_hint), :input_html => { :autocorrect => "off", :autocapitalize => "off"}
+    .row
+      .col-xs-12.text-right
+        = render "shared/f_submit_button", :button => submit_button
+
+  = render "shared/form_header",
+         header_text: t(:billing_information), hint_text: t(:billing_information_hint),
+         buttons: nil
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :email_billing_address, required: true, label: t(:email_billing_address), hint: t(:email_billing_address_hint), :input_html => { :autocorrect => "off", :autocapitalize => "off"}
+    .row
+      .col-xs-12
+        = f.input :vat_number, label: t(:vat_number), hint: t(:vat_number_hint)
+
+  = render "shared/form_header",
+         header_text: t(:integration), hint_text: t(:integration_hint),
+         buttons: nil
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :token, label: t(:account_api_token), hint: t(:account_api_token_hint)
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        br
+        = f.button :magic_submit, cancel: settings_path

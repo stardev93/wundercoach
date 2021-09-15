@@ -1,0 +1,143 @@
+.row
+  .col-xs-12
+    span.h3
+      = @account.accountnumber
+      |&nbsp;
+      = @account
+
+    span.add-item
+      |&nbsp;
+      / = render "current_booking"
+      |&nbsp;
+      / = render "next_booking"
+
+.row
+  .col-xs-12
+    p.h3
+    hr style="padding:0px; margin: 5px;"
+.row
+  .col-xs-12.col-sm-4
+    address
+      p
+        strong =t(:name_addon)
+        br
+        span.lead = @account.name_addon
+        '&nbsp;
+      p
+        strong
+          = t(:firstname)
+          |&nbsp;
+          = t(:firstname)
+        br
+        span.lead
+          = (@account.gender == "male" ? t(:gender_name_m) : t(:gender_name_f))
+          |&nbsp;
+          = @account.firstname
+          |&nbsp;
+          = @account.lastname
+      p
+        strong =t(:address)
+        br
+        span.lead
+          = @account.street
+          '&nbsp;
+          = @account.streetno
+          br
+          = @account.zip
+          '&nbsp;
+          = @account.city
+          br
+          - if @account.country
+            = ISO3166::Country[@account.country.upcase].translation(I18n.locale)
+      p
+        strong =t(:accountstatus)
+        br
+        span.lead = @account.accountstatus
+        '&nbsp;
+
+  .col-xs-12.col-sm-4
+    address
+      p
+        strong = t(:tel1)
+        br
+        span.lead = @account.tel1
+        '&nbsp;
+      p
+        strong
+          = t(:tel2)
+        br
+        span.lead = @account.tel2
+        '&nbsp;
+      p
+        strong =t(:email)
+        br
+        span.lead = @account.email
+        '&nbsp;
+      p
+        strong =t(:homepage)
+        br
+        span.lead = @account.homepage
+        '&nbsp;
+  .col-xs-12.col-sm-4
+    / = render "status"
+.row
+  .col-xs-12.text-right
+    hr
+    = render "shared/delete_button", :button_type => 'btn-danger btn', :delete_url => admin_account_path(@account), :delete_text => t(:delete)
+    ' &nbsp;
+    = link_to edit_admin_account_path(@account), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to admin_accounts_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+.row
+  .col-xs-12
+    ul.nav.nav-tabs role="tablist"
+      li.active role="presentation"
+        a href="#status" aria-controls="status" role="tab" data-toggle="tab"
+          = t(:status)
+
+      li role="presentation"
+        a href="#payment_adapters" aria-controls="payment_adapters" role="tab" data-toggle="tab"
+          = t(:paymentadapters)
+
+      li role="presentation"
+        a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab"
+          = t(:bookings)
+
+      li role="presentation"
+        a href="#accountinvoices" aria-controls="accountinvoices" role="tab" data-toggle="tab"
+          = t(:invoices)
+
+      li role="presentation"
+        a href="#billing_periods" aria-controls="billing_periods" role="tab" data-toggle="tab"
+          = t(:billing_periods)
+
+      li role="presentation"
+        a href="#users" aria-controls="users" role="tab" data-toggle="tab"
+          = t(:users)
+.row
+  .col-xs-12
+    .well
+      .tab-content
+        .tab-pane.active role="tabpanel" id="status"
+          = render "status"
+
+        .tab-pane role="tabpanel" id="payment_adapters"
+          = render "subtable_payment_adapters"
+
+        .tab-pane role="tabpanel" id="bookings"
+          = render "subtable_bookings"
+
+        .tab-pane role="tabpanel" id="accountinvoices"
+          = render "subtable_accountinvoices"
+
+        .tab-pane role="tabpanel" id="billing_periods"
+          = render "subtable_billing_periods"
+
+        .tab-pane.active role="tabpanel" id="users"
+          = render "subtable_users"

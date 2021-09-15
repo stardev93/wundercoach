@@ -1,0 +1,46 @@
+.row
+  .col-xs-12
+    ul.list-group
+      li.list-group-item.disabled
+        = t(:account_setup_information)
+      li.list-group-item
+        label
+          = t(:days_since_last_seen)
+        br
+        - @account.users.limit(1).each do |account_user|
+          = account_user.email
+          span.badge
+            = (account_user.last_login_at ? account_user.days_since_last_seen : "--")
+          br
+
+      li.list-group-item
+        label
+          |Kundendaten
+        = render "status_label", :value => @account.complete?
+      li.list-group-item
+        label
+          |Integration Bezahlarten
+      li.list-group-item
+        |Stripe
+        = render "status_label", :value => @account.stripe_integrated?
+      li.list-group-item
+        |GoCardless
+        = render "status_label", :value => @account.gocardless_integrated?
+      li.list-group-item
+        |sofort.com
+        = render "status_label", :value => @account.sofort_integrated?
+      li.list-group-item
+        label
+          |Subdomain
+        br
+        = link_to "https://" + @account.subdomain + ".wundercoach.net", :target => "_blank"
+          = "https://" + @account.subdomain + ".wundercoach.net"
+      li.list-group-item
+        label
+          |Anmeldungen
+        span.badge
+          = @account.eventbookings.count
+      li.list-group-item
+        label
+          |Rechnungsdesign
+        = render "status_label", :value => @account.invoicedesign_done?

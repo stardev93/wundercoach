@@ -1,0 +1,16 @@
+= simple_form_for(@accountinvoiceposition) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :accountinvoice, label: t(:accountinvoice), hint: t(:accountinvoice_hint)
+    = f.input :position, label: t(:position), hint: t(:position_hint)
+    = f.association :paymentplan, label: t(:paymentplan), hint: t(:paymentplan_hint)
+    = f.input :paymentplan_name, label: t(:paymentplan_name), hint: t(:paymentplan_name_hint)
+    = f.input :paymentplan_cycle, label: t(:paymentplan_cycle), hint: t(:paymentplan_cycle_hint)
+    = f.input :paymentplan_amount, label: t(:paymentplan_amount), hint: t(:paymentplan_amount_hint)
+    = f.input :paymentplan_price, label: t(:paymentplan_price), hint: t(:paymentplan_price_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: accountinvoicepositions_path

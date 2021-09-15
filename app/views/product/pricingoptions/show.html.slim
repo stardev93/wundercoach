@@ -1,0 +1,85 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @product_pricingoption
+      span.add-item
+        = link_to new_product_pricingoption_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_product_pricingoption)
+    p.lead
+      = @product_pricingoption.account
+      br
+      = @product_pricingoption.pricingset
+      br
+      = @product_pricingoption.name
+      br
+      = @product_pricingoption.comments
+      br
+      = @product_pricingoption.hint_text
+      br
+      = @product_pricingoption.full_price_deduct_cents
+      br
+      = @product_pricingoption.price_early_signup_deduct_cents
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Pricingoption
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:account)
+        br
+        span.lead = @product_pricingoption.account
+        '&nbsp;
+      p
+        strong = t(:pricingset)
+        br
+        span.lead = @product_pricingoption.pricingset
+        '&nbsp;
+      p
+        strong = t(:name)
+        br
+        span.lead = @product_pricingoption.name
+        '&nbsp;
+      p
+        strong = t(:comments)
+        br
+        span.lead = @product_pricingoption.comments
+        '&nbsp;
+      p
+        strong = t(:hint_text)
+        br
+        span.lead = @product_pricingoption.hint_text
+        '&nbsp;
+      p
+        strong = t(:full_price_cents)
+        br
+        span.lead = @product_pricingoption.full_price_cents
+        '&nbsp;
+      p
+        strong = t(:price_early_signup_cents)
+        br
+        span.lead = @product_pricingoption.price_early_signup_cents
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @product_pricingoption, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_product_pricingoption_path(@product_pricingoption), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to product_pricingoptions_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

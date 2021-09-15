@@ -1,0 +1,37 @@
+- if (session[:q]['name_or_name2_or_firstname_or_lastname_or_contact_no_or_account_receivable_no_or_contact_addresses_street_or_contact_details_detail_value_cont'].present? \
+  or session[:q]['type_eq'].present? \
+  or session[:q]['contact_tags_id_eq'].present?)
+  - filtered = true
+- else
+  - filtered = false
+
+.btn-group
+  button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    - if filtered
+      span.text-danger
+        = t(:export_filtered)
+      |&nbsp;
+      i.fa.fa-filter class="text-danger"
+    - else
+      = t(:export)
+    |&nbsp;
+    span.caret
+  ul.dropdown-menu
+    li
+      = link_to crm_contacts_path+'.xlsx'
+        = t(:companies_with_persons)
+        |&nbsp;
+        span.badge
+          = @contacts.count
+    li
+      = link_to crm_contacts_path+'.xlsx?t=companies'
+        = t(:companies)
+        |&nbsp;
+        span.badge
+          = @companies.count
+    li
+      = link_to crm_contacts_path+'.xlsx?t=persons'
+        = t(:persons)
+        |&nbsp;
+        span.badge
+          = @persons.count

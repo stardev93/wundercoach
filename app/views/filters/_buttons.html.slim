@@ -1,0 +1,16 @@
+- %w(price_filter location_filter campaign_filter type_filter).each do |filtertype|
+  - filterclass = filtertype.camelize
+  - type = filtertype.split('_').first
+  - filter_path = if @campaign.present? then \
+      new_campaign_target_group_filter_path(type: type) \
+    elsif @target_group.present? then \
+      new_target_group_filter_path(type: type) \
+    else \
+      new_filter_path(type: type) end
+
+  span.add-item
+    = link_to filter_path, class: "btn btn-primary #{if @filter.class.name == filterclass then 'active' end}"
+      i.fa.fa-plus
+      | &nbsp;
+      = t(filterclass)
+    | &nbsp;

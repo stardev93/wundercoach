@@ -1,0 +1,10 @@
+- edit_button = render "shared/button", path: edit_eventbooking_path(@eventbooking), link_text: t(:edit_eventbooking), icon: "fa-edit", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit_eventbooking)
+- event_button = render "shared/button", path: event_path(@eventbooking.event).to_s + '#orders', link_text: t(:event), icon: "fa-show", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:event)
+
+= render "shared/form_header",
+         header_text: t(:move_eventbooking).to_s + ' ' + @eventbooking.decorate.info.to_s, hint_text: @eventbooking.event.decorate.info,
+         buttons: event_button + ' ' + edit_button
+
+.row.well
+  .col-xs-12
+    = render 'form_movebooking'

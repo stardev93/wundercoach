@@ -1,0 +1,25 @@
+tr.event_tr
+  td.event_td
+    span.event_name
+      = link_to event.name, signup_show_event_path(event)
+    br
+    = sanitize event.shortdescription
+
+  td.event_td
+    span.event_coach
+      = sanitize event.coaches.join("<br />")
+
+  td.event_td
+    = render "signup/location", event: event.decorate
+
+  td.event_td.text-right
+    - if event.object.full_price.to_f > 0
+      = render "signup/info_price", :event => event
+  td.event_td
+    p style="max-width: 130px;"
+      = render "signup/requests/button_small", event: event
+    p style="max-width: 130px;"
+      = link_to signup_show_event_path(event), class: 'btn btn-default btn-sm btn-warning event_btn_details', style: 'width:100%;'
+        i.fa.fa-eye.icon_details
+        '&nbsp;
+        = t(:details)

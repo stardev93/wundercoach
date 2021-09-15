@@ -1,0 +1,43 @@
+/ subtable tabs for different eventbooking statuses
+/ = render "eventbookings/subtable_headline"
+
+ul.nav.nav-pills role="tablist" style="margin-top: 20px;"
+  li.active
+    a href="#eventbookings_confirmed" aria-controls="eventbookings_confirmed" role="tab" data-toggle="tab"
+      = t(:confirmed_bookings)
+      |&nbsp;
+      span.badge
+        = @event.eventbookings.confirmed_bookings.count
+  li
+    a href="#eventbookings_waiting" aria-controls="eventbookings_waiting" role="tab" data-toggle="tab"
+      = t(:waiting_bookings)
+      |&nbsp;
+      span.badge
+        = @event.eventbookings.waiting_bookings.count
+  li
+    a href="#eventbookings_cancelled" aria-controls="eventbookings_cancelled" role="tab" data-toggle="tab"
+      = t(:cancelled_bookings)
+      |&nbsp;
+      span.badge
+        = @event.eventbookings.cancelled_bookings.count
+  li
+    a href="#eventbookings_all" aria-controls="eventbookings_all" role="tab" data-toggle="tab"
+      = t(:all_bookings)
+      |&nbsp;
+      span.badge
+        = @event.completed_eventbookings.count
+
+.tab-content
+  .tab-pane.active role="tabpanel" id="eventbookings_new"
+
+  .tab-pane.active role="tabpanel" id="eventbookings_confirmed"
+    = render "eventbookings/subtable_body", :@eventbookings => @event.eventbookings.by_date_desc.confirmed_bookings, :statusfilter => "confirmed_bookings"
+
+  .tab-pane role="tabpanel" id="eventbookings_waiting"
+    = render "eventbookings/subtable_body", :@eventbookings => @event.eventbookings.by_date_desc.waiting_bookings, :statusfilter => "waiting_bookings"
+
+  .tab-pane role="tabpanel" id="eventbookings_cancelled"
+    = render "eventbookings/subtable_body", :@eventbookings => @event.eventbookings.by_date_desc.cancelled_bookings, :statusfilter => "cancelled_bookings"
+
+  .tab-pane role="tabpanel" id="eventbookings_all"
+    = render "eventbookings/subtable_body", :@eventbookings => @event.completed_eventbookings.by_date_desc, :statusfilter => ""

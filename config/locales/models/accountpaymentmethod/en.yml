@@ -1,0 +1,14 @@
+en:
+  # assets
+  accountpaymentmethod: "Payment method"
+  accountpaymentmethods: "Payment method"
+  edit_accountpaymentmethod: "Edit payment method"
+  edit_sofort: Edit Sofort.com access data
+  edit_paypal: Edit PayPal.com access data
+  accountpaymentmethod_successfully_created:  'Account payment method has been successfully created.'
+  accountpaymentmethod_successfully_updated:  'Account paymentmethod has been successfully updated.'
+  accountpaymentmethod_successfully_deleted:  'Account payment method has been successfully deleted.'
+  paymentmethod_successfully_activated: "Payment method has been successfully activated"
+  paymentmethod_successfully_deactivated: "Payment method has been successfully deactivated"
+  paypal_client_id: "PayPal Client ID"
+  paypal_client_id_hint: "Enter your PayPal Client ID. You can get your PayPal-client-id in your PayPal client account on the paypal.com website."

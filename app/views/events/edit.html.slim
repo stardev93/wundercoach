@@ -1,0 +1,33 @@
+.row
+  .col-xs-12
+    - case @event.type
+
+      - when 'IndividualEvent'
+        .page-header
+          span.h1
+            = t(:edit_individual_event)
+        = render 'form_individual_event'
+
+      - when 'FreeEvent'
+        .page-header
+          span.h1
+            = t(:edit_free_event)
+        = render 'form_free_event'
+
+      - when 'OnlineEvent'
+        .page-header
+          span.h1
+            = t(:edit_online_event)
+        = render 'form_online_event'
+
+      - when 'BundleEvent'
+        .page-header
+          span.h1
+            = t(:edit_bundle_event)
+        = render 'form_bundle_event'
+
+      - else
+        .page-header
+          span.h1
+            = t(:edit_standard_event)
+        = render 'form_standard_event'

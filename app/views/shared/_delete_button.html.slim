@@ -1,0 +1,24 @@
+/ synopsis
+/ link-style display: = render "shared/delete_button", , :button_type => 'btn-link', :delete_url => product_location_path(location), :delete_text => t(:delete)
+/ button-style display: = render "shared/delete_button", , :button_type => 'btn-danger', :delete_url => product_location_path(location), :delete_text => t(:delete)
+- if button_type == "btn-link"
+  - css = "btn btn-link"
+- else
+  - css = "btn btn-danger"
+
+/ do we have a custom icon?
+- if defined? button_icon
+  - icon = button_icon
+- else
+  - icon = "fa-remove"
+
+- if defined? button_css
+  - add_css = button_css
+- else
+  - add_css = ''
+
+a data-toggle="modal" data-trigger="hover" data-target="#modaldelete" class="#{css} object_delete #{add_css}" style="cursor: pointer;" data-url="#{delete_url}"
+  - unless icon == ''
+    i.fa class="#{icon}"
+    '&nbsp;
+  = delete_text

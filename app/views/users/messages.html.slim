@@ -1,0 +1,67 @@
+= render "shared/form_header",
+         header_text: t(:messages), hint_text: t(:user_messages_infotext),
+         buttons: nil
+.row
+  .col-xs-12
+    = render "shared/form_search", :search_path => admin_messages_path
+    table.table
+      thead
+        tr
+          th = t(:messages)
+          th
+
+      tbody
+        - MessageDecorator.decorate_collection(@messages).each do |message|
+          tr id="message_row_#{message.id}" class="#{(@message_id.to_s == message.id.to_s ? 'bg-info' : '')}"
+            td style="#{@message_id ? 'margin-top: 100px;' : ''}"
+
+              a href="" name="#{message.id.to_s}"
+              = render "shared/l_ro_date", :field_value => message.published_at_date(current_user.get_time_zone)
+              br
+              h4
+                i.fa.fa-caret-down.toggle_body id="message_toggler_down_#{message.id}" data-id="#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? '' : 'display: none;')}"
+                i.fa.fa-caret-right.toggle_body id="message_toggler_right_#{message.id}" data-id="#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? 'display: none;' : '')}"
+                |&nbsp;
+                a.toggle_body href="#" data-id="#{message.id}"
+                  = message.subject
+              .message_teaser id="message_teaser_#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? 'display: none;' : '')}"
+                = message.get_body_teaser
+              .message_body id="message_body_#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? '' : 'display: none;')}"
+                = raw(message.body)
+
+            td
+              button.btn.btn-default.btn-sm.toggle_body id="message_toggler_arrow_down_#{message.id}" data-id="#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? 'display: none;' : '')}"
+                i.fa.fa-arrow-down
+              button.btn.btn-default.btn-sm.toggle_body id="message_toggler_arrow_up_#{message.id}" data-id="#{message.id}" style="#{(@message_id.to_s == message.id.to_s ? '' : 'display: none;')}"
+                i.fa.fa-arrow-up
+
+
+    .row
+      .col-xs-12
+        = will_paginate @messages, renderer: BootstrapPagination::Rails
+
+javascript:
+  $(document).ready(function(){
+    $(".toggle_body").on("click", function(e){
+      e.preventDefault();
+      // var dataId = $(this).attr("data-id");
+      var teaser_id = "#message_teaser_" + $(this).attr("data-id");
+      var body_id = "#message_body_" + $(this).attr("data-id");
+
+      var toggler_right_id = "#message_toggler_right_" + $(this).attr("data-id");
+      var toggler_down_id = "#message_toggler_down_" + $(this).attr("data-id");
+
+      var toggler_arrow_down_id = "#message_toggler_arrow_down_" + $(this).attr("data-id");
+      var toggler_arrow_up_id = "#message_toggler_arrow_up_" + $(this).attr("data-id");
+
+      var message_row_id = "#message_row_" + $(this).attr("data-id");
+
+      $(teaser_id).toggle();
+      $(body_id).toggle();
+      $(toggler_right_id).toggle();
+      $(toggler_down_id).toggle();
+      $(toggler_arrow_down_id).toggle();
+      $(toggler_arrow_up_id).toggle();
+      $(message_row_id).removeClass("bg-info");
+    });
+  });

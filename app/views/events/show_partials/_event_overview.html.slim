@@ -1,0 +1,110 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:overview)
+
+
+.row
+  .col-xs-12.col-sm-8
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => event.start_date_time, :field_label => t(:start_date_time), :field_hint => t(:start_date_time_hint)
+
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => event.end_date_time, :field_label => t(:end_date_time), :field_hint => t(:end_date_time_hint)
+    .row
+      .col-xs-12.col-sm-6
+        - if @event.type == "FreeEvent"
+          = render "shared/f_ro_text", :field_value => t(:free_event), :field_label => t(:full_price), :field_hint => t(:full_price_hint)
+        - else
+          = render "shared/f_ro_text", :field_value => event.full_price, :field_label => t(:full_price), :field_hint => t(:full_price_hint)
+
+
+      .col-xs-12.col-sm-6
+        - if event.early_signup_pricing
+          = render "shared/f_ro_text", :field_value => event.price_early_signup, :field_label => t(:price_early_signup), :field_hint => t(:price_early_signup_hint)
+
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => event.latest_signup_date, :field_label => t(:latest_signup_date), :field_hint => t(:latest_signup_date_hint)
+
+      .col-xs-12.col-sm-6
+        - if event.early_signup_pricing
+          = render "shared/f_ro_text", :field_value => event.early_signup_deadline, :field_label => t(:early_signup_deadline), :field_hint => t(:early_signup_deadline_hint)
+
+  .col-xs-12.col-sm-4
+    .row
+      .col-xs-12
+        .row
+          .col-xs-12
+            strong
+              = t(:seats_booked)
+              |&nbsp;/&nbsp;
+              = t(:maxparticipants)
+            = render "events/progressbar", event: event
+            br
+        .row
+          .col-xs-12
+            strong
+              = t(:onlinestatus)
+            p
+              = render "onlinestatuses/button", :event => event, :redirect => "show", :onlinestatus => event.onlinestatus, btn_size: 'btn-md'
+
+        .row
+          .col-xs-12
+            strong
+              = t(:planningstatus)
+            p
+              = render "planningstatuses/button", :event => event, :redirect => "show", :planningstatus => event.planningstatus, btn_size: 'btn-md'
+        .row
+          .col-xs-6
+            p
+              = render "shared/f_ro_text", :field_value => event.maxparticipants, :field_label => t(:maxparticipants), :field_hint => t(:maxparticipants_hint)
+.row
+  .col-xs-12
+    hr
+    .row
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_taglist", :field_label => t(:tags), :taglist => event.product_taggings
+
+
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_text", :field_value => event.eventtype, :field_label => t(:eventtype), :field_hint => t(:eventtype_hint)
+
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_text", :field_value => "#{event.eventtemplate.nil? ? t(:event_no_eventtemplate_assigned) : event.eventtemplate}", :field_label => t(:eventtemplate), :field_hint => t(:event_eventtemplate_hint)
+
+
+.row
+  .col-xs-12
+    hr
+    - short_desc = truncate(sanitize(strip_tags(event.shortdescription)), length: 400, separator: ' ', omission: '...')
+    = render "shared/f_ro_text", :field_value => short_desc, :field_label => t(:shortdescription), :field_hint => t(:shortdescription_hint)
+
+.row
+  .col-xs-12
+    hr
+    - if @event.type != 'BundleEvent' && @event.type != 'OnlineEvent'
+      .row
+        .col-xs-12.col-sm-6
+          = render "shared/f_ro_boolean", :field_value => event.use_product_location, :field_label => t(:event_use_product_location), :field_hint => t(:event_use_product_location_hint)
+          p.lead
+            - if event.use_product_location
+              = t(:event_use_product_location_from_location)
+            - else
+              = t(:event_use_product_location_from_event)
+        .col-xs-12.col-sm-6
+          strong
+            = t(:event_location)
+          p.lead
+            = render "events/show_partials/location_address", :event => @event
+
+    - if @event.type == 'OnlineEvent'
+      .row
+        .col-xs-12
+
+          p
+            = render "shared/f_ro_text", :field_value => event.webinar_provider, :field_label => t(:webinar_provider), :field_hint => t(:webinar_provider_hint)
+      .row
+        .col-xs-12
+          p
+            = render "shared/f_ro_text", :field_value => event.webinar_url, :field_label => t(:webinar_url), :field_hint => t(:webinar_url_hint), :link => event.webinar_url, :target => "_blank"

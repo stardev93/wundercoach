@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    ul.list-group
+      - @paymentmethods.each do |paymentmethod|
+        li.list-group-item
+          i class="fa #{paymentmethod.image} fa-2x"
+          |&nbsp;
+          |&nbsp;
+          span.h5
+            = paymentmethod.name

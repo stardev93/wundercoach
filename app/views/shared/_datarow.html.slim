@@ -1,0 +1,34 @@
+.row
+  - if defined? fieldtype
+    - case fieldtype.to_s
+      - when "boolean"
+        - if value == true
+          / span class="badge"
+          i.fa.fa-check-circle style="color: grey;"
+        - else
+          span class="badge"
+            i.fa.fa-minus-circle style="color: grey;"
+      - when "text"
+        .col-xs-12
+          .row
+            .col-xs-12
+              label
+                = label
+              - if defined? hint
+                br
+                = hint
+          .row
+            .col-xs-12
+              pre
+                = value
+      - else
+        = value
+  - else
+    .col-sm-3
+      label
+        = label
+    .col-sm-9
+      p.lead
+        = value
+      - if defined? hint
+        = hint

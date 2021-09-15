@@ -1,0 +1,5 @@
+- unless planningstatus.nil?
+  span.label class="label-#{planningstatus.color}" data-toggle="tooltip" data-placement="top" title="#{planningstatus.description}"
+    i.fa class="#{planningstatus.icon}"
+    |&nbsp;
+    = planningstatus

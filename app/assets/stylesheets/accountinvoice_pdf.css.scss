@@ -1,0 +1,39 @@
+@import "bootstrap";
+
+pre {
+  background-color: fff;
+  color: inherit;
+  border: 0 none;
+  font-family: inherit;
+}
+.th {
+  font-weight: bold;
+  border: 0px;
+}
+body {
+  font-size: 12px;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+tr.total_amount {
+  border-bottom: 2px solid #DCDCDC;
+}
+.footer {
+  font-size: 9px;
+}
+.address_from_line {
+  padding-top: 50px;
+  font-size: 8px;
+}
+.invoice_info {
+  padding: 0px;
+  margin: 0px;
+}
+.subject_line {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.subject {
+  font-size: 16px;
+  font-weight: bold;
+}

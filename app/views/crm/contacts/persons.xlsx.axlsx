@@ -1,0 +1,24 @@
+wb = xlsx_package.workbook
+current_row = ''
+wb.add_worksheet(name: t(:export) + ' ' + t(:persons) + ' ' + Date.today.to_s) do |sheet|
+  sheet.add_row [t(:id), t(:type), t(:lastname), t(:firstname), t(:gender), t(:vat_id), t(:register), t(:register_code), t(:contact_no), t(:account_receivable_no), t(:type), t(:comments), t(:company_name), t(:company_name2), t(:primary_address) + ' ' + t(:street), t(:primary_address) + ' ' + t(:zip), t(:primary_address) + ' ' + t(:city), t(:primary_address) + ' ' + t(:country), t(:primary_address) + ' ' + t(:address_type), t(:email), t(:private_phone), t(:work_phone), t(:mobile_phone), t(:website), t(:other_detail)]
+  @persons.each do |contact|
+    current_row = sheet.add_row [contact.id, contact.type, contact.lastname, contact.firstname, "#{contact.gender_indirect}", contact.vat_id, contact.register, contact.register_code, contact.contact_no, contact.account_receivable_no, contact.contact_type, contact.comments, contact.company&.name, contact.company&.name2]
+    if contact.contact_addresses.any?
+      contact_address = contact.contact_addresses&.primary_first&.first.decorate
+      current_row.add_cell(contact_address&.street)
+      current_row.add_cell(contact_address&.zip)
+      current_row.add_cell(contact_address&.city)
+      current_row.add_cell(contact_address&.country)
+      current_row.add_cell(contact_address&.address_type)
+    end
+    current_row.add_cell(contact.contact_details&.email&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.private_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.work_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.mobile_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.website&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.other_detail&.first&.detail_value)
+
+  end
+
+end

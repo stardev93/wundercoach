@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    / = wicked_pdf_stylesheet_link_tag "application"
+    link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet"
+    link media="all" rel="stylesheet" href="#{Rails.public_path.join('assets', 'accountinvoice_pdf.css')}"
+    / = wicked_pdf_stylesheet_link_tag "accountinvoice_pdf"
+  body
+    = yield

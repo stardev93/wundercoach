@@ -1,0 +1,42 @@
+.row
+  .col-md-12
+    p.lead
+      = @account.name
+    p.lead
+      = @account.street
+      |&nbsp;
+      = @account.streetno
+    p.lead
+      = @account.zip
+      |&nbsp;
+      = @account.city
+    p.lead
+      = @account.country_name
+    p.lead
+      = @account.tel1
+    p.lead
+      = @account.tel2
+    p.lead
+      = @account.fax
+    p.lead
+      = @account.email
+    p.lead
+      = @account.gender
+      = @account.firstname
+      = @account.lastname
+    p.lead
+      = @account.email_billing_address
+    p.lead
+      = @account.vat_number
+    p.lead
+      = @account.accountnumber
+    p.lead
+      = @account.paymentplan
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to edit_account_path, class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)

@@ -1,0 +1,84 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  smtpservers: Postausgangsserver
+  smtpserver: Postausgangsserver
+  smtpserver_hint: Konfigurieren Sie hier Ihren Postausgangsserver. Ihr Postausgangsserver (oder SMTP-Server ist der Server, über den Wundercoach Ihre Emails an Ihre Seminarteilnehmer und Kunden versendet.
+  edit_smtpserver: "Postausgangsserver konfigurieren"
+
+  smtpserver_activation_failed: Der Postausgangsserver kann nicht aktiviert werden. Bitte überprüfen Sie die Einstellungen.
+  smtpserver_activation_successful: Der Postausgangsserver wurder erfolgreich aktiviert
+
+  smtpserver_standard:
+  smtpserver_standard_hint: Der Wundercoach-Standard-Postausgangsserver erlaubt Ihnen, sofort mit dem Mailversand zu beginnen und erfordert keine besondere Konfiguration. Sie stellen lediglich eine Adresse ein, an der Antwort-Emails Ihrer Empfänger gesendet werden sollen, sowie einen Absendernamen. Wundercoach sendet dann automatisch in Ihrem Namen, jedoch mit der Absender-Adresse go@wundercoach.net.
+
+  smtpserver_from_name: "Absendername"
+  smtpserver_from_name_hint: "Geben Sie den Namen an, der als Absenderadresse in den Emails angezeigt werden soll, die Sie aus Wundercoach heraus versenden."
+  smtpserver_replyto_address: "Antwortadresse"
+  smtpserver_replyto_address_hint: "E-Mail-Adresse, an die Ihre Kunden antworten."
+
+  smtpserver_custom_authentication: Authentication
+  smtpserver_custom_authentication_hint: "Wie soll die Anmeldung erfolgen?"
+  smtpserver_custom_starttls: "STARTTLS Auto"
+  smtpserver_custom_starttls_hint: "Automatische Überprüfung von STARTTLS auf Ihrem SMTP-Server."
+  smtpserver_custom_openssl: "OpenSSL Verify Mode"
+  smtpserver_custom_openssl_hint: "Stellt für TLS ein, wie OpenSSL das Zertifikat überprüft."
+
+  simple_form:
+    magic_submit:
+      accounts:
+        smtpserver:
+          smtpserversettingsedit:
+            submit: "Einstellungen speichern"
+            disable_with: "speichern..."
+    labels:
+      address:
+        name: Name
+        description: Ort
+        server: Servername
+    hints:
+      address:
+        company: Firmenname falls zutreffend
+        email: E-Mail-Adresse für die Kommunikation
+        telephone: Telefonnumer für Rückfragen
+      billing_address:
+        company: Firmenname falls zutreffend
+        email: E-Mail-Adresse für Rechnungsversand
+        telephone: Telefonnumer für Rückfragen
+
+  server: Servername
+
+  smtpserver_wundercoach_standard_name: Wundercoach Standard SMTP-Server
+  smtpserver_wundercoach_standard_description: Nutzen Sie den Wundercoach-Standard-SMTP-Server, um über Ihre Emails über Wundercoach zu versenden. Stellen Sie nur die Emailadresse ein, an die Ihre Kunden ihre Antworten senden sollen. Ihre Absenderadresse lautet go@wundercoach.net.
+
+  smtpserver_custom_name: Ihr eigener SMTP-Server
+  smtpserver_custom_description: Senden Sie über Ihren eigenen Postausgangsserver. Klicken Sie auf 'Bearbeiten' und konfigurieren Sie Wundercoach so, dass über Ihren eigenen Postausgagsserver gesendet wird. Dies ist die empfohlene Einstellung.
+  smtpserver_custom_settings: Einstellungen Postausgangsserver
+  smtpserver_custom_settings_hint: Hier können Sie die Einstellungen für einen eigenen Postausgangsserver festlegen
+  smtpserver_custom_sender_settings: Ihre Absendereinstellungen
+  smtpserver_custom_sender_settings_hint: Nehmen Sie hier Ihre individuellen Absendereinstellungen vor.
+  smtpserver_custom_from_address: Absender-Adresse
+  smtpserver_custom_from_address_hint: Diese Adresse wird als Absender Ihrer Wundercoach-Emails verwendet.
+  smtpserver_custom_from_name: Absendername
+  smtpserver_custom_from_name_hint: Der Absendername wird Absendername für Ihre Wundercoach-Emails verwendet.
+  smtpserver_custom_replyto_address: Antwortadresse
+  smtpserver_custom_replyto_address_hint: Diese Adresse wird verwendet, wenn der Empfänger auf Ihre Emails antwortet. Tragen Sie hier eine abweichende Emailadresse an, wenn die Antworten der Empfänger an eine andere Adresse gesendet werden sollen. Im Normalfall können Sie dieses Feld leer lassen.
+
+
+  smtpserver_custom_server_settings: Ihre Servereinstellungen
+  smtpserver_custom_server_settings_hint: Konfigurieren Sie hier Ihre eigenen Emailserver.
+  smtpserver_custom_server: Servername
+  smtpserver_custom_server_hint: Der Domainname Ihres Postausgangsservers, z.B. mail.meinedomain.com. Statt des Namens können Sie auch eine IP-Adresse angeben.
+  smtpserver_custom_port: Port
+  smtpserver_custom_port_hint: Der Port, den Ihr Server für den Versand verwendet. Übliche Werte sind 25, 465 oder 587. Fragen Sie ggf. bei Ihrem Provider nach.
+  smtpserver_custom_ssl: SSL verwenden
+  smtpserver_custom_ssl_hint: Geben Sie an, ob Ihr Server verschlüsselte Verbindungen unterstützt.
+  smtpserver_custom_username: Benutzername
+  smtpserver_custom_username_hint: Der Benutzername für die Anmeldung auf Ihrem Postausgangsservers.
+  smtpserver_custom_password: Passwort
+  smtpserver_custom_password_hint: Das Passwort für die Anmeldung auf Ihrem Postausgangsservers.
+
+  smtpserver_test_settings: Testmail senden
+  smtpserver_testmail_sent: "Es wurde eine Testmail an %{recipient_email} gesendet. Bitte prüfen Sie den Posteingang."
+  smtpserver_configure_settings: Konfigurieren
+  smtpserver_testing_settings: Teste Einstellungen für
+  smtpserver_this_is_a_test_email_to: Test-Email an

@@ -1,0 +1,52 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = @target_group
+
+.row
+  .col-xs-12
+    .well
+      p = t(:target_group_has_n_participants, participant_count: @target_group.participant_count)
+      p Auswahlkriterien:
+      - @filters.each do |filter|
+        p = filter.to_text
+
+.row
+  .col-md-6
+    h4
+      = t(:filters_assigned)
+    hr
+    - if @target_group.filters.empty?
+      p = t(:target_group_needs_a_filter)
+    - else
+      ul.list-group
+        - @target_group.filters.each do |filter|
+          li.list-group-item
+            .row
+              .col-md-9
+                = filter
+              .col-md-3
+                = link_to remove_filter_target_group_path(@target_group, filter_id: filter), method: :post
+                  = t(:remove)
+
+  .col-md-6
+    h4
+      = t(:filters_available)
+    hr
+    ul.list-group
+      - @available_filters.each do |filter|
+        li.list-group-item
+          .row
+            .col-md-9
+              = filter
+            .col-md-3
+              = link_to add_filter_target_group_path(@target_group, filter_id: filter), method: :post
+                = t(:assign)
+      li.list-group-item
+        .row
+          .col-md-12
+            = link_to new_target_group_filter_path(@target_group)
+              i.fa.fa-plus
+              '
+              = t(:new_filter)

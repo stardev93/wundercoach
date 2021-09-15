@@ -1,0 +1,5 @@
+- unless onlinestatus.nil?
+  span.label class="label-#{onlinestatus.color}" data-toggle="tooltip" data-placement="top" title="#{onlinestatus.description}"
+    i.fa class="#{onlinestatus.icon}"
+    |&nbsp;
+    = onlinestatus

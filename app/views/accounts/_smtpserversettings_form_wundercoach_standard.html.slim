@@ -1,0 +1,13 @@
+= render "accounts/form_header",
+              :headline => t(:"#{@smtpserver.name}"), :hint => t(:smtpserver_standard_hint),
+              :cancel_link => smtpserversettings_path
+= simple_form_for(smtpserver, url: @smtpserver) do |f|
+  = f.error_notification
+  .form-inputs
+    / - if smtpserver.from_name.nil?
+    = f.input :from_name, label: t(:smtpserver_from_name), hint: t(:smtpserver_from_name_hint), required: true
+    = f.input :replyto_address, label: t(:smtpserver_replyto_address), hint: t(:smtpserver_replyto_address_hint)
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: smtpserversettings_path

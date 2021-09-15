@@ -1,0 +1,95 @@
+.row
+  .col-xs-12
+    br
+    br
+    br
+    br
+    br
+    br
+/ coach address (small)
+.row
+  .col-xs-12
+    .address_from_line
+      |Wundercoach UG &middot; Henriettenweg 4 &middot; 20259 Hamburg &middot; Deutschland
+.row
+  .col-xs-6
+    = @accountinvoice.recipient_name_1
+    br
+    - unless @accountinvoice.recipient_name_2.nil?
+      = @accountinvoice.recipient_name_2
+      br
+    = "#{@accountinvoice.street} #{@accountinvoice.street_no}"
+    br
+    strong = "#{@accountinvoice.zip} #{@accountinvoice.city}"
+    br
+    = @accountinvoice.country_name
+
+  .col-xs-6.invoice_info
+    / .row
+    /   .col-xs-6.text-right
+    /     = t(:invoice_number)
+    /     |:
+    /   .col-xs-6.text-left
+    /     = @accountinvoice.invoice_number
+    / .row
+    /   .col-xs-6.text-right
+    /     = t(:invoice_date)
+    /     |:
+    /   .col-xs-6.text-left
+    /     = l @accountinvoice.invoice_date
+    / .row
+    /   .col-xs-6.text-right
+    /     = t(:paymentmethod)
+    /     |:
+    /   .col-xs-6.text-left
+    /     = @accountinvoice.paymentmethod
+    / .row
+    /   .col-xs-6.text-right
+    /     = t(:paymentdate)
+    /     |:
+    /   .col-xs-6.text-left
+    /     - if @accountinvoice.paymentdate
+    /       = l @accountinvoice.paymentdate
+        
+/ Invoice Headline
+.row.subject_line
+  .col-xs-7.subject
+    /- if @accountinvoice.cancellation?
+    /   strong = t(:cancellation_for, invoice_number: @accountinvoice.predecessor.invoice_number)
+    / - else
+    = @accountinvoice.accountinvoicetype.to_s + " " + t(:number_abbr) + " #{@accountinvoice.invoice_number}"
+  .col-xs-5.invoice_info
+    .row
+      .col-xs-6.text-right
+        = t(:invoice_number)
+        |:
+      .col-xs-6.text-left
+        = @accountinvoice.invoice_number
+    .row
+      .col-xs-6.text-right
+        = t(:invoice_date)
+        |:
+      .col-xs-6.text-left
+        = l @accountinvoice.invoice_date
+    .row
+      .col-xs-6.text-right
+        = t(:paymentmethod)
+        |:
+      .col-xs-6.text-left
+        = @accountinvoice.paymentmethod
+    .row
+      .col-xs-6.text-right
+        = t(:paymentdate)
+        |:
+      .col-xs-6.text-left
+        - if @accountinvoice.paymentdate
+          = l @accountinvoice.paymentdate
+
+/ Table
+.row
+  .col-xs-12
+    = render "accountinvoicepositions/subtable.pdf", :accountinvoice => @accountinvoice, :accountinvoicepositions => @accountinvoice.accountinvoicepositions
+/ Comments
+.row
+  .col-xs-12
+    = @accountinvoice.additional_text

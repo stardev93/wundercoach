@@ -1,0 +1,55 @@
+.row
+  .col-xs-12
+    p.lead
+      = event.pricingset.hint_text
+      br
+      - if enable_row_select
+        = t(:choose_pricingoption)
+        |:
+      - else
+        = t(:choose_pricingoption_during_checkout)
+.row
+  .col-xs-12
+    ul.list-group
+      li.list-group-item
+        .row
+          .col-xs-4
+            span.lead
+              strong
+                = t(:pricingoption_name)
+          .col-xs-3.text-right
+            span.lead
+              strong
+                = t(:pricingoption_deduction)
+          .col-xs-5.text-right
+            span.lead
+              strong
+                = t(:pricingoption_price_including_deduction)
+
+        / we have chosen a pricingoption & we are not enable_row_select - mode in signup/contact
+        / - if order.pricingoption.present? && !enable_row_select
+        /   = render "signup/orders/pricingoption_row", :event => event, :pricingoption => Product::Pricingoption.find(order.pricingoption).decorate, :enable_row_select => false
+        / - else
+        / show all options
+        - Product::PricingoptionDecorator.decorate_collection(event.object.pricingset.pricingoptions.by_position).each do |pricingoption|
+          = render "signup/orders/pricingoption_row", :event => event, :pricingoption => pricingoption, :enable_row_select => enable_row_select
+
+
+
+
+/ set order fields & pricingoption css
+- if enable_row_select
+  javascript:
+    $(".pricingoption_row").click(function() {
+      $("#order_pricingoptiontext").val($(this).children("span.pricingoption_name").text());
+      $("#order_pricingoption").val($(this).children("span.pricingoption_id").text());
+      $("#order_price_cents").val($(this).children("span.pricingoption_price_cents").text());
+
+      $(".pricingoption_row").removeClass('list-group-item-info');
+      $(".pricingoption_row").removeClass('pricingoption_active');
+      $(".pricingoption_row").addClass('pricingoption_inactive');
+
+      $(this).removeClass('pricingoption_inactive');
+      $(this).addClass('list-group-item-info');
+      $(this).addClass('pricingoption_active');
+    });

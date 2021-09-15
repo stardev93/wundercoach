@@ -1,0 +1,19 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  add_event_list: Neue Seminar-Liste anlegen
+  edit_event_list: Seminar-Liste bearbeiten
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      affiliate/event_list:
+        one: Seminar-Liste
+        other: Seminar-Listen
+    attributes:
+      affiliate/event_list:
+        description: Beschreibung
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      affiliate/event_list: ~
+    hints:
+      affiliate/event_list: ~

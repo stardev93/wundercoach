@@ -1,0 +1,79 @@
+- back_button = render "shared/button", path: coaches_path, link_text: t(:back), icon: "fa-arrow-left", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+- new_button = render "shared/button", path: new_coach_path, link_text: t(:new_coach), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:add_coach)
+- coach_full_name = @coach.decorate.reverse_name
+
+= render "shared/form_header",
+         header_text: coach_full_name,
+         hint_text: @coach.label
+         buttons: new_button + ' ' + back_button
+
+.row
+  .col-xs-12.col-sm-3
+    .row
+      .col-xs-12 style="background-image: url(#{image_url('/assets/coach/coach-default.png')}); "
+        - if @coach.image.exists?
+          = render "shared/f_ro_image", :image_url => @coach.image.url(:medium), :image_style => "width: 250px;"
+          / = image_tag @coach.image.url(:medium), class: "img-responsive", style: "padding: 10px; border:3px solid #FFFFFF; box-shadow: 5px 5px 5px #999999;"
+        - else
+          = render "shared/imguploader", param: "coach[image]", text: t(:drop_image_here_to_upload)
+    .row
+      .col-xs-12.text-right
+        = link_to coach_removeimage_path(@coach)
+          = t(:delete)
+
+  .col-xs-12.col-sm-9
+    .row
+      .col-xs-12.col-sm-8
+        p.lead
+          = coach_full_name
+      .col-xs-12.col-sm-4
+        .row
+          .col-xs-6
+            p.lead.text-right
+              = @coach.decorate.price_w_unit
+          .col-xs-6
+            = render "shared/f_ro_boolean", :field_value => @coach.active, :field_label => t(:coach_active), :field_hint => t(:coach_active_hint)
+
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => @coach.tel, :field_label => t(:coach_tel), :field_hint => t(:coach_tel_hint)
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => @coach.email, :field_label => t(:coach_email), :field_hint => t(:coach_email_hint)
+    .row
+      .col-xs-10
+        = render "shared/f_ro_text", :field_value => @coach.homepage_url, :field_label => t(:coach_homepage_url), :field_hint => t(:coach_homepage_url_hint), :link => @coach.homepage_url, :target => "#{@coach.homepage_url_target_blank ? '_blank' : ''}"
+      .col-xs-2
+        = render "shared/f_ro_boolean", :field_value => @coach.homepage_url_target_blank, :field_label => t(:coach_homepage_url_target_blank), :field_hint => t(:coach_homepage_url_target_blank_hint)
+
+    .row
+      .col-xs-10
+        = render "shared/f_ro_text", :field_value => @coach.description, :field_label => t(:coach_description), :field_hint => t(:coach_description_hint)
+
+    .row
+      .col-xs-12
+
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @coach, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_coach)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_coach_path(@coach), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to coaches_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+
+.row
+  .col-xs-12
+    = render "shared/section_header", :header_text => t(:assigned_events)
+
+    = render "coaches/assigned_events", events: @events

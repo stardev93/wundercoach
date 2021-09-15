@@ -1,0 +1,15 @@
+.row
+  .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+    .well style="padding: 0px;"
+      ul.list-group
+        li.list-group-item style="border: 0px;"
+          p.lead.text-center
+            = t(@headline)
+          p.lead.text-center
+            = t(@message)
+          p.text-center
+            = link_to root_path
+              = t(:goto_dashboard)
+            br
+            = link_to history_path
+              = t(:goto_plan_management)

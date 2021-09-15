@@ -1,0 +1,21 @@
+strong
+  = t(:"#{eventbooking&.address&.decorate.gender}_indirect")
+  |&nbsp;
+  = eventbooking&.address&.decorate.fullname
+  br
+= eventbooking.email
+br
+br
+- if eventbooking&.address&.decorate.company
+  = eventbooking&.address&.decorate.company
+  br
+
+= eventbooking&.address&.decorate.street
+
+br
+= eventbooking&.address&.decorate.zip
+|&nbsp;
+= eventbooking&.address&.decorate.city
+
+br
+= eventbooking&.address&.decorate.country_name

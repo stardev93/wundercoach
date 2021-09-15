@@ -1,0 +1,10 @@
+= link_to payment_paymentplan_path(paymentplan), style: "width: 100%;"
+  button.button.btn.btn-lg.btn-primary style="width: 80%;"
+    - if paymentplan.free?
+      = t(:choose_monthly_free)
+      br
+      = t(:free_of_charge)
+    - else
+      = t(:choose_monthly)
+      br
+      = number_to_currency(paymentplan.price / 100)

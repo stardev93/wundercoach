@@ -1,0 +1,70 @@
+.row
+  .col-xs-12
+    span.h1
+      = t(:bookings)
+
+    p.lead
+      |&nbsp;
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag admin_bookings_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to admin_bookings_path, class: "btn btn-link"
+                = t(:show_all)
+
+
+    table.table
+      thead
+        tr
+          th
+            = t (:account_name)
+          th
+            = t (:paymentplan)
+          th
+            = t (:billing_cycle)
+          th
+            = t (:net_price)
+          th
+            = t (:valid_from)
+          th
+            = t (:valid_until)
+          th
+
+      tbody
+        - @bookings.each do |booking|
+          tr
+            td
+              - if booking.account
+                = link_to admin_account_path(booking.account)
+                  = booking.account
+              - else
+                - account = Account.with_deleted.find(booking.account_id)
+                = account
+                |&nbsp;deleted_at:&nbsp;
+                = account.deleted_at
+
+            td = booking.paymentplan
+            td
+              = t(:"#{booking.paymentplan.cycle}")
+            td = number_to_currency(booking.paymentplan.net_price)
+
+            td
+              - if booking.valid_from
+                = l booking.valid_from, format: :default
+            td
+              - if booking.valid_until
+                = l booking.valid_until, format: :default
+              - else
+                |--
+            td
+
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

@@ -1,0 +1,149 @@
+- back_button = render "shared/button", path: events_path, link_text: t(:back), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+- if @event.eventtemplate
+  - eventtemplate_button = render "shared/button", path: eventtemplate_path(@event.eventtemplate), link_text: t(:goto_eventtemplate), icon: "", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:this_event_was_created_from_an_eventtemplate)
+- else
+  - eventtemplate_button = ''.html_safe
+
+- new_button = render "events/buttons/button_new"
+
+- buttons_signup = render "events/buttons/buttons_signup", :event => @event
+
+/ = t(:eventtype)
+/ = event.eventtype
+
+= render "shared/form_header",
+         header_text: t(:event) + ' ' + @event.name_with_date, hint_text: t(:"#{@event.type}") + ' / ' + @event.eventtype.to_s,
+         buttons: buttons_signup + ' ' + eventtemplate_button + ' ' + new_button + ' ' + back_button
+
+.row
+  .col-xs-12
+    .row
+      .col-xs-2
+        ul.nav.nav-pills.nav-stacked role="tablist"
+          li.active
+            a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"
+              = t(:overview)
+          - if @event.is_a? IndividualEvent
+            li
+              a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab"
+                = t(:requests)
+                |&nbsp;
+                span.badge
+                  = @event.requests.without_appointment.count
+          - unless @event.is_a? BundleEvent
+            li
+              a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab"
+                = t(:event_eventbookings)
+                |&nbsp;
+                span.badge
+                  = @event.seats_booked
+          li
+            a href="#orders" aria-controls="orders" role="tab" data-toggle="tab"
+              = t(:orders)
+
+          li
+            a href="#dateoptions" aria-controls="dateoptions" role="tab" data-toggle="tab"
+              = t(:event_date_options)
+          li
+            a href="#textoptions" aria-controls="textoptions" role="tab" data-toggle="tab"
+              = t(:event_text_options)
+          li
+            a href="#publishingoptions" aria-controls="publishingoptions" role="tab" data-toggle="tab"
+              = t(:event_publishing_options)
+
+          - unless @event.type == "FreeEvent"
+            li
+              a href="#pricingoptions" aria-controls="pricingoptions" role="tab" data-toggle="tab"
+                = t(:event_pricing_options)
+
+          - unless @event.type == "BundleEvent" || @event.type == "OnlineEvent"
+            li
+              a href="#locationoptions" aria-controls="locationoptions" role="tab" data-toggle="tab"
+                = t(:event_location_options)
+
+          - if @event.type == "OnlineEvent"
+            li
+              a href="#onlineoptions" aria-controls="onlineoptions" role="tab" data-toggle="tab"
+                = t(:event_online_options)
+          li
+            a href="#coaches" aria-controls="coaches" role="tab" data-toggle="tab"
+              = t(:event_coach_options)
+          - if @event.object.is_a?(BundleEvent)
+            li
+              a href="#subevents" aria-controls="subevents" role="tab" data-toggle="tab"
+                = t(:included_subevents)
+
+          - unless @event.is_bundle?
+            li
+              a href="#subevents" aria-controls="subevents" role="tab" data-toggle="tab"
+                = t(:event_bundle_options)
+
+      .col-xs-10.wc_left_border
+        .row
+          .col-xs-12
+            p.text-right
+              = render "events/show_partials/event_buttons", :event => @event
+        .row
+          .col-xs-12
+            .tab-content
+              / overview
+              .tab-pane.active role="tabpanel" id="overview"
+
+                = render "events/show_partials/event_overview", :event => @event
+
+              / orders
+              .tab-pane role="tabpanel" id="orders"
+
+                = render "events/show_partials/event_orders", :event => @event
+
+              / bookings
+              .tab-pane role="tabpanel" id="bookings"
+
+                = render "events/show_partials/event_eventbookings", :event => @event
+
+              / date options
+              .tab-pane role="tabpanel" id="dateoptions"
+
+                = render "events/show_partials/date_options", :event => @event
+
+              / text
+              .tab-pane role="tabpanel" id="textoptions"
+
+                = render "events/show_partials/event_text_options", :event => @event
+
+              .tab-pane role="tabpanel" id="publishingoptions"
+
+                = render "events/show_partials/publishing_options", :event => @event
+
+              .tab-pane role="tabpanel" id="pricingoptions"
+                = render "events/show_partials/pricing_options", :event => @event
+
+              .tab-pane role="tabpanel" id="locationoptions"
+
+                = render "events/show_partials/event_location_options", :event => @event
+
+              .tab-pane role="tabpanel" id="onlineoptions"
+
+                = render "events/show_partials/event_online_options", :event => @event
+
+              .tab-pane role="tabpanel" id="locationoptions"
+                h1 "looks like this"
+
+              .tab-pane role="tabpanel" id="coaches"
+                .row
+                  .col-md-6
+                    = render "coaches/assigned", :event => Event.new, :coaches => @event.coaches.all
+                  .col-md-6
+                    = render "coaches/unassigned", :event => Event.new, :coaches =>  Coach.active.unassigned(@event)
+              - if @event.object.is_a?(BundleEvent)
+                .tab-pane role="tabpanel" id="subevents"
+                  .row
+                    .col-md-6
+                      = render "events/show_partials/subevent_assigned", :event => @event, :assignedevents => @event.subevents.by_date.all
+                    .col-md-6
+                      = render "events/show_partials/subevent_unassigned", :parentevent => @event, :events => @available_subevents
+              - unless @event.is_bundle?
+                .tab-pane role="tabpanel" id="subevents"
+                  .row
+                    .col-md-12
+                      = render "events/show_partials/bundles_assigned", :event => @event

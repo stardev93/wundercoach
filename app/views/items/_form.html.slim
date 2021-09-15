@@ -1,0 +1,30 @@
+= simple_form_for(@item) do |f|
+  .row
+    .col-xs-12
+      = f.error_notification
+  .row
+    .col-xs-12
+      .form-inputs
+        = f.input :name
+        = f.input :shortdescription, label: t(:item_shortdescription), hint: t(:item_shortdescription_hint)
+        = f.input :longdescription, label: t(:item_longdescription), hint: t(:item_longdescription_hint)
+  .row
+    .col-xs-12.col-sm-3
+      .form-inputs
+        = f.input :unit, label: t(:item_unit), hint: t(:item_unit_hint)
+    .col-xs-12.col-sm-3
+      .form-inputs
+        = f.association :vat, collection: current_tenant.vats, label_method: :to_s, include_blank: false
+    .col-xs-12.col-sm-3
+      .form-inputs
+        = f.input :price
+    .col-xs-12.col-sm-3
+      .form-inputs
+        = f.input :currency, as: :currency_picker
+
+  .row
+    .col-xs-12
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: items_path

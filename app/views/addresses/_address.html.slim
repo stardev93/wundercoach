@@ -1,0 +1,51 @@
+address
+  - if address.company.present?
+    p
+      strong = t(:company)
+      br
+      span.lead = address.company
+      '&nbsp;
+  p
+    strong
+      = t(:firstname)
+      |&nbsp;
+      = t(:lastname)
+    br
+    span.lead
+      = t(:"#{address.gender}_indirect")
+      |&nbsp;
+      = address.fullname
+  p
+    strong
+      = t(:email)
+    br
+    span.lead = address.email
+    '&nbsp;
+  p
+    strong
+      = t(:telephone)
+    br
+    span.lead = address.telephone
+    '&nbsp;
+  p
+    strong
+      = t(:zip)
+      |&nbsp;
+      strong = t(:city)
+    br
+    span.lead
+      = address.zip
+      '&nbsp;
+      = address.city
+
+  p
+    strong
+      = t(:street)
+    br
+    span.lead
+      = address.street
+  p
+    strong = t(:country)
+    br
+    span.lead = address.country_name
+    '&nbsp;

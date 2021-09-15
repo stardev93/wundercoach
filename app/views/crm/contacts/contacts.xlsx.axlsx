@@ -1,0 +1,40 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t(:export) + ' ' + t(:companies) + ' ' + Date.today.to_s) do |sheet|
+  sheet.add_row [t(:type), t(:company_name), t(:company_name2), t(:lastname), t(:firstname), t(:gender), t(:vat_id), t(:register), t(:register_code), t(:contact_no), t(:account_receivable_no), t(:type), t(:comments), t(:primary_address) + ' ' + t(:street), t(:primary_address) + ' ' + t(:zip), t(:primary_address) + ' ' + t(:city), t(:primary_address) + ' ' + t(:country), t(:primary_address) + ' ' + t(:address_type), t(:email), t(:private_phone), t(:work_phone), t(:mobile_phone), t(:website), t(:other_detail)]
+  @companies.each do |contact|
+    current_row = sheet.add_row [contact.type, contact.name, contact.name2, contact.lastname, contact.firstname, "#{contact.gender_indirect}", contact.vat_id, contact.register, contact.register_code, contact.contact_no, contact.account_receivable_no, contact.contact_type, contact.comments]
+
+    if contact.contact_addresses.any?
+      contact_address = contact.contact_addresses&.primary_first&.first.decorate
+      current_row.add_cell(contact_address&.street)
+      current_row.add_cell(contact_address&.zip)
+      current_row.add_cell(contact_address&.city)
+      current_row.add_cell(contact_address&.country)
+      current_row.add_cell(contact_address&.address_type)
+    else
+      current_row.add_cell('')
+      current_row.add_cell('')
+      current_row.add_cell('')
+      current_row.add_cell('')
+      current_row.add_cell('')
+    end
+    current_row.add_cell(contact.contact_details&.email&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.private_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.work_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.mobile_phone&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.website&.first&.detail_value)
+    current_row.add_cell(contact.contact_details&.other_detail&.first&.detail_value)
+
+    Crm::ContactDecorator.decorate_collection(contact.persons).each do |person|
+      person_row = sheet.add_row [person.type, '', '', person.lastname, person.firstname, "#{person.gender_indirect}", person.vat_id, person.register, person.register_code, person.contact_no, person.account_receivable_no, person.contact_type, person.comments]
+      if person.object.contact_addresses.any?
+        person_address = person.contact_addresses.primary_first.first.decorate
+        person_row.add_cell(person_address&.street)
+        person_row.add_cell(person_address&.zip)
+        person_row.add_cell(person_address&.city)
+        person_row.add_cell(person_address&.country)
+        person_row.add_cell(person_address&.address_type)
+      end
+    end
+  end
+end

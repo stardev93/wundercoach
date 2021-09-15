@@ -1,0 +1,11 @@
+.row
+  .col-xs-12
+    .page-header
+      span.company.h1 style="#{(@contact.type == 'Company' ? '' : 'display:none;')}"
+        = t(:edit_company)
+      span.person.h1 style="#{(@contact.type == 'Person' ? '' : 'display:none;')}"
+        = t(:edit_person)
+    - if @contact.type == "Person"
+      = render 'form_person'
+    - else
+      = render 'form_company'

@@ -1,0 +1,14 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = t(:edit_event)
+    = simple_form_for(@event, url: affiliate_event_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.association :affiliate_tags, as: :check_boxes, collection: @affiliate.tags
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: affiliate_event_lists_path

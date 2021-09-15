@@ -1,0 +1,13 @@
+= simple_form_for(@eventsessionbooking) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :event, label: t(:event)
+    = f.association :eventsession, label: t(:eventsession)
+    = f.association :user, label: t(:user)
+    = f.input :eventsessionbookingstatus, label: t(:eventsessionbookingstatus)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: eventsessionbookings_path

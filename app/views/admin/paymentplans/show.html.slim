@@ -1,0 +1,71 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-credit-card
+          | &nbsp;
+          = @paymentplan
+        span.add-item
+          = link_to new_admin_paymentplan_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Paymentplan
+      p.lead
+        = @paymentplan.name
+        br
+        = @paymentplan.comments
+        br
+        = @paymentplan.key
+        br
+        = @paymentplan.price
+        br
+        = @paymentplan.cycle
+        br
+
+  .row
+    .col-md-12
+      p.h3
+        'Paymentplan
+        = t(:data)
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Name
+          br
+          span.lead = @paymentplan.name
+          '&nbsp;
+        p
+          strong Comments
+          br
+          span.lead = @paymentplan.comments
+          '&nbsp;
+        p
+          strong Key
+          br
+          span.lead = @paymentplan.key
+          '&nbsp;
+        p
+          strong Price
+          br
+          span.lead = @paymentplan.price
+          '&nbsp;
+        p
+          strong Cycle
+          br
+          span.lead = @paymentplan.cycle
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_admin_paymentplan_path(@paymentplan), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to admin_paymentplans_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

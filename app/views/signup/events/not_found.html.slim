@@ -1,0 +1,23 @@
+/ - maybe_url = request.protocol + @event.account.subdomain.to_s + '.' + request.domain.to_s + "#{request.port != 80 ? ':' + request.port.to_s : ''}" + '/' + I18n.locale.to_s + '/signup/events/' + @event.slug
+- maybe_url = "#{@event&.account&.homepage&.present? ? @event&.account&.homepage : ''}"
+p.lead
+  |&nbsp;
+h3
+  = t(:page_not_found_error)
+p.lead
+  font color="red"
+    |(
+    = t(:error_404)
+    |)
+p.lead
+  = t(:event_not_found_error_message)
+
+- unless maybe_url.blank?
+  p.lead
+    = t(:maybe_you_wanted_to_go_here)
+    |:
+  p.lead
+    a href="#{maybe_url}"
+      = @event.account
+      / |&nbsp;-&nbsp;
+      / = @event.name

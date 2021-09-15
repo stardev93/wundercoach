@@ -1,0 +1,84 @@
+.row
+  .col-md-12
+    table.table
+      thead
+        tr
+          th.text-right.th_position style="width:24px;"
+            strong
+              = t(:pos)
+          th.text-left.th_position style="width:360px;"
+            strong
+              = t(:description)
+          th.text-right.th_position style="width:120px;"
+            strong
+              = t(:product_amount)
+          th.text-right.th_position style="width:120px;"
+            strong
+              = t(:price)
+          th.text-right.th_position style="width:120px;"
+            strong
+              = t(:vat)
+          th.text-right.th_position style="width:120px;"
+            strong
+              = t(:total_price)
+
+      tbody
+        - @businessdocumentpositions.each do |businessdocumentposition|
+          tr
+            td.text-right.td_position style="width:24px;"
+              = businessdocumentposition.position
+            td.text-left.td_position style="width:360px;"
+              = businessdocumentposition.name
+              - unless businessdocumentposition.description.blank?
+                br
+                = ActionController::Base.helpers.simple_format(businessdocumentposition.description)
+            td.text-right.td_position style="width:120px;"
+              = businessdocumentposition.amount
+              |&nbsp;
+              = businessdocumentposition.unit
+            td.text-right.td_position style="width:120px;"
+              = number_to_currency(businessdocumentposition.unit_price, unit: @businessdocument.currency, locale: I18n.locale)
+            td.text-right.td_position style="width:120px;"
+              = number_with_precision(businessdocumentposition.vat_rate * 100, precision: 2, locale: I18n.locale)
+              |%
+            td.text-right.td_position style="width:120px;"
+              = number_to_currency(businessdocumentposition.total_price, unit: @businessdocument.currency, locale: I18n.locale)
+        tr
+          td.text-right.td_net colspan="5"
+            = t(:netto_total)
+          td.text-right.td_net colspan="1"
+            = number_to_currency(@businessdocument.net_sum, unit: @businessdocument.currency)
+        / tr
+        /   td.text-right.td_vat colspan="5"
+        /     = t(:plus_vat, vat: number_to_percentage(@businessdocumentvat_sum, locale: I18n.locale))
+        /   / td.text-right.td_vat colspan="1"
+        /     / = number_to_currency(@businessdocument.net_sum, unit: @businessdocument.currency)
+        /   td.text-right.td_vat colspan="1"
+        /     = number_to_currency(@businessdocument.vat_sum, unit: @businessdocument.currency)
+        - vat_hash = Hash.new
+        - @businessdocument.businessdocumentpositions.each do |businessdocumentposition|
+          - mysym = businessdocumentposition.vat_id
+          - if vat_hash.key?("#{businessdocumentposition.vat_id}")
+            - vat_hash["#{businessdocumentposition.vat_id}"] += businessdocumentposition.total_vat_amount
+          - else
+            - vat_hash["#{businessdocumentposition.vat_id}"] = businessdocumentposition.total_vat_amount
+
+        - vat_hash.each do |key, value|
+          |&nbsp;&nbsp;&nbsp;
+          tr
+            td.nowrap.text-right colspan="3"
+            td.text-right.nowrap colspan="2"
+              / = Vat.find(key).name
+              = t(:plus_vat, vat: Vat.find(key).name, locale: I18n.locale)
+            td.text-right.nowrap
+              = number_to_currency(value, unit: @businessdocument.currency)
+            td
+        tr.total_amount
+          td.text-right.td_total colspan="5"
+            strong
+              = t(:total_amount)
+          td.text-right.td_total colspan="1"
+            strong
+              = number_to_currency(@businessdocument.gross_sum, unit: @businessdocument.currency)
+        tr
+          td.text-right colspan="6"

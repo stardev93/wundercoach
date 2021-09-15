@@ -1,0 +1,472 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  activerecord:
+    models:
+      account:
+        one: Account
+        other: Accounts
+    attributes:
+      account:
+        accountnumber: "Kundennummer"
+        active_campaign_api_endpoint: Api Access URL
+        active_campaign_api_key: Api Access Key
+        active_campaign_default_list: Standard Kontaktliste
+        notification_url: "Benachrichtigungs-URL"
+        affiliate_commission_relative: Prozentualer Provisionsbetrag
+        affiliate_commission_absolute: Absoluter Provisionsbetrag
+
+    errors:
+      models:
+        account:
+          attributes:
+            subdomain:
+              format: "Die Subdomain enthält ungültige Zeichen. Bitte verwenden Sie nur gültige Zeichen."
+              taken: "Die Subdomain ist bereits vergeben. Bitte wählen Sie einen anderen Namen."
+              too_long: "Die Subdomain darf maximal 63 Zeichen lang sein. Bitte wählen Sie einen kürzeren Wert."
+  account:
+    deleted: "Der Account ist gelöscht."
+    deactivated: "Der Account ist deaktiviert."
+    delete_confirmation: "Möchten Sie Ihren Account wirklich löschen?"
+    delete_confirmation_warning: "Wenn Sie Ihren Account löschen, gehen alle Rechnungen, Seminaranmeldungen und Seminardaten neben allen anderen eingegebenen Informationen unwiderruflich verloren! Wir können Ihre Daten nicht wieder herstellen. Tun Sie dies nur, wenn Sie absolut sicher sind, dass Sie die Daten wirklich nicht mehr benötigen."
+    delete_confirmation_warning_headline: "Achtung! Bitte beachten Sie:"
+    delete_confirmation_hint: Bitte geben Sie zur Bestätigung Ihre Kundennummer ein und klicken Sie dann auf "Account löschen".
+    delete_confirmation_error: "Die eingegebene Kundennummer ist falsch."
+
+  # accounts
+
+  checkout_footer: Footer-Bereich im Checkout
+  no_checkout_footer_given: Es wurde bisher kein Footer-Bereich angelegt.
+  order_bcc_list: Blindkopie bei Bestellung
+  order_bcc_list_hint: Jede Bestellungs-E-Mail wird per Blindkopie an diese Empfänger gesendet. Es können mehrere Empfänger eingegeben werden, separiert durch Kommata.
+
+  delete_account: Account löschen
+  accounts: Kunden
+  account_index_hint: "Kundenliste aller Kunden"
+  account_name: "Firmenname"
+  account_name_hint: "Bitte geben Sie den Firmennamen an."
+  account_number: "Kundennummer"
+  account_number_hint: "Ihre Wundercoach-Kundennummer"
+  add_account: "Kunden hinzufügen"
+  welcome_greeting: "Willkommen bei Wundercoach!"
+  complete_registration: "Bitte vervollständigen Sie Ihre Registrierung"
+  choose_a_plan: "Wählen Sie einen Tarif"
+  complete_account_setup: "Kundendaten vervollständigen"
+  please_complete_account_data: "Bitte vervollständigen Sie Ihre Kundendaten."
+  edit_notification_url: Benachrichtigungs-URL bearbeiten
+
+  settings: Einstellungen
+  accountsettings: Kontoeinstellungen
+  edit_accountsettings: "Kontoeinstellungen bearbeiten"
+  payment_method: Bezahlart
+  payment_methods: "Bezahlarten"
+
+  account_information: "Kundendaten"
+  account_information_hint: "Stellen Sie hier Ihre Kundendaten ein."
+
+  account_design: "Design"
+  accountdesign: Ihr Logo
+  accountlogo: Ihr Logo
+  account_data: Kontodaten
+  account_data_hint: "Ihre Firmenangaben"
+  you_havent_uploaded_an_eventheader_yet: Sie haben noch kein Titelbild für die Anmeldeliste hochgeladen
+  you_havent_provided_an_event_contact_yet: Sie haben noch keine Kontaktdaten für die Anmeldeliste angegeben
+
+  event_contact: Kontaktdetails für Smeinare
+  paymentcycle: Zahlungszyklus
+
+  eventdesign_general_settings: Allgemeine Einstellungen
+  eventdesign_general_settings_hint: Allgemeine Einstellungen für den Bestellablauf
+
+  eventdesign: "Aussehen Anmeldeliste"
+  eventdesign_hint: "Mit diesen Einstellungen können Sie das Aussehen der Anmeldeliste beeinflußen. Wenn Sie Fragen haben, wenden Sie sich gerne an uns. Wir unterstützen Sie bei der Einrichtung."
+  eventdesign_change: "Aussehen anpassen"
+  event_settings: Seminar-Einstellungen
+  event_settings_hint: Konfiguration unter anderem für Benachrichtigungen und Anzeige.
+  event_checkout_settings: Seminar-Bestellablauf
+
+  preview_signup_list: "Anmeldeliste ansehen"
+
+  signup_list_header_image: "Titelbild der Anmeldeliste"
+
+  header_image_for_your_signup_list: Titelbild für Ihre Anmeldeliste
+
+  signup_list_header_image_recommended_size: "Laden Sie hier das Titelbild hoch, das in Ihrer Anmeldeliste erscheinen werden soll. Wir empfehlen eine Breite von mindestens 1400 Pixeln. Die Höhe können Sie frei wählen, und die Auflösung solte 72dpi oder 96dpi betragen, damit Ihr Bild auf modernen Monitoren auch bis zum Rand reicht. Die Höhe können Sie je nach Geschmack und Bildmotiv variieren. Das Dateiformat sollte JPEG oder PNG sein."
+
+  you_havent_uploaded_an_signup_list_header_image_yet: "Sie haben noch kein Titelbild für Ihre Anmeldeliste hochgeladen."
+  favicon: Favicon
+  favicon_recommended_size: "Laden Sie hier ein Favicon hoch. Es wird von Browsern neben dem Titel angezeigt. Das Favicon sollte quadratisch sein und ihr Firmenlogo abbilden. Es wird auf eine Größe von 32x32px reduziert. Zudem wird ein 180x180px Touch-Icon für Smartphones erstellt. Das Dateiformat sollte JPEG oder PNG sein."
+  you_havent_uploaded_an_image_yet: "Sie haben noch kein %{image} hochgeladen."
+  page_title: Seiten-Titel
+
+  invoicedesign: "Rechnungseinstellungen"
+  invoicedesign_hint: "Hier können Sie das Aussehen Ihrer Rechnungen einstellen. Laden Sie ein Logo hoch, dass auf Ihren Rechnungen erscheinen soll und geben Sie die weiteren Daten ein, indem Sie auf 'Bearbeiten' klicken."
+  domainsettings: "Domaineinstellungen"
+  domain_information: "Domaineinstellungen"
+  domain_information_hint: "Hier können Sie die Domain einstellen, unter der Ihr Wundercoach erreichbar sein soll."
+
+  subdomain: "Subdomain"
+  subdomain_hint: "Stellen Sie hier Ihre persönliche Domain ein, die für die Liste Ihrer Seminare und Veranstaltungen verwendet werden soll, wie z.B. meinefirma.wundercoach.net. Wenn Sie die Subdomain ändern müssen Sie auch Ihre Einbindung in Ihre Website ändern."
+  subdomain_rules: "Der Name muß noch frei sein, und darf mindestens 1 und höchstens 63 Zeichen lang sein. Erlaubt sind alle Buchstaben von a-z und Zahlen von 0-9 sowie Bindestriche (-). Bindestriche dürfen nicht am Anfang und am Ende stehen und es dürfen nicht mehrere Bindestriche aufeinander folgen."
+
+  plan_history_hint: "Dies ist der bisherige Buchungsverlauf Ihres Kontos"
+
+  account_history: "Vertragsverlauf"
+  seosettings: "Suchmaschinen"
+
+  account_billing_information: "Rechnungen"
+  account_billing_information_hint: "Informationen für den Rechnungsversand."
+
+  email_billing_address: "E-Mail-Adresse für den Rechnungsempfang"
+  email_billing_address_hint: "E-Mail-Adresse, an die die Rechnungen für die Nutzung vom Wundercoach gesendet werden."
+
+  billing_information: "Rechnungen"
+  billing_information_hint: "Informationen zum Rechnungsversand. Geben Sie die E-Mail-Adresse an, über die sie Wundercoach-Rechnungen erhalten wollen, sowie Ihre Umstzsteuer-ID (falls vorhanden)."
+
+
+  invoice_no_start: "Rechnungsnummernkreis Start"
+  invoice_no_start_hint: "Startwert des Nummernkreises für die Rechnungen, die Sie mit Wundercoach erstellen. Wenn Sie z.B. 10000 eingeben, hat Ihre erste Rechnung die Rechnungsnummer 10000."
+
+  cancellation_no_start: "Stornonummernkreis Start"
+  cancellation_no_start_hint: "Startwert des Nummernkreises für die Stornobelege, die Sie mit Wundercoach erstellen. Stornos werden für den Fall einer falsch ausgestellten Rechnung benötigt."
+
+  quote_no_start: "Angebotsnummernkreis Start"
+  quote_no_start_hint: "Startwert des Nummernkreises für die Angebote, die Sie mit Wundercoach erstellen."
+
+  order_no_start: "Bestellungsnummernkreis Start"
+  order_no_start_hint: "Startwert des Nummernkreises für die Bestellungen, die Sie mit Wundercoach erstellen."
+
+  order_confirmation_no_start: "Auftragsbestätigungsnummernkreis Start"
+  order_confirmation_no_start_hint: "Startwert des Nummernkreises für die Auftragsbestätigungen, die Sie mit Wundercoach erstellen."
+
+  account_receivable_no_start: "Nummernkreis Debitorenkonten Start"
+  account_receivable_no_start_hint: "Startwert des Nummernkreises für die Debitorenkonten, die Sie mit Wundercoach erstellen."
+
+  account_receivable_autonumbering: Debitoren-Autonummerierung
+  account_receivable_autonumbering_hint: Wenn aktiv werden Ihre Debitoren automatisch nummeriert.
+
+  name_addon: "Namenszusatz"
+  name_addon_hint: "Zusätzliche Zeile für Firmennamen, falls erforderlich."
+  zip_city: "PLZ & Ort"
+  zip: "PLZ"
+  zip_hint: "PLZ zur Firmenanschrift"
+  street: "Strasse"
+  street_hint: "Strasse"
+  streetno: "Nr."
+  streetno_hint: "Hausnr."
+
+  country: "Land"
+
+  account_contact: "Ansprechpartner"
+  account_contact_information: "Ansprechpartner"
+  account_contact_information_hint: "Geben Sie den Ansprechpartner in Ihrem Unternehmen ein."
+
+  contact: "Ansprechpartner"
+
+  gender: "Anrede"
+  gender_name_m: "Herr"
+  gender_name_f: "Frau"
+
+  firstname: "Vorname"
+  firstname_hint: "Geben Sie den Vornamen ein"
+  lastname: "Nachname"
+  lastname_hint: "Geben Sie den Nachnamen ein"
+
+  tel1: "Telefon 1"
+  tel1_hint: "Ihre Haupt-Telefonnummer. Keine Sorge, wir rufen Sie nur an, wenn Sie es wünschen."
+  tel2: "Telefon 2"
+  tel2_hint: "Weitere Telefonnumer, z.B. mobil."
+  fax: "Fax"
+  fax_hint: "Ihre Faxnummer"
+
+  email: "E-Mail"
+  email_signup_address: "E-Mail-Adresse"
+  email_signup_address_hint: "E-Mail-Adresse, mit der Sie sich in Wundercoach angemeldet haben"
+
+  email_billing: "Rechnung per Email"
+  email_billing_hint: "Rechnung per Email erhalten"
+
+
+  change_logo: "Logo hochladen"
+  change_eventheader: "Bearbeiten"
+  eventheader_image: "Titelbild der Anmeldeliste"
+
+  css_code_for_sign_up_list_formatting: "CSS - Formate für die Formatierung der Anmeldeliste"
+  css_code: "CSS-Formatierungsregeln"
+  css_code_hint: "CSS-Formatierungsregeln erlauben es, das Aussehen Ihrer Anmeldeliste und die Registrierungsmasken an das Design Ihrer Website anzupassen. Wenn Sie sich damit nicht auskennen, kontaktieren Sie unseren Support. Wir helfen Ihnen dabei."
+
+  event_contact_for_participants: "Kontaktinformation für Anmeldeliste"
+  event_contact: "Kontaktinformation"
+  event_contact_hint: "Diese Kontaktinformation werden Ihren Teilnehmern im Anmeldeprozess angezeigt. Verwenden Sie die Angaben, um mit einer Telefonnummer oder E-Mail-Adresse einen Ansprechpartner für Rückfragen etc. festzulegen."
+
+  account_logo: "Ihr Logo für die Anzeige in Wundercoach."
+  design_information: "Logo-Upload"
+  design_information_hint: "Hier können Sie Ihr Logo hochladen, damit es in Wundercoach angezeigt wird."
+
+  you_havent_uploaded_a_logo_yet: "Sie haben noch kein Logo hochgeladen. Ziehen Sie eine Datei im Format gif, png oder jpg auf die Fläche. Oder klicken Sie auf Bearbeiten und laden Sie die Datei durch auswählen hoch."
+  drop_headerimage_here_to_upload: "Titelbild zum Hochladen hierher ziehen. Das Bild sollte mindestens 1400 Pixel breit sein."
+  drop_favicon_here_to_upload: "Favicon zum Hochladen hierher ziehen. Das Bild sollte quadratisch sein und Ihr Firmenlogo abbilden. Idealerweise verwenden Sie das selbe Favicon wie auf Ihrer Website."
+
+  show_header_image_headline: "Titelbild anzeigen"
+  show_signup_search: "Such- und Filterfunktionen anzeigen"
+  show_header_image: "Titelbild anzeigen"
+  show_header_image_hint: "Stellen Sie hier ein, ob überhaupt ein Titelbild angezeigt werden soll. Wenn Sie Ihr Titelbild hier auschalten, erscheint die Anmeldeliste gänzlich ohne Titelbild."
+  show_header_image_hint_ro: "Wenn Sie Ihr Titelbild hier auschalten, erscheint die Anmeldeliste gänzlich ohne Titelbild."
+  show_signup_search_hint: Helfen Sie Ihren Kunden das passende Seminar zu finden, indem Sie eine Such-Funktion anbieten.
+
+  drop_logo_here_to_upload: "Logo zum Hochladen hierher ziehen"
+  remove: Entfernen
+  sales: Umsatz
+  sales_by_city: Umsatz nach Städten
+
+  vat_number: "UST-ID"
+  vat_number_hint: "Falls vorhanden geben Sie Ihre UST-ID ein"
+
+
+  vat_included: 'Mehrwertsteuer enthalten'
+  vat_included_hint: 'Setzen Sie einen Haken hier, wenn die Preise Ihrer Seminare und Veranstaltungen Bruttopreise inkl. Mehrwertsteuer sind. Lassen Sie den Haken weg, wenn Ihre Preise Netto-Preise sind, zu denen Sie später die Umsatzsteuer hinzukommt.'
+  vat_net_first: 'Nettobetrag hervorheben'
+  vat_net_first_hint: 'Wenn aktiviert werden die Nettopreise (für Unternehmenskunden mit Berechtigung zum Vorsteuerabzug) im Bestellvorgang als erstes angezeigt. Anonsten werden die Bruttopreise (für Endverbraucher) zuerst ausgegeben.'
+
+  tax_id: "Steuernummer"
+  tax_id_hint: "Ihre Steuernummer für die Ausgabe auf Ihren Rechnungsformularen"
+  tax_number: "Steuernummer"
+  tax_number_hint: "Ihre Steuernummer für die Ausgabe auf Ihren Rechnungsformularen"
+
+  invoicelogo: "Logo für Rechnungsformular"
+  invoicelogo_file_info: "Verwenden Sie für ein optimales Ergebnis eine Datei im Format PNG, JPG oder GIF, einer Breite von 2260px, einer Höhe von 228px und einer Auflösung von 300dpi. Wenn Sie den linken Rand Ihres Logos in Ihrer Logo-Datei bei 358px positionieren fluchtet er genau mit dem Feld \"Rechnungsnummer\" Fragen Sie ggf. Ihren Grafiker und wenden Sie sich bei Problemen an unseren Benutzersupport."
+  you_havent_uploaded_an_invoicedesign_yet: "Sie haben noch kein Logo für Ihr Rechnungsformular hochgeladen."
+
+  invoice_from: "Absenderadresse"
+  invoice_from_hint: "Adresse des Rechnungsstellers"
+  invoice_from_small: "Adresse Fensterzeile"
+  invoice_from_small_hint: "Adresse des Rechnungsstellers für das Adressfenster"
+
+  invoice_footer: "Fußzeile"
+  invoice_footer_hint: "Fußzeile mit Platz für weitere Angaben, wie z.B. Bankverbindung. Sie können auch ein Hintergrundbild für die Fußzeile hochladen. Wenn Sie dieses Feld verwenden und gleichzeitig ein Hintergrundbild für die Fußzeile hochladen, wird der Text über das Bild gedruckt."
+
+  invoicefooter: "Hintergrundbild für Fußzeile"
+  invoicefooter_file_info: "Hintergrundbild für die Anzeige in der Fußzeile. Verwenden Sie für ein optimales Ergebnis eine Datei im Format PNG, JPG oder GIF, einer Breite von 2260px, einer Höhe von 426px und einer Auflösung von 300dpi. Wenn Sie zusätzlich Text in das Feld Fußzeile eingeben, wird der Text über das Hintergrundbild gedruckt."
+  you_havent_uploaded_an_invoicefooter_yet: "Sie haben noch kein Hintergrundbild für die Fußzeile für Ihre automatisch generierten Rechnungen hochgeladen."
+
+  seo_settings: "Suchmaschinenkonfiguration"
+  seo_settings_hint: "Mit diesen Angaben können Sie die Darstellung Ihrer Seminarseiten in den Ergebnissen der Suchmaschinen beeinflussen und Ihren Google Analytics Code einfügen. Wenden Sie sich ggf. an unser Support-Team, wenn Sie hiezu Fragen haben. Beachten Sie auf jeden Fall die geltenden Datenschutzbestimmungen für das Verwenden von Google Analytics."
+  tracking_code: "Tracking-Code für Google Analytics"
+  tracking_code_hint: "Fügen Sie hier Ihren Tracking-Code aus Google Analytics ein, um die Zugriffe auf die Veranstaltungslisten, Landingpages und den Bestellablauf zu messen."
+  tracking_code_available: "Sie haben einen Tracking-Code in den Kontoeinstellungen hinterlegt."
+  tracking_code_not_available: "Sie haben noch keinen Tracking-Code in den Kontoeinstellungen hinterlegt."
+  tracking_code_edit_here_hint: "Hier können Sie Ihren Tracking-Code bearbeiten"
+  tracking_code_location: Ausgabe im Quellcode
+  tracking_code_location_hint: Gibt an, an welcher Stelle im Quellcode der Trackingcode ausgegeben wird. Wählen Sie zwischen \"Nach dem öffnenden <head>-Tag\", \"vor dem schließenden </head>-Tag\", \"nach dem öffnenden <body>-Tag\" oder \"vor dem schließenden </body>-Tag\". Die benötigte Variante ergibt sich aus dem verwendeten Trackingcode. Sehen Sie ggf. in den Einstellungen Ihre Tracking-Software (z.B. Google Analytics) nach..
+  tracking_code_header_start: "Nach dem öffnenden HEAD-Tag"
+  tracking_code_header_end: "Vor dem schließenden HEAD-Tag"
+  tracking_code_body_start: "Nach dem öffnenden BODY-Tag"
+  tracking_code_body_end: "Vor dem schließenden BODY-Tag"
+  tracking_code_active: "Trackingcode aktivieren"
+  tracking_code_active_hint: "Gibt an, ob der Trackingcode aktiviert ist und in den Anmeldeseiten ausgegeben wird."
+  tracking_code_empty: "Es ist kein Trackingcode eingestellt"
+  tracking_code_is_active_hint: "Der Trackingcode ist aktiviert."
+  tracking_code_is_inactive_hint: "Der Trackingcode ist deaktiviert."
+
+  robots_txt: "Datei 'robots.txt'"
+  robots_txt_hint: "Der Wundercoach generiert automatisch eine robots.txt - Datei, die Suchmaschinen angibt, welche Inhalte Ihrer Seminardatenbank indexiert werden dürfen und welche nicht. Die Standard - Einstellungen sind für die meisten Fälle optimiert. Suchmaschinen-Fachleute können hier eigene Ergänzungen vornehmen."
+  landingpagecode: "Quellcode Landingpage"
+  landingpagecode_hint: "Fügen Sie hier den Quellcode für Ihre Landingpages ein."
+
+  domain: "Domain"
+  domain_hint: "Ihre eigene Domain, z.B. www.meinefirma.de"
+
+  # Active Campaign
+  edit_active_campaign: ActiveCampaign Integration bearbeiten
+
+  simple_form:
+    labels:
+      defaults:
+        sofort_user_id: Sofort.com Kundennummer
+        sofort_project_id: Sofort.com Projekt Nummer
+        sofort_api_key: Sofort.com API-key
+
+      account:
+        name: Firmenname
+        active_campaign_api_endpoint: Api Access URL
+        active_campaign_api_key: Api Access Key
+        active_campaign_default_list: Standard Kontaktliste
+        checkout_title: Seiten-Titel des Bestell-Vorgangs
+        event_contact: Kontaktinformation
+        checkout_footer: Footer-Bereich im Checkout
+        vat_countries: Nationale Mehrwertsteuersätze
+        default_vat: Standard Mehrwertsteuersatz
+        default_currency_iso_code: Standard Währung
+    hints:
+      defaults:
+        sofort_user_id: Ihre Sofort.com Kundennummer
+        sofort_project_id: Legen Sie in Ihrem sofort.com-Account ein Projekt an, und tragen Sie dessen Projektnummer hier ein.
+        sofort_api_key: Ihr API-key, über den sich der Wundercoach mit sofort.com verbindet
+
+        active_campaign_api_endpoint: Ihre ActiveCampaign Domain, z.B. https://mein-account.api-us1.com
+        active_campaign_api_key: Ihr ActiveCampaign Api Key (eine lange Kette aus Buchstaben und Zahlen)
+        active_campaign_default_list: Die Liste, in die neue Kontakte standardmäßig eingetragen werden
+        checkout_title: Der Seiten-Titel wird vom Browser über der Adress-Leiste angezeigt.
+        checkout_footer: Der Footer wird während der Seminar-Bestellung durchgehend angezeigt. Hier können Sie beispielsweise Ihre AGB, Datenschutzerklärung und Impressum verlinken.
+      account:
+        vat_countries: Vom Wundercoach werden Ihnen die am häufigsten genutzten Mehrwertsteuersätze zur Verfügung gestellt. Wählen Sie aus der Liste, welche Mehrwertsteuersätze sie für Ihre Seminare benötigen.
+        default_vat: Alle neuen Seminare erhalten automatisch den Standard-Mehrwertsteuersatz. Dieser kann pro Seminar angepasst werden.
+        default_currency_iso_code: Alle neuen Seminare haben automatisch die von Ihnen gewählte Standardwährung. Die Währung lässt sich zusätzlich pro Seminar anpassen.
+    magic_submit:
+      accounts:
+        account:
+          confirm_delete:
+            submit: "Account löschen"
+            disable_with: "lösche..."
+          designedit:
+            submit: "Logo hochladen"
+            disable_with: "Upload läuft..."
+          editsettings:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+            cancel: "Abbrechen"
+          eventdesignedit:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+          invoicedesignedit:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+          domainsettingsedit:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+          seosettingsedit:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+          updateshort:
+            submit: "Weiter"
+            disable_with: "Speichere..."
+            retry: "Weiter"
+          domainsettingsupdate:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+            retry: "Erneut versuchen..."
+
+
+  sofort_com_integrated: 'Sofort.com wurde integriert.'
+  paypal_com_integrated: 'Paypal.com wurde integriert.'
+  website_integration_headerimage_headline: "Laden Sie ein Titelbild hoch und passen Sie die Farbgestaltung an."
+  website_integration_headerimage_text: "Sie können ein eigenes Bild (z.B. mit Ihrem Logo) in Ihre Anmeldeliste integrieren."
+  website_integration_headerimage_button_done: "Erledigt! Als unerledigt markieren: hier klicken"
+  website_integration_headerimage_button_not_done: "als erledigt markieren: hier klicken"
+
+  website_integration_headline: "Website-Integration"
+  website_integration_text: "Mit diesen Optionen binden Sie den Wundercoach in Ihre Website ein. Besucher können sich dann über Ihre Website für Seminare anmelden und buchen. Bei Fragen wenden Sie sich an unseren Support. Wir helfen gerne: Telefon +49 40 8541 070 oder E-Mail: help@wundercoach.net"
+  website_integration_standard_headline: "Integration als Link - die einfachste Art"
+  website_integration_standard_text: "Setzen Sie in Ihrer bestehenden Website einfach einen Link auf Ihre Wundercoach-Anmeldeliste ein. Unter dem unten angegebenen Link ist die Liste Ihrer Seminare ohne Login erreichbar. Wenn Sie auf Ihrer Website einen Link auf den Wundercoach einfügen wollen, benutzen Sie bitte diesen Link dafür."
+  website_integration_standard_preview: "Klicken Sie hier, um die Liste Ihrer Wundercoach-Seminare anzusehen. (Öffnet in einem neuen Fenster oder Tab)"
+  website_integration_iframe_headline: "Integration als iFrame"
+  website_integration_widget_headline: "Integration per Javascript-Widget - die flexibelste Art"
+  website_integration_widget_text: "Erstellen Sie Ihre eigenen Widgets, und binden Sie diese in Ihre Website ein. Ob Sie eine Liste aller Seminare, den nächsten Veranstaltungstermin oder nur einen Call-to-Action Button einbinden möchten: Die Integration per Widget macht es möglich. Für die Erstellung der Widgets sind HTML-Kenntnisse erforderlich."
+  open_widgets_page: Zu den Widgets
+
+  website_integration_iframe_text: "Die Integration als iFrame ist einfach. Kopieren Sie den hier angezeigten Code in ein Template Ihrer Website. Bitten Sie ggf. Ihren Webdesigner, Ihnen zu helfen, oder wenden Sie sich an unseren Support unter 'help@wundercoach.net'. Wir reagieren umgehend und helfen Ihnen"
+
+  website_integration_wordpress_headline: "Wordpress-Plugin"
+  website_integration_wordpress_text: "Wenn Sie Wordpress verwenden, können Sie das Wundercoach-Plugin benutzen, um Ihre Anmeldeliste in Ihre Website einzubinden. Laden Sie das Plugin hier herunter und folgen Sie der Anleitung."
+
+  index_path: "Zurück-Link"
+  website_integration_index_path_headline: "Ziel für Zurück-Link"
+  website_integration_index_path_text: "Geben Sie hier den Link (inkl. http:// oder https://) an, unter dem Ihre Seminarliste in Ihre Website eingebunden ist. Der Zurück-Link auf der Seminar-Detailseite und auf der ersten Seite des Bestellvorgang linken dann automatisch dorthin zurück. Wenn Sie das Feld leer lassen, wird automatisch Link auf Ihre Anmeldeliste verwendet. Wenn Sie Wundercoach an mehreren Stellen in Ihre Website eingebunden haben, verwenden Sie das Script unten um immer zur vorherigen Seite zurückzuspringen. Klicken Sie auf 'Einfügen', um es in das Feld zu übernehmen."
+
+  account_data_not_complete: Bitte vervollständigen Sie Ihr Profil.
+  account_data_not_please_complete: Vor Auswahl eines Tarifs vervollständigen Sie bitte Ihre Daten.
+
+  hello: "Hallo"
+  no_accountname_given: "noch unbenannt"
+  cannot_delete_upcoming_events: Der Account kann nicht gelöscht werden, da es Buchungen für kommende Seminare gibt. Diese müssen zuerst storniert werden.
+  reverse_charge_infotext: "Rechnungsempfänger ist Steuerschuldner"
+  no_bcc_address_given: Es wurde keine BCC-Adresse angegeben
+  account_logo_successfully_deleted: "Das Accountlogo wurde erfolgreich gelöscht."
+  headerimage_successfully_deleted: "Das Titelbild wurde erfolgreich gelöscht."
+  invoicelogo_successfully deleted: "Das Rechnungslogo wurde erfolgreich gelöscht."
+  account_successfully_updated: "Der Account wurde erfolgreicht aktualisiert."
+  account_successfully_deleted: "Der Account wurde erfolgreich gelöscht"
+  accountstatus_successfully_created: "Der Accountstatus wurde erfolgreich erstellt."
+  accountstatus_successfully_updated: "Der Accountstatus wurde erfolgreich aktualisiert."
+  accountstatus_successfully_deleted: "Der Accountstatus wurde erfolgreich gelöscht."
+
+  tax_settings: "Steuereinstellungen"
+  accounting_settings: "Buchhaltungseinstellungen"
+  numbering_settings: "Nummernkreise"
+  invoice_design_settings: "Rechnungslayout"
+  export_settings: "Exporteinstellungen"
+  currency_settings: "Währungseinstellungen"
+  vat_settings: "Umsatzsteuereinstellungen"
+  accounts_chart: Kontenrahmen
+  accounts_chart_hint: Verwendeter Kontenrahmen für Buchungen. Dies ist nur ein Hinweisfeld
+  tax_consultant: Steuerberater-ID
+  tax_consultant_hint: Datev-ID Ihres Steuerberaters
+  tax_consultant_client: Mandanten-ID
+  tax_consultant_client_hint: Ihre Datev-Mandanten-ID bei Ihrem Steuerberaters
+  revenue_account: Standard-Erlöskonto
+  revenue_account_hint: Erlöskonto, dass verwendet wird, wenn bei Buchungen nichts anderes angegeben wird.
+  costcenter: Kostenstelle
+  costcenter_hint: Standard-Kostenstelle für die Ausgabe im Datev-Export. Wird bei allen Rechnungen pauschal mit ausgegeben.
+  fiscal_year_start_day: Start-Tag Geschäftsjahr
+  fiscal_year_start_day_hint: Tag, an dem das Geschäftsjahr beginnt
+  fiscal_year_start_month: Start-Monat Geschäftsjahr
+  fiscal_year_start_month_hint: Monat, in dem das Geschäftsjahr beginnt
+  fiscal_year_end_day: End-Tag Geschäftsjahr
+  fiscal_year_end_day_hint: Tag, an dem das Geschäftsjahr endet
+  fiscal_year_end_month: End-Monat Geschäftsjahr
+  fiscal_year_end_month_hint: Monat, in dem das Geschäftsjahr endet
+  export_fixed_at_start_date: "Startdatum letzter Export"
+  export_fixed_at_start_date_hint: "Startdatum des letzten Exports. Zeigt an, ab welchem Datum beim letzten Mal die Rechnungen exportiert wurden. Wird auch zur Bestimmung des Wirtschaftsjahres im Export benutzt."
+  export_fixed_at_end_date: "Enddatum letzter Export"
+  export_fixed_at_end_date_hint: "Enddatum des letzter Exportvorgangs. Wird automatisch gespeichert und zeigt Ihnen, bis zu welchem Datum Sie beim letzten Mal die Rechnungen exportiert haben."
+  export: Exportieren
+  export_filtered: Exportieren (gefiltert)
+
+  activemodel:
+    errors:
+      models:
+        account/registration:
+          attributes:
+            terms_of_service:
+              accepted: "Sie müssen die Nutzungsbedingungen akzeptieren"
+            privacy_policy_terms:
+              accepted: "Sie müssen den Datenschutzbedingungen zustimmen"
+
+  account_time_zone: Zeitzone
+  account_time_zone_hint: Die Zeitzone Ihres Kontos. Wählen Sie die Zeitzone, in der sich Ihre Firma und die meisten Ihrer Kunden befinden oder in der die meisten Ihrer Veranstaltungen stattfinden.
+
+  terms_required: AGB benötigt
+  terms_required_hint: Wenn aktiviert, müssen Ihre Kunden Ihre AGB akzeptieren, um eine Buchung abzuschließen
+
+  terms_link: Link zu Ihren AGB
+  terms_link_hint: Link zu Ihren AGB auf Ihrer Website
+
+  terms_link_text: Bezeichnung Ihrer AGB
+  terms_link_text_hint: Angezeigter Text zu dem Link auf Ihre AGB, z.B. AGB...
+
+  gdpr_required: Datenschutzerklärung benötigt
+  gdpr_required_hint: Wenn aktiviert, müssen Ihre Kunden Ihre Datenschutzerklärung akzeptieren, um sich anzumelden
+
+  gdpr_link: Link zu Ihrer Datenschutzerklärung
+  gdpr_link_hint: Link zu der Datenschutzerklärung auf Ihrer Website
+
+  gdpr_link_text: Bezeichnung Ihrer Datenschutzerklärung
+  gdpr_link_text_hint: z.B. Datenschutzerklärung...
+
+  revocation_required: Widerrufsbelehrung benötigt
+  revocation_required_hint: Wenn aktiviert, müssen Ihre Kunden Ihre Widerrufsbelehrung akzeptieren, um eine Buchung abzuschließen
+
+  revocation_link: Link zu Ihren Widerrufsbelehrung
+  revocation_link_hint: Link zu der Widerrufsbelehrung auf Ihrer Website
+
+  revocation_link_text: Bezeichnung Ihrer Widerrufsbelehrung
+  revocation_link_text_hint: z.B. Widerrufsbelehrung...
+
+  checkout_terms: Rechtliche Hinweise
+  checkout_terms_hint: Rechtliche Hinweise für die finale Bestätigungsseite Ihres Bestellablaufs. Der Kunde muss bei der Bestellung die hier aktivierten Bedingungen akzeptieren. Allgemeine Geschäftsbedingungen, Datenschutzerklärung und eine Widerrufsbelehrung ist in den meisten Ländern gesetzlich vorgeschrieben. Fragen Sie ggf. einen Anwalt zu dem Thema und holen Sie eine Rechtsberatung ein.
+
+  account_api_token: "API Token"
+  account_api_token_hint: "Token für die Nutzung der API von Wundercoach. Klicken Sie auf \"Token neu generieren\", um einen neuen Token zu erstellen. Beachten Sie, dass dann Ihre API-Zugriffe nur noch mit diesem neuen Token funktionieren."
+  account_api_token_generate: "Token neu generieren"
+  account_api_token_generate_hint: "Generiert einen neuen Token"
+  token_generation_successful: Ihr neuer API-Token wurde erstellt.
+  account_marked_as_deleted: "Der Account %{account} wurde als gelöscht markiert. Er existiert noch in der Datenbank."

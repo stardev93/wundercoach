@@ -1,0 +1,16 @@
+= link_to coach
+  = coach.lastname
+  |,&nbsp;
+  = coach.firstname
+- unless coach.active
+  |&nbsp;
+  span.label.label-warning = t(:inactive)
+- if coach.label.present?
+  br
+  = coach.label
+- if coach.tel.present?
+  br
+  = coach.tel
+- if coach.email.present?
+  br
+  = coach.email

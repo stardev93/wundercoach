@@ -1,0 +1,128 @@
+- new_contact_tag = render "create_new_buttons"
+= render "shared/form_header",
+          :header_text => t(:contacts),
+          :hint_text => t(:contact_infotext),
+          :buttons => new_contact_tag
+
+.row.well
+  .col-xs-12
+    nav.navbar
+      form.navbar-form.navbar-left style="width: 100%;"
+        .form-group style="width: 100%;"
+          = search_form_for(@q, html: {class: "form form-inline"}) do |f|
+            .row
+              .col-xs-12.col-sm-9
+                = f.label t(:search)
+
+
+            .row
+              .col-xs-12.col-sm-7
+                = f.search_field :name_or_name2_or_firstname_or_lastname_or_contact_no_or_account_receivable_no_or_contact_addresses_street_or_contact_details_detail_value_cont, class: "form-control optional", style: "width: 100%", :placeholder => t(:contact_searchterm)
+
+              .col-xs-12.col-sm-2.text-right
+                = render "crm/contacts/download_button"
+
+              .col-xs-12.col-sm-3.text-right
+                = link_to crm_contacts_path+'?filter=reset', class: "btn btn-link"
+                  = t(:show_all)
+                |&nbsp;
+                button.btn.btn-primary
+                  i.fa.fa-search
+                  |&nbsp;
+                  = t(:search)
+
+
+            .row
+              .col-xs-12
+                |&nbsp;
+            .row
+              .col-xs-12.col-sm-3
+                = render "crm/contacts/contact_tag_button", :f => f
+              .col-xs-12.col-sm-3
+                = render "crm/contacts/type_buttons"
+.row.well
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th nowrap="nowrap"
+            = sort_link(@q, :contact_type, t(:contact_type))
+          th nowrap="nowrap"
+            = sort_link(@q, :name, t(:name))
+          th
+            = t(:address)
+          th
+            = sort_link(@q, :account_receivable_no, t(:account_receivable_no))
+            br
+            = sort_link(@q, :contact_no, t(:contact_no))
+          th
+            = t(:comments)
+            br
+            = t(:tags)
+          th
+
+      tbody
+        - Crm::ContactDecorator.decorate_collection(@contacts).each do |contact|
+          tr
+            td
+              - if contact.type == "Company"
+                i.fa.fa-building-o
+              - else
+                i.fa.fa-user
+            td
+              = link_to crm_contact_path(contact)+"#{(contact.type == 'Company' ? '#persons' : '#details')}"
+                = contact.name
+              - if contact.company
+                br
+                = link_to crm_contact_path(contact.company)+"#{(contact.company.type == 'Company' ? '#persons' : '#details')}"
+                  |(
+                  = contact.company
+                  |)
+            td
+              - if contact.contact_addresses.count > 0
+                = link_to crm_contact_path(contact)+"#addresses"
+                  = contact.contact_addresses.primary.first.zip
+                  |&nbsp;
+                  = contact.contact_addresses.primary.first.city
+                  br
+                  = contact.contact_addresses.primary.first.street
+
+
+            td
+              = contact.account_receivable_no
+              br
+              = contact.contact_no
+            td
+              - if contact.comments
+                = link_to crm_contact_path(contact)+"#comments"
+                  i.fa.fa-commenting-o data-toggle="popover" data-placement="top" data-trigger="hover" data-content="#{contact.comments}"
+                br
+              - Crm::ContactTagDecorator.decorate_collection(contact.contact_tags).each do |contact_tag|
+                a.btn.btn-default.btn-xs href="#{crm_contacts_path + '?q[contact_tags_id_eq]=' + contact_tag.id.to_s}" data-toggle="tooltip" data-placement="top" title="#{contact_tag.object.name}"
+                  = contact_tag.name
+              br
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group.pull-right
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to crm_contact_path(contact)+"#{(contact.type == 'Company' ? '#persons' : '#details')}"
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_crm_contact_path(contact)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to crm_contact_path(contact), data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

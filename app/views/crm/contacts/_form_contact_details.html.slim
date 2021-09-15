@@ -1,0 +1,16 @@
+table.table
+  tr
+    td style="border-top: 0px;"
+      = simple_form_for(@crm_contact_detail) do |f|
+        = f.error_notification
+
+        .form-inputs
+          = f.association :account, as: :hidden
+          = f.association :contact, as: :hidden
+          = f.input :detail_value, label: t(:value)
+          = f.input :detail_type, as: :select, :collection => (Crm::ContactDetailDecorator::CONTACT_DETAIL_TYPES_HASH.map { |key, val| [key, val] }), :include_blank => false, label: t(:type)
+
+        .form-actions
+          .row
+            .col-md-12.text-right
+              = f.button :magic_submit, value: t(:save)

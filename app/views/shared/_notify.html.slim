@@ -1,0 +1,17 @@
+- message_count = current_user.unread_message_count
+- if message_count > 0
+  span style="background-color: red;position: absolute;height: 0px;width: 300px;right: 20px;z-index: 50;"
+    .alert.alert-info.alert-dismissible role="alert" style="display:none;margin: 10px;" id="myalert"
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true"
+          |&times;
+      a id="notfiyopen" href="" onclick="toggleSidebar()"
+        = t(:you_have_n_new_messages, n: message_count)
+
+  javascript:
+    $( document ).ready(function() {
+      $( "#myalert" ).delay( 2000 ).slideDown( 800 ).fadeIn( 400 );
+    });
+    $("#notfiyopen").click(function(e){
+      e.preventDefault();
+    });

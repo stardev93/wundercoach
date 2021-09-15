@@ -1,0 +1,53 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  creditcard_integrated: Credit card payment was successfully activited.
+  direct_debit_integrated: Direct debit payment was successfully activited.
+  choose_your_payment_method: Choose your preferred payment method
+  choose_your_payment_method_hint: Choose your preferred payment method for the payment of Your Wundercoach invoices.
+  are_you_sure_you_want_to_delete_this_payment_adapter: "Are you sure you want to delete this payment adapter? Your account will be suspended at the end of the current billing period when no paymentmethods are set up."
+  billing: Invoicing
+  activerecord:
+    models:
+      PaymentAdapter: Payment method
+      StripePaymentAdapter: Credit card
+      GocardlessPaymentAdapter: Direct Debit
+      PaypalPaymentAdapter: Paypal
+  stripe:
+    an_error_occured: "The following error occured:"
+    try_again_later: Your request couldn't be processed. Please try again later.
+    we_take_care_of_it: Your request couldn't be processed. We'll investigate this issue.
+    card_error:
+      invalid_number: The card number is not a valid credit card number.
+      invalid_expiry_month: The card's expiration month is invalid.
+      invalid_expiry_year: The card's expiration year is invalid.
+      invalid_cvc: The card's security code is invalid.
+      incorrect_number: The card number is incorrect.
+      expired_card: The card has expired.
+      incorrect_cvc: The card's security code is incorrect.
+      incorrect_zip: The card's zip code failed validation.
+      card_declined: The card was declined.
+      missing: There is no card on a customer that is being charged.
+      processing_error: An error occurred while processing the card.
+  gocardless:
+    error_occured: An error occured while creating the direct debit mandate.
+    error_message: Our support team has been informed and will take care of it. We apologize for the trouble caused.
+    not_finished_message: The direct debit mandate cound not be created. Please try again or contact our  support team if necessary.
+  simple_form:
+    magic_submit:
+      payment_adapters:
+        account:
+          index:
+            submit: "activate"
+            disable_with: "activating..."
+          gocardless_success:
+            submit: "activate"
+            disable_with: "activating..."
+  gocardless_successfully_integrated: "Gocardless has been successfully integrated!"
+  gocardless_error_cancelled: " The process has been cancelled. Error message by Gocardless: %{error}"
+  sepa_already_activated: "SEPA has already been activated"
+  integrate_now: Integrate now
+  activate_now: Activate now
+  credit_card_payment: credit card payment
+  sepa_direct_debit_payment: direct debit payment
+  sepa_direct_debit_delete: "Delete paymentmethod"
+  credit_card_delete: "Delete paymentmethod"

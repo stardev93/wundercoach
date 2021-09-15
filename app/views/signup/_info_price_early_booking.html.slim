@@ -1,0 +1,11 @@
+- if event.early_booking_price_applies?
+  span.event_early_booking_price
+    |(
+    = t(:price_early_signup_until)
+    |&nbsp;
+    = event.early_signup_deadline
+    br
+    = t(:after_that)
+    |:&nbsp;
+    = event_full_price
+    |)

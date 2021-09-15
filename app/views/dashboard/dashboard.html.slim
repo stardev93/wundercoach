@@ -1,0 +1,32 @@
+/ This is loaded by Angular via Ajax
+.page.page-dashboard
+  .row
+    / Sales Line-graph
+    .col-md-6[data-ng-controller="FlotChartCtrl"]
+      .well
+        h4
+          = current_tenant.default_currency.symbol
+          |&nbsp;
+          = t(:sales)
+        .panel.panel-default
+          .panel-body.dashboard-widget
+            div data-flot-chart="" data-data="#{@dashboard.sales_chart.to_json}" data-options="line1.options" style="width: 100%; height: 350px;"
+    .col-md-6[data-ng-controller="ChartjsCtrl"]
+      .well
+        h4
+          i.fa.fa-bank
+          |&nbsp;
+          = t(:sales_by_city)
+        .panel.panel-default
+          .panel-body.dashboard-widget
+            canvas.chart.chart-pie chart-data="#{@dashboard.sales_by_location_chart[:data].to_json}" chart-labels="#{@dashboard.sales_by_location_chart[:labels].to_json}"
+            / div[data-flot-chart data-data="#{@sales_by_location.to_json}" data-options="pieChart.options" style="width: 100%; height: 350px;"]
+    .col-md-6[data-ng-controller="FlotChartCtrl"]
+      .well
+        h4
+          i.fa.fa-calendar
+          |&nbsp;
+          = t(:events)
+        .panel.panel-defaul
+          .panel-bodyt.dashboard-widget
+            div data-flot-chart="" data-data="#{@dashboard.event_days_by_period_chart.to_json}" data-options="line1.options" style="width: 100%; height: 350px;"

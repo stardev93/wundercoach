@@ -1,0 +1,150 @@
+- vat_collection = Vat.all.to_json(:only => [ :id, :value ])
+.row
+  .col-xs-12
+    p.lead
+      br
+      br
+    .page-header
+      span.h3
+        = t(:invoicepositions)
+      span.add-item style="padding: 0px;"
+        - unless @businessdocument.frozen?
+          = link_to new_billing_businessdocumentposition_path + '?id=' + @businessdocument.id.to_s, class: "btn btn-sm btn-primary"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_position)
+          |&nbsp;
+        / = link_to new_billing_businessdocumentposition_path + '?id=' + @businessdocument.id.to_s, class: "btn btn-sm btn-primary"
+        /   i.fa.fa-plus
+        /   | &nbsp;
+        /   = t(:new_position)
+.row
+  .col-xs-12
+    .table-responsive
+      table.table
+        thead
+          tr
+            th = t(:pos)
+            th = t(:description)
+            th.text-right = t(:product_amount)
+            th.text-right = t(:price)
+            / th.text-right.nowrap
+            /   = t(:vat_rate)
+            th.text-right = t(:vat)
+            th.text-right = t(:total_price)
+            th
+
+        tbody
+          - Billing::BusinessdocumentpositionDecorator.decorate_collection(@businessdocumentpositions).each do |businessdocumentposition|
+            tr
+              td
+                .i.fa.fa-bars
+                |&nbsp;
+                = businessdocumentposition.position
+              td
+                / ToDo: Distiguish between decorated and undecorated object
+                / STI in businessdocument > invoice leads to problems with decorator
+                - if @businessdocument.frozen?
+                  = businessdocumentposition.name
+                - else
+                  = best_in_place businessdocumentposition, :name, tabindex: "1", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+                - if @businessdocument.order && @businessdocument.order.eventbookings.first && @businessdocument.order.eventbookings.first.address
+                  |&nbsp;
+                  = link_to @businessdocument.order.eventbookings.first
+                    |&nbsp;
+                    i.fa.fa.fa-external-link
+                br
+
+                br
+                - if @businessdocument.frozen?
+                  = sanitize simple_format businessdocumentposition.description
+                - else
+                  = best_in_place businessdocumentposition,
+                    :description,
+                    tabindex: "2",
+                    :as => :textarea,
+                    :place_holder => t(:click_to_edit),
+                    display_with: :simple_format,
+                    :ok_button => t(:save),
+                    :cancel_button => t(:cancel),
+                    :inner_class => "form-control",
+                    :ok_button_class => "btn btn-primary btn-sm text-right",
+                    :cancel_button_class => "btn btn-secondary btn-sm text-right"
+
+              td.text-right
+                - if @businessdocument.frozen?
+                  = businessdocumentposition.amount
+                  |&nbsp;
+                  = businessdocumentposition.unit
+                - else
+                  = best_in_place businessdocumentposition, :amount, :value => businessdocumentposition.amount, tabindex: "3", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+                  |&nbsp;
+                  = best_in_place businessdocumentposition, :unit, tabindex: "4", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+
+              td.text-right.nowrap
+                - if @businessdocument.frozen?
+                  = businessdocumentposition.unit_price
+                - else
+                  = best_in_place businessdocumentposition, :price_cents, :value => businessdocumentposition.object.price_cents, :display_as => :unit_price, tabindex: "5", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+              td.text-right
+                / = businessdocumentposition.vat_rate
+                / |&nbsp;
+                / = businessdocumentposition.total_vat_amount
+                = best_in_place businessdocumentposition, :vat_id, tabindex: "6", :as => :select, :collection => current_tenant.vats.map { |i| [i.id, i.name] }, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right", :place_holder => '...'
+              td.text-right.nowrap
+                = businessdocumentposition.total_price
+              td.nowrap
+                - if @businessdocument.order && @businessdocument.order.product
+                  |&nbsp;
+                  = link_to event_path(@businessdocument.order.product) + '#orders', :class => "btn btn-xs btn-default"
+                    i.fa.fa-external-link
+                    |&nbsp;
+                    = t(:event)
+                  |&nbsp;
+                - if @businessdocument.order && @businessdocument.order.eventbookings.first
+                  = link_to @businessdocument.order.eventbookings.first, :class => "btn btn-xs btn-default"
+                    i.fa.fa-external-link
+                    |&nbsp;
+                    = t(:eventbooking)
+                  |&nbsp;
+
+                - unless @businessdocument.frozen?
+                  = link_to deleteposition_billing_businessdocument_path(businessdocumentposition), data: {:confirm => "#{t(:do_you_want_to_delete_this_businessdocumentposition)}"}, :method => :delete, :class => "btn btn-xs btn-danger"
+                    i.fa.fa-remove
+                  |&nbsp;
+                  = link_to duplicateposition_billing_businessdocument_path(businessdocumentposition), :class => "btn btn-xs btn-default"
+                    i.fa.fa-copy
+
+        tr
+          td.nowrap colspan="4"
+          td.text-right.nowrap = t(:sum_net)
+          td.text-right.nowrap = @businessdocument.decorate.net_sum
+          td
+        - vat_hash = Hash.new
+        - @businessdocument.businessdocumentpositions.each do |businessdocumentposition|
+          - mysym = businessdocumentposition.vat_id
+          - if vat_hash.key?("#{businessdocumentposition.vat_id}")
+            - vat_hash["#{businessdocumentposition.vat_id}"] += businessdocumentposition.total_vat_amount
+          - else
+            - vat_hash["#{businessdocumentposition.vat_id}"] = businessdocumentposition.total_vat_amount
+
+        - vat_hash.each do |key, value|
+          |&nbsp;&nbsp;&nbsp;
+          tr
+            td.nowrap.text-right colspan="4"
+            td.text-right.nowrap
+              = Vat.find(key).name
+              / = t(:sum_vat_included)
+            td.text-right.nowrap
+              / = @businessdocument.decorate.vat_sum
+              = number_to_currency(value)
+            td
+        tr
+          th.nowrap colspan="4"
+          th.text-right.nowrap = t(:sum_gross)
+          th.text-right.nowrap = @businessdocument.decorate.gross_sum
+          th
+        / - if @businessdocument.vat_included?
+        /   = render "billing/businessdocumentpositions/sums_vat_included"
+        / - else
+        /   = render "billing/businessdocumentpositions/sums_vat_excluded"

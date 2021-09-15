@@ -1,0 +1,46 @@
+.row
+  .col-xs-12
+    = simple_form_for(@contact) do |f|
+      = f.error_notification
+      = f.input :type, as: :hidden
+      .form-inputs
+        .row
+          .col-xs-12
+            / = f.input :contact_id, required: false, collection: Crm::Contact.companies, value_method: :id, label_method: :name
+            = f.input :contact_id, as: :hidden
+        .row
+          .col-md-5
+            = f.input :lastname, label: t(:lastname), required: true
+          .col-md-5
+            = f.input :firstname, label: t(:firstname)
+          .col-md-2
+            / = f.input :gender, as: :select, collection: %i(female male), label: t(:gender), include_blank: false, prompt: :translate, label: t(:gender)
+            = render "shared/f_gender", :form => f, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+
+        .row
+          .col-md-4
+            = f.input :contact_no, label: t(:contact_no)
+
+          - unless @contact.company
+            / do NOT show account_receivable_no if contact is person within a company
+            / only companies have account_receivable_no
+            .col-md-4
+              = f.input :account_receivable_no, label: t(:account_receivable_no)
+          .col-md-4
+            = f.input :vat_id, label: t(:contact_vat_id)
+
+        .row
+          .col-xs-12
+            = f.input :comments, as: :trix_editor, label: t(:comments)
+        .row
+          .col-xs-12
+            = f.association :contact_tags, input_html: { class: 'chosen-select', multiple: '' }, label: t(:contact_tags), hint: t(:contact_tags_hint)
+
+      .form-actions
+        .row
+          .col-xs-12.text-right
+            - if @contact.company
+              - cancel_path = crm_contact_path(@contact.company)
+            - else
+              - cancel_path = crm_contacts_path
+            = f.button :magic_submit, cancel: cancel_path

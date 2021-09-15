@@ -1,0 +1,25 @@
+= render "accounts/form_header",
+         :headline => t(:subdomain), :hint => t(:subdomain_hint),
+         :cancel_link => domainsettings_path
+= simple_form_for(@account, url: domainsettingsupdate_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-md-12.form-inputs
+        .form-group.string.required.account_subdomain class="#{(f.error :subdomain).nil? ? '' : 'has-error'}"
+          label for="subdomain"
+            = f.label :subdomain
+          div class="input-group"
+            = f.input_field :subdomain, placeholder: :subdomain, required: true, label: t(:subdomain), class: "string required form-control"
+            span class="input-group-addon" id="basic-addon2"
+              |.wundercoach.net
+          span.help-block
+            = f.error :subdomain
+          span.help-block
+            = f.hint t(:subdomain_rules)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: domainsettings_path

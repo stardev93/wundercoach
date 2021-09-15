@@ -1,0 +1,191 @@
+- unless @businessdocument.contact
+  - @contacts = Crm::Contact.get_duplicates(@businessdocument.recipient_name1, @businessdocument.recipient_email)
+  = render "crm/contacts/duplicate_contacts", :icon => "i.fa.fa-download", :text => "Bla"
+
+.row.hidden-xs.hidden-sm style="margin-top: 100px;"
+  .col-xs-12
+    .page-header
+      span.h1
+        = @businessdocument
+
+      span.add-item
+        = link_to billing_businessdocuments_path, class: "btn btn-default"
+          i.fa.fa-arrow-left
+          '&nbsp;
+          = t(:back_to_invoicelist)
+.row
+  .col-xs-12.hidden-md.hidden-lg style="margin-top: 100px;"
+    .page-header
+      span.h1.hidden-xs
+        = t(:invoice)
+        |&nbsp;
+        = @businessdocument
+      .row
+        .col-xs-12
+          h3.hidden-sm.hidden-sm.hidden-md.hidden-lg
+            = t(:invoice)
+            |&nbsp;
+            = @businessdocument
+      .row
+        .col-xs-6
+          = link_to billing_businessdocuments_path, class: "btn btn-default"
+            i.fa.fa-arrow-left
+            '&nbsp;
+            = t(:back_to_invoicelist)
+
+.row
+  .col-xs-12.col-sm-6
+    .row
+      .col-xs-12
+        = t(:recipient)
+        p.lead
+          - if @businessdocument.address
+            / integrate to BusinessdocumentDecorator later, there is a solution: recipient_address
+            / address stored in businessdocument.address and businessdocument.order.address
+            = render "billing/businessdocuments/address_from_order", :@businessdocument => @businessdocument
+          - else
+            / address stored in businessdocument
+            = render "billing/businessdocuments/address_from_contact", :@businessdocument => @businessdocument
+
+    .row
+      .col-xs-12
+        = t(:invoice_name)
+        p.lead
+          = @businessdocument.name
+    .row
+      .col-xs-12
+        = t(:recipient_email)
+        p.lead
+          = @businessdocument.recipient_email
+
+  .col-xs-12.col-sm-6
+    .row
+      .col-xs-6.col-sm-4
+        = t(:invoicetype)
+        p.lead
+          = @businessdocument.invoicetype
+      .col-xs-6.col-sm-4
+        = t(:invoice_number)
+        p.lead
+          = @businessdocument.invoice_number
+      .col-xs-6.col-sm-4
+        = t(:invoice_date)
+        p.lead
+          - unless @businessdocument.invoice_date.blank?
+            = @businessdocument.invoice_date
+    .row
+      .col-xs-6.col-sm-4
+        = t(:paymentstatus)
+        p.lead
+          = @businessdocument.paymentstatus
+      .col-xs-6.col-sm-4
+        = t(:paymentmethod)
+        p.lead
+          = @businessdocument.paymentmethod
+      .col-xs-6.col-sm-4
+        = t(:paymentdate)
+        p.lead
+          - unless @businessdocument.paymentdate.blank?
+            = l @businessdocument.paymentdate, format: :default
+          br
+          = @businessdocument.comments
+    .row
+      .col-xs-6.col-sm-4
+        = t(:contact_no)
+        p.lead
+          = @businessdocument.contact_no
+
+      .col-xs-6.col-sm-4
+        = t(:account_receivable_no)
+        p.lead
+          = @businessdocument.account_receivable_no
+      .col-xs-6.col-sm-4
+        = t(:costcenter)
+        p.lead
+          = @businessdocument.costcenter
+    .row
+      .col-xs-12.col-sm-4
+        - current_predecessor = @businessdocument.get_predecessor
+        = t(:predecessor)
+        - if current_predecessor
+          p.lead
+            = link_to billing_businessdocument_path(current_predecessor)
+              = current_predecessor
+      .col-xs-12.col-sm-4
+        - current_successor = @businessdocument.get_successor
+        = t(:successor)
+        - if current_successor
+          p.lead
+            = link_to billing_businessdocument_path(current_successor)
+              = current_successor
+      .col-xs-6.col-sm-4
+        = t(:invoicestatus)
+        p.lead
+          = t(:"#{@businessdocument.invoicestatus}")
+
+.row
+  .col-xs-12.text-right
+    hr
+    - if current_tenant.id == 660 || current_tenant.id == 1101 || current_tenant.name == 'Silicon Planet GmbH'
+      - if @businessdocument.contact
+        = link_to crm_contact_path(@businessdocument.contact), class: "btn btn-default"
+            i.fa.fa-user
+            '&nbsp;
+            = t(:open_contact)
+      - else
+        a.btn.btn-default data-toggle="modal" data-trigger="hover" data-target="#contact_duplicates" style="cursor: pointer;"
+          i.fa.fa-user-plus
+          '&nbsp;
+          = t(:create_contact)
+    |&nbsp;
+    = link_to url_for(controller: 'businessdocuments', id: @businessdocument.id, action: 'send_to_customer'), :method => "post", :class => "btn btn-info"
+      i.fa.fa-paper-plane
+      |&nbsp;
+      = t(:send)
+
+    |&nbsp;
+
+    = link_to billing_businessdocument_path(@businessdocument), :class => "btn btn-info", :onclick => "javascript: window.open('#{billing_businessdocument_download_path(@businessdocument)}');"
+      i.fa.fa-print
+      |&nbsp;
+      = t(:print)
+
+    |&nbsp;
+
+    - if @businessdocument.type == "Billing::Invoice" && @businessdocument.frozen?
+      - if @businessdocument.paid?
+        = link_to billing_set_paid_businessdocument_path(@businessdocument, paid: Paymentstatus.find_by(key: 'open').id), :method => "post", :class => "btn btn-info"
+          i.fa.fa-usd
+          |&nbsp;
+          = t(:set_payment_open)
+        '&nbsp;
+      - else
+        = link_to billing_set_paid_businessdocument_path(@businessdocument, paid: Paymentstatus.find_by(key: 'paid').id), :method => "post", :class => "btn btn-info"
+          i.fa.fa-usd
+          |&nbsp;
+          = t(:set_paid)
+        '&nbsp;
+    - if @businessdocument.can_cancel?
+      = link_to billing_businessdocument_cancel_path(@businessdocument), :class => "btn btn-primary"
+        i.fa.fa-undo
+        '&nbsp;
+        = t(:cancel_invoice)
+      '&nbsp;
+    - if @businessdocument.can_delete?
+      = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => billing_businessdocument_path(@businessdocument), :delete_text => t(:delete)
+      / = link_to billing_businessdocument_path(@businessdocument), :class => "btn btn-primary"
+      /   i.fa.fa-undo
+      /   '&nbsp;
+      /   = t(:delete_invoice)
+      '&nbsp;
+    - unless @businessdocument.frozen?
+    = link_to edit_billing_businessdocument_path(@businessdocument), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+
+
+.row
+  .col-xs-12
+    = render "billing/businessdocumentpositions/subtable", :@businessdocumentpositions => @businessdocument.businessdocumentpositions

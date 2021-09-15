@@ -1,0 +1,71 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @durationunit
+        span.add-item
+          = link_to new_durationunit_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_Durationunit)
+      p.lead
+        = @durationunit.key
+        br
+        = @durationunit.name_plural
+        br
+        = @durationunit.name_singular
+        br
+        = @durationunit.description
+        br
+        = @durationunit.sortorder
+        br
+
+  .row
+    .col-md-12
+      p.h3
+        'Durationunit
+        = t(:data)
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong =t(:key)
+          br
+          span.lead = @durationunit.key
+          '&nbsp;
+        p
+          strong =t(:name_plural)
+          br
+          span.lead = @durationunit.name_plural
+          '&nbsp;
+        p
+          strong =t(:name_singular)
+          br
+          span.lead = @durationunit.name_singular
+          '&nbsp;
+        p
+          strong =t(:description)
+          br
+          span.lead = @durationunit.description
+          '&nbsp;
+        p
+          strong =t(:sortorder)
+          br
+          span.lead = @durationunit.sortorder
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_durationunit_path(@durationunit), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to durationunits_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back)

@@ -1,0 +1,16 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  are_you_sure_you_want_to_delete_this_accountinvoice: "Are you sure you want to delete this Invoice?"
+  number_abbr: "No."
+  cancel_invoice: "Cancel"
+  invoice_number: "Invoice number"
+  document_number: "Document number"
+  send_invoice: "Send"
+  create_invoice: "Generate invoice"
+  your_wundercoach_invoice: "Your Wundercoach invoice"
+  recipient_name_1: Recipient
+  recipient_name_2: Recipient 2
+  accountinvoicetype: type
+  accountinvoicestatus: status
+  pdf_file_name: filename
+  regenerate: Re-generate

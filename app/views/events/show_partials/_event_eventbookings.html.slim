@@ -1,0 +1,11 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_eventbookings), :hint_text => t(:event_eventbookings_hint)
+
+- if @event.is_a? IndividualEvent
+
+  = render "eventbookings/requests", requests: @event.requests.without_appointment
+
+- else
+
+  = render "eventbookings/subtable_tabs"

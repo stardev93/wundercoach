@@ -1,0 +1,22 @@
+- unless defined? target
+  = target = ''
+
+- unless defined? onclick_script
+  - onclick_script = ''
+
+- if datatoggle == "modal"
+  - datatarget = path
+  - path = '#'
+- else
+  - datatarget = nil
+
+- if defined? target
+  - link_target = target
+- else
+  - link_target = ''
+
+= link_to path, :target => link_target, :class => "#{classes}", "data-toggle": "#{datatoggle}", "data-target": "#{datatarget}",  "data-placement": "#{dataplacement}", "title": "#{title}", "onclick": onclick_script
+  - if icon && icon != ''
+    i class="fa #{icon}"
+    |&nbsp;
+  = link_text

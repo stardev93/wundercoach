@@ -1,0 +1,92 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @contact_address
+      span.add-item
+        = link_to new_crm_contact_address_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_contact_address)
+    p.lead
+      = @contact_address.account
+      br
+      = @contact_address.contact
+      br
+      = @contact_address.street
+      br
+      = @contact_address.zip
+      br
+      = @contact_address.city
+      br
+      = @contact_address.country
+      br
+      = @contact_address.address_type
+      br
+      = @contact_address.is_primary
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Contact address
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:account)
+        br
+        span.lead = @contact_address.account
+        '&nbsp;
+      p
+        strong = t(:contact)
+        br
+        span.lead = @contact_address.contact
+        '&nbsp;
+      p
+        strong = t(:street)
+        br
+        span.lead = @contact_address.street
+        '&nbsp;
+      p
+        strong = t(:zip)
+        br
+        span.lead = @contact_address.zip
+        '&nbsp;
+      p
+        strong = t(:city)
+        br
+        span.lead = @contact_address.city
+        '&nbsp;
+      p
+        strong = t(:country)
+        br
+        span.lead = @contact_address.country
+        '&nbsp;
+      p
+        strong = t(:address_type)
+        br
+        span.lead = @contact_address.address_type
+        '&nbsp;
+      p
+        strong = t(:is_primary)
+        br
+        span.lead = @contact_address.is_primary
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to crm_contact_address_path(@contact_address), data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_crm_contact_address_path(@contact_address), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to crm_contact_addresses_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

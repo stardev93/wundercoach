@@ -1,0 +1,18 @@
+= simple_form_for(@accountinvoice, url: admin_accountinvoice_path(@accountinvoice), method: :put) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :invoice_number, label: t(:invoice_number), hint: t(:invoice_number_hint)
+    = f.input :recipient_name_1, label: t(:recipient_name_1), hint: t(:recipient_name_1_hint)
+    = f.input :recipient_name_2, label: t(:recipient_name_2), hint: t(:recipient_name_2_hint)
+    = f.input :invoice_date, label: t(:invoice_date), hint: t(:invoice_date_hint)
+    = f.association :accountinvoicetype, label: t(:accountinvoicetype), hint: t(:accountinvoicetype_hint)
+    = f.association :accountinvoicestatus, label: t(:accountinvoicestatus), hint: t(:accountinvoicestatus_hint)
+    = f.input :pdf_file_name, label: t(:pdf_file_name), hint: t(:pdf_file_name_hint)
+    = f.input :paymentmethod, label: t(:paymentmethod), hint: t(:paymentmethod_hint)
+    = f.input :paymentdate, label: t(:paymentdate), hint: t(:paymentdate_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_accountinvoices_path

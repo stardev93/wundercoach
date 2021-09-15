@@ -1,0 +1,63 @@
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @accountstatus
+        span.add-item
+          = link_to new_accountstatus_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Accountstatus
+      p.lead
+        = @accountstatus.key
+        br
+        = @accountstatus.sortorder
+        br
+        = @accountstatus.name
+        br
+        = @accountstatus.comments
+        br
+
+  .row
+    .col-md-12
+      p.h3
+        'Accountstatus
+        = t(:data)
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Key
+          br
+          span.lead = @accountstatus.key
+          '&nbsp;
+        p
+          strong Sortorder
+          br
+          span.lead = @accountstatus.sortorder
+          '&nbsp;
+        p
+          strong Name
+          br
+          span.lead = @accountstatus.name
+          '&nbsp;
+        p
+          strong Comments
+          br
+          span.lead = @accountstatus.comments
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_accountstatus_path(@accountstatus), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to accountstatuses_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

@@ -1,0 +1,40 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          = t (:invoices)
+      .panel-body
+        = t (:this_is_the_list_of_your_invoices)
+      table.table
+        thead
+          tr
+            th
+              = t(:paymentplan_period)
+            th
+              = t (:price)
+            th
+              = t (:payment_info)
+            th
+              = t (:invoice_number)
+            th
+
+        tbody
+          - @billing_periods.each do |billing_period|
+            tr
+              td
+                = l billing_period.start_date
+                |&nbsp;-&nbsp;
+                = l billing_period.end_date
+              td
+                = number_to_currency(billing_period.price / 100)
+              td
+                - billing_period.paymentmethod
+                |&nbsp;
+                - billing_period.paymentdate
+              td
+                - if billing_period.accountinvoice.present?
+                  = link_to accountinvoices_pdf_path(billing_period.accountinvoice), class: "", target: "_blank"
+                    i.fa.fa-file-pdf-o
+                    |&nbsp;
+                    = billing_period.accountinvoice

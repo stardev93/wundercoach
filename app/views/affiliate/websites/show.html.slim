@@ -1,0 +1,64 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @adpartner_website
+      span.add-item
+        = link_to new_affiliate_adpartner_website_path(@adpartner_website.adpartner), class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_adpartner_website)
+    p.lead
+      = @adpartner_website.adpartner
+      br
+      = @adpartner_website.url
+      br
+      = @adpartner_website.commission_relative
+      br
+      = @adpartner_website.commission_absolute
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Website
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:adpartner)
+        br
+        span.lead = @adpartner_website.adpartner
+        '&nbsp;
+      p
+        strong = t(:url)
+        br
+        span.lead = @adpartner_website.url
+        '&nbsp;
+      p
+        strong = t(:commission_relative)
+        br
+        span.lead = @adpartner_website.commission_relative
+        '&nbsp;
+      p
+        strong = t(:commission_absolute)
+        br
+        span.lead = @adpartner_website.commission_absolute
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to affiliate_website_path, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_affiliate_website_path(@adpartner_website), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to affiliate_adpartner_path(@adpartner_website.adpartner, anchor: 'websites'), class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

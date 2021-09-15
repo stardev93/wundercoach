@@ -1,0 +1,19 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  add_event_list: Create new signup list
+  edit_event_list: Edit signup list
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      affiliate/event_list:
+        one: Signup list
+        other: Signup list
+    attributes:
+      affiliate/event_list:
+        description: Description
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      affiliate/event_list: ~
+    hints:
+      affiliate/event_list: ~

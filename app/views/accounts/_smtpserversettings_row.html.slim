@@ -1,0 +1,27 @@
+li.list-group-item class="#{(smtpserver.active ? 'active' : '')}"
+  .row
+    .col-sm-12.col-md-9
+      span.h4
+        = t("#{smtpserver.name}")
+      p
+        = t("#{smtpserver.description}")
+    .col-sm-12.col-md-3
+      - if smtpserver.active
+        span style="#{(smtpserver.active ? 'color:white;' : '')}"
+          i.fa.fa-check
+          |&nbsp;
+          = t(:active)
+          br
+      - else
+        - if smtpserver.can_activate?
+          = link_to activate_smtpserver_path(smtpserver)
+            = t(:activate)
+          br
+      = link_to smtpserversettingsedit_path(smtpserver)
+        span style="#{(smtpserver.active ? 'color:white;' : '')}"
+          = t(:smtpserver_configure_settings)
+      - if smtpserver.can_activate?
+        br
+        = link_to testconnection_path(smtpserver)
+          span style="#{(smtpserver.active ? 'color:white;' : '')}"
+            = t(:smtpserver_test_settings)

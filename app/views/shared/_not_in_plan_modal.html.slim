@@ -1,0 +1,25 @@
+div class="modal fade" id="not_in_plan_modal" tabindex="-1" role="dialog" aria-labelledby="not_in_planLabel" style="background:none;"
+  div class="modal-dialog modal-lg" role="document"
+    div class="modal-content"
+      div class="modal-header"
+        .row
+          .col-xs-10.col-sm-6
+            span.h3
+              = t(:not_in_plan)
+          .col-xs-2.col-sm-6.text-right
+            button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true"
+                |&times;
+            br
+      div class="modal-body"
+        .row
+          .col-xs-12
+            p.lead
+              = t(:not_in_plan_text)
+
+      div.modal-footer
+        = link_to showplans_path, target: "_blank", class: "btn btn-success"
+          = t(:change_plan)
+        |&nbsp;
+        button type="button" class="btn btn-default" data-dismiss="modal"
+          =t(:close)

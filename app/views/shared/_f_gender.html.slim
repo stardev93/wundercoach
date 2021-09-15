@@ -1,0 +1,16 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+
+- if defined? field_disabled
+  - disabled = field_disabled
+- else
+  - diabled = false
+
+= form.input field, label: label, hint: hint, as: :select, collection: %i(female male diverse noinfo), include_blank: "--", label: t(:gender), hint: t(:gender_hint), disabled: disabled, readonly: disabled

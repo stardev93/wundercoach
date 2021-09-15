@@ -1,0 +1,4 @@
+span.event_free_seats
+  - if event.free_seats? && event.show_free_seats?
+    br
+    = t(:remaining_seats_count, free_seats: event.seats_free)

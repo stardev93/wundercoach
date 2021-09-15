@@ -1,0 +1,44 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud-upload
+          | &nbsp;
+          = @asset
+        span.add-item
+          = link_to new_asset_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_asset)
+      p.lead
+        = @asset.asset_file_name
+        br
+        = @asset.comments
+        br
+        = @asset.status
+        br
+        = @asset.created_at.strftime("%d %b. %Y %H:%M")
+        p.list-group-item-text
+          |(
+          = @asset.size_mb
+          |&nbsp;MB)
+        = render "assets/thumb", :asset => @asset
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to @asset, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      ' &nbsp;
+      = link_to edit_asset_path(@asset), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to assets_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back)

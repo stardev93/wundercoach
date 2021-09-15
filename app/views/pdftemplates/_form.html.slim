@@ -1,0 +1,38 @@
+.row
+  .col-xs-12
+    = simple_form_for(@pdf_template) do |f|
+      .row
+        .col-xs-12
+          = f.error_notification
+      .row
+        .col-xs-12
+          .form-inputs
+            = f.input :name
+            = f.input :description
+            = f.input :body_code, id: "body_code", style: "height: 200px;"
+            / trix-editor input="pdf_template_body_code"
+            = f.input :header, as: :file
+            = f.input :footer, as: :file
+            / = f.input :settings
+            = f.input :css
+            / = f.input :bgfile, as: :file
+      .row
+        .col-xs-3
+          .form-inputs
+            = f.input :top
+        .col-xs-3
+          .form-inputs
+            = f.input :bottom
+        .col-xs-3
+          .form-inputs
+            = f.input :left
+        .col-xs-3
+          .form-inputs
+            = f.input :right
+
+      .row
+        .col-xs-12
+          .form-actions
+            .row
+              .col-md-12.text-right
+                = f.button :magic_submit, cancel: pdftemplates_path

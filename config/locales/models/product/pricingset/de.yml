@@ -1,0 +1,76 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  pricingset: "Preisgruppe"
+  pricingsets: "Preisgruppen"
+  pricingsets_hint: "Preisgruppen geben Ihnen die Möglichkeit, mehrere Preise für eine Veranstaltung im Checkout anzubieten, z.B. für Mitglieder und Nichtmitglieder."
+  pricingsets_hint_addon: "Sie können eine Preisgruppe beim Bearbeiten oder Erstellen einer Veranstaltung zuweisen. Veranstaltungen mit einer Preisgruppe verwenden dann die Preise der Preisgruppe, um Normalpreis und Frühbucherpreis zu berechnen."
+  pricingset_in_place: "Diese Veranstaltung nutzt eine Preisgruppe, um bei der Bestellung mehrere Preisoptionen mit Rabatten anzubieten. Der ursprüngliche Preis ändert sich in Abhängigkeit von der gewählten Preisgruppe."
+
+  pricingset_inactive: "Diese Veranstaltung ist mit einer inaktiven Preisgruppe verknüpft. Zum Verwenden aktivieren Sie die Preisgruppe."
+
+  new_product_pricingset: "Neue Preisgruppe anlegen"
+  edit_pricingset: "Preisgruppe bearbeiten"
+
+  pricingset_name: "Preisgruppe"
+  pricingset_name_hint: "Name der Preisgruppe"
+
+  pricingset_active: "aktiv"
+  pricingset_active_hint: "aktiviert die Preisgruppe"
+
+  pricingset_description: Feld für interne Bemerkungen
+  pricingset_description_hint: Feld für interne Bemerkungen. Wird dem Kunden nicht angezeigt.
+
+  pricingset_hint_text: Hinweistext für Kunden
+  pricingset_hint_text_hint: Hinweistext für Kunden. Wird im Checkout angezeigt, wenn diese Preisgruppe verwendet wird.
+
+  new_product_pricingoption: "Neue Preisoption"
+  edit_product_pricingoption: "Preisoption bearbeiten"
+
+  pricingoption: "Preisoption"
+  pricingoptions: "Preisoptionen"
+  pricingoptions_hint: "Geben Sie den gewünschten Rabatt als Prozentzahl oder absoluten Betrag ein. Legen Sie mindesten zwei Preisoptionen an: eine für den Normalpreis ohne Rabatt, und eine mit dem gewünschten Rabatt für eine Preisoption mit reduzierten Preisen."
+  pricingoption_name: "Preisoption"
+  pricingoption_name_hint: "Bezeichnung, unter der die Preisoption im Checkout erscheint."
+
+  pricingoption_comments: "Bemerkungen (intern)"
+  pricingoption_comments_hint: "Interne Bemerkungen, werden dem Kunden nicht angezeigt"
+
+  pricingoption_hint_text: "Kunden-Information"
+  pricingoption_hint_text_hint: "Erläuterungen zu dieser Preisoption. Wird im dem Kunden im Checkout angezeigt."
+
+  pricingoption_full_price_deduct: Rabatt Normalpreis
+  pricingoption_price_early_signup_deduct: Rabatt Frühbucherpreis
+
+  pricingoption_full_price_deduct_cents: Preisreduktion Normalpreis (%{currency})
+  pricingoption_full_price_deduct_cents_hint: Preisreduktion auf den Normalpreis als absoluter Betrag in %{currency}
+
+  pricingoption_price_early_signup_deduct_cents: Preisreduktion Frühbucherpreis (%{currency})
+  pricingoption_price_early_signup_deduct_cents_hint: Preisreduktion auf den Frühbucherpreis als absoluter Betrag in %{currency}
+
+  pricingoption_full_price_deduct_perc: "Preisreduktion Normalpreis (%)"
+  pricingoption_full_price_deduct_perc_hint: Preisreduktion auf den Normalpreis als prozentualer Betrag
+
+  pricingoption_price_early_signup_deduct_perc: "Preisreduktion Frühbucherpreis (%)"
+  pricingoption_price_early_signup_deduct_perc_hint: Preisreduktion auf den Frühbucherpreis als prozentualer Betrag
+
+  pricingoption_deduction: "Reduktion"
+  pricingoption_price_including_deduction: "Preis"
+
+  select_pricing_option: "Preisoption auswählen..."
+  simple_form:
+    magic_submit:
+      product:
+        pricingsets:
+          "product/pricingoption":
+            show:
+              submit: Speichern
+              disable_with: "Speichere..."
+
+  pricingoption_preset: "Aktiv"
+  pricingoption_preset_hint: "Gibt an, ob die Preisoption vorausgewählt ist."
+  pricingoption_preset_missing: "Die Preisgruppe kann nicht aktiviert werden, da keine Preisoption als Standard eingestellt ist, oder noch keine Preisoptionen angleget sind. Legen Sie erst Preisoptionen an und aktivieren Sie diese Preisgruppe dann."
+  pricingoption_chosen: Gewählte Preisoption
+  pricingoption_original_price: Preis ohne Rabatt
+  choose_pricingoption: Bitte wählen Sie die passende Preisoption
+  choose_pricingoption_during_checkout: Sie können die für Sie passende Preisoption während der Buchung auswählen.
+  choose_pricingoption_chosen: Gewählte Preisoption

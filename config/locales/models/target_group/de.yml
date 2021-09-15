@@ -1,0 +1,18 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  pick_a_target_group: "Wählen Sie eine Zielgruppe für Ihre Kampagne oder erstellen Sie eine neue"
+  target_group_needs_a_filter: Die Zielgruppe benötigt Kriterien, um zu bestimmen, welche Kunden ihr angehören sollen.
+  add_target_group: Neue Zielgruppe erstellen
+  target_groups_assigned: Zugewiesene Zielgruppen
+  target_groups_available: Verfügbare Zielgruppen
+  new_target_group: Neue Zielgruppe
+  target_groups: Zielgruppen
+  target_group_name_hint: Name der Zielgruppe, z.B. "Teilnehmer an Coachings in Hamburg"
+  filters_assigned: Zugewiesene Filter
+  filters_available: Verfügbare Filter
+  target_group_has_n_participants: "%{participant_count} Kunden gehören dieser Zielgruppe an."
+  simple_form:
+    magic_submit:
+      target_groups:
+        new:
+          submit: "Neue Zielgruppe anlegen"

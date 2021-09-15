@@ -1,0 +1,6 @@
+.div style="width: 100%;margin:0px;padding: 0px;"
+  .div.text-center style="font-size: 10px;position: relative;width: 100%;margin:0px;padding: 0px;"
+    .div style="position: absolute; width: 100%;z-index: 100;"
+      = simple_format sanitize @businessdocument.account.invoice_footer
+    .div style="position: absolute; width: 100%;z-index: 50;margin:0px;padding: 0px;"
+      img src="#{@businessdocument.account.invoicefooter.path(:original)}" style="width: 700px;margin:0px;padding: 0px;"

@@ -1,0 +1,102 @@
+= render "signup/orders/confirm_data_check"
+
+/ ##########################################
+/ event signup information
+= render "signup/orders/signup_info", :event => @order.product.decorate
+
+/ ##########################################
+/ event basic details start- & end-date basic location
+= render "signup/products/info_row", :event => @order.product.decorate
+
+/ ##########################################
+/ event participant details
+= render "signup/orders/participant_information", :address => @address, :order => @order
+
+/ ##########################################
+/ event location details
+= render "signup/products/location_detail_row", :event => @order.product.decorate
+
+
+/ ##########################################
+/ chosen payment option information
+= render "signup/orders/payment_information", :order => @order
+
+/ / ##########################################
+/ / pricing zone
+/ = render "signup/products/price_row", :event => @product.decorate, :order => @order, :enable_row_select => false
+
+/ ##########################################
+/ pricing zone, show price or selected pricing option
+= render "signup/orders/price_chosen", :event => @product.decorate, :order => @order, :enable_row_select => false
+
+
+.row
+  .col-xs-12
+    .well.signup_well
+      .row.text-center
+        - if @order.paymentmethod.key == 'paypal'
+          / Payment Paypal
+          .col-xs-12
+            #paypal-btn
+            p = render "signup/payment_buttons/paypal"
+          .col-xs-12
+            p = t(:you_will_be_redirected_to_paypal)
+        - elsif @order.paymentmethod.key == 'sofort'
+          / Payment Sofort
+          .col-xs-12
+            p
+              = simple_form_for @order, url: signup_sofort_path(@order), method: :post do |f|
+                .row
+                  .col-xs-12
+                    = render "signup/terms", :account => @account, :f => f
+                .row
+                  .col-xs-12
+                    / - if @account.terms_required
+                    /   = f.input :terms_of_service, as: :boolean, label: t(:i_agree_to_the_terms_of_service, terms: link_to(@account.terms_link_text, @account.terms_link, target: '_blank')).html_safe
+                    = f.button :magic_submit, class: "btn btn-primary btn-lg signup-button signup-submit", value: t(:continue_with_payment), data: { disable_with: t(:continue_with_payment) }
+          .col-xs-12
+            p = t(:you_will_be_redirected_to_sofort)
+        - elsif @order.paymentmethod.key == 'cc'
+          .col-xs-12
+            p = render "signup/payment_buttons/stripe"
+          .col-xs-12
+            = link_to :back, class: "btn btn-default btn-lg signup-button signup-back"
+              = t(:back)
+        - elsif @order.paymentmethod.key == 'direct_debit'
+          / Payment Gocardless
+          .col-xs-12
+            p
+              = simple_form_for @order, url: signup_gocardless_redirect_path, method: :post do |f|
+                .row
+                  .col-xs-12
+                    = render "signup/terms", :account => @account, :f => f
+                .row
+                  .col-xs-12
+                    = f.button(:magic_submit,
+                           class: "btn btn-primary btn-lg signup-button signup-submit",
+                           value: t(:order_with_costs),
+                           id: "checkoutButton",
+                           disabled: @account.any_terms_required?,
+                           data: { disable_with: t(:order_with_costs) })
+          .col-xs-12
+            = link_to :back, class: "btn btn-default btn-lg signup-button signup-back"
+              = t(:back)
+        - else
+          / Order without online payment (like free events or payment via advanced payment)
+          - button_caption = @product.free? ? t(:order_now) : t(:order_with_costs)
+          .col-xs-12
+            p
+              = simple_form_for @order, url: final_confirm_signup_order_path, method: :post do |f|
+                .row
+                  .col-xs-12
+                    = render "signup/terms", :account => @account, :f => f
+                .row
+                  .col-xs-12
+                    = f.button :magic_submit, id: "checkoutButton", class: "btn btn-primary btn-lg signup-button signup-submit", value: button_caption, data: { disable_with: button_caption }, disabled: @account.any_terms_required?
+          .col-xs-12
+            - if @product.free?
+              = link_to edit_signup_order_path, class: "btn btn-default btn-lg signup-button signup-back"
+                = t(:back)
+            - else
+              = link_to payment_signup_order_path, class: "btn btn-default btn-lg signup-button signup-back"
+                = t(:back)

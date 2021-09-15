@@ -1,0 +1,23 @@
+/ partial show a readonly field for location_time_zones
+/ input field_value: a timezone as string as retrieved from ActiveSupport::TimeZone['Central Time (US & Canada)']
+/ Output: Timezone name + UTC Offset in hours
+- if field_value && field_value != ''
+  - field_value_timezone = "#{ActiveSupport::TimeZone.find_tzinfo(field_value)} (UTC #{ActiveSupport::TimeZone[field_value].formatted_offset})"
+- else
+  - field_value_timezone = nil
+
+strong
+  = field_label
+- if !defined? position
+  - position = 'right'
+- if defined? field_hint
+  |&nbsp;
+  = render "shared/popover", :position => position, :popover_text => field_hint
+br
+span.lead
+  - if defined? link
+    = link_to link
+      = field_value_timezone
+  - else
+    = field_value_timezone
+p.f_ro_text_spacer

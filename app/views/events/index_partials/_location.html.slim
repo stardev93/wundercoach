@@ -1,0 +1,27 @@
+- if event.type == OnlineEvent
+  br
+  strong
+    = t(:webinar_provider)
+  br
+  = event.webinar_provider
+- else
+  - if !event.get_location.blank? or !event.get_eventorganizer.blank?
+    br
+    strong
+      = t(:event_location)
+
+  - unless event.get_eventorganizer.blank?
+    br
+    = event.get_eventorganizer
+
+  - unless event.get_location.blank?
+    br
+    = event.get_location
+
+  - unless event.get_zip_and_city.blank?
+    br
+    = event.get_zip_and_city
+
+  - unless event.get_country.blank?
+    br
+    = event.get_country

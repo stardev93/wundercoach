@@ -1,0 +1,54 @@
+.wc_sidebar#wc_sidebar
+  .well.wc_sidebar_well#wc_sidebar_well
+    p
+      a.closebtn href="javascript:void(0)" onclick="closeSidebar()"
+        = t(:close)
+        |&nbsp;
+        i.fa.fa-close
+      hr
+    - if current_user.unread_message_count > 0
+      - current_user.messages.order("published_at DESC").each do |message|
+        .row
+          .col-xs-12.text-left
+            = message.decorate.published_at_date(current_user.get_time_zone)
+        .row
+          .col-xs-12
+            strong
+              = raw(message.decorate.subject)
+        .row
+          .col-xs-12
+            = raw(message.decorate.get_body_teaser)
+        .row
+          .col-xs-12
+            br
+        .row
+          .col-xs-6.text-left
+            = link_to user_mutemessage_path(current_user.id, message.id)
+              button.btn.btn-xs.btn-default
+                = t(:user_message_mark_as_read)
+          .col-xs-6.text-right
+            = link_to users_messages_path + '?message=' + message.id.to_s + '#' + message.id.to_s
+              button.btn.btn-xs.btn-primary
+                = t(:user_message_read_more)
+        .row
+          .col-xs-12
+            hr
+    - else
+      .row
+        .col-xs-12.text-center
+          = t(:message_no_unread_messages)
+          br
+          = link_to users_messages_path
+            = t(:message_show_all_messages)
+
+// javascript:
+//   $('#closeMessageboard').on('click', function(){
+//     $("#Messageboard").remove();
+//
+//     $.ajax
+//     ({
+//         url: "#{mutemessages_path}",
+//         data: {"id": "#{current_user.id}"},
+//         type: 'get'
+//     });
+//   });

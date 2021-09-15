@@ -1,0 +1,45 @@
+= render "accounts/form_header",
+              :headline => t(:smtpserver_custom_settings), :hint => t(:smtpserver_custom_settings_hint),
+              :cancel_link => smtpserversettings_path
+= simple_form_for(smtpserver, url: @smtpserver) do |f|
+  = f.error_notification
+  .form-inputs
+    h4
+      = t(:smtpserver_custom_sender_settings)
+    hr
+    p.lead
+      = t(:smtpserver_custom_sender_settings_hint)
+    = f.input :from_address, label: t(:smtpserver_custom_from_address), hint: t(:smtpserver_custom_from_address_hint), required: true
+    = f.input :from_name, label: t(:smtpserver_custom_from_name), hint: t(:smtpserver_custom_from_name_hint), required: true
+    = f.input :replyto_address, label: t(:smtpserver_custom_replyto_address), hint: t(:smtpserver_custom_replyto_address_hint)
+    p
+      |&nbsp;
+    h4
+      = t(:smtpserver_custom_server_settings)
+    hr
+    p.lead
+      = t(:smtpserver_custom_server_settings_hint)
+    .row
+      .col-sm-8
+        = f.input :server, label: t(:smtpserver_custom_server), hint: t(:smtpserver_custom_server_hint), required: true
+      .col-sm-4
+        = f.input :port, label: t(:smtpserver_custom_port), hint: t(:smtpserver_custom_port_hint), default: 465, required: true
+    .row
+      .col-sm-6
+        = f.input :username, label: t(:smtpserver_custom_username), hint: t(:smtpserver_custom_username_hint), required: true
+      .col-sm-6
+        = f.input :password, as: :password, label: t(:smtpserver_custom_password), hint: t(:smtpserver_custom_password_hint), required: true
+    .row
+      .col-sm-3
+        = f.input :ssl, label: t(:smtpserver_custom_ssl), hint: t(:smtpserver_custom_ssl_hint), required: false
+      .col-sm-3
+        = f.input :starttls, label: t(:smtpserver_custom_starttls), hint: t(:smtpserver_custom_starttls_hint), required: true, default: true
+      .col-sm-3
+        = f.input :authentication, collection: Smtpserver.authentication_types, label: t(:smtpserver_custom_authentication), hint: t(:smtpserver_custom_authentication_hint), required: false, include_blank: I18n.t(:please_choose)
+      .col-sm-3
+        = f.input :openssl, collection: %w{NONE PEER}, label: t(:smtpserver_custom_openssl), hint: t(:smtpserver_custom_openssl_hint), required: false, include_blank: I18n.t(:please_choose)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: smtpserversettings_path

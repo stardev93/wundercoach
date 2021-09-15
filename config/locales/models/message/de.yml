@@ -1,0 +1,40 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # onlinestatus
+  message: Nachricht
+  messages: Nachrichten
+  messages_infotext: "Nachrichten werden im Wundercoach Backend für alle User angezeigt, wenn das Feld Online aktiviert ist und Datum\\Uhrzeit in \"Nachricht anzeigen ab\" erreicht sind."
+  user_messages_infotext: "Ihre Wundercoach-Nachrichten"
+  messages_hint: Nachrichten
+  message_subject: Betreff
+  message_subject_hint: Betreffzeile der Nachricht.
+  message_body: Nachrichtentext
+  message_body_hint: Nachrichtentext der Nachricht.
+  message_valid_from: Nachricht anzeigen ab
+  message_valid_from_hint: "Gibt an, ab welchem Datum/Uhrzeit die Nachricht angezeigt wird. Zusätzlich muss das Feld \"Nachricht online\" aktiviert sein."
+  message_online: Nachricht online
+  message_online_hint: "Gibt an, ob die Nachricht dem User angezeigt wird oder nicht. Zusätzlich gilt die Einstellung im Feld \"Nachricht anzeigen ab\""
+  new_message: Neue Nachricht
+  new_message_hint: Erstellt eine neue Nachricht
+
+  message_publish: "Veröffentlichen"
+  message_publish_hint: "Veröffentlicht die Nachricht im Dashboard der User"
+  message_published: "Veröffentlicht"
+  message_published_hint: "Wurde die Nachricht veröffentlicht?"
+  message_published_at: "Veröffentlicht am"
+  message_published_at_hint: "Datum der Veröffentlichung"
+  message_pushed_at: "Verteilt am"
+  message_pushed_at_hint: "Datum der Verteilung an das Message-Board von Wundercoach im Backend"
+  message_mute: "Verstecken"
+  message_mute_hint: "Löscht die Nachricht aus dem Dashboard der User"
+  message_publishing_successful: "Die Nachricht wurde erfolgreich veröffentlicht. Sie erscheint jetzt im User-Dashboard."
+
+  message_unread_message_count: Anzahl Nachrichten
+  message_unread_message_count_hint: Anzahl der ungelesenen Nachrichten
+
+  message_no_unread_messages: Keine ungelesenen Nachrichten
+  message_show_all_messages: Alle Nachrichten anzeigen
+  user_message_read_more: "mehr lesen"
+  user_message_mark_as_read: "gelesen"
+
+  you_have_n_new_messages: "Sie haben %{n} neue Nachrichten"

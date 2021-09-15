@@ -1,0 +1,42 @@
+li.list-group-item id="#{dom_id(pricingoption)}"
+  .row
+    .col-sm-1.col-md-1.col-lg-1
+      strong
+        i.fa.fa-bars.draggable
+      = render "shared/f_ro_boolean", :field_value => pricingoption.preset
+    .col-sm-11.col-md-2.col-lg-2
+      strong
+        = pricingoption
+      br
+      = pricingoption.hint_text
+
+    .col-sm-12.col-md-3.col-lg-4
+      = pricingoption.comments
+
+    .col-sm-12.col-md-3.col-lg-3.text-right
+
+      - if pricingoption.is_absolute?
+        = t(:pricingoption_full_price_deduct)
+        |:&nbsp;
+        = pricingoption.full_price_deduct
+        br
+        br
+        = t(:pricingoption_price_early_signup_deduct)
+        |:&nbsp;
+        = pricingoption.price_early_signup_deduct
+
+      - else
+        = t(:pricingoption_full_price_deduct)
+        |:&nbsp;
+        = pricingoption.full_price_deduct_perc
+        br
+        br
+        = t(:pricingoption_price_early_signup_deduct)
+        |:&nbsp;
+        = pricingoption.price_early_signup_deduct_perc
+
+
+    .col-sm-12.col-md-2.col-lg-2.text-right
+      = render "shared/button", path: edit_product_pricingoption_path(pricingoption), link_text: t(:edit), icon: "", classes: "btn btn-xs btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit)
+      |&nbsp;
+      = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => product_pricingoption_path(pricingoption), :delete_text => t(:delete), :button_css => "btn-xs"

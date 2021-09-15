@@ -1,0 +1,65 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = @planningstatus
+      span.add-item
+        = link_to new_planningstatus_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_planningstatus)
+    p.lead
+      = @planningstatus.key
+      br
+      = @planningstatus.name
+      br
+      = @planningstatus.description
+      br
+      = @planningstatus.position
+      br
+
+.row
+  .col-md-12
+    p.h3
+      'Planningstatus
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong =t(:key)
+        br
+        span.lead = @planningstatus.key
+        '&nbsp;
+      p
+        strong =t(:name)
+        br
+        span.lead = @planningstatus.name
+        '&nbsp;
+      p
+        strong =t(:description)
+        br
+        span.lead = @planningstatus.description
+        '&nbsp;
+      p
+        strong =t(:position)
+        br
+        span.lead = @planningstatus.position
+        '&nbsp;
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to @planningstatus, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_planningstatus_path(@planningstatus), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to planningstatuses_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

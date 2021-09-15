@@ -1,0 +1,12 @@
+- if event.has_location?
+
+  - if event.get_directions
+    span.h3
+      = t(:location_directions)
+    p.lead
+      = event.get_directions
+
+  - if event.has_directions_download?
+    p.lead
+      = link_to product_location_downloaddirectionspdf_path(event.product_location), :target => "_blank", :class => ""
+        = t(:location_directionspdf)

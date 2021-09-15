@@ -1,0 +1,28 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  simple_form:
+    magic_submit:
+      event:
+        tags:
+          event/tag:
+            new:
+              submit: Neuen Tag anlegen
+              disable_with: Tag wird angelegt ...
+
+    options:
+      tag:
+  activerecord:
+    models:
+      event/tag:
+        one: Tag
+        other: Tags
+  tag: Schlagwort
+  tags: Schlagwörter
+  tag_infotext: Taggen Sie Ihre Seminare, um sie später nach Tag sortieren und filtern zu können
+  tag_hint: Legen Sie hier Schlagwörter an, die sie Ihren Seminaren und Veranstaltungen zuordnen. Sie können auf Ihrer Website danach suchen lassen.
+  add_tag: Neuen Tag anlegen
+  edit_tag: Tag bearbeiten
+  search_by_tags: Schlagwortsuche
+  enter_tags: Schlagwörter
+  events_using_this_tag: Seminare mit diesem Schlagwort
+  eventtemplates_using_this_tag: Seminarvorlagen mit diesem Schlagwort

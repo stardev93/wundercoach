@@ -1,0 +1,82 @@
+tr
+  td
+    strong
+      = link_to event
+        = event.name
+    br
+    = t(event.type)
+    = render "events/index_partials/eventtemplate", :event => event
+    = render "events/index_partials/bundles", :event => event
+
+    br
+    = sanitize event.shortdescription&.truncate(150, separator: ' ')
+
+    = render "events/index_partials/location", :event => event
+
+  td
+    - if !event.start_date.blank?
+      = event.decorate.start_date
+      br
+      = event.decorate.start_time
+    - if !event.end_date.blank?
+      br
+      = event.decorate.end_date
+      br
+      = event.decorate.end_time
+    br
+    = render "shared/value", :value => event.duration, :format => "number", :precision => 2
+    |&nbsp;
+    - if event.duration
+      -  if event.duration > 1
+        = event.durationunit&.name_plural
+      - else
+        = event.durationunit&.name_singular
+
+  td
+    - if event.seats_limited?
+      = render "events/progressbar", event: event
+    - event.coaches.by_name.each do |coach|
+      br
+      = coach
+
+  td.text-right
+    - unless event.latest_signup_date.blank?
+      = event.latest_signup_date
+    - else
+      = t(:latest_signup_date_empty)
+    br
+    - if event.price.present?
+      strong
+        / = money_to_currency(event.full_price)
+        / switching to decorator object, so no formatting here
+        = event.full_price
+    - else
+      = t(:free_of_charge)
+    br
+    - if event.early_signup_pricing?
+      br
+
+      = t(:price_early_signup)
+      br
+      strong
+        / = money_to_currency(event.price_early_signup)
+        = event.price_early_signup
+      - unless event.early_signup_deadline.blank?
+        br
+        = t(:until)
+        |&nbsp;
+        = event.early_signup_deadline_date
+        br
+        = event.early_signup_deadline_time
+
+  td
+    = render "onlinestatuses/label", onlinestatus: event.onlinestatus
+    br
+    = render "planningstatuses/label", planningstatus: event.planningstatus
+    br
+    = render "events/label_allow_signup", allow_signup: event.allow_signup
+    br
+    br
+    = render "eventtypes/label", eventtype: event.eventtype
+  td
+    = render "events/button_list", event: event

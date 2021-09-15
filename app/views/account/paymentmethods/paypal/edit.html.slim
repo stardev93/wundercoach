@@ -1,0 +1,20 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:edit_paypal)
+  .col-md-12
+    p
+      br
+    = simple_form_for(@form, url: account_paymentmethods_paypal_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        .row
+          .col-xs-12.col-sm-6
+            = render "shared/f_text", :form => f, :field => :paypal_client_id, :field_label => t(:paypal_client_id), :field_hint => t(:paypal_client_id_hint)
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: payment_path

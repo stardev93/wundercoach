@@ -1,0 +1,108 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        - if @contact.type == "Company"
+          i.fa.fa-building-o
+          |&nbsp;
+          = @contact.name
+          br
+          span.lead
+            = @contact.name2
+        - else
+          i.fa.fa-user
+          |&nbsp;
+          = @contact.name
+          br
+          span.h3
+            - if @contact.company
+              = link_to crm_contact_path(@contact.company) + '#persons'
+                |(
+                = @contact.company
+                |)
+      = render "create_new_buttons"
+    p.lead
+
+.row
+  .col-xs-12
+    - if @contact.type == "Person"
+      = render 'show_person'
+    - else
+      = render 'show_company'
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to crm_contact_path(@contact), data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_crm_contact_path(@contact), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to crm_contacts_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+
+.row
+  .col-md-12
+    hr
+    ul.nav.nav-tabs role="tablist"
+      - unless @contact.type == "Person"
+        li class="#{@contact.type == 'Person' ? 'active' : ''}"
+          a href="#persons" aria-controls="persons" role="tab" data-toggle="tab"
+            = t(:persons)
+      li class=""
+        a href="#details" aria-controls="details" role="tab" data-toggle="tab"
+          = t(:details)
+      li
+        a href="#addresses" aria-controls="addresses" role="tab" data-toggle="tab"
+          = t(:addresses)
+      li
+        a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"
+          = t(:comments)
+      / li class=""
+      /   a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab"
+      /     = t(:invoice_quotes)
+      / li class=""
+      /   a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab"
+      /     = t(:quotes)
+      li class=""
+        a href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab"
+          = t(:invoices)
+      li class=""
+        a href="#eventbookings" aria-controls="eventbookings" role="tab" data-toggle="tab"
+          = t(:eventbookings)
+      / li class=""
+      /   a href="#cancellations" aria-controls="cancellations" role="tab" data-toggle="tab"
+      /     = t(:invoice_cancellations)
+
+.row
+  .col-md-12
+    .well
+      p
+        |&nbsp;
+      .tab-content
+        - unless @contact.type == "Person"
+          .tab-pane role="tabpanel" id="persons"
+            = render 'contact_persons'
+        .tab-pane.active role="tabpanel" id="addresses"
+          = render 'contact_addresses'
+        .tab-pane role="tabpanel" id="details"
+          = render 'contact_details'
+        .tab-pane role="tabpanel" id="comments"
+          = render 'comments'
+        / .tab-pane role="tabpanel" id="quotes"
+        /   = render 'crm/contacts/businessdocument_list', :@businessdocuments => @quotes
+        .tab-pane role="tabpanel" id="orders"
+          / = render 'billing/businessdocuments/businessdocument_list', :@businessdocuments => @contact.businessdocuments
+        .tab-pane role="tabpanel" id="eventbookings"
+          = render 'crm/contacts/subtable_header', :headline => "eventbookings"
+          = render "crm/contacts/eventbooking_list", :@eventbookings => @contact.eventbookings
+        .tab-pane role="tabpanel" id="invoices"
+          = render 'crm/contacts/subtable_header', :headline => "invoices"
+          = render 'crm/contacts/businessdocument_list', :@businessdocuments => @businessdocuments

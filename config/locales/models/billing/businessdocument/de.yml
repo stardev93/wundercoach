@@ -1,0 +1,117 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  activerecord:
+    models:
+      invoice:
+        one: Rechnung
+        other: Rechnungen
+  simple_form:
+    labels:
+      invoice:
+        invoicestatus: Rechungsstatus
+        invoicetype: Belegart
+        invoice_number: Rechungsnummer
+        invoice_date: Belegdatum
+        due_date: Fällig am
+        paymentdate: Datum des Zahlungseingangs
+        paymentstatus: Status der Zahlung
+
+  # general
+  businessdocument: Dokument
+  businessdocuments: Dokumente
+
+  # invoice
+  invoice: "Rechnung"
+  invoice_no: "Rechnung Nr. %{invoice_number}"
+  invoices: "Rechnungen"
+  invoicepositions: "Positionen"
+  invoice_name: "Betreff"
+  cancel_message: Die Rechnung wurde storniert
+  paymentdate: "Zahlungsdatum"
+  sum: "Summe"
+  sum_net: "Summe netto"
+  sum_vat: "zzgl. MwSt."
+  sum_vat_included: "enthaltene MwSt."
+  sum_gross: "Summe brutto"
+  total_price: "Gesamt"
+  vat: "MwSt."
+  back_to_event: "zurück zum Seminar"
+  invoice_info_text: "Rechnungsübersicht"
+  do_you_want_to_delete_this_businessdocument: "Wollen Sie dieses Dokument wirklich löschen? Alle verbundenen Dokumente (Stornos etc.) werden ebenfalls gelöscht."
+  do_you_want_to_delete_this_businessdocumentposition: "Wollen Sie diese Position wirklich löschen?"
+  create_invoice: "Rechnung erstellen"
+  create_partial_invoice: "Teilrechnung erstellen"
+  invoice_creation_successful: "Die Rechnung wurde erstellt."
+  back_to_invoicelist: "Alle Rechnungen"
+  pos: "Pos"
+  netto_total: "Gesamt Netto"
+  plus_vat: "zzgl. %{vat}"
+  total_amount: "Gesamtbetrag"
+  vat_included: 'Mehrwertsteuer enthalten'
+  vat_rate: "MwSt.-Satz"
+  paymentstatus_set_to_open: 'Zahlung steht aus.'
+  paymentstatus_set_to_paid: 'Zahlung ist erfolgt.'
+  paymentstatus_set_to_waiting: 'Warte auf Abrechnung.'
+  invoicestatus: Rechungsstatus
+  due_date: Fälligkeitsdatum
+  invoicetype: Belegart
+  invoicelist: Rechnungsübersicht
+  set_paid: 'Rechnung als bezahlt markieren'
+  set_payment_open: 'Rechnung als unbezahlt markieren'
+  cancel_invoice: Stornieren
+  cancellation_for: "Storno für Rechnung %{invoice_number}"
+  businessdocument_due: fällig
+  businessdocument_paid: bezahlt
+  businessdocument_open: offen
+  businessdocument_cancelled: storniert
+  this_is_the_list_of_your_invoices: Dies ist die Liste Ihrer Rechnungen
+  cannot_delete_sent_invoice: Gedruckte oder versendete Rechnungen können nicht gelöscht werden.
+  invoice_sent_to_customer: Die Rechnung wurde an den Kunden versendet
+  error_sending_invoice: Beim Versenden der Rechnung ist ein Fehler aufgetreten
+  document_number: "Belegnummer"
+  product_amount: Menge
+
+  recipient_name1: Empfänger 1
+  recipient_name2: Empfänger 2
+  recipient_person: Ansprechpartner
+  recipient_street: Strasse und Hausnummer
+  recipient_zip: PLZ
+  recipient_city: Ort
+  recipient_country: Land
+  recipient_email: "Senden an"
+
+  quote: Angebot
+  quotes: Angebote
+  quote_number: "Angebot Nr."
+
+  orderconfirmation: Auftrag
+  orderconfirmations: Aufträge
+  orderconfirmation_number: "Auftrag Nr."
+
+  cancellation: Storno
+  cancellations: Stornos
+  cancellation_number: "Storno Nr."
+
+  Billing::Invoice: "Rechnung"
+  Billing::Cancellation: "Storno"
+  Billing::Orderconfirmation: "Auftrag"
+  Billing::Quote: "Angebot"
+
+  Billing::Invoice_symbol: "R"
+  Billing::Cancellation_symbol: "S"
+  Billing::Orderconfirmation_symbol: "B"
+  Billing::Quote_symbol: "A"
+
+  draft: Entwurf
+  successor: Folgebeleg
+  predecessor: Vorgängerbeleg
+  new_position: Neue Position
+
+  pdf_generation_started: "PDF-Generierung gestartet"
+  businessdocument_has_been_sent: "Das Dokument wurde versendet"
+  document_duplicated: Das Element wurde dupliziert
+  position_duplicated: Die Position wurde dupliziert
+  datevexport: Export Datev
+  datevexport_csv_filename: "DATEV-Export_von_%{startdate}_bis_%{enddate}_erstellt_%{createdate}.zip"
+  datev_export_csv: "Datev-Export (CSV)"
+  datev_export_xls: "Datev-Export (XLS)"

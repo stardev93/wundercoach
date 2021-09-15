@@ -1,0 +1,56 @@
+/ ##########################################
+/ payment header information
+= render "signup/orders/payment_step_header", :event => @order.product.decorate
+
+
+/ ##########################################
+/ event signup information
+= render "signup/orders/signup_info", :event => @order.product.decorate
+
+/ ##########################################
+/ event basic details start- & end-date basic location
+= render "signup/products/info_row", :event => @product.decorate
+
+/ ##########################################
+/ pricing zone, show price or selected pricing option
+= render "signup/orders/price_chosen", :event => @product.decorate, :order => @order, :enable_row_select => false
+
+.row.signup-payment-data-zone
+  .col-xs-12
+    = simple_form_for(@order, url: set_payment_signup_order_path(@order), method: 'post') do |f|
+      .well.signup_well
+        .row
+          .col-sm-12.col-xs-12
+            = f.input :price_cents, as: :hidden, id: "order_price_cents"
+            = f.input :pricingoption, as: :hidden, id: "order_pricingoption"
+            = f.input :pricingoptiontext, as: :hidden, id: "order_pricingoptiontext"
+            .row
+              .col-xs-12
+                = f.input :client_order_info, label: t(:order_client_order_info_checkout), hint: t(:order_client_order_info_checkout_hint)
+
+            ul.list-group
+              - @product.paymentmethods.each do |paymentmethod|
+                li.list-group-item
+                  .row
+                    .col-xs-1 style="width: 30px;"
+                      input.radio_buttons.optional(
+                        checked=('checked' if @order.paymentmethod_id == paymentmethod.id)
+                        autocomplete="off"
+                        value="#{paymentmethod.id}"
+                        name="order[paymentmethod_id]"
+                        id="order_paymentmethod_id_#{paymentmethod.id}"
+                        type="radio")
+                    .col-xs-11
+                      span
+                        / call decorator on paymentmethod to get comment per tenant from Paymentterm
+                        strong
+                          = Placeholder.substitute_placeholders(@order, paymentmethod.decorate.name)
+                        br
+                        = Placeholder.substitute_placeholders(@order, paymentmethod.decorate.comment)
+
+            .row.text-center
+              .col-xs-12
+                p = f.button :magic_submit, class: 'btn btn-default btn-lg signup-button signup-submit signup-choose-payment'
+              .col-xs-12
+                = link_to edit_signup_order_path, class: "btn btn-default btn-lg signup-button signup-back"
+                  = t(:back)

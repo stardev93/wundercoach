@@ -1,0 +1,31 @@
+.row
+  .col-xs-1
+    |&nbsp;
+  .col-xs-9
+    p
+      br
+      span.h4
+        - if step_done
+          = link_to button_url, style: "color: #cccccc;text-decoration: line-through;"
+            = headline
+        - else
+          = link_to button_url
+            = headline
+
+      p.lead
+        - if step_done
+          span style="color: #cccccc;text-decoration: line-through;"
+            = text
+        - else 
+          = text
+          
+  .col-xs-2.text-center
+    br
+    - unless step_done
+      = link_to button_url
+        span style="color: #cccccc;"
+          i.fa.fa-circle.fa-3x
+    - else
+      = link_to button_url
+        span style="color: #cccccc;"
+          i.fa.fa-check-circle.fa-3x

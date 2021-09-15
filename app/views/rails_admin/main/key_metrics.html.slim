@@ -1,0 +1,56 @@
+.container-fluid
+  .row.text-center
+    .col-xs-12.col-sm-6.col-lg-3
+      .panel.panel-warning
+        .panel-heading
+          h2 Account Growth
+        .panel-body
+          h1 = @key_metrics.signups_count - @key_metrics.churn_count
+          h4 = "+#{@key_metrics.signups_count} / -#{@key_metrics.churn_count}"
+    .col-xs-12.col-sm-6.col-lg-3
+      .panel.panel-info
+        .panel-heading
+          h2 MRR
+        .panel-body
+          h1
+            = number_to_currency(@key_metrics.estimated_revenue_sum, locale: :de)
+          h4 Based on current Bookings, both monthly and yearly subscriptions
+    .col-xs-12.col-sm-6.col-lg-3
+      .panel.panel-success
+        .panel-heading
+          h2 Upgrades
+        .panel-body
+    .col-xs-12.col-sm-6.col-lg-3
+      .panel.panel-danger
+        .panel-heading
+          h2 Downgrades
+        .panel-body
+
+  .row
+    .col-xs-12
+      ul.nav.nav-tabs role="tablist"
+        li class="active"
+          a href="#accounts" aria-controls="accounts" role="tab" data-toggle="tab"
+            = t(:accounts)
+        li
+          a href="#mrr" aria-controls="mrr" role="tab" data-toggle="tab"
+            | Monthly recurring revenue
+        li
+          a href="#upgrades" aria-controls="upgrades" role="tab" data-toggle="tab"
+            = t(:upgrades)
+        li
+          a href="#downgrades" aria-controls="downgrades" role="tab" data-toggle="tab"
+            = t(:downgrades)
+  .row
+    .col-md-12
+      .well
+        .tab-content
+          #accounts.tab-pane.active role="tabpanel"
+            = column_chart([{ name: "Accounts created", data: @key_metrics.signups_statistics }, { name: "Accounts deleted", data: @key_metrics.churn_statistics }])
+          #mrr.tab-pane role="tabpanel"
+            = column_chart([{ name: "MRR", data: @key_metrics.estimated_revenue_statistics }])
+          #upgrades.tab-pane role="tabpanel"
+            / = line_chart(@key_metrics.paymentplan_statistics)
+            h2 FIXME
+          #downgrades.tab-pane role="tabpanel"
+            h2 TODO

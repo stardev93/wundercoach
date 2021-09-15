@@ -1,0 +1,48 @@
+.row
+  .col-md-12
+
+    table.table.table-hover
+      thead
+        tr
+          th
+            = t (:name)
+          th
+            = t (:start_date)
+          th
+            = t (:signup)
+          th.text-right
+            = t(:seats_booked)
+
+          th.text-right
+            = t (:price)
+          th
+            = t (:onlinestatus)
+
+      tbody
+        - @events.each do |event|
+          tr
+            td
+              = link_to event
+                = event.name
+            td
+              - if !event.start_date.blank?
+                = l event.start_date, format: :default
+            td
+              - if event.allow_signup
+                - unless event.external_signup_url.blank?
+                  = link_to t(:external_signup_url_short), event.external_signup_url, :target => "_blank"
+                - else
+                  / = link_to t(:internal_signup_url), signup_show_path(event), :target => "_blank"
+              - else
+                = t(:no_signup_allowed)
+
+            td.text-right
+              = event.seats_booked
+              / = render "events/waitinglistbar",:event => event
+            td.text-right
+              = money_to_currency(event.price)
+            td
+              = event.onlinestatus
+.row
+  .col-xs-12
+    = will_paginate @events, renderer: BootstrapPagination::Rails, :link_path => admin_account_path(@account), :params => {:anchor => "events"}, :param_name => "eventspage"

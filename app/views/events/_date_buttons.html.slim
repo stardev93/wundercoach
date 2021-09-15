@@ -1,0 +1,114 @@
+- today = Date.today.in_time_zone(current_tenant.get_time_zone).to_datetime.to_s
+
+- beginning_of_week = Date.today.in_time_zone(current_tenant.get_time_zone).beginning_of_week.to_datetime.to_s
+- end_of_week = Date.today.in_time_zone(current_tenant.get_time_zone).end_of_week.to_datetime.to_s
+
+- beginning_of_month = Date.today.in_time_zone(current_tenant.get_time_zone).beginning_of_month.to_datetime.to_s
+- end_of_month = Date.today.in_time_zone(current_tenant.get_time_zone).end_of_month.to_datetime.to_s
+
+- beginning_of_next_month = ((Date.today + 1.month).in_time_zone(current_tenant.get_time_zone).beginning_of_month).to_datetime.to_s
+- end_of_next_month = ((Date.today + 1.month).in_time_zone(current_tenant.get_time_zone).end_of_month).to_datetime.to_s
+
+- beginning_of_quarter = (Date.today.in_time_zone(current_tenant.get_time_zone).beginning_of_quarter).to_datetime.to_s
+- end_of_quarter = (Date.today.in_time_zone(current_tenant.get_time_zone).end_of_quarter).to_datetime.to_s
+
+- beginning_of_next_quarter = ((Date.today + 3.month).in_time_zone(current_tenant.get_time_zone).beginning_of_quarter).to_datetime.to_s
+- end_of_next_quarter = ((Date.today + 3.month).in_time_zone(current_tenant.get_time_zone).end_of_quarter).to_datetime.to_s
+
+- beginning_of_year = (Date.today.in_time_zone(current_tenant.get_time_zone).beginning_of_year).to_datetime.to_s
+- end_of_year = (Date.today.in_time_zone(current_tenant.get_time_zone).end_of_year).to_datetime.to_s
+
+- beginning_of_next_year = ((Date.today + 1.year).in_time_zone(current_tenant.get_time_zone).beginning_of_year).to_datetime.to_s
+- end_of_next_year = ((Date.today + 1.year).in_time_zone(current_tenant.get_time_zone).end_of_year).to_datetime.to_s
+
+- session_w_tz_gteq = session[:q]['start_date_gteq'].in_time_zone(current_tenant.get_time_zone).to_datetime if !session[:q]['start_date_gteq'].nil? && session[:q]['start_date_gteq'] != ''
+- session_w_tz_lteq = session[:q]['start_date_lteq'].in_time_zone(current_tenant.get_time_zone).to_datetime if !session[:q]['start_date_lteq'].nil? && session[:q]['start_date_lteq'] != ''
+
+- range_button_text = t(:all_active)
+
+- if session[:q]['start_date_gteq'] == '' and session[:q]['start_date_lteq'] == ''
+  - all_active = 'active btn-primary'
+  - range_button_text = t(:all_active)
+
+- if session_w_tz_gteq == today && session_w_tz_lteq.nil?
+  - today_active = 'active btn-primary'
+  - range_button_text = t(:from_today)
+
+- if session_w_tz_gteq == beginning_of_week && session_w_tz_lteq == end_of_week
+  - this_week_active = 'active btn-primary'
+  - range_button_text = t(:this_week)
+
+- if session_w_tz_gteq == beginning_of_month && session_w_tz_lteq == end_of_month
+  - this_month_active = 'active btn-primary'
+  - range_button_text = t(:this_month)
+
+- if session_w_tz_gteq == beginning_of_next_month && session_w_tz_lteq == end_of_next_month
+  - next_month_active = 'active btn-primary'
+  - range_button_text = t(:next_month)
+
+- if session_w_tz_gteq == beginning_of_quarter && session_w_tz_lteq == end_of_quarter
+  - this_quarter_active = 'active btn-primary'
+  - range_button_text = t(:this_quarter)
+
+- if session_w_tz_gteq == beginning_of_next_quarter && session_w_tz_lteq == end_of_next_quarter
+  - next_quarter_active = 'active btn-primary'
+  - range_button_text = t(:next_quarter)
+
+- if session_w_tz_gteq == beginning_of_year && session_w_tz_lteq == end_of_year
+  - this_year_active = 'active btn-primary'
+  - range_button_text = t(:this_year)
+
+- if session_w_tz_gteq == beginning_of_next_year.to_datetime && session_w_tz_lteq == end_of_next_year
+  - next_year_active = 'active btn-primary'
+  - range_button_text = t(:next_year)
+
+- filter_active = (today_active || this_week_active || this_month_active || next_month_active || this_quarter_active || next_quarter_active || this_year_active || next_year_active)
+
+.form-group.form-inline
+  .row
+    .col-xs-4
+      label
+        = t(:start_date_from)
+    .col-xs-4
+      label
+        = t(:start_date_to)
+    .col-xs-4
+  .row
+    .col-xs-4
+      = f.input :start_date_gteq, as: :date_picker, label: false, hint: false
+    .col-xs-4
+      = f.input :start_date_lteq, as: :date_picker, label: false, hint: false
+    .col-xs-2
+      .btn-group
+        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="#{filter_active}"
+          = range_button_text
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu
+          li
+            = link_to events_path+'?q[start_date_gteq]=&q[start_date_lteq]=', :class => "#{all_active}"
+              = t(:all)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + today + '&q[start_date_lteq]=', :class => "#{today_active}"
+              = t(:from_today)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_week + '&q[start_date_lteq]=' + end_of_week, :class => "#{this_week_active}"
+              = t(:this_week)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_month + '&q[start_date_lteq]=' + end_of_month, :class => "#{this_month_active}"
+              = t(:this_month)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_next_month + '&q[start_date_lteq]=' + end_of_next_month, :class => "#{next_month_active}"
+              = t(:next_month)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_quarter + '&q[start_date_lteq]=' + end_of_quarter, :class => "#{this_quarter_active}"
+              = t(:this_quarter)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_next_quarter + '&q[start_date_lteq]=' + end_of_next_quarter, :class => "#{next_quarter_active}"
+              = t(:next_quarter)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_year + '&q[start_date_lteq]=' + end_of_year, :class => "#{this_year_active}"
+              = t(:this_year)
+          li
+            = link_to events_path+'?q[start_date_gteq]=' + beginning_of_next_year + '&q[start_date_lteq]=' + end_of_next_year, :class => "#{next_year_active}"
+              = t(:next_year)

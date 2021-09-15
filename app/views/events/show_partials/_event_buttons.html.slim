@@ -1,0 +1,41 @@
+  = link_to duplicate_event_path(event), class: "btn btn-default", "title" => t(:duplicate_event_hint)
+    i.fa.fa-copy
+    '&nbsp;
+    = t(:duplicate)
+  '&nbsp;
+  - if event.is_a? IndividualEvent
+    = link_to event_from_event_path(event), class: "btn btn-default"
+      i.fa.fa-plus
+      '&nbsp;
+      = t(:new_agreed_individual_event)
+  - else
+    = render "orders/order_link", product: event, new_order_path: new_event_order_path(event), link_params: { class: "btn btn-default" }
+    - if event.allow_signup
+      |&nbsp;
+      - unless event.external_signup_url.blank?
+        = link_to event.external_signup_url, target: "_blank", class: "btn btn-default"
+          i.fa.fa-user-plus
+          |&nbsp;
+          = t(:external_signup_url_short)
+      - else
+        = link_to signup_show_event_path(event), target: "_blank", class: "btn btn-default"
+          i.fa.fa-user-plus
+          |&nbsp;
+          = t(:new_website_order)
+          |&nbsp;
+          - if event.maxparticipants.present?
+            span.label class="#{event.maxparticipants > event.seats_booked ? 'label-success' : 'label-danger'}"
+              = event.seats_booked
+  '&nbsp;
+  = link_to edit_event_path(event), :class => "btn btn-primary"
+    i.fa.fa-edit
+    '&nbsp;
+    = t(:edit)
+  - unless event.cancelled? || event.is_a?(IndividualEvent)
+    '&nbsp;
+    = link_to cancel_event_path(event), method: :put, class: "btn btn-primary"
+      i.fa.fa-remove
+      '&nbsp;
+      = t(:cancel_event)
+  '&nbsp;
+  = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => event_path(event), :delete_text => t(:delete)

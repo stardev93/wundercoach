@@ -1,0 +1,12 @@
+= simple_form_for(@adpartner_website, url: affiliate_adpartner_websites_path(@adpartner)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :url
+    = f.input :commission_relative
+    = f.input :commission_absolute
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: affiliate_adpartner_websites_path(@adpartner)

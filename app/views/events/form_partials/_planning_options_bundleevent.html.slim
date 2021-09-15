@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_planning_options), :hint_text => ""
+
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_text", :field_value => t(:bundleevent_startdate_from_subevent_hint), :field_label => t(:start_date_time), :field_hint => t(:bundleevent_startdate_from_subevent_hint)
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_text", :field_value => t(:bundleevent_enddate_from_subevent_hint), :field_label => t(:end_date_time), :field_hint => t(:bundleevent_enddate_from_subevent_hint)
+      .col-xs-12.col-sm-4
+        = f.association :planningstatus, label: t(:planningstatus), include_blank: false, hint: t(:planningstatus_hint)
+
+    .row
+      .col-xs-12.col-sm-4
+        / = f.input :latest_signup_date, label: t(:latest_signup_date), as: :date_time_picker, hint: t(:latest_signup_date_hint)
+        = render "shared/f_ro_text", :field_value => t(:bundleevent_latest_signup_date_from_subevent_hint), :field_label => t(:latest_signup_date), :field_hint => t(:bundleevent_latest_signup_date_from_subevent_hint)
+      .col-xs-12.col-sm-4
+        / = f.input :maxparticipants
+        = render "shared/f_ro_text", :field_value => t(:bundleevent_maxparticipants_from_subevent_hint), :field_label => t(:maxparticipants), :field_hint => t(:bundleevent_maxparticipants_from_subevent_hint)

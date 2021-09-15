@@ -1,0 +1,97 @@
+en:
+  upload_your_own_headerimage_in_account_settings: "Here you can upload your own header image"
+  thank_you: "Thank you!"
+  choose_payment_method: "How would you like to pay?"
+  choose_your_paymenttype: "Please choose a payment method"
+  available_paymentmethods: "Available paymentmethods"
+  payment_by: "You have chosen %{paymentmethod} as a payment method"
+  if_not_redirected_click_here: "If you are not redirected within 5 seconds, click "
+  please_check_for_errors: "The signup process could not be continued. Please check the data you entered."
+
+  individually_bookable_events: Individually bookable seminars
+  on_request: On request
+  send_request: Send Request
+  order_with_costs: Confirm Participation
+  payment_not_applied: No Payment
+  fully_booked: Fully booked
+  latest_signup_date_exceeded: "Signup date exceeded"
+  event_search_name: "Seminar name"
+  this_week: "This week"
+  next_week: "Next week"
+  this_month: "This month"
+  next_month: "Next month"
+  the_month_after_next_month: The month after next month
+  show_all: "Show all"
+  event_search: "Seminar search"
+  start_search: "Search"
+  show_more: "Show more"
+  show_less: "Show less"
+  early_booking_aplies: "Book no with early booking price"
+
+  checkout_participant_information: "Participant information"
+  checkout_payment_information: "Payment"
+  checkout_summary_information: "Confirmation"
+  order_now: "Confirm order"
+
+  show_on_google_maps: "Show on google maps"
+
+  signup_orders_confirm_data_check_headline: check your data
+  signup_orders_confirm_data_check: Please check your data before confirming your order.
+  signup_for: "Signup for"
+  event_date_information: "The seminar takes place on"
+  continue_with_payment: "Continue with payment"
+  you_will_be_redirected_to_sofort: Upon confirmation, you will be redirected to sofort.com.
+  you_will_be_redirected_to_sofort: Upon confirmation, you will be redirected to paypal.com.
+
+  mandatory_field_info: "The fields marked with (*) are mandatory."
+
+  you_signed_up_successfully: "You have successfully signed up."
+  your_booking_confirmation_for: "This is your booking confirmation for the event"
+  we_have_sent_an_confirmation_email: "We have sent you a booking confirmation per email."
+  we_have_sent_you_a_bill: "We have sent you an invoice."
+
+  booking_confirmation_map_link_headline: "Address and link to location scetch"
+  please_click_here_to_open_google_maps: "Link to location scetch"
+
+  booking_contact_information_headline: "Contact"
+  booking_contact_information_text: "If you have any questions please contact"
+
+  i_agree_to_the_terms_of_service: "I agree to the %{terms}."
+
+
+  account_not_found: Organiser not found
+  account_not_found_hint: If you are the owner of this website, please check the correct integration.
+  transaction_no_confirmation: 'We have not yet received confirmation for your transaction.'
+  card_rejected: 'Your card has been rejected.'
+
+  simple_form:
+    magic_submit:
+      signup:
+        orders:
+          order:
+            payment:
+              submit: "Choose payment method"
+              disable_with: "Saving payment method..."
+            set_payment:
+              submit: "Choose payment method"
+              disable_with: "Saving payment method..."
+            edit:
+              submit: Save and continue
+              disable_with: "Saving contact data..."
+        invoice:
+          payment:
+            disable_with: "You are being redirected..."
+        request:
+          new_request:
+            submit: Send Request
+            disable_with: Sending Request...
+        set_payment:
+          disable_with: Choosing payment method...
+    options:
+      eventbooking:
+        invoices:
+          gender:
+            male: Mr
+            female: Ms
+            diverse: divers
+            noinfo: "No info"

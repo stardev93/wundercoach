@@ -1,0 +1,23 @@
+span.add-item
+  - unless @contact
+    = link_to new_crm_contact_path + '?type=Company', class: "btn btn-default"
+      i.fa.fa-plus
+      | &nbsp;
+      = t(:new_company)
+    |&nbsp;
+    = link_to new_crm_contact_path + '?type=Person', class: "btn btn-default"
+      i.fa.fa-plus
+      |&nbsp;
+      = t(:new_person)
+  - if @contact && @contact.type == 'Company'
+    |&nbsp;
+    = link_to new_crm_contact_path + '?type=Person&contact_id='+@contact.id.to_s, class: "btn btn-default"
+      i.fa.fa-plus
+      |&nbsp;
+      = t(:add_person_to_company)
+  - if @contact
+    |&nbsp;
+    = link_to crm_contacts_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

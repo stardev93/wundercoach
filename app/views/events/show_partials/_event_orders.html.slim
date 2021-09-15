@@ -1,0 +1,7 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:orders), :hint_text => t(:orders_hint)
+
+.row
+  .col-xs-12
+    = render "eventbookings/order_list", :event => @event

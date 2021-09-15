@@ -1,0 +1,84 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  activerecord:
+    attributes:
+      eventtemplate:
+        name: Seminarbezeichnung
+        full_price: Voller Preis
+  simple_form:
+    labels:
+      eventtemplate:
+        name: Seminarbezeichnung
+    hints:
+      eventtemplate:
+        name: Name des Seminars. Unter diesem Namen wird Ihr Seminar in Wundercoach geführt und erscheint auch auf Ihrer Website.
+    magic_submit:
+      eventtemplates:
+        eventtemplate:
+          editseo:
+            submit: "Speichern"
+            disable_with: "Speichere..."
+        propagation:
+          show:
+            submit: "Inhalte kopieren"
+            disable_with: "Kopiere..."
+
+  # eventtemplate
+  eventtemplate: Seminarvorlage
+  eventtemplates: Seminarvorlagen
+  eventtemplate_infotext: "Aus Seminarvorlagen können Sie immer wieder neue, identische Seminare erstellen, in dem Sie unter 'Actions' den Punkt 'Neues Seminar erstellen' auswählen. Seminarvorlagen können Sie auch in Ihre Website einbinden und Ihre Seminarinhalte in den Suchmaschinen positionieren."
+  add_eventtemplate: "Neue Seminarvorlage"
+
+  create_event: "Event aus Vorlage"
+  create_eventtemplate_hint: "Erstellt eine neue Seminarvorlage"
+  create_event_from_eventtemplate_hint: "Erstellt ein neues Seminar aus dieser Seminarvorlage"
+  duplicate_eventtemplate_hint: Dupliziert die aktuelle Seminarvorlage
+  goto_eventtemplate: "Vorlage anzeigen"
+  this_event_was_created_from_an_eventtemplate: "Dieser Event wurde aus einer Vorlage erstellt. Klicken Sie hier, um die Vorlage aufzurufen."
+
+  eventtemplate_seo: "Suchmaschinen"
+  meta_title: "Meta Title"
+  meta_title_hint: "Der Title erscheint in der Kopfzeile bei Google und anderen Suchmachinen in der Liste der Suchergebnisse. Maximale Länge: ca. 50-60 Zeichen."
+  meta_description: "Meta Description"
+  meta_description_hint: "Die Description erscheint bei Google und anderen Suchmachinen in der Liste der Suchergebnisse. Maximale Länge: ca. 155 Zeichen."
+  meta_keywords: "Meta Keywords"
+  meta_keywords_hint: "Ihre präferierten Keywords, unter denen die Veranstaltung gefunden werden soll. Die Meta Keywords erscheinen nur in dem Quellcode Ihrer Veranstaltungsseite. Die Keywords werden von den bedeutenden Suchmaschinen nicht berücksichtigt. Sie können dieses Feld leer lassen."
+  use_tracking: "Tracking-Code verwenden"
+  use_tracking_hint: "Soll der Google-Analytics-Tracking-Code verwendet werden? Fügen Sie ihn dazu in Ihren Kontoeinstellungen unter SEO-Einstellungen ein."
+  slug: "Suchmaschinenfreundliche URL"
+  slug_hint: "Suchmaschinen verstehen Ihre Seiten besser, wenn sie aussagekräftige URLs enthalten. Wenn Sie das Feld leer lassen, generiert Wundercoach automatisch passende und eindeutige URLs."
+  slug_widget_warning: "Wichtig: Wenn Sie die URL Ihrer Seminarvorlage ändern, müssen Sie auch die Widgets in Ihrer Website aktualisieren, die diese Vorlage verwenden, da Ihre Seminarvorlagen sonst nicht mehr gefunden werden."
+
+  eventtemplate_langingpage: "LandingPage"
+
+  create_event_from_eventtemplate: "Neues Seminar erstellen"
+
+
+  eventtemplate_landingpage: "Landingpage"
+  edit_eventtemplate: Seminarvorlage bearbeiten
+  are_you_sure_you_want_to_delete_this_eventtemplate: Wollen sie diese Seminarvorlage wirklich löschen?
+  eventtemplate_was_successfully_deleted: "Die Seminarvorlage wurde erfolgreich gelöscht."
+  eventtemplate_was_successfully_duplicated: "Die Seminarvorlage wurde erfolgreich kopiert."
+  eventtemplate_name: Seminarbezeichnung
+  eventtemplate_name_hint: Name des Seminars. Unter Die Seminare, die aus dieser Vorlage erstellt werden, erhalten diesen Namen.
+  eventtemplate_early_booking_needs_price: "Sie müssen einen Frühbucherpreis angeben, wenn Sie den Frühbucherrabatt aktvieren wollen."
+  copy_eventtemplate_elements_to_events: Inhalte kopieren
+  copy_eventtemplate_elements_to_events_hint: Kopiert die aktivierten Elemente auf die der Seminarvorlage zugeordneten Seminare. Bestehende Inhalte der Seminare werden dabei überschrieben. Beachten Sie bitte, dass Sie die Aktion nicht rückgängig machen können.
+  copy_name: Namen kopieren
+  copy_name_hint: Namen auf alle zugeordneten Seminare kopieren.
+  copy_shortdescription: Kurztext kopieren
+  copy_shortdescription_hint: Kurztext auf alle zugeordneten Seminare kopieren.
+  copy_longdescription: Beschreibung kopieren
+  copy_longdescription_hint: Kopiert die Beschreibung auf alle zugeordneten Seminare.
+  copy_bottom_text: Schlußtext kopieren
+  copy_bottom_text_hint: Kopiert den Schlußtext auf alle zugeordneten Seminare.
+  copy_full_price_cents: Preis kopieren
+  copy_full_price_cents_hint: Kopiert den Preis auf alle zugeordneten Seminare.
+  copy_early_signup_pricing: Frühbucherrabatt ermöglichen kopieren
+  copy_early_signup_pricing_hint: Kopiert die Einstellung Frühbucherrabatt ermöglichen auf alle zugeordneten Seminare.
+  copy_price_early_signup_cents: Frübucherpreis kopieren
+  copy_price_early_signup_cents_hint: Kopiert den Frübucherpreis auf alle zugeordneten Seminare.
+  copy_price_early_signup_cents_restriction_hint: Der Frühbucherrabatt wird nur kopiert, wenn in den Zielseminaren bereits ein Frühbucherrabatt aktiviert ist.
+  copy_text_fields: Textfelder
+  copy_price_fields: Preisfelder
+  copy_subevents_were_successfully_updated: Die zugeordneten Seminare wurden aktualisiert.

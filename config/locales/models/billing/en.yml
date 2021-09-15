@@ -1,0 +1,8 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # billings
+  billing_period: Billing period
+  billing_periods: Billing periods
+  use_up_days: "Consumed"
+  remaining_days: "Remaining"
+  free_plan: "Free"

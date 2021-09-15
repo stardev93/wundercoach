@@ -1,0 +1,28 @@
+.row
+  .col-md-12
+    .row
+      .col-xs-12.col-sm-4
+        = f.input :lastname
+      .col-xs-12.col-sm-4
+        = f.input :firstname
+      .col-xs-12.col-sm-4
+        = render "shared/f_gender", :form => f, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+    .row
+      .col-xs-12.col-sm-12
+        = f.input :company
+    .row
+      .col-xs-12.col-sm-6
+        = f.input :email, input_html: { autocorrect: "off", autocapitalize: "off" }
+      .col-xs-12.col-sm-6
+        = f.input :telephone
+    .row
+      .col-xs-12.col-sm-3
+        = f.input :zip
+      .col-xs-12.col-sm-9
+        = f.input :city
+    .row
+      .col-xs-12.col-sm-12
+        = f.input :street
+    .row
+      .col-xs-12.col-sm-12
+        = f.input :country, priority: %w(Deutschland)

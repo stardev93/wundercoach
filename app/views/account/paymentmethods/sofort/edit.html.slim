@@ -1,0 +1,24 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:edit_sofort)
+  .col-md-12
+    p
+      br
+    = simple_form_for(@form, url: account_paymentmethods_sofort_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        .row
+          .col-xs-12.col-sm-6
+            = f.input :sofort_user_id
+          .col-xs-12.col-sm-6
+            = f.input :sofort_project_id
+          .col-xs-12
+            = f.input :sofort_api_key
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: payment_path

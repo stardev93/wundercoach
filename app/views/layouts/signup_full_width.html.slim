@@ -1,0 +1,30 @@
+// this is used in /de/signup
+doctype html
+html
+  head
+    = raw(@account.get_tracking_code('tracking_code_header_start')) unless @account.nil?
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = render 'signup/meta_data'
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = raw(@account.get_tracking_code('tracking_code_header_end')) unless @account.nil?
+  body
+    = raw(@account.get_tracking_code('tracking_code_body_start')) unless @account.nil?
+    style
+      - unless @account.nil?
+        = @account.css_code
+    #wundercoach_embedded.container
+      javascript:
+        $(document).ready(function(){
+          if(window.self !== window.top) {
+            $("#wundercoach_embedded").removeClass("container");
+          }
+        });
+      / = render "shared/navigation"
+      = render "shared/flash"
+
+      = yield
+    = raw(@account.get_tracking_code('tracking_code_body_end')) unless @account.nil?

@@ -1,0 +1,22 @@
+.row
+  .col-xs-12
+    table.table
+      tr
+        th
+          = t(:eventtemplates_using_this_tag)
+        / th
+        /   = t(:start_date)
+        / th
+        /   = t(:end_date)
+      - eventtemplates.each do |event|
+        tr
+          td
+            = link_to event
+              = event.name
+            br
+            = t(:"#{event.class}")
+
+
+    .row
+      .col-xs-12
+        = will_paginate eventtemplates, renderer: BootstrapPagination::Rails

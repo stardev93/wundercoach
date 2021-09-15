@@ -1,0 +1,26 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+
+- if defined? field_disabled
+  - disabled = field_disabled
+- else
+  - diabled = false
+
+- if defined? field_include_blank
+  - include_blank = field_include_blank
+- else
+  - include_blank = false
+
+- if defined? field_label_method
+  - label_method = field_label_method
+- else
+  - label_method = nil
+
+= form.association field, collection: field_collection, label_method: label_method, include_blank: include_blank, input_html: { class: 'chosen-select' }, label: label, hint: hint, readonly: disabled

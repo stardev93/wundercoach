@@ -1,0 +1,17 @@
+{
+  "name": "material",
+  "dependencies": {
+    "bootstrap": "~4.0.0-alpha",
+    "fontawesome": "~4.4.0",
+    "jquery": "~2.1.4",
+    "material-design-iconic-font": "~2.2.0",
+    "jquery-smooth-scroll": "~1.5.5",
+    "jquery.stellar": "~0.6.2",
+    "wow": "~1.0.3"
+  },
+  "devDependencies": {
+    "bootstrap-sass-official": "~3.3.5",
+    "animate.css": "~3.4.0",
+    "bourbon": "~4.2.5"
+  }
+}

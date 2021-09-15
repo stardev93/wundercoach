@@ -1,0 +1,24 @@
+/ ##########################################
+/ signup buttons in various flavours, depending on event state & config
+
+/ is latest_signup_date exceeded?
+- if event.latest_signup_date_exceeded?
+    = render "signup/signup_date_exceeded_button", event: event, button_type: button_type, width: width
+
+/ do we still have free seats?
+- elsif event.free_seats?
+    / is this an individual event -> kill this, this is shit IndividualEvents will be turned into a flag of events, as any event can be individual
+    - if event.is_a? IndividualEvent
+      = render "signup/requests/button_#{button_type}", event: event
+    / is signup allowed?
+    - elsif event.allow_signup
+      / is signup external? -> redirect
+      - if event.external_signup?
+        = render "signup/buttons/signup_button_#{button_type}", path: signup_redirect_path(event), text: t(:sign_up), method: :get
+      / signup here
+      - else
+        = render "signup/buttons/signup_button_#{button_type}", path: signup_event_path(event), text: t(:sign_up), method: :post
+
+/ sorry we are full. Add waitinglist here later
+- else
+    = render "signup/buttons/signup_fully_booked_button", event: event, button_type: button_type, width: width

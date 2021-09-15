@@ -1,0 +1,139 @@
+- back_button = render "shared/button", path: product_locations_path, link_text: t(:back), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+/ - new_button = link_to "i.fa.fa-plus #{t(:add_product_location)}", new_product_location_path, class: "btn btn-default"
+- new_button = render "shared/button", path: new_product_location_path, link_text: t(:add_product_location), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:add_product_location)
+
+= render "shared/form_header",
+         header_text: @product_location, hint_text: @product_location.location_name,
+         buttons: new_button + back_button
+
+.row
+  / left column
+  .col-xs-12.col-sm-6
+    = render "shared/section_header", :header_text => t(:google_location), :hint_text => t(:address_to_be_used_to_retrieve_address_from_google_maps)
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.eventorganizer_name, :field_label => t(:location_eventorganizer_name), :field_hint => t(:location_eventorganizer_name_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.location_name, :field_label => t(:location_name), :field_hint => t(:location_name_hint)
+
+    .row
+      .col-xs-10
+        = render "shared/f_ro_text", :field_value => @product_location.street, :field_label => t(:location_street), :field_hint => t(:location_street_hint)
+      .col-xs-2
+        = render "shared/f_ro_text", :field_value => @product_location.street_no, :field_label => t(:location_street_no), :field_hint => t(:location_street_no_hint)
+
+    .row
+      .col-xs-12.col-sm-3
+        = render "shared/f_ro_text", :field_value => @product_location.zip, :field_label => t(:location_zip), :field_hint => t(:location_zip_hint)
+
+      .col-xs-12.col-sm-9
+        = render "shared/f_ro_text", :field_value => @product_location.city, :field_label => t(:location_city), :field_hint => t(:location_city_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.state, :field_label => t(:location_state), :field_hint => t(:location_state_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.country_name, :field_label => t(:location_country), :field_hint => t(:location_country_hint)
+
+    / section location_directions
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:location_directions), :hint_text => t(:location_directions_hint), :popover_text => t(:location_directions_hint)
+    .row
+      .col-xs-12
+        / = @product_location.directions
+        - unless @product_location.directions.blank?
+          = render "shared/f_ro_text", :field_value => sanitize(@product_location.directions).truncate(150, separator: ' '), :field_label => t(:location_directions), :field_hint => t(:location_directions_hint)
+
+    .row
+      .col-xs-12
+        - if @product_location.directionspdf.exists?
+          .row
+            .col-xs-12
+              strong
+                = t(:location_directionspdf)
+              p
+                = link_to product_location_downloaddirectionspdf_path(@product_location), :target => "_blank", :class => ""
+                  = @product_location.directionspdf_file_name
+            .col-xs-12.text-right
+              p
+                = link_to product_location_removedirectionspdf_path(@product_location), class: "btn btn-danger"
+                  = t(:location_directionspdf_delete)
+        - else
+          = render "shared/f_dropzone", :object => @product_location, :upload_path => @product_location, :param => "product_location[directionspdf]", :hint_text => t(:location_directionspdf_drop_here_to_upload)
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:location_cost), :hint_text => t(:location_cost_hint), :popover_text => t(:location_cost_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.cost_fixed, :field_label => t(:location_cost_fixed), :field_hint => t(:location_cost_fixed_hint)
+    .row
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => @product_location.cost_variable, :field_label => t(:location_cost_variable), :field_hint => t(:location_cost_variable_hint)
+      .col-xs-6
+        = render "shared/f_ro_text", :field_value => t(:"#{@product_location.cost_variable_unit}"), :field_label => t(:location_cost_variable_unit), :field_hint => t(:location_cost_variable_unit_hint)
+
+
+  / right column
+  .col-xs-12.col-sm-6
+    = render "shared/section_header", :header_text => t(:displayed_address), :hint_text => t(:address_to_be_shown_to_customer_in_checkout), :popover_text => t(:address_to_be_shown_to_customer_in_checkout)
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @product_location.displayed_address, :field_label => t(:displayed_address), :field_hint => t(:displayed_address_hint)
+    .row
+      .col-xs-12
+        = render "product/locations/googlemap", :location => @product_location
+
+
+      .col-xs-12.col-sm-6
+        - if @product_location.geocoded?
+          = render "shared/f_ro_text", :field_value => @product_location.get_google_maps_link, :link => @product_location.get_google_maps_link, :field_label => t(:googlemapslocation), :field_hint => t(:googlemapslocation_hint)
+    .row
+      .col-xs-12
+        - if @product_location.icon.exists?
+          .row
+            .col-xs-12.col-sm-4
+              = render "shared/f_ro_image", :image_url => @product_location.icon.url(:thumb), :image_label => t(:location_icon), :image_hint => t(:location_icon_hint), :image_style => "width:64px;"
+            .col-xs-12.col-sm-8
+              p
+                br
+                = link_to product_location_removeicon_path(@product_location), class: "btn btn-link"
+                  = t(:location_icon_delete)
+        - else
+          .row
+            .col-xs-12
+              = render "shared/f_ro_text", :field_value => t(:google_maps_icon_not_uploaded), :field_label => t(:google_maps_icon), :field_hint => t(:google_maps_icon_upload_to_display_marker)
+            .col-xs-12
+              = render "shared/f_dropzone", :object => @product_location, :upload_path => @product_location, :param => "product_location[icon]", :hint_text => t(:google_maps_icon_drop_here_to_upload)
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:location_time_zone), :hint_text => t(:location_time_zone_hint), :popover_text => t(:location_time_zone_hint)
+
+    .row
+      .col-xs-12.col-sm-8
+        = render "shared/f_ro_timezone", :field_value => @product_location.time_zone, :field_label => t(:location_time_zone), :field_hint => t(:location_time_zone_hint), :field_hint => t(:location_time_zone_help)
+
+      .col-xs-12.col-sm-4
+        = render "shared/f_ro_boolean", :field_value => @product_location.show_time_zone_in_checkout, :field_label => t(:location_time_zone_show_in_checkout), :field_hint => t(:location_time_zone_show_in_checkout_hint)
+
+
+
+
+.row
+  .col-xs-12.text-right
+
+    = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => product_location_path(@product_location), :delete_text => t(:delete)
+    ' &nbsp;
+    = link_to edit_product_location_path(@product_location), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to product_locations_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

@@ -1,0 +1,16 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      affiliate/tag:
+        one: Schlagwort
+        other: Schlagwörter
+    attributes:
+      affiliate/tag: ~
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      affiliate/tag: ~
+    hints:
+      affiliate/tag: ~

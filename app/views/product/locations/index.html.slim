@@ -1,0 +1,84 @@
+- if !can? :access, Feature.find_by(key: 'manage_event_locations')
+  / show plan information
+  = render "shared/feature_check", text: t(:not_in_plan_text)
+
+- new_button = render "shared/button", path: new_product_location_path, link_text: t(:add_product_location), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:add_product_location)
+
+= render "shared/form_header",
+         header_text: t(:event_locations), hint_text: t(:location_infotext),
+         buttons: new_button
+
+
+.row
+  .col-xs-12.well
+    = render "shared/form_search", :search_path => product_locations_path
+.row
+  .col-xs-12
+    p
+      |&nbsp;
+
+.row
+  .col-xs-12.well
+    table.table
+      thead
+        tr
+          th = t(:location_name)
+          / th = t(:eventorganizer_name)
+          th = t(:displayed_address)
+          th = t(:google_location)
+          th
+            = t(:googlemapslocation)
+            br
+            = t(:location_directions)
+          th = t(:icon)
+          th
+
+      tbody
+
+        - Product::LocationDecorator.decorate_collection(@locations.by_name).each do |location|
+          tr
+            td
+              = link_to location
+                = location.location_name
+            td
+              = location.displayed_address
+              br
+              = location.country_name
+            td
+              = location.google_location
+            td
+              = location.get_google_maps_link
+
+              - if location.directionspdf.exists?
+                br
+                br
+                = link_to product_location_downloaddirectionspdf_path(location), :target => "_blank"
+                  = t(:download)
+                  |&nbsp;
+                  = location.directionspdf_file_name
+            td
+              - if location.icon.exists?
+                = link_to location
+                  = render "shared/f_ro_image", :image_url => location.icon.url(:thumb), :image_label => '', :image_style => "width:32px;"
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to product_location_path(location)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_product_location_path(location)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = render "shared/delete_button", :button_type => 'btn-link', :delete_url => product_location_path(location), :delete_text => t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

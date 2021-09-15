@@ -1,0 +1,58 @@
+= simple_form_for(@event) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row.well
+      .col-xs-12.col-sm-8
+        = f.input :type, as: :hidden
+        = f.input :name
+
+      .col-xs-12.col-sm-4
+        = f.association :eventtype, label: t(:eventtype), include_blank: false, hint: t(:eventtype_hint)
+      .col-xs-12
+        = f.input :slug
+
+      .col-xs-12
+        = f.association :product_tags, input_html: { class: 'chosen-select', multiple: '' }, label: t(:event_product_tags), hint: t(:event_product_tags_hint)
+
+      .col-xs-12
+        = render "shared/f_textarea", :form => f, :field => :comments, :field_label => t(:event_comments), :field_hint => t(:event_comments_hint), :field_rows => 5
+
+
+    .row
+      .col-md-12
+        = render "shared/section_header", :header_text => t(:event_planning_options), :hint_text => ""
+    .row.well
+      .col-md-6
+        = f.association :planningstatus, label: t(:planningstatus), include_blank: false, hint: t(:planningstatus_hint)
+      .col-md-6
+        / = f.association :coach, label: t(:coach), hint: t(:coach_hint)
+
+    .row
+      .col-md-12
+        = render "shared/section_header", :header_text => t(:event_pricing_options), :hint_text => ""
+    .row.well
+      .col-md-12
+        .row
+          .col-md-4
+            = f.input :full_price, label: t(:price), hint: t(:price_hint)
+          .col-md-4
+            = f.input :currency, as: :currency_picker
+          .col-md-4
+            = f.association :vat, collection: current_tenant.vats, label_method: :to_s, include_blank: false
+        .row
+          .col-md-6
+          .col-md-6
+            = f.input :maxparticipants
+
+
+    = render 'events/form_partials/event_text_options', f: f
+
+    = render 'events/form_partials/event_signup_options', f: f
+
+    = render 'events/form_partials/event_location_options', f: f
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: events_path

@@ -1,0 +1,7 @@
+- cancel_button = render "shared/button", path: admin_messages_path, link_text: t(:cancel), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+
+= render "shared/form_header",
+         header_text: @message, hint_text: t(:edit_message_hint),
+         buttons: cancel_button
+
+= render 'form'

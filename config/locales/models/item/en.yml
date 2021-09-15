@@ -1,0 +1,14 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  item: Item
+  items: Item
+  items_hint: "Items are additional products and services (books, food) to sell to your customers. Create a new Invoice and click on \"new position\""
+
+  new_item: "New item"
+  edit_item: "Edit item"
+  item_unit: "Unit"
+  item_unit_hint: "Unit of the item, i.e. per item"
+  item_shortdescription: Short description
+  item_shortdescription_hint: Short description of the item
+  item_longdescription: Long description
+  item_longdescription_hint: Long description of the item

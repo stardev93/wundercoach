@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    = simple_form_for(@booking, url: admin_booking_path) do |f|
+      = f.error_notification
+      .row
+        .col-md-12
+          .form-inputs
+            .row
+              .col-md-12
+                = f.input :comments, label: t(:booking_comments), hint: t(:booking_comments_hint)
+
+                = f.input :is_current, label: t(:is_current), hint: t(:is_current_hint)
+            .row
+              .col-md-6
+                = f.input :valid_from, as: :date_picker, locale: :de, label: t(:valid_from), hint: t(:valid_from_hint), :input_html => { :value => f.object.valid_from}, class: "datepicker"
+              .col-md-6
+                = f.input :valid_until, as: :date_picker, locale: :de, label: t(:valid_until), hint: t(:valid_until_hint), :input_html => { :value => f.object.valid_until}, class: "datepicker"
+            .row
+              .col-md-12
+                .form-actions
+                  .row
+                    .col-md-12.text-right
+                      = f.button :magic_submit, cancel: admin_account_path(@booking.account)+"#bookings"

@@ -1,0 +1,106 @@
+<!-- Landingpage Terminliste Seminarvorlagen (Tabelle für Desktops)
+Dieses Widget zeigt die Seminare einer Seminarvorlage an. Benutzen Sie diese Vorlage, um Ihre zu den Inhalten einer Seminarvorlage auch eine Liste der Termine dieser Vorlage auf Ihren Landingpages und Produktseiten auszugeben. Sie können Sie auch mit dem Widget "Landingpage für Seminarvorlagen" kombinieren, mit dem Sie zusätzlich die Termine der Seminare ausgeben können.
+Die Darstellung erolgt als Tabelle und ist für die Darstellung auf Tablets und Desktops gut geeignet. -->
+{{stylesheet}}
+<!-- angezeigt auf Tablets, Desktops mit 992px oder mehr Bildschirmbreite -->
+<div class="row hidden-xs event_desktop">
+  <div class="col-sm-12">
+    <table class="table event_table">
+      <thead class="event_thead">
+        <tr>
+          <td colspan="5">
+            <h4 class="event_headline">Seminartermine</h4>
+          </td>
+        </tr>
+        <tr class="event_tr">
+          <th class="event_th">Thema</th>
+          <th class="event_th">Datum<br />Ort</th>
+          <th class="event_th">Anzahl Teilnehmer<br />Trainer</th>
+          <th class="event_th text-right">Seminargebühr</th>
+          <th class="event_th"></th>
+        </tr>
+      </thead>
+      <tbody class="event_tbody">
+        {% for event in events%}
+          <tr class="event_tr">
+            <td class="event_td">
+              <span class="event_name">
+                {{event.show_link}}
+              </span>
+              <br>
+              <span class="event_shortdescription">
+              {{event.shortdescription}}
+              </span>
+            </td>
+            <td class="event_td">
+              <span class="event_start_date">{{event.start_date}}</span>
+              <br />
+              <span class="event_end_date">{{event.end_date}}</span>
+              <br />
+              <br />
+              <span class="event_location">
+                {% if event.eventorganizer %}
+                  {{event.eventorganizer}}
+                  <br />
+                {% endif %}
+                {% if event.location %}
+                  {{event.location}}
+                  <br />
+                {% endif %}
+                {% if event.city %}
+                  {{event.city}}
+                  <br>
+                {% endif %}
+              </span>
+            </td>
+            <td class="event_td">
+              {% for coach in event.coaches%}
+                <span class="event_coach">
+                  {{coach}}<br />
+                </span>
+              {% endfor %}
+              <br />
+              <strong>Azahl Teilnehmer</strong><br />
+              {{event.maxparticipants}}
+            </td>
+            <td class="event_td text-right" nowrap="nowrap">
+              {% if event.early_signup_pricing %}
+                <span class="event_price_early_signup_label"><strong>Frühbucherpreis</strong></span>
+                <br />
+                <span class="event_price_early_signup">{{event.price}}</span>
+                <br />
+                <span class="event_early_signup_deadline_label"><strong>gültig bis</strong></span>
+                <br />
+                <span class="event_early_signup_deadline">{{event.early_signup_deadline_date}}
+                <br />
+                {{event.early_signup_deadline_time}}
+                </span>
+                <br />
+                <span class="event_full_price">danach: {{event.full_price}}</span>
+
+              {% else %}
+                <span class="event_full_price">
+                  {{event.price}}
+                </span>
+              {% endif %}
+            </td>
+            <td class="event_td">
+              <p>
+                {{event.signup_link}}
+              </p>
+              <p>
+                {{event.details_link}}
+              </p>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5">
+              <h4 class="event_headline">Zur Zeit sind keine Termine geplant.</h4>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

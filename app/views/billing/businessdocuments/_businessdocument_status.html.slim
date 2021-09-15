@@ -1,0 +1,17 @@
+- if businessdocument.cancelled?
+  - successor = businessdocument&.get_successor
+  = link_to billing_businessdocument_path(successor), class: "btn btn-xs btn-default"
+    = t(:businessdocument_cancelled)
+    |&nbsp;
+    - if successor&.invoice_number.present?
+      = successor.invoice_number.to_s
+|&nbsp;
+- if businessdocument.paid?
+  button.btn.btn-xs.btn-success
+    = "#{t(:businessdocument_paid)} #{l businessdocument.paymentdate unless businessdocument.paymentdate.nil?}"
+- elsif businessdocument.due?
+  button.btn.btn-xs.btn-danger
+    = "#{t(:businessdocument_due)} #{l businessdocument.due_date}"
+- else
+  button.btn.btn-xs.btn-primary
+    = t(:businessdocument_open)

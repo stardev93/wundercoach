@@ -1,0 +1,30 @@
+.well
+  - if location.geocoded?
+    .row
+      .col-xs-12
+    .row
+      .col-xs-12
+        br
+        .form-group.string.optional
+          label.string.optional.control-label for="event_googlemapslocation"
+            = "Google Maps"
+
+          div style='width: 100%;'
+            div id="map" style='width: 100%; height: 400px;'
+              = render 'product/locations/googlemap_scripts', location: location
+  - else
+    p.lead.text-center
+      br
+      = link_to product_location_generatemaps_path, class: "btn btn-default"
+        i.fa.fa-refresh
+        |&nbsp;
+        = t(:regenerate_google_maps_location)
+  / - if location.googlemapslocation.present?
+  /   .row
+  /     .col-xs-12
+  /       a href="#{location.googlemapslocation}" target="_blank"
+  /         = t(:open_in_new_window)
+  .row
+    .col-xs-12
+      p
+        |&nbsp;

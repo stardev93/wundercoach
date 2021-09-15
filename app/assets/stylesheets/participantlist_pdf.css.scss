@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+body {
+  font-size: 12px;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+.footer {
+  font-size: 9px;
+}
+.subject {
+  font-size: 16px;
+  font-weight: bold;
+}
+tr {
+    page-break-inside: avoid !important;
+}

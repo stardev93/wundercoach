@@ -1,0 +1,71 @@
+ul.list-group
+  li.list-group-item.event_name
+    h3
+      = link_to event.name, signup_show_event_path(event)
+
+  li.list-group-item.event_shortdescription
+    strong
+      = t(:event_name_short)
+    br
+    = sanitize event.shortdescription
+
+  li.list-group-item
+    .row
+      .col-xs-6
+        strong
+          = t(:start)
+        br
+        - unless event.start_date.blank?
+          = event.start_date
+        - unless event.start_time.blank?
+          br
+          span.event_start_time
+            = event.start_time
+      .col-xs-6
+        - unless event.end_date.blank?
+          strong
+            = t(:end)
+          br
+          = event.end_date
+          - unless event.end_time.blank?
+            br
+            = event.end_time
+
+  li.list-group-item.event_shortdescription
+    .row
+      .col-xs-6
+        strong = t(:coach)
+        br
+        = sanitize event.coaches.join("<br />")
+
+      .col-xs-6
+        - unless event.type == "BundleEvent"
+          strong
+            = t(:location)
+          br
+          = render "signup/location", event: event
+
+  - if event.type == "BundleEvent"
+    li.list-group-item.text-left.event_subevents
+      = render "signup/events/subevent_list_xs", :event => event
+
+  li.list-group-item.text-right.event_price
+    .row
+      .col-xs-12
+        = render "signup/events/index_price", :event => event
+
+  - if event.free_seats? && event.show_free_seats?
+    li.list-group-item.text-right.event_free_seats
+      .row
+        .col-xs-12
+          = render "signup/events/index_free_seats", :event => event
+  li.list-group-item.event_signup
+    .row
+      .col-xs-6
+        = link_to signup_show_event_path(event), class: 'btn btn-default btn-sm btn-warning event_btn_details', style: 'width:100%;'
+          i.fa.fa-eye.icon_details
+          '&nbsp;
+          = t(:details)
+      .col-xs-6
+        p
+          = render "signup/buttons/signup_button", event: event, button_type: 'small', width: "100%"

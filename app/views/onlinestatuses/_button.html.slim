@@ -1,0 +1,15 @@
+.btn-group
+  button.btn.dropdown-toggle class="btn-#{onlinestatus.color} #{btn_size}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    i.fa class="#{onlinestatus.icon}"
+    |&nbsp;
+    = onlinestatus
+    |&nbsp;
+    span.caret
+  ul.dropdown-menu
+    - Onlinestatus.all.each do |onlinestatus_to_go|
+      li
+        = link_to event_onlinestatus_path(event) + "?onlinestatus=#{onlinestatus_to_go.key}&redirect=#{redirect}"
+          = onlinestatus_to_go
+          - if onlinestatus_to_go.key == onlinestatus.key
+            |&nbsp;
+            i.fa.fa-check

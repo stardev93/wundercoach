@@ -1,0 +1,22 @@
+= simple_form_for(@message, url: (@message.new_record? ? admin_messages_path : admin_message_path)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :id, as: :hidden
+        = render "shared/f_text", :form => f, :field => :subject, :field_label => t(:message_subject), :field_hint => t(:message_subject_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_editor", :form => f, :field => :body, :field_label => t(:message_body), :field_hint => t(:message_body_hint), :field_height => "300px"
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_datetimepicker", :form => f, :field => :published_at, :field_label => t(:message_published_at), :field_hint => t(:message_published_at_hint)
+      .col-xs-12.col-sm-6
+        = render "shared/f_datetimepicker", :form => f, :field => :pushed_at, :field_label => t(:message_pushed_at), :field_hint => t(:message_pushed_at_hint)
+
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_messages_path

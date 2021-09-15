@@ -1,0 +1,63 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_online_options), :hint_text => t(:event_online_options_hint)
+.row
+  .col-xs-12
+    label
+      = t(:webinar_provider)
+    p.lead
+      = event.webinar_provider
+
+.row
+  .col-xs-12
+    label
+      = t(:webinar_url)
+    p.lead
+      = event.webinar_url
+    p.lead
+      = link_to event.webinar_url, target: "_blank"
+        i.fa.fa.fa-external-link
+
+      |&nbsp;
+
+      = link_to event.webinar_url, target: "_blank"
+        = t(:event_open_webinar_url)
+
+.row
+  .col-xs-12
+    label
+      = t(:webinar_help_url)
+    p.lead
+      = event.webinar_help_url
+    p.lead
+      = link_to event.webinar_help_url, target: "_blank"
+        i.fa.fa.fa-external-link
+
+      |&nbsp;
+
+      = link_to event.webinar_help_url, target: "_blank"
+        = t(:event_open_webinar_help_url)
+
+.row
+  .col-xs-12.col-sm-6
+    label
+      = t(:webinar_username)
+    p.lead
+      = event.webinar_username
+  .col-xs-12.col-sm-6
+    label
+      = t(:webinar_pw)
+    p.lead
+      = event.webinar_pw
+.row
+  .col-xs-12
+    label
+      = t(:webinar_additional_information)
+    p.lead
+      = event.webinar_additional_information
+.row
+  .col-xs-12
+    label
+      = t(:webinar_additional_information_short)
+    p.lead
+      = event.webinar_additional_information_short

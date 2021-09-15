@@ -1,0 +1,28 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  simple_form:
+    magic_submit:
+      event:
+        tags:
+          event/tag:
+            new:
+              submit: Create new tag
+              disable_with: Creating tag...
+
+    options:
+      tag:
+  activerecord:
+    models:
+      event/tag:
+        one: Keyword
+        other: Keywords
+  tag: Keyword
+  tags: Keywords
+  tag_infotext: Tag your seminars to sort and filter them by day later.
+  tag_hint: Enter keywords and assign them to your events. You can search for it on your website in the list of your events.
+  add_tag: Create new tag
+  edit_tag: Edit tag
+  search_by_tags: Keywordsearch
+  enter_tags: Keywords
+  events_using_this_tag: Events using this keyword
+  eventtemplates_using_this_tag: Eventtemplates using this keyword

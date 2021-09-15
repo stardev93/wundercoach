@@ -1,0 +1,81 @@
+en:
+  activerecord:
+    attributes:
+      defaults:
+        name: Name
+        name2: Name2
+        onlinestatus: Online status
+        vat: "VAT"
+        vat_rate: "VAT rate"
+        firstname: First name
+        digimember_id: Product ID
+        price: Price
+        maxparticipants: Max. participants
+        early_signup_pricing: Allow early booking discount
+        price_early_signup: Early bookin discount
+        generate_invoice: Automatic invoicing
+        commission_relative: Percentage commission amount
+        commission_absolute: Absolute commission amount
+        affiliate_commission_relative: Percentage commission amount
+        affiliate_commission_absolute: Absolute commission amount
+        full_price: Full price
+  simple_form:
+    labels:
+      defaults:
+        name: Name
+        onlinestatus: Publishing status
+        vat: VAT
+        allow_signup: Allow online signup
+        firstname: First name
+        lastname: Last name
+        gender: Salutation
+        street: Street and house number
+        zip: Postal code
+        city: City
+        country: Country
+        company: Company
+        email: Email
+        telephone: Telephone number
+        website: Website
+        name_addon: Company suffix
+        url: URL
+        digimember_id: Product ID
+        notification_url: "Notification URL"
+        eventtype: Seminar type
+        # slug: URL optimized for search engines
+        price: Price
+        maxparticipants: Max. participants
+        early_signup_pricing: Allow early booking discount
+        price_early_signup: Early booking price
+        generate_invoice: Automatic invoicing
+        commission_relative: Percentage commission amount
+        commission_absolute: Absolute commission amount
+        affiliate_commission_relative: Percentage commission amount
+        affiliate_commission_absolute: Absolute commission amount
+        recipient1: First recipient
+        recipient2: Second recipient
+        comments: Comments
+        currency: Currency
+    hints:
+      defaults:
+        onlinestatus: Decides, whether the seminar is visible online or not.
+        vat: Included VAT
+        allow_signup: When enabled, your customers can register online for this seminar.
+                        #Formulierung / Auswahlmöglichkeiten überarbeiten für allow_signup
+        bottom_text: Final text at the bottom of the seminar page
+        digimember_id: Will be passed with each notification after a successful order. If you leave this field blank, there won't be sent any notification.
+        notification_url: External applications can be informed of orders made by sending a part of the order data to the URL.
+        eventtype: Type of the seminar. You can create your own seminar types under the 'Seminars' menu item.
+        slug: The URL under which your seminar shoud be found. Leave the field empty, so the Wundercoach can generate a suitable URL for you, or enter your own. Please keep in mind that the URL has to be unique across all your events.
+        price: Regular price
+        maxparticipants: Maximum number of participants
+        early_signup_pricing: Allow or disallow early booking discounts for this seminar.
+        price_early_signup: Early booking discount. Valid up until the specified date.
+        generate_invoice: An invoice is automatically created and sent for new registrations.
+    options:
+      defaults:
+        gender:
+          male: Mr
+          female: Ms
+          diverse: diverse
+          noinfo: "No info"

@@ -1,0 +1,12 @@
+- if event.get_eventorganizer
+  = event.get_eventorganizer
+  br
+- if event.get_location
+  = event.get_location
+- if event.get_city != ''
+  br
+  = "#{event.get_city}#{event.get_country.present? && event.get_city.present? ? ', ' + event.get_country.to_s : ''}"
+- if event.get_googlemapslocation.present?
+  br
+  = link_to event.get_googlemapslocation, target: "_blank"
+    = t(:show_on_google_maps)

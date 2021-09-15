@@ -1,0 +1,10 @@
+= simple_form_for([@campaign, @target_group]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, hint: t(:target_group_name_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: target_groups_path

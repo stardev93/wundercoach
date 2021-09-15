@@ -1,0 +1,100 @@
+button.btn.btn-default.btn-xs
+
+  i.fa.fa-toggle-up
+button.btn.btn-default.btn-xs
+  i.fa.fa-user-plus
+  |&nbsp;
+  = link_to users_path
+    = t(:new_user)
+button.btn.btn-default.btn-xs
+  i.fa.fa-users
+  |&nbsp;
+  = link_to users_path
+    = t(:new_room)
+  |&nbsp;
+  = link_to users_path
+    = t(:room_1)
+  |&nbsp;
+  = link_to users_path
+    = t(:room_2)
+.row
+
+  .col-md-12
+    .well
+      .row
+        - @eventsession.event.eventbookings.each do |eventbooking|
+          = render "classrooms/user", :@eventbooking => eventbooking
+        = render "classrooms/rooms"
+        = render "classrooms/rooms"
+        = render "classrooms/rooms"
+        = render "classrooms/rooms"
+
+.row
+  .col-md-12
+    .row
+      .col-md-2
+        h4 Participants
+        .list-group
+          .list-group-item
+            a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              span.h1
+                i.fa.fa-user
+              |Max Manfred
+            div class="collapse" id="collapseExample"
+              |files
+              br
+              |uploads
+              br
+              |start video
+
+      .col-md-5
+        .row
+          .col-md-4
+            h4 Workspace
+          .col-md-4
+            a.btn.btn-default.btn-xs
+              i.fa.fa-upload
+              |&nbsp;
+              = t(:upload)
+            |&nbsp;
+            a.btn.btn-default.btn-xs
+              i.fa.fa-refresh
+              |&nbsp;
+              = t(:refresh)
+        .row
+          .col-md-12
+            .well style="height: 400px;"
+              i.fa.fa-arrows-alt style="position: absolute;right: 22px; top: 5px;"
+              h3
+                = t(:workspace)
+                |&nbsp;
+                = t(:room_1)
+      .col-md-5
+        .row
+          .col-md-4
+            h4 Video
+          .col-md-4.text-right
+            a.btn.btn-default.btn-xs
+              i.fa.fa-upload
+              |&nbsp;
+              = t(:upload)
+            |&nbsp;
+            a.btn.btn-default.btn-xs
+              i.fa.fa-refresh
+              |&nbsp;
+              = t(:refresh)
+        .row
+          .col-md-12
+            .well style="height: 400px;"
+              p.lead
+                |Einzelne Video-Fenster, beeinflussbar
+                br
+                |Video-Recording & Playback, filemanager, selbst aufnehmen
+                br
+                |Teilnehmer lautlos schalten
+                br
+                |Melden, Micro überreichen
+                br
+                |TN in andere Räume, zwischen Räumen wechseln
+                br
+                |video simultan abspielen

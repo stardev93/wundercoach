@@ -1,0 +1,35 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  simple_form:
+    magic_submit:
+      requests:
+        request:
+          new:
+            submit: "Submit new request"
+            disable_with: "Submit new request"
+    options:
+      request:
+        gender:
+          male: Mr
+          female: Ms
+          diverse: diverse
+          noinfo: "No info"
+        billing_gender:
+          male: Mr
+          female: Ms
+          diverse: diverse
+          noinfo: "No info"
+  request: Request
+  requests: Requests
+  edit_request: Edit request
+  new_request: New request
+  new_requests: New coaching requests
+  leave_contact_data: Please leave a telephone number or an email address, so we can contact you.
+  request_message: Your message
+  you_sent_a_request: Your request has been sent.
+  request_date: Request date
+  request_from: Request by %{name} for '%{event}' (%{date})
+  new_agreed_individual_event: New individual appointment
+  no_generated_event_yet: No appointment yet
+  generated_event: Appointment
+  no_new_requests: No new requests

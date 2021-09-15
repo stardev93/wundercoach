@@ -1,0 +1,61 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  paymentplans: Payment plans
+  paymentplan: Payment plan
+  paymentplan_comments: "Payment plans bookable by the customer"
+  price: "Price"
+  billing_cycle: "Duration"
+  sortorder: "#"
+  recommended: "Recommended"
+  discount: "Discount"
+  choose_a_plan: "Choose plan"
+  choose_a_plan_thats_right_for_you: "Choose the plan that's right for you"
+  you_havent_choosen_a_plan: "You haven't chosen a plan"
+  per_month: "Per month"
+  per_year: " Per year"
+  choose_most_flexible: "Monthly payment, can be canceled any time"
+  order_with_costs: "Order with costs"
+  order_for_free: "Order free plan"
+
+  choose_monthly: "Choose now"
+  choose_monthly_free: "Downgrade now"
+  free_of_charge: "Free of charge"
+  choose_with_discount: "Annual payment, save 2 monthly rates"
+  choose_yearly: "Buy now"
+  show_plan_details: "Show details"
+  hide_plan_details: "Hide details"
+  continue_with_payment: Continue with payment
+  change_plan: "Change plan"
+  current_plan: Your current plan
+  current_plan_error: "This is your current plan. You don't have to book it again."
+  you_already_chose_a_payment: You already made a booking.
+  pro_yearly_to_premium_monthly_not_possible: "Changing from Pro (yearly) to Premium (monthly) is not possible. If you want to use Premium, please try Premium yearly."
+  cycle:
+    yearly: Yearly
+    monthly: Monthly
+  confirm_order: "Confirm order"
+  please_confirm_order: "Please confirm your order."
+  confirm_order_plan: "You have chosen the plan %{paymentplan} for %{paymentplanperiod} %{paymentplanprice}."
+  paymentplan_is_free_trial: "Free trial period"
+  simple_form:
+    magic_submit:
+      paymentplans:
+        account:
+          accountdata:
+            submit: "Save account data"
+            disable_with: "Saving..."
+  creditcard: "Credit card"
+  sepa_direct_debit: "SEPA direct debit"
+  you_have_sccuessfully_booked_the_plan: "You have successfully booked the following plan:"
+  booked: "Booked"
+  we_have_sent_you_an_order_confirmation: "We have sent an email confirmation to %{account_email}."
+  goto_dashboard: "Go to dashboard"
+  goto_account_history: "Your account history"
+  your_upcoming_plan: Your upcoming plan
+  free_trial_status_text: "You are currently using our Premium plan for a month as a free trial until %{valid_until}. Then your plan will be changed to free and the advanced features won't be available for you anymore."
+  price_total_net: Gesamtpreis
+  price_total_gross: Gesamtpreis Brutto
+  net_price: "net price"
+  gross_price: "gross price"
+  not_in_plan: Function not included...
+  not_in_plan_text: Unfortunately this function is not included in your plan. You can click on "Change plan" to see all available plans.

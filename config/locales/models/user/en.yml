@@ -1,0 +1,97 @@
+en:
+  users: Users
+  user: User
+  users_infotext: Create new users, change passwords and activate the message center for individual users.
+  usersettings: User settings
+  participant: "Participant"
+  participants: "Participants"
+  add_user: "New user"
+  create_user: "Create user"
+  edit_user: "Edit user"
+  create_account: "Create"
+  do_you_have_a_login: "Do you already have an account?"
+  login_here: "Log in here"
+  login: "Log in"
+  back_to_login: "Back to login"
+  email: "Email"
+  new_password: "New password"
+  new_password_repeat: "Confirm new password"
+  new_password_label: "Your password (at least 6 characters)"
+  new_password_hint: "Assign a password that is easy to remember, difficult to guess and at least 6 characters long."
+  password: "Password"
+  change_password: "Change password"
+  stay_logged_in: "Stay logged in"
+  forgot_password: "Forgot password?"
+  no_account_yet: "Get started with just a few clicks!"
+  no_account_cta: "Register now for free and get started immediately!"
+  createaccount_now: "Create account"
+  create_free_trial_account_now_btn: "Try now for free"
+  create_free_trial_account_now_headline: "Offer your seminars online now!"
+  create_free_trial_account_now_subheadline: "Register now for free and get started immediately!"
+  imprint: "Imprint"
+  privacy_policy: "Privacy policy"
+  terms_and_conditions: "Terms and conditions"
+  useruploads: "Files"
+
+  please_provide_your_email_address: "Please enter your emal address"
+  account_creation_notice: "Your Wundercoach account has been created. Please check your inbox and confirm your e-mail address."
+  user_incomplete_notice: "Please fill in your user profile completely."
+
+  internal_activation_needed: Please activate your account first. We have sent you a confirmation email.
+  internal_activation_needed_email_subject: "Wundercoach email confirmation"
+  internal_activation_needed_your_password_is: "Your password is: %{password}"
+  internal_activation_needed_please_change_your_password_soon: please change your password soon.
+  internal_activation_needed_welcome_to_wundercoach: "Welcome to Wundercoach"
+  internal_activation_needed_thank_you_for_signing_up: "Thank you for trying the Wundercoach!"
+  internal_activation_needed_copy_url_to_browser: "or copy this URL into your web browser and press enter."
+  internal_activation_needed_please_confirm_email_text: "Please confirm your email address by clicking on the button"
+  internal_activation_click_here: "Click here"
+  internal_activation_needed_reason: "You are receiving this email because you are registered on wundercoach.net with this address."
+
+  internal_activation_successful: The user has been activated internally. Anny activation links sent before are invalid. Create & send a new password for this user.
+
+  simple_form:
+    options:
+      user:
+        gender:
+          male: Mr
+          female: Ms
+          diverse: diverse
+          noinfo: "No info"
+    labels:
+      user:
+        firstname: "First name"
+        lastname: "Last name"
+        email: 'Email'
+        gender: "Salutation"
+        password: 'Password'
+        password_repeat: "Repeat password"
+        country: "Country"
+        edit:
+          username: 'Change user name'
+          password: 'Change password'
+  roles: Roles
+  role: Role
+  are_you_sure_you_want_to_delete_this_user: "Do you really want to delete this user?"
+  user_street: "Street"
+  user_street_no: "No."
+  user_zip: "ZIP"
+  user_city: "City"
+  user_country: "Country"
+  reset_password: "Reset password"
+  enter_your_email_address_and_we_will_send_a_new_password: "Here you can reset your password. Enter youremail address and click on \"send password\"."
+  email_address: "Email address"
+  send_password: "Send password"
+  enter_a_new_password_for: "Enter a new password for"
+
+  instructions_have_been_sent_to_your_email: "We have sent you an email with a link to reset your password."
+  reset_password_mail_subject: "Reset your password"
+  password_reset: Password has been changed.
+
+  user_created_confirm_email: 'User was successfully created. User needs to confirm his Email.'
+  password_successfully_set: 'Your password was successfully set.'
+  password_instructions_sent: 'Password reset instructions have been sent to %{email}.'
+  has_message: "Show new messages"
+  has_message_hint: "Display new messages to user"
+  user_time_zone: "Timezone"
+  user_time_zone_hint: "Timezone for user"

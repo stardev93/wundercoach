@@ -1,0 +1,23 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:mailchimp_is_integrated)
+
+.row
+  .col-xs-12
+    hr
+    = link_to mailchimp_path, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:cancel_mailchimp_integration)
+    ' &nbsp;
+    = link_to edit_mailchimp_path, :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to sync_mailchimp_path, class: "btn btn-default", method: :post, class: "btn btn-success"
+      i.fa.fa-upload
+      '&nbsp;
+      = t(:transfer_data_to_mailchimp)

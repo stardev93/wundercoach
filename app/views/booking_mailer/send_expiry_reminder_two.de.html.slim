@@ -1,0 +1,39 @@
+h3
+  = t(:hello)
+  |&nbsp;
+  = @booking.account.greeting
+  |,
+p
+  |Ihre Gratis-Testphase f&uuml;r die Premium-Version von Wundercoach endet morgen.
+p
+  |Klicken Sie auf "Jetzt verl&auml;ngern", damit Sie ohne Unterbrechung weiterhin den vollen Funktionsumfang der Premium-Version nutzen k&ouml;nnen.
+p style="text-align: center;"
+  = link_to "https://#{@booking.account.subdomain}.wundercoach.net/de/showplans", :style => "-moz-user-select: none;background-image: none;border-radius: 8px;cursor: pointer;display: inline-block;font-size: 18px;font-weight: normal;line-height: 1.42857;margin-bottom: 0;padding: 12px 18px;text-align: center;vertical-align: middle;white-space: nowrap;background-color: #428bca;border-color: #357ebd;color: white;text-decoration: none;"
+    |Jetzt verl&auml;ngern
+p style="margin-top: 20px;"
+p
+  |Oder wählen Sie im Wundercoach-Backend oben Menüpunkt "Tarif wecheln".
+p
+  |Wenn Sie sich jetzt nicht entscheiden wollen, m&uuml;ssen Sie nichts tun. Wir stellen Ihr Kundenkonto dann morgen automatisch auf den kostenlosen Plan um.
+  |Sie k&ouml;nnen wundercoach danach ganz normal weiter benutzen. Nur die erweiterten Funktionen der Premium-Version stehen Ihnen nicht mehr zur Verf&uuml;gung. Ihre Daten und Einstellungen bleiben selbstverst&auml;ndlich erhalten.
+p
+  |Die Premium-Version enth&auml;lt n&uuml;tzliche Funktionen, die Ihre Arbeit erleichtern und Ihr Gesch&auml;ft wachsen lassen, wie z.B. 
+  ul style="font-size: 16px;"
+    li 
+      |eine professionelle Optik Ihrer Anmeldliste durch Einbindung Ihres eigenen Logos
+    li
+      |eine suchmaschinenoptimierte Anzeige Ihrer Seminare im Internet
+    li
+      |automatischer Versand von Rechnungen
+    li
+      |Online-Bezahlung direkt bei der Buchung
+  
+p
+  |Diese und viele weitere n&uuml;tzliche Funktionen sind dann nicht mehr verf&uuml;gbar.
+  |&nbsp;
+  = link_to "https://#{@booking.account.subdomain}.wundercoach.net/de/showplans"
+    |Klicken Sie hier, um alle wichtigen Funktionen weiter nutzen zu k&ouml;nnen.
+p
+  |Sie können die Verl&auml;ngerung auch direkt in Wundercoach vornehmen. Klicken Sie dazu in Wundercoach auf "Tarif wechseln" und folgen Sie den Anweisungen dort.
+p
+  |Wenn Sie Fragen haben, rufen sie uns gerne unter <a href="tel:+49408541070">+49 40 8541070</a> an oder senden Sie eine E-Mail an <a href="mailto:help@wundercoach.net">help@wundercoach.net</a>

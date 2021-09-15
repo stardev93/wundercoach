@@ -1,0 +1,10 @@
+= simple_form_for(@tag) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: product_tags_path

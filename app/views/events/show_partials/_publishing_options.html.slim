@@ -1,0 +1,33 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_publishing_options), :hint_text => t(:event_publishing_options_hint)
+.row
+  .col-xs-12
+    .row
+      .col-xs-6
+        strong
+          = t(:onlinestatus)
+        br
+        = render "onlinestatuses/button", :event => event, :redirect => "publishingoptions", :onlinestatus => event.onlinestatus, btn_size: 'btn-md'
+      .col-xs-6
+        strong
+          = t(:planningstatus)
+        br
+        = render "planningstatuses/button", :event => event, :redirect => "publishingoptions", :planningstatus => event.planningstatus, btn_size: 'btn-md'
+
+/ .row
+/   .col-xs-12
+/     p &nbsp;
+/ = render "shared/subheadline", :headline => t(:external_signup)
+.row
+  .col-md-12
+    = render "shared/section_header", header_text: t(:external_signup), :hint_text => t(:external_signup_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => event.external_signup_url, :field_label => t(:external_signup_url), :field_hint => t(:external_signup_url_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => event.external_signup_text, :field_label => t(:external_signup_text), :field_hint => t(:external_signup_text_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => event.redirect_message, :field_label => t(:redirect_message), :field_hint => t(:redirect_message_hint)

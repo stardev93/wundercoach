@@ -1,0 +1,33 @@
+= simple_form_for(@eventsession) do |f|
+  = f.error_notification
+  / = @eventsession.errors.full_messages.each do |msg|
+      / pre
+        / = msg
+  .form-inputs
+  .row
+    .col-md-6
+      = f.input :name
+    / .col-md-3
+    /   = number_field_tag @eventsession.duration
+    .col-md-6
+      = f.association :durationunit, :include_blank => false
+  - if !@eventsession.belongs_to_template?
+    .row
+      .col-md-6
+        = f.input :token, :readonly => true
+      .col-md-6
+        - if !@eventsession.belongs_to_template?
+          = f.input :start_date, as: :date_time_picker
+  .row
+    .col-md-6
+      = f.input :comments, input_html: { style: "height: 200px;" }
+    .col-md-6
+      - if !@eventsession.belongs_to_template?
+        = f.input :end_date, as: :date_time_picker
+
+    = f.association :event, as: :hidden
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: event_path(@eventsession.event)

@@ -1,0 +1,157 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # eventbooking
+  signup_list: "Anmeldeliste"
+  signup_list_hint: "Liste Ihrer Veranstaltungen, so wie Sie im Internet veröffentlichen."
+  signup_list_view: "Anmeldeliste"
+  signup_list_view_hint: "Zeigt die Liste Ihrer Veranstaltungen so an, wie Sie sie im Internet veröffentlichen."
+  signup_event_view: "Ansicht Anmeldung"
+  signup_event_view_hint: "Zeigt die Veranstaltung so an, wie Sie sie im Internet veröffentlichen."
+  eventbooking: "Anmeldung"
+  eventbookings: "Anmeldungen"
+  new_eventbooking: "neue Anmeldung"
+  new_eventbookings: "neue Anmeldungen"
+  pick_an_event_from_the_list: 'Bitte wählen Sie erst ein Seminar aus der Liste.'
+  new_user_signup: "neuen Teilnehmer anlegen"
+  edit_user_signup: "Teilnehmerdaten bearbeiten"
+  existing_user_signup: "vorhandenen Teilnehmer suchen"
+  max_eventbookings_reached: "Die maximale Anzahl der Anmeldungen für diese Veranstaltung ist erreicht. Erhöhen sie ggf. die maximale Anzahl Teilnehmer für diese Veranstaltung."
+  seats_free: "freie Plätze stehen noch zur Verfügung."
+  remaining_seats_count: "%{free_seats} freie Plätze"
+  open: "offen"
+  paid: "bezahlt"
+  account_id: "Mandant"
+  eventbookingstatus: "Buchungsstatus"
+  eventbookingstatuses: "Buchungsstatus"
+  edit_eventbookingstatus: "Buchungsstatus bearbeiten"
+  eventbookingstatus_hint: "Status der Buchung"
+  eventbookingstatus_infotext: "Liste der verfügbaren Buchungsstatus"
+  booking_date: "Buchungsdatum"
+  booking_date_hint: "Datum, an dem die Buchung erfolgte"
+  booking_date_day: "Buchungsdatum (Tag)"
+  booking_date_month: "Buchungsdatum (Monat)"
+  booking_date_year: "Buchungsdatum (Jahr)"
+  booking_date_hours: "Buchungsdatum (Stunde)"
+  booking_date_minutes: "Buchungsdatum (Minute)"
+
+  price: "Preis"
+  price_hint: "zu zahlender Preis"
+  price_early_signup: "Frühbucherpreis"
+  early_booking_applies: "Frühbuchung zulassen"
+  early_booking_applies_hint: "Wird Frühbucherrabatt gewährt?"
+  no_early_booking: "Kein Frübucherrabatt"
+  early_booking: "Frübucherrabatt"
+  additional_participants: 'Weitere Teilnehmer'
+  all_bookings: Alle Buchungen
+
+  paymentmethod: "Zahlungsweise"
+  paymentmethod_hint: "Zahlungsweise, mit der die Buchung bezahlt wurde"
+  payment_date: "bezahlt am"
+  payment_date_hint: "Datum, an dem die Zahlung erfolgte"
+  paymentstatus: "Zahlungsstatus"
+  paymentstatus_hint: "Zahlungsstatus der Buchung"
+  company: "Firma"
+  company_hint: "Firmenname falls zutreffend"
+  lastname: "Nachname"
+  lastname_hint: "Nachname"
+  firstname: "Vorname"
+  firstname_hint: "Vorname"
+  participant: "Teilnehmer"
+
+  gender: "Anrede"
+  gender_hint: "Anrede auswählen"
+  gender_direct: "Direkte Anrede (Sehr geehrte(r) Frau/Herr)"
+  gender_direct_m: "Sehr geehrter Herr"
+  gender_direct_f: "Sehr geehrte Frau"
+  gender_direct_diverse: "Sehr geehrte/r Frau/Herr"
+  gender_direct_noinfo: "Sehr geehrte/r Frau/Herr"
+  gender_indirect: "Indirekte Anrede (Frau/Herrn)"
+  gender_indirect_m: "Herrn"
+  gender_indirect_f: "Frau"
+  gender_indirect_diverse: "Frau/Herr"
+  gender_indirect_noinfo: "Frau/Herr"
+
+  tel: "Telefon"
+  tel_hint: "Telefonnumer für Rückfragen"
+  email: "Email"
+  email_hint: "Emailadresse für die Kommunikation"
+  billing_email_hint: "Emailadresse für Rechnungsversand"
+  zip: "PLZ"
+  zip_hint: "PLZ"
+  city: "Ort"
+  city_hint: "Ort"
+  street: "Strasse"
+  street_hint: "Strasse"
+  country: "Land"
+  country_hint: "Land"
+
+  billing_address: "Rechnungsanschrift"
+  different_billing_address: "Abweichende Rechnungsanschrift"
+  billing_address__hint: "Soll eine abweichende Rechnungsanschrift angegeben werden?"
+  i_need_a_different_billing_address: "Ich möchte eine abweichende Rechnungsanschrift angeben"
+  i_need_a_different_billing_address_hint: "Hier können Sie eine abweichende Rechnungsanschrift angeben"
+  billing_company: "Firma"
+  billing_lastname: "Nachname"
+  billing_firstname: "Vorname"
+  billing_gender: "Anrede"
+  billing_email: "Email"
+  billing_zip: "PLZ"
+  billing_city: "Ort"
+  billing_street: "Strasse"
+  billing_street_no: "Hausnr"
+  billing_country: "Land"
+  created_at: "erstellt"
+  updated_at: "geändert"
+  new_signup_headline: "Anmeldung"
+  sign_up_now: "Jetzt anmelden"
+  sign_up_now_cta: "Sichern Sie sich Ihren Frühbucherrabatt!"
+  please_enter_your_data: "Bitte geben sie Ihre Daten ein"
+  are_you_sure_you_want_to_delete_this_eventbooking: "Wollen Sie diese Buchung wirklich stornieren?"
+  cancel_booking: "Buchung stornieren"
+
+  move_eventbooking: "Umbuchen"
+  move_eventbooking_choose_target_event: Wählen Sie einen Ziel-Event aus
+  move_eventbooking_choose_target_event_hint: Wählen Sie einen Ziel-Event aus, auf den Sie den Teilnehmer umbuchen wollen.
+  move_eventbooking_successful: Der Teilnehmer wurde erfolgreich umgebucht.
+
+  participant_data: Teilnehmerdaten
+  participant_data_hint: "Bitte geben Sie hier die Daten des Teilnehmers an."
+  participant_data_multi_hint: "Bitte geben Sie hier die Daten der Teilnehmer an."
+
+  send_confirmation: "Bestätigungsmail senden"
+  open_user: "Userkonto anzeigen"
+  show_eventbooking: "Buchungsdaten anzeigen"
+  edit_eventbooking: "Buchungsdaten bearbeiten"
+
+  eventbooking_information: "Buchungsdetails"
+  payment_details: "Zahlungsdetails"
+  no_invoice_yet: 'Keine Rechnung gestellt'
+  eventbooking_already_has_invoice: 'Es wurde bereits eine Rechnung erstellt. Bearbeiten Sie die Rechnungsanschrift auf der Rechnung.'
+  booking_successfully_cancelled: 'Die Buchung wurde storniert. Bitte stornieren sie ggf. auch die Rechnung.'
+  contact_customer: 'Kunden kontaktieren'
+  you_already_booked_this_event: Sie haben dieses Seminar bereits gebucht.
+
+  simple_form:
+    labels:
+      defaults:
+        search: "Suchbegriff"
+        start_date: "Buchung von"
+        end_date: "bis"
+        status: "Status"
+    options:
+      eventbooking:
+        gender:
+          male: Herr
+          female: Frau
+        billing_gender:
+          male: Herr
+          female: Frau
+
+  eventbooking_participant_data: "Teilnehmerdaten"
+  bookings_with_status_confirmed_and_waiting_cannot_be_deleted: "Buchungen mit Status \"bestätigt\" und \"wartet\" können nicht gelöscht werden. Stornieren Sie diese Buchungen erst."
+  event_is_fully_booked: "Der Event ist ausgebucht."
+  bookinglist: Buchungsliste
+  bookinglist_short: "Buchungsliste (kurz)"
+  certificate: Zertifikat
+  comment: "Notizen"
+  comment_hint: "Notizen zu der aktuellen Buchung"

@@ -1,0 +1,42 @@
+tr
+  td
+    = eventbooking.id
+    |&nbsp;
+    = link_to eventbooking.event
+      = eventbooking.event
+
+  td
+    = eventbooking&.event&.decorate.start_date
+  td
+    = eventbooking&.event&.decorate.end_date
+  td colspan="2"
+    - if eventbooking&.address
+      = link_to eventbooking
+        = eventbooking&.address&.decorate.participant
+  td
+    .row
+      .col-xs-12
+        / does eventbooking appear on an invoice?
+        = link_to eventbookings_createinvoice_path(eventbooking) + "?partial=true"
+          = t(:"#{eventbooking.invoicetype}")
+
+        - eventbooking&.businessdocumentpositions.each do |businessdocumentposition|
+          = link_to billing_businessdocument_path(businessdocumentposition&.businessdocument)
+            = businessdocumentposition&.businessdocument
+  td
+    .btn-toolbar role="toolbar"
+      .btn-group
+        button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          |...
+        ul.dropdown-menu
+          li
+            = link_to eventbooking_path(eventbooking)
+              = t(:show_eventbooking)
+          li
+            = link_to edit_eventbooking_path(eventbooking)
+              = t(:edit_eventbooking)
+          li
+            = link_to eventbooking_path(eventbooking)
+              = t(:move_eventbooking)
+          li
+            = render "billing/businessdocuments/invoice_controls", :eventbooking => eventbooking

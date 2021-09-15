@@ -1,0 +1,34 @@
+- new_button = render "shared/button", path: new_widget_path, link_text: t(:add_model, model: Widget.model_name.human(count: 2)), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:add_new_widget_hint)
+- cancel_button = render "shared/button", path: widgets_path, link_text: t(:cancel), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+
+= render "shared/form_header",
+         header_text: @widget, hint_text: @widget.description,
+         buttons: new_button + cancel_button
+.row
+  .col-xs-12
+    pre#widgetlink
+      = %Q(<script id="widget_id_#{@widget.id}" type="text/javascript" src="#{api_v1_full_filterable_list_url(@widget.token)}/#{@widget.token}.js" async="true"></script>)
+    p.text-right
+      = render "eventtemplates/btn_copy_to_clipboard", element: 'widgetlink'
+.row
+  .col-xs-12
+    p
+    p.text-right
+      = link_to @widget, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+          i.fa.fa-remove
+          |&nbsp;
+          = t(:delete)
+      | &nbsp;
+      = link_to edit_widget_path(@widget), class: "btn btn-primary"
+        i.fa.fa-edit
+        |&nbsp;
+        = t(:edit)
+      | &nbsp;
+      = link_to widgets_path, class: "btn btn-default"
+        i.fa.fa-arrow-left
+        |&nbsp;
+        = t(:back)
+
+  .col-xs-12
+    = render "shared/f_ro_pre", :field_value => @widget.html, :field_label => t(:widget_html), :field_hint => t(:widget_html_hint)
+    / pre = @widget.html

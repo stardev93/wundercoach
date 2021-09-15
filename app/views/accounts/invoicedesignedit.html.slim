@@ -1,0 +1,111 @@
+= simple_form_for(@account, url: account_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = render "shared/section_header", :header_text => t(:tax_settings)
+    .row
+      .col-xs-12
+        = f.input :tax_id, label: t(:tax_number), hint: t(:tax_id_hint)
+    = render "shared/section_header", :header_text => t(:invoice_design_settings)
+    .row
+      .col-xs-12
+        = f.input :invoice_from, label: t(:invoice_from), as: :editor, hint: t(:invoice_from_hint), input_html: {rows: 10}
+    .row
+      .col-xs-12
+        = f.input :invoice_from_small, label: t(:invoice_from_small), hint: t(:invoice_from_small_hint), input_html: {rows: 5}
+    .row
+      .col-xs-12
+        = f.input :invoice_footer, input_html: {rows: 10}, as: :editor, label: t(:invoice_footer), hint: t(:invoice_footer_hint)
+    = render "shared/section_header", :header_text => t(:numbering_settings)
+    .row
+      .col-xs-12
+        = f.input :invoice_no_start, label: t(:invoice_no_start), hint: t(:invoice_no_start_hint)
+    .row
+      .col-xs-12
+        = f.input :cancellation_no_start, label: t(:cancellation_no_start), hint: t(:cancellation_no_start_hint)
+    .row
+      .col-xs-12
+        = f.input :quote_no_start, label: t(:quote_no_start), hint: t(:quote_no_start_hint)
+    .row
+      .col-xs-12
+        = f.input :order_no_start, label: t(:order_no_start), hint: t(:order_no_start_hint)
+    .row
+      .col-xs-12
+        = f.input :order_confirmation_no_start, label: t(:order_confirmation_no_start), hint: t(:order_confirmation_no_start_hint)
+    .row
+      .col-xs-8
+        = f.input :account_receivable_no_start, label: t(:account_receivable_no_start), hint: t(:account_receivable_no_start_hint)
+      .col-xs-4
+        label
+          = t(:account_receivable_autonumbering)
+        = f.input :account_receivable_autonumbering, input_html: { class: "js-switch" }, label: false, hint: t(:account_receivable_autonumbering_hint)
+
+    = render "shared/section_header", :header_text => t(:accounting_settings)
+    .row
+      .col-xs-4
+        = f.input :accounts_chart, label: t(:accounts_chart), hint: t(:accounts_chart_hint)
+      .col-xs-4
+        = f.input :tax_consultant_id, label: t(:tax_consultant), hint: t(:tax_consultant_hint)
+      .col-xs-4
+        = f.input :tax_consultant_client_id, label: t(:tax_consultant_client), hint: t(:tax_consultant_client_hint)
+    .row
+      .col-xs-6
+        = f.input :revenue_account, label: t(:revenue_account), hint: t(:revenue_account_hint)
+      .col-xs-6
+        = f.input :costcenter, label: t(:costcenter), hint: t(:costcenter_hint)
+    .row
+      - month_collection = (1..12).map { |i| ["#{i}.", i] }
+      - day_of_month_collection = (1..31).map { |i| ["#{i}.", i] }
+      .col-xs-3
+        = f.input :fiscal_year_start_day, as: :select, collection: day_of_month_collection, label: t(:fiscal_year_start_day), hint: t(:fiscal_year_start_day_hint)
+      .col-xs-3
+        = f.input :fiscal_year_start_month, as: :select, collection: month_collection, label: t(:fiscal_year_start_month), hint: t(:fiscal_year_start_month_hint)
+      .col-xs-3
+        = f.input :fiscal_year_end_day, as: :select, collection: day_of_month_collection, label: t(:fiscal_year_end_day), hint: t(:fiscal_year_end_day_hint)
+      .col-xs-3
+        = f.input :fiscal_year_end_month, as: :select, collection: month_collection, label: t(:fiscal_year_end_month), hint: t(:fiscal_year_end_month_hint)
+
+    = render "shared/section_header", :header_text => t(:export_settings)
+    .row
+      .col-xs-6
+        = f.input :export_fixed_at_start_date, as: :date_picker, locale: :de, label: t(:export_fixed_at_start_date), hint: t(:export_fixed_at_start_date_hint), :input_html => { :value => f.object.export_fixed_at_start_date}, class: "datepicker"
+      .col-xs-6
+        = f.input :export_fixed_at_end_date, as: :date_picker, locale: :de, label: t(:export_fixed_at_end_date), hint: t(:export_fixed_at_end_date_hint), :input_html => { :value => f.object.export_fixed_at_end_date}, class: "datepicker"
+
+    = render "shared/section_header", :header_text => t(:currency_settings)
+    .row
+      .col-xs-12
+        = f.input :default_currency_iso_code, as: :currency_picker
+
+    = render "shared/section_header", :header_text => t(:vat_settings)
+    .row
+      .col-xs-1
+        = f.input :vat_included, input_html: { class: "js-switch" }, label: false
+      .col-xs-11
+        label
+          = t(:vat_included)
+        br
+        = t(:vat_included_hint)
+        p
+          |&nbsp;
+    .row
+      .col-xs-1
+        = f.input :vat_net_first, input_html: { class: "js-switch" }, label: false
+      .col-xs-11
+        label
+          = t(:vat_net_first)
+        br
+        = t(:vat_net_first_hint)
+        p
+          |&nbsp;
+    .row
+      .col-xs-6
+        = f.association :vat_countries, input_html: { class: 'chosen-select', multiple: '' }
+      .col-xs-6
+        = f.association :default_vat, collection: current_tenant.vats, label_method: :to_s, allow_blank: false
+
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        = f.button :magic_submit, cancel: invoicedesign_path

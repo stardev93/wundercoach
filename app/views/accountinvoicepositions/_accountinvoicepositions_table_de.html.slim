@@ -1,0 +1,69 @@
+table.table style="box-shadow: none;"
+  thead
+    tr
+      th style="border: 0px;"
+        = t (:pos)
+        |.
+      th style="border: 0px;"
+        = t (:paymentplan)
+      th style="border: 0px;"
+        = t (:paymentplan_period)
+      th.text-right style="border: 0px;"
+        = t (:paymentplan_unit_price)
+      th.text-right style="border: 0px;"
+        = t (:paymentplan_amount)
+      th.text-right style="border: 0px;"
+        = t (:paymentplan_vat_perc)
+      th.text-right style="border: 0px;"
+        = t (:paymentplan_total)
+
+  tbody
+    - accountinvoicepositions.each do |accountinvoiceposition|
+      tr
+        / td = link_to accountinvoiceposition.accountinvoice, accountinvoiceposition
+        td
+          = accountinvoiceposition.position
+        td
+          = accountinvoiceposition.paymentplan_name
+          |&nbsp;(
+          = t("#{accountinvoiceposition.paymentplan_cycle}")
+          |)
+        td
+          - unless accountinvoiceposition.start_date.blank?
+            = l accountinvoiceposition.start_date
+            |&nbsp;-&nbsp;
+            - unless accountinvoiceposition.end_date.blank?
+              = l accountinvoiceposition.end_date
+        td.text-right
+          = number_to_currency(accountinvoiceposition.net_price / 100)
+        td.text-right
+          = accountinvoiceposition.amount
+        td.text-right
+          = ActionController::Base.helpers.number_with_precision(accountinvoiceposition.vat * 100, precision: 2)
+          |&nbsp;%
+        td.text-right
+          = number_to_currency((accountinvoiceposition.net_price / 100) * accountinvoiceposition.paymentplan_amount)
+    tr
+      td.text-right style="padding: 0px;" colspan="5"
+      td style="padding: 0px;" colspan="2"
+        table.table style="box-shadow: none;"
+          tr
+            td.text-right style="border-top: 0px;"
+              = t(:invoice_net_total)
+              |:
+            td.text-right style="border-top: 0px;"
+              = number_to_currency(accountinvoice.get_net_sum / 100)
+          tr
+            td.text-right style="border-top: 0px;"
+              = t(:invoice_vat_total, vat: ActionController::Base.helpers.number_with_precision(accountinvoice.get_vat.value * 100, precision: 2)) + " %"
+              |:
+            td.text-right style="border-top: 0px;"
+              = number_to_currency(accountinvoice.get_vat_sum / 100)
+          tr
+            td.text-right style="border-bottom: 1px solid #dddddd;"
+              strong
+                = t(:invoice_gross_total)
+                |:
+            td.text-right style="border-bottom: 1px solid #dddddd;"
+              strong
+                = number_to_currency(accountinvoice.get_gross_sum / 100)

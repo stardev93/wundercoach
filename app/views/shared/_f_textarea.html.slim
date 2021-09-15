@@ -1,0 +1,17 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+
+- if defined? field_rows
+  - rows = field_rows
+- else
+  - rows = 20
+
+/ = form.input field, label: label, hint: hint
+= form.input field, input_html: { rows: rows }, label: label, hint: hint

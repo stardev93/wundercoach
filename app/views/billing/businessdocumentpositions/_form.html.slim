@@ -1,0 +1,16 @@
+/ = simple_form_for(@businessdocumentposition, url: billing_businessdocumentposition_path) do |f|
+/   = f.error_notification
+/
+/   .form-inputs
+/     = f.hidden_field :id, hidden: false
+/     .row.well
+/       .col-xs-12.col-md-6
+/         .row
+/           .col-md-12
+/             = f.input :recipient_name1, label: t(:recipient_name1)
+/
+/
+/   .form-actions
+/     .row
+/       .col-md-12.text-right
+/         = f.button :magic_submit, cancel: billing_businessdocument_path(@businessdocument)

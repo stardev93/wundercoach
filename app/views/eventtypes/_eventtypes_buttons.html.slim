@@ -1,0 +1,38 @@
+- filter_active = ''
+- all_active = ''
+
+- session_eventtype_id_eq = session[:q]['eventtype_id_eq'] if !session[:q]['eventtype_id_eq'].nil? && session[:q]['eventtype_id_eq'] != ''
+
+- if session_eventtype_id_eq
+  - filter_active = 'active btn-primary'
+  - range_button_text = Eventtype.includes(:translations).find(session_eventtype_id_eq)
+- else
+  - filter_active = ''
+  - range_button_text = t(:all)
+  - all_active = 'active btn-primary'
+
+
+.form-group.form-inline
+  .row
+    .col-xs-12
+      label
+        = t(:eventtype)
+  .row
+    .col-xs-12
+      .btn-group
+        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="#{filter_active}"
+          = range_button_text
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu
+          li
+            = link_to events_path+'?q[eventtype_id_eq]=', :class => "#{all_active}"
+              = t(:all)
+          - Eventtype.includes(:translations).each do |eventtype|
+            - if session[:q]['eventtype_id_eq'].to_i == eventtype.id
+              - active = 'btn-primary active'
+            - else
+              - active = ''
+            li
+              = link_to events_path+'?q[eventtype_id_eq]=' + eventtype.id.to_s, :class => "#{active}"
+                  = eventtype

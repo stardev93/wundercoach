@@ -1,0 +1,57 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @companystatus
+        span.add-item
+          = link_to new_companystatus_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Companystatus
+      p.lead
+        = @companystatus.name
+        br
+        = @companystatus.description
+        br
+        = @companystatus.key
+        br
+
+  .row
+    .col-md-12
+      p.h3 
+        'Companystatus 
+        = t(:data) 
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Name
+          br
+          span.lead = @companystatus.name
+          '&nbsp;
+        p
+          strong Description
+          br
+          span.lead = @companystatus.description
+          '&nbsp;
+        p
+          strong Key
+          br
+          span.lead = @companystatus.key
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_companystatus_path(@companystatus), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to companystatuses_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

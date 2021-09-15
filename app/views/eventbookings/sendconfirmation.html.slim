@@ -1,0 +1,8 @@
+- @subject = ""
+- @message = ""
+- @eventbooking.attributes.each do |attr_name, attr_value|
+  = '{' + @eventbooking.class.name + '.' + attr_name.to_s + '}'
+  br
+hr
+/ = @mailtemplate.message.gsub!("{event.start_date}", "24.11.1965")
+= @mailtemplate.merge(@eventbooking, current_user)

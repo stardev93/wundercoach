@@ -1,0 +1,14 @@
+- case @event.type
+  - when 'IndividualEvent'
+    = render 'form_individual_event'
+  - when 'FreeEvent'
+    = render 'form_free_event'
+  - when 'OnlineEvent'
+    H1 Yeah
+    = render 'form_online_event'
+  - when 'BundleEvent'
+    / BundleEvent with all required fields
+    = render 'form_bundle_event'
+  - else
+    / StandardEvent with all required fields
+    = render 'form_standard_event'

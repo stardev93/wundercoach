@@ -1,0 +1,67 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  bookings: Buchungen
+  booking: Buchung
+  booking_date: "Buchungsdatum"
+  valid_until: "gültig bis"
+  test_valid_until: "Testphase gültig bis"
+  comments: "Bemerkungen"
+  valid_from: Gültig ab
+
+  your_previous_plans: "Ihre vorherigen Buchungen"
+  your_current_plan: "Ihr gebuchter Tarif"
+  your_trial_plan: "Ihr kostenloser Testtarif"
+  your_free_plan: "Ihr kostenloser Tarif"
+
+  plan_history: "Buchungsverlauf"
+  this_is_your_booking_history: "Dies ist der Buchungsverlauf ihres Accounts"
+  participants_list: "Teilnehmerliste"
+  teachers: "Trainer"
+
+  expires_at: Läuft am %{expiry} aus.
+  activates_at: Wird am  %{activation} aktiv.
+
+  upgrade_now: "Jetzt upgraden"
+  trial_version_hint: "Sie nutzen die Version %{paymentplan} für insgesamt %{total_days} Tage kostenlos. Wenn Sie nichts tun, stellt sich Ihr Account automatisch auf die kostenlose Basisversion um."
+  trial_version_remaining_hint: "Ihre Testphase dauert noch %{remaining_days} Tage."
+  trail_version_cta: "Jetzt upgraden, um die erweiterten Funktionen weiter ohne Unterbrechung nutzen zu können"
+
+  free_version_hint: "Sie nutzen die %{paymentplan}-Version von Wundercoach."
+  free_version_cta: "Jetzt upgraden, um die erweiterten Funktionen nutzen zu können"
+
+  send_expiry_reminder_one_subject: "Ihre Testphase endet in %{remaining_days} Tagen"
+  send_expiry_reminder_two_subject: "Ihre Testphase endet morgen"
+  send_trial_expired_one_subject: "Ihre Testphase ist abgelaufen"
+
+  account_billing_to: "Rechnungsempfänger"
+  account_billing_to_free: "Benutzerinformationen"
+  you_are_booking_the_plan: "Sie buchen den Tarif"
+
+  terms: "Vertragsbedingungen"
+  pricing_strategy: "Keine versteckten Gebühren und keine zusätzlichen Kosten."
+
+  cancel_terms_headline: "Kündigung"
+  cancel_terms_monthly: "Monatliche Kündigungsfrist"
+  cancel_terms_yearly: "Kündigung zum Laufzeitende"
+
+  renewal_terms_headline: "Verlängerung"
+  renewal_terms: "Automatische Verlängerung einen Tag vor Ablauf der Laufzeit"
+
+  accept_terms_label: "Ich akzeptiere die <a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_of_service\">Nutzungsbedingungen</a>."
+  terms_of_service: "Nutzungsbedingungen"
+  download_terms_of_service_pdf: "Nutzungsbedingungen als PDF herunterladen"
+  accept_terms_headline: "Nutzungsbedingungen"
+  accept_terms_hint: "Bitte akzeptieren Sie die Vetragsbedingungen durch Anklicken von \"Ich akzeptiere die AGB\""
+
+  accept_privacy_policy_terms: Ich stimme den <a data-toggle=\"modal\" data-target=\"#terms_of_service\" href="%{register_privacy_url}" target="_blank">Datenschutzbestimmungen</a> zu.
+
+  plus_vat_amount: "zzgl. MwSt. 19%"
+  incl_vat_amount: "inkl. MwSt. 19%"
+  net_total: "Nettopreis ohne MwSt."
+  gross_total: "Gesamtpreis inkl. MwSt."
+
+  free_usage: "Die Nutzung vom Wundercoach in diesem Tarif ist kostenlos."
+  booking_successful: Buchung erfolgreich
+  booking_transition_at: Die Umstellung erfolgt am %{date}.
+  booking_transition_immediately: Die Umstellung erfolgt sofort.
+  trial_booking: "Kostenloser Probemonat"

@@ -1,0 +1,35 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  if_you_need_a_custom_vat_click_here: 'Wenn von Ihnen benötigte Mehrwertsteuersätze nicht mit aufgelistet sind, können sie sich hier eigene Mehrwertsteuersätze anlegen:'
+  manage_custom_vats: Mehrwertsteuersätze selbst verwalten
+  edit_vat: Eigenen Mehrwertsteuersatz bearbeiten
+  add_vat: Eigenen Mehrwertsteuersatz erstellen
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      vat:
+        one: Mehrwertsteuersatz
+        other: Mehrwertsteuersätze
+    attributes:
+      vat:
+        value: Prozentsatz
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      vat:
+        value: Prozentsatz
+    hints:
+      vat:
+        value: Angabe als Kommazahl, z.B. 0,19
+  including_vat: "inkl. %{vat_rate} MwSt. entspr. %{vat_sum}"
+  excluding_vat: "zzgl. %{vat_rate} MwSt. entspr. %{vat_sum}"
+  corrsp_net_price: "Preis netto %{net_price}"
+  corresp_gross_price: "Preis brutto %{gross_price}"
+  vat_revenue_accounts: Erlöskonten
+  vat_revenue_account: Erlöskonto
+  vat_revenue_account_infotext: Geben Sie hier für alle Umsatzsteuersätze die entsprechenden Erlöskonten in Ihrer Buchhaltung an, auf denen die Erlöse des jeweiligen Umsatzsteuersatzes gebucht werden. Diese Angaben werden beim Datev-Export Ihrer Rechnungen, Stornos und Gutschriften verwendet. Fragen Sie ggf. Ihren Steuerberater nach den korrekten Konten. Wenn Sie keine Einstellungen vornehmen, wird das Standard-Erlöskonto Ihrer Kontoeinstellungen verwendet.
+  vat_revenue_account_hint: Erlöskonten der einzelnen Umsatzsteuersätze für den Datevexport
+  add_vat_revenue_account: "Konto anlegen"
+  new_vat_revenue_account: Neues Erlöskonto
+  create_vat_revenue_accounts_first: Legen Sie erst die Erlöskonten der einzelnen Umsatzsteuersätze in den Rechnungseinstellungen an, bevor Sie den Datevexport benutzen.
+  vat_in_use: In Benutzung

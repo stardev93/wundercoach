@@ -1,0 +1,18 @@
+h3 style="text-align: center;"
+  = t(:internal_activation_needed_welcome_to_wundercoach) + ','
+  br
+  = @account.greeting
+  br
+p style="text-align: center;"
+  = t(:internal_activation_needed_thank_you_for_signing_up)
+
+p style="text-align: center;"
+  = t(:internal_activation_needed_please_confirm_email_text)
+
+p style="text-align: center;"
+  = link_to @url, style: "-moz-user-select: none;background-image: none;border-radius: 8px;cursor: pointer;display: inline-block;font-size: 18px;font-weight: normal;line-height: 1.42857;margin-bottom: 0;padding: 12px 18px;text-align: center;vertical-align: middle;white-space: nowrap;background-color: #428bca;border-color: #357ebd;color: white;text-decoration: none;"
+    = t(:internal_activation_click_here)
+p style="margin-top: 20px;"
+  = t(:internal_activation_needed_copy_url_to_browser) + ":"
+  br
+  = @url

@@ -1,0 +1,61 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  paymentplans: Tarife
+  paymentplan: Tarif
+  paymentplan_comments: "Durch den Kunden buchbare Tarife"
+  price: "Preis"
+  billing_cycle: "Laufzeit"
+  sortorder: "#"
+  recommended: "empfohlen"
+  discount: "Ersparnis"
+  choose_a_plan: "Tarif wählen"
+  choose_a_plan_thats_right_for_you: "Wählen Sie Ihren passenden Tarif."
+  you_havent_choosen_a_plan: "Sie haben noch keinen Tarif gewählt"
+  per_month: "pro Monat"
+  per_year: "pro Jahr"
+  choose_most_flexible: "monatliche Zahlung, jederzeit kündbar"
+  order_with_costs: "Kostenpflichtig bestellen"
+  order_for_free: "Kostenlosen Plan buchen"
+
+  choose_monthly: "Jetzt auswählen"
+  choose_monthly_free: "Jetzt herunterstufen"
+  free_of_charge: "kostenlos"
+  choose_with_discount: "jährliche Zahlung, 2 Monatsraten sparen"
+  choose_yearly: "Jetzt kaufen"
+  show_plan_details: "Details anzeigen"
+  hide_plan_details: "Details ausblenden"
+  continue_with_payment: mit Zahlung fortfahren
+  change_plan: "Tarif wechseln"
+  current_plan: Ihr aktueller Plan
+  current_plan_error: "Dies ist bereits Ihr aktueller Plan. Sie brauchen ihn nicht noch einmal zu buchen."
+  pro_yearly_to_premium_monthly_not_possible: "Ein Wechsel von Pro (jährlich) zu Premium (monatlich) ist nicht möglich. Wenn Sie zukünftig Premium nutzen wollen, wählen Sie bitte Premium jährlich."
+  you_already_chose_a_payment: Sie haben bereits gebucht.
+  cycle:
+    yearly: pro Jahr
+    monthly: pro Monat
+  confirm_order: "Bestellung bestätigen"
+  please_confirm_order: "Bitte bestätigen Sie Ihre Bestellung."
+  confirm_order_plan: "Sie haben den Tarif %{paymentplan} für %{paymentplanperiod} %{paymentplanprice} gewählt"
+  paymentplan_is_free_trial: "Kostenlose Testphase"
+  simple_form:
+    magic_submit:
+      paymentplans:
+        account:
+          accountdata:
+            submit: "Kundendaten speichern"
+            disable_with: "Speichere..."
+  creditcard: "Kreditkarte"
+  sepa_direct_debit: "SEPA-Lastschrift"
+  you_have_sccuessfully_booked_the_plan: "Sie haben erfolgreich den folgenden Plan gebucht:"
+  booked: "gebucht"
+  we_have_sent_you_an_order_confirmation: "Wir haben eine E-Mail-Bestätigung an %{account_email} gesendet."
+  goto_dashboard: "Dashboard aufrufen"
+  goto_account_history: "Ihr Vertragsverlauf"
+  your_upcoming_plan: Ihr nächster gebuchter Tarif
+  free_trial_status_text: "Sie nutzen zur Zeit den Tarif Premium einen Monat als kostenlosen Test. Ihre Testphase läuft noch bis zum %{valid_until}. Danach wird Ihr Konto auf den kostenlosen Tarif umgestellt und die erweiterten Funktionen stehen nicht mehr zur Verfügung."
+  price_total_net: Gesamtpreis
+  price_total_gross: Gesamtpreis Brutto
+  net_price: Preis netto
+  gross_price: Preis brutto
+  not_in_plan: Funktion nicht verfügbar...
+  not_in_plan_text: Diese Funktion ist in Ihrem aktuellen Plan leider nicht enthalten. Wenn Sie Ihren Plan wechseln möchten klicken Sie bitte auf "Tarif wechseln".

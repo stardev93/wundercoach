@@ -1,0 +1,35 @@
+/ ##########################################
+/ header zone with logo & branding
+= render "signup/header"
+
+/ ##########################################
+/ zone with name & shortdescription
+= render "signup/products/description", product: @event.decorate, show_back_button: true
+
+/ ##########################################
+/ event basic details start- & end-date basic location
+= render "signup/products/info_row", :event => @event.decorate
+
+/ ##########################################
+/ bundle details zone
+= render "signup/eventbundles/subevents", :event => @event.decorate
+
+/ ##########################################
+/ pricing zone
+= render "signup/products/price_row", :event => @event.decorate, :order => @order, :enable_row_select => false
+
+/ ##########################################
+/ call to action zone
+= render "signup/products/cta_row", event: @event.decorate
+
+/ ##########################################
+/ longdescription zone
+= render "signup/products/long_description", event: @event.decorate
+
+/ ##########################################
+/ event location details
+= render "signup/products/location_detail_row", :event => @event.decorate
+
+/ ##########################################
+/ event bottom text
+= render "signup/products/bottom_text", event: @event

@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    attributes:
+      widget:
+        description: Description
+        html: HTML-Code
+  simple_form:
+    labels:
+      widget:
+        html: Widget-Code
+    hints:
+      widget:
+        html: Design your widgets with Liquid, a template language based on HTML.
+  widget_infotext: Widgets can be embedded in your website using a simple javascript sniplet. They are based on the %{link_to_liquid} template language. You can embed widgets by leveraging your seminar templates. The standard widgets offered by Wundercoach enable displaying the next, or all upcoming seminars of an seminar template. For a seamless integration into your website, you can also create your own widgets.
+  edit_widget: edit Widget
+  widget_token_label: Token
+  widget_token_hint: "Der Token wird automatisch generiert und dazu benutzt, dieses Widget in Ihrer Website zu laden."
+
+  widget_html: "Widget-Code"
+  widget_html_hint: "HTML-Code of the widget"

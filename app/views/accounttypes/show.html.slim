@@ -1,0 +1,57 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @accounttype
+        span.add-item
+          = link_to new_accounttype_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Accounttype
+      p.lead
+        = @accounttype.name
+        br
+        = @accounttype.description
+        br
+        = @accounttype.key
+        br
+
+  .row
+    .col-md-12
+      p.h3 
+        'Accounttype 
+        = t(:data) 
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Name
+          br
+          span.lead = @accounttype.name
+          '&nbsp;
+        p
+          strong Description
+          br
+          span.lead = @accounttype.description
+          '&nbsp;
+        p
+          strong Key
+          br
+          span.lead = @accounttype.key
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_accounttype_path(@accounttype), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to accounttypes_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

@@ -1,0 +1,33 @@
+- onlinestatus_bundle_only = Onlinestatus.find_by(key: "bundle_only")
+- onlinestatus_bundle_only_key = onlinestatus_bundle_only.key
+- onlinestatus_bundle_only_name = onlinestatus_bundle_only.name
+li.list-group-item
+  .row
+    .col-xs-9
+      strong
+        = link_to event
+          = event.decorate.name
+      br
+      = t(:"#{event.class}")
+
+    .col-xs-3.text-right
+      = action_link
+  .row
+    .col-xs-9
+      - if event.class.to_s == "IndividualEvent"
+        |(
+        = t(:no_start_date)
+        |)
+      - else
+        = event.decorate.start_date
+        |&nbsp;-&nbsp;
+        = event.decorate.end_date
+      .row
+        .col-xs-12
+          = render "events/progressbar", event: event
+
+    .col-xs-3.text-right
+      - if event.onlinestatus.key == onlinestatus_bundle_only_key
+        = onlinestatus_bundle_only_name
+      - else
+        = event.decorate.price

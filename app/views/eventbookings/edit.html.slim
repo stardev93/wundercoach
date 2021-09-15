@@ -1,0 +1,15 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        i.fa.fa-user
+        '&nbsp;
+        - if @eventbooking.new_record?
+          = t(:new_user_signup)
+        - else
+          = t(:edit_user_signup)
+        p.lead
+          = t(:event)
+          |&nbsp;
+          = @event
+    = render 'form'

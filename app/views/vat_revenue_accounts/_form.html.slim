@@ -1,0 +1,16 @@
+= simple_form_for(@vat_revenue_account) do |f|
+  = f.error_notification
+  = f.association :account, as: :hidden
+  .form-inputs
+    .row
+      .col-xs-6
+        = f.association :vat, collection: current_tenant.vats, label_method: :to_s, allow_blank: false
+      .col-xs-6
+        = f.input :revenue_account
+      / .col-xs-4
+      /   = f.input :name
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: vat_revenue_accounts_path

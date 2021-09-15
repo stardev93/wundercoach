@@ -1,0 +1,37 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # dashboard
+  getting_started: "Starthilfe"
+
+  integrate_in_your_website: "In Website einbinden"
+  upcoming_appointments: "Kommende Termine"
+
+  getting_started_first_event_headline: "Richten Sie Ihr erstes Seminar ein"
+  getting_started_first_event_text: "Seminare sind Ihre Veranstaltungen. Sie können auch Training oder Kurse genannt werden."
+  getting_started_first_event_link_text: "Seminar anlegen"
+
+  getting_started_website_integration_headline: "Bieten Sie Ihre Seminare auf Ihrer Website an"
+  getting_started_website_integration_text: "Machen Sie Ihre Anmeldeliste öffentlich, damit Ihre Kunden Ihr Angebot finden und buchen können."
+  getting_started_website_integration_link_text: "In Website einbinden"
+
+  getting_started_account_data_headline: "Kundeninformationen vervollständigen"
+  getting_started_account_data_text: "Vervollständigen Sie Ihre Kundendaten in Ihrem Profil, damit Sie den Wundercoach in vollem Umfang nutzen können."
+  getting_started_account_data_link_text: "Bearbeiten"
+
+  getting_started_online_billing_headline: "Online-Rechnungsversand einrichten"
+  getting_started_online_billing_text: "Wenn Sie den Online-Rechnungsversand einrichten, können Sie Ihre Seminarrechnungen direkt aus Wundercoach versenden und verringern so Ihren Adminstrationsaufwand. Hinterlegen Sie die Absenderadresse, die Adresse für die Fensterzeile und die Fußzeile, um diesen Punkt automatisch als erledigt markieren zu lassen."
+  getting_started_online_billing_link_text: "Rechnungsversand einrichten"
+
+  getting_started_online_payment_headline: "Bezahlmethoden einrichten"
+  getting_started_online_payment_text: "Lassen Sie Ihre Kunden bereits bei der Buchung bezahlen, indem Sie Online-Bezahlungsmöglichkeiten anbieten."
+  getting_started_online_payment_link_text: "Bezahlmethoden einrichten"
+
+  getting_started_google_ranking_headline: "Werden Sie bei Google gefunden"
+  getting_started_google_ranking_text: "Sorgen Sie dafür, dass Ihre Wundercoach-Seminare bei Google eine gute Positionierung erreichen und gewinnen Sie Kunden."
+  getting_started_google_ranking_link_text: "Start"
+
+  graph_new_signups: "Seminaranmeldungen"
+  graph_page_impressions: "Seitenbesuche Anmeldeliste"
+
+  js:
+    find_start_help_here: Hier können Sie die Starthilfe wieder öffnen.

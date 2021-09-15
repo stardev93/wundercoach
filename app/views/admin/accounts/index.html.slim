@@ -1,0 +1,123 @@
+.row
+  .col-xs-12
+    span.h1
+      = t(:accounts)
+    span.add-item
+      = link_to compute_admin_accounts_path, :class=>"btn btn-primary"
+        i.fa.fa-plus
+        | &nbsp;
+        = t(:compute)
+    p.helper_text
+      |&nbsp;
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag admin_accounts_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :admin_accounts_search, session[:admin_accounts_search], autofocus: true, class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            = link_to admin_accounts_path + '?clearsearch=true', class: "btn btn-link"
+              = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th
+            = sort_link(@q, :id, t(:accountnumber))
+            br
+            = sort_link(@q, :id)
+          th
+            = sort_link(@q, :name)
+          th
+            = t(:booking)
+          th
+            = sort_link(@q, :lastname, t(:name))
+            br
+            = t(:tel1)
+            br
+            = t(:email)
+          th
+            = sort_link(@q, :signup)
+            br
+            = t(:subdomain)
+          th
+            = t(:active)
+          th.text-center
+            = sort_link(@q, :last_activity_at, t(:last_seen))
+          th
+
+      tbody
+        - @accounts.each do |account|
+          tr
+            td
+              = account.accountnumber
+              br
+              = account.id
+            td
+              = link_to account.name, admin_account_path(account)
+              br
+              = account.zip
+              |&nbsp;
+              = account.city
+              br
+              = account.street
+              |&nbsp;
+              = account.streetno
+              br
+              = account.country
+            td
+              = account.current_booking
+            td
+              = (account.gender == "male" ? t(:gender_name_m) : t(:gender_name_f))
+              br
+              = account.firstname
+              |&nbsp;
+              = account.lastname
+              - unless account.tel1.blank?
+                br
+                = account.tel1
+              br
+              = account.email
+            td
+              = l account.created_at, format: :short
+              br
+              = link_to "https://#{account.subdomain}.wundercoach.net/de/signup/", target: "_blank"
+                = "https://#{account.subdomain}.wundercoach.net"
+            td.text-center
+              - if account.users
+                = render "user_activation_state", :user => account.users.order(:id).first, :@account => account
+            td.text-center
+              - if account.last_activity_at.nil?
+                = '--'
+              - else
+                = time_ago_in_words account.last_activity_at
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to admin_account_path(account)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_admin_account_path(account)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to login_as_admin_account_path(account)
+                        i.fa.fa-arrow-right
+                        '&nbsp;
+                        = t(:login_as)
+                    li.divider
+                    li = render "shared/delete_button", :button_type => 'btn-link', :delete_url => admin_account_path(account), :delete_text => t(:delete)
+
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

@@ -1,0 +1,33 @@
+= simple_form_for(@account, url: admin_account_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: t(:name), hint: t(:name_hint)
+    = f.input :name_addon, label: t(:name_addon), hint: t(:name_addon_hint)
+    = f.input :comments, label: t(:comments), hint: t(:comments_hint)
+    = f.input :zip, label: t(:zip), hint: t(:zip_hint)
+    = f.input :city, label: t(:city), hint: t(:city_hint)
+    = f.input :street, label: t(:street), hint: t(:street_hint)
+    = f.input :streetno, label: t(:streetno), hint: t(:streetno_hint)
+    = f.input :country, label: t(:country), hint: t(:country_hint)
+    = f.input :gender, label: t(:gender), hint: t(:gender_hint)
+    = f.input :firstname, label: t(:firstname), hint: t(:firstname_hint)
+    = f.input :lastname, label: t(:lastname), hint: t(:lastname_hint)
+    = f.input :tel1, label: t(:tel1), hint: t(:tel1_hint)
+    = f.input :tel2, label: t(:tel2), hint: t(:tel2_hint)
+    = f.input :fax, label: t(:fax), hint: t(:fax_hint)
+    = f.input :email, label: t(:email), hint: t(:email_hint)
+    = f.input :homepage, label: t(:homepage), hint: t(:homepage_hint)
+    = f.input :logo, label: t(:logo), hint: t(:logo_hint)
+    // = f.input :email_billing, label: t(:email_billing), hint: t(:email_billing_hint)
+    = f.input :email_billing_address, label: t(:email_billing_address), hint: t(:email_billing_address_hint)
+    // = f.association :paymentplan, label: t(:paymentplan), hint: t(:paymentplan_hint)
+    = f.association :accountstatus, label: t(:accountstatus), hint: t(:accountstatus_hint)
+    // = f.input :accountnumber, label: t(:accountnumber), hint: t(:accountnumber_hint)
+    = f.input :vat_number, label: t(:vat_number), hint: t(:vat_number_hint)
+    = f.input :invoice_no_start, label: t(:invoice_no_start), hint: t(:invoice_no_start_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_account_path

@@ -1,0 +1,120 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'misc/**/*'
+    - 'lib/templates/**/*'
+    - 'lib/scaffold_controller/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/0*'
+    - 'config/routes.rb'
+    - 'config/initializers/**/*'
+    - 'config/boot.rb'
+    - 'config.ru'
+    - 'Rakefile'
+    - 'Capfile'
+    - '**/*.jbuilder'
+    - 'spec/**/*'
+    - 'app/models/eventsession*'
+    - 'app/models/durationunit.rb'
+    - 'app/controllers/eventsession*'
+    - 'app/controllers/tools_controller.rb'
+    - 'app/controllers/durationunits_controller.rb'
+    - 'app/controllers/companies_controller.rb'
+    - 'app/controllers/landingpages_controller.rb'
+
+  TargetRubyVersion: 2.3
+
+  DefaultFormatter: fuubar
+
+#################
+# [i] Overrides #
+#################
+
+CollectionMethods:
+  # Mapping from undesired method to desired_method
+  # e.g. to use `detect` over `find`:
+  #
+  # CollectionMethods:
+  #   PreferredMethods:
+  #     find: detect
+  PreferredMethods:
+    reduce: 'inject'
+    find: 'detect'
+    each_with_index: 'each.with_index'
+
+# # Align ends correctly.
+# EndAlignment:
+#   AlignWith: variable
+
+IfUnlessModifier:
+  MaxLineLength: 75
+
+LineLength:
+  Max: 200
+  Exclude:
+    - 'db/seeds.rb'
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/MethodLength:
+  Max: 20
+
+SignalException:
+  EnforcedStyle: only_raise
+
+SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+
+SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Rails/SaveBang:
+  Enabled: true
+
+#################
+# Disabled cops #
+#################
+
+Style/AlignHash:
+  Enabled: false
+
+Style/IndentHash:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/*.rake'
+
+Style/StringLiterals:
+  Enabled: false
+
+#
+# Style/Documentation:
+#   Enabled: false

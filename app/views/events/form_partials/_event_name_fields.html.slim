@@ -1,0 +1,27 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_name_options), :hint_text => ""
+
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-8
+        = f.input :type, as: :hidden
+        = render "shared/f_text", :form => f, :field => :name, :field_label => t(:name), :field_hint => t(:name_hint)
+      .col-xs-4
+        = f.association :eventtype, include_blank: false
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :slug, :field_label => t(:slug), :field_hint => t(:slug_hint)
+    .row
+      .col-xs-12.col-sm-6
+        = f.association :product_tags, input_html: { class: 'chosen-select', multiple: '' }, label: t(:event_product_tags), hint: t(:event_product_tags_hint)
+
+      .col-xs-12.col-sm-6
+        = f.association :eventtemplate, label: t(:eventtemplate), hint: t(:event_eventtemplate_hint)
+      .col-xs-12
+        = render "shared/f_textarea", :form => f, :field => :comments, :field_label => t(:event_comments), :field_hint => t(:event_comments_hint), :field_rows => 5
+
+      - if current_tenant.affiliate
+        .col-xs-12
+          = f.association :affiliate_tags, as: :check_boxes, collection: current_tenant.affiliate.tags, label: Affiliate::Tag.model_name.human(count: 2)

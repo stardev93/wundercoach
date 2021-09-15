@@ -1,0 +1,99 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:new_event)
+    - url = @request.present? ? individual_agreed_events_path(request_id: @request.id) : individual_agreed_events_from_event_path(@coaching)
+    = simple_form_for([@request, @event], url: url) do |f|
+      / = @event.errors.full_messages.join(', ')
+      = f.error_notification
+      .form-inputs
+        .row.well
+          .col-md-8
+            = f.input :type, as: :hidden
+            = f.input :name, label: t(:name), hint: t(:name_hint)
+          .col-md-4
+            = f.association :eventtype, label: t(:eventtype), include_blank: false, hint: t(:eventtype_hint)
+        = render 'events/form_partials/planning_options_event', f: f
+
+        .row
+          .col-md-12
+            = render "shared/section_header", :header_text => t(:event_pricing_options), :hint_text => ""
+        .row.well
+          .col-md-12
+            .row
+              .col-md-4
+                = f.input :full_price, label: t(:price), hint: t(:price_hint), as: :float, required: true
+              .col-md-4
+                = f.input :currency, as: :currency_picker
+              .col-md-4
+                = f.association :vat, label_method: :to_s, include_blank: false
+
+        .row
+          .col-md-12
+            = render "shared/section_header", header_text: t(:event_location), :hint_text => ""
+        .row.well
+          .col-md-12
+            .row
+              .col-md-12
+                = f.input :location, label: t(:location), hint: t(:location_hint)
+            .row
+              .col-md-10
+                = f.input :street, label: t(:street), hint: t(:street_hint)
+              .col-md-2
+                = f.input :streetno, label: t(:streetno), hint: t(:streetno_hint)
+            .row
+              .col-md-3
+                = f.input :zip, label: t(:zip), hint: t(:zip_hint)
+              .col-md-9
+                = f.input :city, label: t(:city), hint: t(:city_hint)
+            .row
+              .col-md-12
+                = f.input :country, label: t(:country), hint: t(:country_hint)
+
+        / start eventbooking
+
+        = f.simple_fields_for :orders do |order|
+          = order.simple_fields_for :address do |address|
+            .row
+              .col-md-12
+                = render "shared/section_header", header_text: t(:participant_data), :hint_text => ""
+            .row.well
+              .col-md-12
+                .row
+                  .col-md-5
+                    = address.input :lastname, label: t(:lastname), label: t(:lastname), hint: t(:lastname_hint)
+                  .col-md-5
+                    = address.input :firstname, label: t(:firstname), label: t(:firstname), hint: t(:firstname_hint)
+                  .col-md-2
+                    = address.input :gender, as: :select, collection: [ :noinfo, :female, :male, :diverse], include_blank: false, label: t(:gender), hint: t(:gender_hint)
+                .row
+                  .col-md-12
+                    = address.input :company, label: t(:company), hint: t(:company_hint)
+                .row
+                  .col-md-6
+                    = address.input :email, label: t(:email), hint: t(:email_hint)
+                  .col-md-6
+                    = address.input :telephone, label: t(:tel), hint: t(:tel_hint)
+                .row
+                  .col-md-3
+                    = address.input :zip, label: t(:zip), hint: t(:zip_hint)
+                  .col-md-9
+                    = address.input :city, label: t(:city), hint: t(:city_hint)
+                .row
+                  .col-md-12
+                    = address.input :street, label: t(:street), hint: t(:street_hint)
+                .row
+                  .col-md-12
+                    = address.input :country, priority: ["Deutschland"], label: t(:country), hint: t(:country_hint)
+          .row
+            .col-md-12
+              = render "shared/section_header", header_text: t(:eventbooking_information), :hint_text => ""
+          .row.well
+            .col-md-12
+              = order.input :order_date, as: :date_time_picker, label: t(:booking_date), hint: t(:booking_date_hint)
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: events_path, value: "Termin erstellen", data: { disable_with: "Termin erstellen" }

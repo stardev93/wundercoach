@@ -1,0 +1,16 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  are_you_sure_you_want_to_delete_this_accountinvoice: "Sind Sie sicher, dass Sie diese Rechnung löschen wollen?"
+  number_abbr: "Nr."
+  cancel_invoice: "Stornieren"
+  invoice_number: "Rechnungsnummer"
+  document_number: "Dokument Nr."
+  send_invoice: "Senden"
+  create_invoice: "Rechnung generieren"
+  your_wundercoach_invoice: "Ihre Wundercoach Rechnung"
+  recipient_name_1: Empfänger
+  recipient_name_2: Empfänger 2
+  accountinvoicetype: Belegart
+  accountinvoicestatus: Status
+  pdf_file_name: Dateiname
+  regenerate: Neu generieren

@@ -1,0 +1,71 @@
+/ some elements require
+/ = render "shared/modal_confirm"
+/ to work. Make sure it is available in your view
+
+.btn-group.pull-right
+  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+    |...
+  ul.dropdown-menu role="menu"
+    li
+      = link_to eventbooking_path(eventbooking)
+        i.fa.fa-external-link
+        '&nbsp;
+        = t(:show_eventbooking)
+
+    li
+      = link_to edit_eventbooking_path(eventbooking)
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit_eventbooking)
+
+    li
+      = link_to event_path(eventbooking.event)
+        i.fa.fa-external-link
+        '&nbsp;
+        = t(:event)
+    - if eventbooking.destroyable?
+      li
+        = render "eventbookings/controls/delete_button", :eventbooking => eventbooking
+    - unless eventbooking.status_is? 'cancelled'
+      li
+        = render "eventbookings/controls/cancel_button", :eventbooking => eventbooking
+
+    li
+      = link_to eventbookings_move_path(eventbooking)
+        i.fa.fa-exchange
+        |&nbsp;
+        = t(:move_eventbooking)
+
+    - unless eventbooking.order.free?
+      li
+        - if eventbooking.partial_invoicing?
+          = link_to eventbookings_createinvoice_path(eventbooking) + "?partial=true"
+            i.fa.fa-file-text-o
+            |&nbsp;
+            = t(:create_partial_invoice)
+        - else
+          = link_to eventbookings_createinvoice_path(eventbooking)
+            i.fa.fa-file-text-o
+            |&nbsp;
+            = t(:create_invoice)
+    li
+      = link_to mailtemplates_mailto_eventbooking_path(eventbooking)
+        i.fa.fa-envelope-o
+        |&nbsp;
+        = t(:send_email)
+    / TODO: make this available to all
+    - if @account.id == 86
+      - pdftemplates = Pdftemplate.all
+      - if pdftemplates.count >= 0
+        li.divider
+        li
+          a href="#"
+            |Zertifikate (SP only)
+        - Pdftemplate.all.each do |pdf_template|
+          li
+            = link_to eventbooking_certificate_path(eventbooking, pdf_template), :target => "_blank"
+              i.fa.fa-file-text-o
+              / '&nbsp;
+              / = t(:generate_certificate)
+              |&nbsp;
+              = pdf_template.name

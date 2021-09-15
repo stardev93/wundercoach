@@ -1,0 +1,10 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = t(:edit_order)
+    .row.signup-header-zone
+      .col-xs-12
+        .row
+          .col-xs-12
+            = simple_form_for(@form, as: :order) do |f|
+              = render 'form', f: f

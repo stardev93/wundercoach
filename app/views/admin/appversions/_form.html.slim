@@ -1,0 +1,13 @@
+= simple_form_for(@appversion, url: admin_appversion_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: t(:name), hint: t(:name_hint)
+    = f.input :version_number, label: t(:version_number), hint: t(:version_number_hint)
+    = f.input :version_string, label: t(:version_string), hint: t(:version_string_hint)
+    = f.input :status, label: t(:status_string), hint: t(:status_hint), collection: [ "inactive", "active", "void"], include_blank: false
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: admin_appversions_path

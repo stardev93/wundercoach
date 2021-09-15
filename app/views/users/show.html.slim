@@ -1,0 +1,68 @@
+/ ToDo:
+/ 1. add 1 or more Message to User.unread_messages from backend
+/ 2. Read User.unread_messages and display messages to user
+/ 3. Mark User.unread_messages as read, i.e. remove it from User.unread_messages
+
+- back_button = render "shared/button", path: users_path, link_text: t(:back), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+/ - new_button = link_to "i.fa.fa-plus #{t(:add_product_location)}", new_product_location_path, class: "btn btn-default"
+- new_button = render "shared/button", path: new_user_path, link_text: t(:add_user), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:add_user)
+
+= render "shared/form_header",
+         header_text: @user, hint_text: '',
+         buttons: new_button + back_button
+
+
+
+
+.row
+  .col-xs-12.col-sm-5
+    = render "shared/f_ro_text", :field_value => @user.lastname, :field_label => t(:lastname), :field_hint => t(:lastname_hint)
+  .col-xs-12.col-sm-5
+    = render "shared/f_ro_text", :field_value => @user.firstname, :field_label => t(:firstname), :field_hint => t(:firstname_hint)
+  .col-xs-12.col-sm-2
+    = render "shared/f_ro_text", :field_value => t(:"#{@user.gender}_indirect"), :field_label => t(:gender), :field_hint => t(:gender_hint)
+.row
+  .col-xs-12.col-sm-6
+    = render "shared/f_ro_text", :field_value => @user.email, :field_label => t(:email), :field_hint => t(:email_hint)
+    = render "shared/f_ro_text", :field_value => @user.unread_message_count, :field_label => t(:message_unread_message_count), :field_hint => t(:message_unread_message_count_hint)
+  .col-xs-12.col-sm-6
+    = render "shared/f_ro_timezone", :field_value => @user.time_zone, :field_label => t(:user_time_zone), :field_hint => t(:user_time_zone_hint)
+  / .col-xs-12.col-sm-5
+  /   = render "shared/f_ro_boolean", :field_value => @user.has_message, :field_label => t(:has_message), :field_hint => t(:has_message_hint)
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to edit_user_path(@user), class: "btn btn-primary"
+      = t(:edit)
+    ' &nbsp;
+    = link_to users_path, class: "btn btn-default"
+      = t(:back)
+.row
+  .col-md-12
+    p &nbsp;
+
+- if current_user.has_role? 'admin'
+  .row.well
+    .col-md-6
+      h3
+        = t(:roles_assigned)
+      ul.list-group
+        - @user.userroles.all.each do |userrole|
+          li.list-group-item
+            span style="float: right;"
+              = link_to users_revokerole_path(@user, userrole)
+                = t(:revoke)
+            span
+              = userrole.role
+    .col-md-6
+      h3
+        = t(:roles)
+      ul.list-group
+        - Role.all.each do |role|
+          li.list-group-item
+            span style="float: right;"
+              = link_to users_assignrole_path(@user, role)
+                = t(:assign)
+            span
+              = role

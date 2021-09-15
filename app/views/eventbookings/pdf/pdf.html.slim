@@ -1,0 +1,53 @@
+.row
+  .col-xs-12
+    h4
+      = t(:bookinglist)
+
+.row
+  .col-xs-12
+    table.table style="width: 100%;padding: 0px;"
+      thead
+        tr
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;width:30mm;"
+            = t(:status)
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;width:30mm;"
+            = t(:participant)
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;width:60mm;"
+            = t(:event)
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;width:30mm;"
+            = t(:booking_date)
+          th style="text-align: right;border-bottom: 1px solid black;padding: 0px;width:30mm;"
+            = t(:price)
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;width:30mm;"
+            = t(:paymentstatus)
+
+
+      tbody style="margin-top: 50px !important;"
+        - @eventbookings.each do |eventbooking|
+          tr style="border-bottom: 1px solid black;"
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              = eventbooking.eventbookingstatus
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              = eventbooking.lastname
+              |,&nbsp;
+              = eventbooking.firstname
+              br
+              = eventbooking.email
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              = eventbooking.event
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              - unless eventbooking.booking_date.blank?
+                = l eventbooking.booking_date, format: :short
+            td style="text-align: right;border-bottom: 1px solid black;padding: 2px;"
+              = number_to_currency(eventbooking.price.to_d, unit: eventbooking.price.currency.symbol)
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              - unless eventbooking.order.businessdocuments.first.nil?
+                = eventbooking.order.businessdocuments.first.paymentstatus
+                |&nbsp;(
+                = eventbooking.order.businessdocuments.first.paymentmethod
+                |)
+                - if !eventbooking.order.businessdocuments.first.paymentdate.blank?
+                  br
+                  = l eventbooking.order.businessdocuments.first.paymentdate, format: :default
+              - else
+                = t(:no_invoice_yet)

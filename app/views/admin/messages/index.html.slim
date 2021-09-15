@@ -1,0 +1,92 @@
+- new_button = render "shared/button", path: new_admin_message_path, link_text: t(:new_message), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:new_message)
+/ - user_flag_button = render "shared/button", path: admin_message_unmute_path, link_text: t(:message_unmute), icon: "fa-plus", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:message_unmute_hint)
+
+= render "shared/form_header",
+         header_text: t(:messages), hint_text: t(:messages_infotext),
+         buttons: new_button
+
+.row
+  .col-xs-12
+    = render "shared/form_search", :search_path => admin_messages_path
+    table.table
+      thead
+        tr
+          th
+            = t(:message_subject)
+          th.text-center
+            = t(:message_published_at)
+          th.text-center
+            = t(:message_pushed_at)
+          th
+
+      tbody
+        - MessageDecorator.decorate_collection(@messages).each do |message|
+          tr class="#{message.object.published_at.nil? ? 'bg-danger' : ''}"
+            td
+              h4
+                = link_to admin_message_path(message)
+                  = message.subject
+              p
+                = message.get_body_teaser
+
+            td
+              = render "shared/l_ro_date", :field_value => message.published_at_date(current_user.get_time_zone)
+              br
+              = render "shared/l_ro_date", :field_value => message.published_at_time(current_user.get_time_zone)
+              - if message.published?
+                br
+                br
+                = link_to admin_message_unpublish_path(message) + '?' + "redirect=index"
+                  = t(:unpublish)
+
+              - else
+                = link_to admin_message_publish_path(message) + '?' + "redirect=index"
+                  = t(:publish)
+
+
+            td
+              = render "shared/l_ro_date", :field_value => message.pushed_at_date(current_user.get_time_zone)
+              br
+              = render "shared/l_ro_date", :field_value => message.pushed_at_time(current_user.get_time_zone)
+              - if message.object.pushed_at.nil?
+                = link_to admin_message_push_path(message) + '?' + "redirect=index"
+                  = t(:push)
+              - else
+                br
+                br
+                = link_to admin_message_mute_path(message) + '?' + "redirect=index"
+                  = t(:mute)
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    - if message.object.published_at.nil?
+                      li
+                        = link_to admin_message_publish_path(message) + '?' + "redirect=index"
+                          i.fa.fa-eye
+                          '&nbsp;
+                          = t(:publish)
+                    - else
+                      li
+                        = link_to admin_message_unpublish_path(message) + '?' + "redirect=index"
+                          i.fa.fa-eye
+                          '&nbsp;
+                          = t(:unpublish)
+                    li
+                      = link_to admin_message_path(message)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_admin_message_path(message)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = render "shared/delete_button", :button_type => 'btn-link', :delete_url => admin_message_path(message), :delete_text => t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

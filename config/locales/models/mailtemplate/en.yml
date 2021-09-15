@@ -1,0 +1,41 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # mailskin
+  mailtemplate: "Email text template"
+  mailtemplates: "Email text templates"
+  mailtemplate_infotext: "E-Mail texttemplates are standard texts that can be send from the system."
+  mailskin: "Email skin"
+  mailskin_hint: "Email skin that should be used to send this template."
+  new_mailtemplate: New email text template
+  edit_mailtemplate: "Edit email text template"
+  edit_mailtemplate_hint: "Edit your email template here. Drag the placeholders from the list on the right to the fields 'subject line' and 'email text', for example to mix seminar names with the text. "
+
+  key: "Key"
+  key_hint: "They key to find the templates. Can not be changed for system templates."
+  is_system: "System template"
+  is_system_hint: "Makes a template to a system template when activated."
+
+  name_hint: "Name of the template"
+
+  subject: "Subject line"
+  subject_hint: "Subject line of the email. You can drag the placeholders on the right into this field to output seminar names etc."
+
+  message: "Email text"
+  message_hint: "The text of your message. You can drag the placeholders on the right into this field to output seminar names etc."
+  sender: "Return address"
+  sender_hint: "Email address of the sender"
+
+  reply_to: "Reply to this email address"
+  reply_to_hint: "E-mail address to which the recipients response should be sent. Leave blank if the return address should be used. "
+
+  mail_sent_to_all: The mail will be sent to all participants
+  send_to_all: Send to all participants
+
+  send_test: Send test mail
+  test_mail_has_been_sent: A test email has been sent
+  mailtemplate_delete_error: The email template cound not be deleted, because the Wundercoach needs it for automatic emailing.
+  mail_has_been_sent_to: "The email has been sent to %{email}."
+  send_to: "send to %{email}"
+  preview: Preview
+  send_email: "Send email"
+  mail_to: "Email to"

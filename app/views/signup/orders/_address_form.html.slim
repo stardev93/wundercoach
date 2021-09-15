@@ -1,0 +1,49 @@
+= f.simple_fields_for :address do |address|
+  - number_label = (@order.product.additional_participants? ? '1. ' : '')
+  .row
+    .col-md-5
+      = address.input :lastname, label: number_label + t(:lastname)
+    .col-md-5
+      = address.input :firstname, label: number_label + t(:firstname)
+    .col-md-2
+      = address.input :gender, as: :select, collection: %i(noinfo female male diverse), include_blank: "--", label: number_label + t(:gender)
+
+  - if product.additional_participants?
+    = f.simple_fields_for "additional_participants" do |p|
+      - i = 1
+      - product.additional_participants_available.times do |n|
+        - i = i + 1
+        = p.simple_fields_for n.to_s do |participant|
+          .row
+            .col-md-5
+              = participant.input :lastname, label: i.to_s + '. ' + t(:lastname), \
+                input_html: { value: @order.additional_participants&.fetch(n.to_s)&.fetch('lastname') }, \
+                required: false
+            .col-md-5
+              = participant.input :firstname, label: i.to_s + '. ' + t(:firstname), \
+                input_html: { value: @order.additional_participants&.fetch(n.to_s)&.fetch('firstname') }, \
+                required: false
+            .col-md-2
+              = participant.input :gender, as: :select, collection: %i(female male), include_blank: "--", \
+                selected: @order.additional_participants&.fetch(n.to_s)&.fetch('gender'), \
+                required: false, label: i.to_s + '. ' + t(:gender)
+
+  .row
+    .col-md-12
+      = address.input :company, label: t(:order_company_or_instituion_name), hint: t(:order_company_or_instituion_name_hint)
+  .row
+    .col-md-6
+      = address.input :email
+    .col-md-6
+      = address.input :telephone
+  .row
+    .col-md-3
+      = address.input :zip
+    .col-md-9
+      = address.input :city
+  .row
+    .col-md-12
+      = address.input :street
+  .row
+    .col-md-12
+      = address.input :country, priority: %w(Deutschland)

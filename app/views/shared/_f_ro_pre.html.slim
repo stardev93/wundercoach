@@ -1,0 +1,21 @@
+- if defined? field_empty
+  - field_default = field_empty
+- else
+  - field_default = ''
+
+strong
+  = field_label
+- if !defined? position
+  - position = 'right'
+- if defined? field_hint
+  |&nbsp;
+  = render "shared/popover", :position => position, :popover_text => field_hint
+br
+br
+span.lead
+  pre
+    - if field_value.blank? && !field_default.blank?
+      = field_default
+    - else
+      = field_value
+p.f_ro_text_spacer

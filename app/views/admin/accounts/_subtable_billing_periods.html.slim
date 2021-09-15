@@ -1,0 +1,69 @@
+.row
+  .col-md-12
+
+    table.table.table-hover
+      thead
+        tr
+          th
+            = t (:booking)
+          th
+            = t (:start_date)
+          th
+            = t (:end_date)
+          th
+            = t (:cancel_date)
+          th
+            = t (:payment_method)
+          th
+            = t (:price)
+          th
+            = t (:invoice)
+          th
+
+      tbody
+        - @billing_periods.each do |billing_period|
+          tr
+            td
+              = billing_period.booking
+            td
+              - unless billing_period.start_date.blank?
+                = l billing_period.start_date, format: :default
+            td
+              - unless billing_period.end_date.blank?
+                = l billing_period.end_date, format: :default
+            td
+              - unless billing_period.cancel_date.blank?
+                = l billing_period.cancel_date, format: :default
+            td
+              = billing_period.paymentmethod
+              br
+              = billing_period.paymentdate
+            td
+              = number_to_currency(billing_period.price / 100)
+            td
+              - if billing_period.accountinvoice
+                = link_to admin_accountinvoice_path(billing_period.accountinvoice), :target => "_blank"
+                  = billing_period.accountinvoice
+                |&nbsp;
+                = link_to admin_accountinvoices_pdf_path(billing_period.accountinvoice), :target => "_blank"
+                  |(
+                  = t(:open_pdf)
+                  |)
+              - else
+                = t(:no_invoice_attached)
+                br
+                = link_to admin_accountinvoices_createnew_path(billing_period), class: "btn btn-default"
+                  = t(:create)
+
+            td
+
+              = link_to edit_admin_billing_period_path(billing_period), class: "btn btn-default"
+                = t(:edit)
+              |&nbsp;
+              = link_to admin_billing_period_path(billing_period), data: { confirm: t(:are_you_sure_you_want_to_delete_this_billing_period) }, method: :delete, class: "btn btn-default"
+                = t(:delete)
+
+
+.row
+  .col-xs-12
+    = will_paginate @billing_periods, renderer: BootstrapPagination::Rails, :link_path => admin_account_path(@account), :params => {:anchor => "billing_periods"}, :param_name => "billing_periods_page"

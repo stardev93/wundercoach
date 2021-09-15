@@ -1,0 +1,25 @@
+.row
+  .col-xs-12
+    table.table style="width: 100%;padding: 0px;"
+      thead
+        tr
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;"
+            = t(:participant)
+          th style="text-align: left;border-bottom: 1px solid black;padding: 0px;"
+            = t(:signature)
+
+      tbody
+        - @eventbookings.each do |eventbooking|
+          tr style="border-bottom: 1px solid black;"
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"
+              br
+              = eventbooking.lastname
+              |,&nbsp;
+              = eventbooking.firstname
+              - unless eventbooking.company.blank?
+                |&nbsp;(
+                = eventbooking.company
+                |)
+              br
+              |&nbsp;
+            td style="text-align: left;border-bottom: 1px solid black;padding: 2px;"

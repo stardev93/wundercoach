@@ -1,0 +1,42 @@
+- filter_active = ''
+- all_active = ''
+
+- session_coaches_id_eq = session[:q]['coaches_id_eq'] if !session[:q]['coaches_id_eq'].nil? && session[:q]['coaches_id_eq'] != ''
+
+- if session_coaches_id_eq
+  - filter_active = 'active btn-primary'
+  - range_button_text = Coach.find(session_coaches_id_eq)
+- else
+  - filter_active = ''
+  - range_button_text = t(:all)
+  - all_active = 'active btn-primary'
+
+
+.form-group.form-inline
+  .row
+    .col-xs-12
+      label
+        = t(:coaches)
+  .row
+    .col-xs-12
+      .btn-group
+        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="#{filter_active}"
+          = range_button_text
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu
+          li
+            = link_to events_path+'?q[coaches_id_eq]=', :class => "#{all_active}"
+              = t(:all)
+            - Coach.by_name.all.each do |coach|
+              - if session[:q]['coaches_id_eq'].to_i == coach.id
+                - active = 'btn-primary active'
+              - else
+                - active = ''
+              li
+                - if coach.active == false
+                  - active_txt = " (" + t(:inactive) + ")"
+                - else
+                  - active_txt = ""
+                = link_to events_path+"?q[coaches_id_eq]=" + coach.id.to_s, class: "#{active}"
+                  = coach.to_s + active_txt

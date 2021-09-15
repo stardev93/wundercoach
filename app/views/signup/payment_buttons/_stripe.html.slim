@@ -1,0 +1,45 @@
+script src="https://checkout.stripe.com/checkout.js"
+
+javascript:
+
+  var stripe_handler = StripeCheckout.configure({
+    key: "#{@account.stripe_publishable_key}",
+    locale: 'auto',
+    email: "#{@order.invoice_address.email}",
+    token: function(token) {
+      $("#checkoutButton").attr("disabled", "");
+      $("#stripe_token").val(token.id);
+      $("#charge_form").submit();
+    }
+  });
+
+  $(document).ready(function(){
+    // Enable/disable stripe button
+
+    $('#checkoutButton').on('click', function(e) {
+      e.preventDefault();
+      // Open Checkout with further options
+      stripe_handler.open({
+        name: "#{@product.name}",
+        amount: "#{@order.price_cents}",
+        description: "#{strip_tags(@product.shortdescription)}",
+        currency: "#{@order.currency}"
+      });
+    });
+  })
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    stripe_handler.close();
+  });
+
+= simple_form_for @order, url: signup_stripe_path, method: :post, html: { id: "charge_form" } do |f|
+  = hidden_field_tag "stripeToken", nil, id: "stripe_token"
+  / - if @account.terms_required
+  /   = f.input :terms_of_service, as: :boolean, value: 0, label: t(:i_agree_to_the_terms_of_service, terms: link_to(@account.terms_link_text, @account.terms_link, target: '_blank')).html_safe
+  .row
+    .col-xs-12
+      = render "signup/terms", :account => @account, :f => f
+  .row
+    .col-xs-12
+      = button_tag "Bezahlung per Kreditkarte", id: "checkoutButton", class: %w(btn btn-primary btn-lg signup-button signup-submit), disabled: @account.any_terms_required?

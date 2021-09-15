@@ -1,0 +1,371 @@
+// main css file.. includes all the assets
+@import "fullcalendar"
+@import "bootstrap"
+@import "trix"
+@import "font-awesome"
+@import "dropzone"
+@import "chosen"
+@import "bootstrap-datetimepicker"
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5"
+@import "bootstrap3-editable/bootstrap-editable"
+@import "jquery.minicolors"
+@import "bootstrap-timepicker"
+@import "signup"
+@import "signuparrow"
+@import "bootstrap-datepicker3"
+@import "material"
+@import "icheck/square/blue"
+@import "switchery"
+@import "language_chooser"
+@import "bootstrap-chosen"
+@import "showplans"
+@import "trix"
+@import "sidebar"
+@import "footerbar"
+
+body
+  background-color: #ffffff
+
+html
+  background-color: #ffffff
+
+h1
+  font-size: 26px
+
+.h1
+  font-size: 26px
+
+.wc_left_border
+  border-left: 1px solid #eeeeee
+
+.wc_section_header > .add-item
+  padding: 0px !important
+
+.wc_form_headline
+  padding: 0px !important
+  font-size: 26px
+
+.wc_section_headline
+  font-size: 22px
+
+.wc_section_lead
+  font-size: 18px
+  margin-bottom: 6px
+
+.wc_subheadline
+  margin-top: 40px
+
+.wc-form-inline
+  display: flex
+
+.wc-form-group
+  display: flex !important
+  flex: 1 0 auto !important
+  padding-right: 5px !important
+
+a[data-wysihtml5-command~="insertImage"]
+  display: none
+
+.f_ro_text_hint
+  font-size: 14px
+  margin-bottom: 10px
+  line-height: 1.2
+  box-sizing: border-box
+  font-family: "Roboto","Helvetica Neue",Arial,sans-serif
+  font-weight: 300
+
+.f_ro_text_spacer
+  margin-top: 0px
+  margin-bottom: 20px
+
+.popover
+  background-color: #ffffff
+  color: #000000
+
+.form-header-margin
+  margin-top: 30px
+
+.nowrap
+  white-space: nowrap
+
+.yearly
+  display: none
+
+[data-wysihtml5-dialog-action=cancel]
+  display: none
+
+.modal-backdrop
+  z-index: -10
+  opacity: 0
+
+.modal, .modal-backdrop
+  background-color: #fff
+
+// Material design hides date_time_picker dropdown
+// This fixes the date_time_picker
+.date_time_picker, .datepicker
+  .dropdown-menu
+    transform: none
+    opacity: 1
+
+.main-container
+  background-color: #fff
+.page-dashboard
+  .dashboard-widget-small
+    height: 240px
+    margin-bottom: 0
+    overflow: auto
+  .dashboard-widget
+    height: 380px
+
+.nopadding
+  [class*="col-"]
+    padding: 0 !important
+    margin: 0 !important
+
+.sc-box-header
+  background-color: #eeeeee
+  border: 1px solid #e3e3e3
+  border-radius: 0px
+  margin-bottom: 0px
+  min-height: 20px
+  padding: 10px 10px 10px 10px
+  margin: 0px
+  font-size: 24px
+  font-weight: bold
+
+.sc-box-body
+  background-color: whitesmoke
+  border-right: 1px solid #e3e3e3
+  border-bottom: 1px solid #e3e3e3
+  border-left: 1px solid #e3e3e3
+  border-radius: 0px
+  box-shadow: none
+  margin-bottom: 0px
+  min-height: 20px
+  padding: 10px 10px 0px 10px
+  margin: 0px
+
+.list-group-item:first-child
+  border-top-left-radius: 0px
+  border-top-right-radius: 0px
+
+.list-group-item:last-child
+  border-bottom-left-radius: 0px
+  border-bottom-right-radius: 0px
+
+.add-item
+  float: right
+
+// taskstatus
+.tasknew
+  background-color: #f0ad4e
+  border-color: #eea236
+  color: white
+.tasknew:hover
+  background-color: #ec971f
+  border-color: #d58512
+  color: white
+.taskreopened
+  background-color: #f0ad4e
+  border-color: #eea236
+  color: white
+.taskreopened:hover
+  background-color: #ec971f
+  border-color: #d58512
+  color: white
+.taskwaitingforconfirmation, .taskreview
+  background-color: #5bc0de
+  border-color: #46b8da
+  color: white
+.taskwaitingforconfirmation:hover, .taskreview:hover
+  background-color: #31b0d5
+  border-color: #269abc
+  color: white
+.taskworking
+  background-color: #5cb85c
+  border-color: #4cae4c
+  color: white
+.taskworking:hover
+  background-color: #449d44
+  border-color: #398439
+  color: white
+.taskorderrejected
+  background-color: #E131F5
+  border-color: #CA2ADB
+  color: white
+.taskorderrejected:hover
+  background-color: #CA2ADB
+  border-color: #c029d0
+  color: white
+.taskwaitingforstart
+  background-color: #0582F0
+.taskclosed
+  background-color: #363434
+  border-color: #121212
+  color: white
+.taskclosed:hover
+  background-color: #121212
+  border-color: #121212
+  color: white
+.taskdisabled
+  background-color: #dddddd
+  border-color: #cccccc
+  color: black
+.taskdisabled:hover
+  background-color: #cccccc
+  border-color: #cccccc
+  color: black
+
+// pricingtypes
+.byhours, .fixedprice, .fixedtime
+  background-color: #5cb85c
+  border-color: #4cae4c
+.goodwill, .included
+  background-color: #f0ad4e
+  border-color: #eea236
+.none
+  background-color: #d9534f
+  border-color: #d43f3a
+
+.sortable
+  cursor: move
+
+.editable-click, a.editable-click, a.editable-click
+  border-bottom: 0px
+
+.calendar_day
+  width: 20%
+  border-top: 0px solid #dddddd
+  border-right: 1px solid #dddddd
+  border-left: 0px solid #dddddd
+  border-bottom: 1px solid #dddddd
+  float: left
+  min-height: 180px
+.calendar_day:first-child
+  border-left: 1px solid #dddddd
+
+.calendar_headline
+  border-left: 0px
+  border-right: 0px
+  background-color: #eeeeee
+.calendar_item
+  border-left: 0px
+  border-right: 0px
+
+.list-group
+  margin-bottom: 40px
+
+.loginbox
+  height: 340px
+  margin-right: 10px
+
+.signupbox
+  height: 340px
+  margin-left: 10px
+.optionbox
+  height: 300px
+
+.navbar
+  min-height: 82px
+.navbar-nav
+  margin-top: 16px
+
+.contentedit
+  height: 300px !important
+
+.jumbotron
+  border-radius: 0px !important
+
+.well
+  border-radius: 0px !important
+.navbar
+  min-height: 64px
+.navbar-nav
+  margin-top: 8px
+.navbar-inverse
+  background-color: whitesmoke
+  border-color: #e3e3e3
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
+  background-color: whitesmoke
+
+.navbar-inverse a
+  color: #000000 !important
+.navbar-inverse a:hover
+  color: #666666 !important
+.navbar-header
+  min-height: 63px
+
+/* Extra small devices (phones, up to 480px) */
+@media (max-width: 768px)
+  #navigation-one .pull-right
+    float: left !important
+    margin-right: 0px !important
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px)
+/* tablets/desktops and up ----------- */
+@media (min-width: 992px) and (max-width: 1199px)
+/* large desktops and up ----------- */
+@media screen and (min-width: 1200px)
+
+.placeholders
+  .tplitem
+    cursor: move
+
+.helper_text
+  padding: 15px 0px 10px 5px
+  font-size: 1.2em
+
+#eventbooking_billing_address
+  li
+    border-left: none
+    border-right: none
+.navbar
+  box-shadow: none
+
+.table thead tr th
+  border-bottom: 1px solid #eceeef
+
+th > a
+  color: #000000
+
+th > a:hover
+  color: #000000
+
+.btn
+  /*border: 1px solid #cccccc*/
+  /*box-shadow: none*/
+
+.datepicker
+  padding: 0px
+
+.progress
+  border: 0px solid
+  margin-bottom: 0px
+
+.progress-bar
+  border: 0px solid
+
+.label
+  border: 0px solid
+
+.signup-search
+  label, .form-group
+    display: block
+  .month-filter
+    width: 100%
+
+.color_box
+  height: 30px
+  width: 30px
+  border: 1px solid #000000
+
+.best_in_place
+  cursor: pointer
+
+.best_in_place > p
+  border: 1px solid #FFFFFF
+
+.best_in_place_hover > p
+  border: 1px solid #999999
+  border-style: dotted

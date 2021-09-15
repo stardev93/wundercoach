@@ -1,0 +1,13 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  item: Artikel
+  items: Artikel
+  items_hint: "Artikel sind zusätzliche Leistungen und Produkte (z.B. Verpflegung, Seminarunterlagen), die Sie an Kunden verkaufen können. Erstellen Sie eine neue Rechnung und klicken Sie auf \"Neue Position\""
+  new_item: "Neuer Artikel"
+  edit_item: "Artikel bearbeiten"
+  item_unit: "Einheit"
+  item_unit_hint: "Einheit des Artikel, z.B. Stück"
+  item_shortdescription: Kurzbeschreibung
+  item_shortdescription_hint: Kurzbeschreibung des Artikels
+  item_longdescription: Beschreibung
+  item_longdescription_hint: Langbeschreibung des Artikels

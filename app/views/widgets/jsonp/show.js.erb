@@ -1,0 +1,7 @@
+(function() {
+  var l = document.createElement("link");
+  var url = "<%= stylesheet_url('signup/embedded.css') %>";
+  l.rel='stylesheet'; l.href=url; l.media="all";
+  document.getElementsByTagName("head")[0].appendChild(l);
+  document.currentScript.insertAdjacentHTML("afterend", <%= raw @html.to_json %>)
+})();

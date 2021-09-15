@@ -1,0 +1,50 @@
+javascript:
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      selectable: true,
+      selectHelper: true,
+      editable: false,
+      hour12: false,
+      lang: $('#calendar').attr('data-calendar-locale'),
+      locale: $('#calendar').attr('data-calendar-locale'),
+      timeFormat: 'HH:mm',
+      header: {
+        left: 'prev,next today myCustomButton',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,list'
+      },
+      events: $('#calendar').attr('data-calendar-id'),
+      eventRender: function(eventObj, $el) {
+      $el.popover({
+        title: eventObj.title,
+        content: eventObj.description,
+        trigger: 'hover',
+        placement: 'top',
+        container: 'body',
+        html: true
+      });
+    }
+    });
+  });
+
+css:
+  .fc-today {
+    background-color: #d9edf7 !important;
+  }
+  .fc-event-online {
+    background-color: #FF0000;
+    color: #FFFFFF;
+  }
+  .fc-event-offline {
+    background-color: #e0e0e0;
+    border-color: #e0e0e0;
+    color: #000;
+  }
+
+/ .row
+/   .col-xs-12
+/     = "#{request.base_url.to_s + '/' + I18n.locale.to_s + '/events.json'}"
+
+.row
+  .col-xs-12
+    #calendar data-calendar-id="#{request.base_url.to_s + '/' + I18n.locale.to_s + '/events.json'}" data-calendar-locale="#{I18n.locale.to_s}"

@@ -1,0 +1,10 @@
+button.btn.btn-default.btn-sm onclick="copyToClipboard#{element}('##{element}')"
+  = t(:copy_to_clipboard)
+javascript:
+  function copyToClipboard#{element}(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  };

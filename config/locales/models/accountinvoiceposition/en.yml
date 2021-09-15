@@ -1,0 +1,15 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  accountinvoiceposition: Position
+  accountinvoicepositions: Positions
+  are_you_sure_you_want_to_delete_this_accountinvoiceposition: "Are you sure you want to delete this position?"
+  paymentplan_period: Time span
+  paymentplan_amount: Quantity
+  paymentplan_price: Price
+  paymentplan_unit_price: Individual price
+  paymentplan_vat_perc: "VAT %"
+  paymentplan_total: Full price
+  invoice_gross_total: "Gross amount"
+  invoice_gross_total_eu: "Total"
+  invoice_net_total: "Net total"
+  invoice_vat_total: "VAT %"

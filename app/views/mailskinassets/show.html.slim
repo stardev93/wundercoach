@@ -1,0 +1,53 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        i.fa.fa-file-image-o
+        | &nbsp;
+        = @mailskinasset
+      span.add-item
+        = link_to new_mailskinasset_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_mailskinasset)
+    p.lead
+      = @mailskinasset.mailskin
+      br
+      = @mailskinasset.mailskinasset_file_name
+      br
+
+.row
+  .col-md-12
+    p.h3
+      'Mailskinasset
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong =t(:mailskin)
+        br
+        span.lead = @mailskinasset.mailskin
+        '&nbsp;
+      p
+        strong =t(:mailskinasset)
+        br
+        span.lead = @mailskinasset.mailskinasset
+        '&nbsp;
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to @mailskinasset, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_mailskinasset_path(@mailskinasset), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to mailskinassets_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

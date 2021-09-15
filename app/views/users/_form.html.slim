@@ -1,0 +1,39 @@
+= simple_form_for(@form) do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-xs-12.col-sm-5
+        = render "shared/f_text", :form => f, :field => :lastname, :field_label => t(:lastname), :field_hint => t(:lastname_hint)
+      .col-xs-12.col-sm-5
+        = render "shared/f_text", :form => f, :field => :firstname, :field_label => t(:firstname), :field_hint => t(:firstname_hint)
+      .col-xs-12.col-sm-2
+        / = render "shared/f_select", :form => f, :field => :gender, :field_label => t(:gender), :field_collection => %i(female male), :field_hint => t(:gender_hint)
+        = render "shared/f_gender", :form => f, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :email, :field_label => t(:email), :field_hint => t(:email_hint)
+    .row
+      .col-xs-9
+        = render "shared/f_text", :form => f, :field => :street, :field_label => t(:street), :field_hint => t(:street_hint)
+      .col-xs-3
+        = render "shared/f_text", :form => f, :field => :street_no, :field_label => t(:user_street_no), :field_hint => t(:street_no_hint)
+    .row
+      .col-xs-3
+        = render "shared/f_text", :form => f, :field => :zip, :field_label => t(:zip), :field_hint => t(:zip_hint)
+      .col-xs-9
+        = render "shared/f_text", :form => f, :field => :city, :field_label => t(:city), :field_hint => t(:city_hint)
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_country", :form => f, :field => :country, :field_label => t(:country), :field_hint => t(:country_hint), :field_priority => %w(Deutschland Österreich Schweiz)
+      .col-xs-12.col-sm-6
+        = render "shared/f_timezone", :form => f, :field => :time_zone, :field_label => t(:user_time_zone), :field_hint => t(:user_time_zone_hint), :preset => true
+
+  .row
+    .col-md-12
+      hr
+      .form-actions
+        p.text-right
+          = link_to t(:cancel), users_path, class: 'btn btn-default'
+          '&nbsp;
+          = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    = render "shared/section_header", header_text: t(:event_signup_options), :hint_text => ""
+.row.well
+  .col-md-12
+    .row
+      .col-md-4
+        = f.input :allow_signup
+      .col-md-4
+        = f.input :max_additional_participants, label: t(:max_additional_participants), hint: t(:max_additional_participants_hint)
+
+    .row
+      .col-md-6
+        p.lead
+        = f.input :external_signup_url, label: t(:external_signup_url), hint: t(:external_signup_url_hint)
+
+      .col-md-6
+        p.lead
+        = f.input :external_signup_text, label: t(:external_signup_text), hint: t(:external_signup_text_hint)
+    .row
+      .col-md-12
+        = f.input :redirect_message, label: t(:redirect_message), hint: t(:redirect_message_hint), as: :editor, input_html: { style: 'height: 200px;' }
+    - if @account.notification_url.present?
+      .row
+        .col-xs-12
+          = f.input :digimember_id

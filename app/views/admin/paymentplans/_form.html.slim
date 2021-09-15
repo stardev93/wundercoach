@@ -1,0 +1,19 @@
+= simple_form_for(@paymentplan, url: admin_paymentplan_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :comments
+    / = f.input :description
+    = f.input :key
+    = f.input :price
+    = f.input :cycle
+    = f.input :discount
+    = f.input :sortorder
+    = f.input :recommended
+    = f.association :appversion
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: paymentplans_path

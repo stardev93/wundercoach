@@ -1,0 +1,11 @@
+= simple_form_for(@vat) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :value
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: vats_path

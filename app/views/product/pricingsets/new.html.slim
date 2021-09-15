@@ -1,0 +1,8 @@
+- cancel_button = render "shared/button", path: product_pricingsets_path, link_text: t(:cancel), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+
+= render "shared/form_header",
+         header_text: t(:new_product_pricingset), hint_text: ''
+         buttons: cancel_button
+.row
+  .col-xs-12
+    = render 'form'

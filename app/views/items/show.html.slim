@@ -1,0 +1,65 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @item
+      span.add-item
+        = link_to new_item_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:new_item)
+    p.lead
+.row
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-6
+        address
+          p
+            strong = t(:shortdescription)
+            br
+            span.lead = @item.shortdescription
+            '&nbsp;
+          p
+            strong = t(:longdescription)
+            br
+            span.lead = @item.longdescription
+            '&nbsp;
+
+      .col-xs-12.col-sm-6
+        address
+          p
+            strong = t(:item_unit)
+            br
+            span.lead = @item.unit
+            '&nbsp;
+          p
+            strong = t(:vat)
+            br
+            span.lead = @item.vat
+            '&nbsp;
+          p
+            strong = t(:price)
+            br
+            span.lead = @item.price
+            '&nbsp;
+          p
+            strong = t(:currency)
+            br
+            span.lead = @item.currency
+            '&nbsp;
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @item, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_item_path(@item), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to items_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

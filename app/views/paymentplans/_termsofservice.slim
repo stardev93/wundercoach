@@ -1,0 +1,26 @@
+#terms_of_service.modal.fade tabindex="-1" role="dialog" aria-labelledby="terms_of_serviceLabel"
+  .modal-dialog.modal-lg role="document"
+    .modal-content
+      .modal-header
+        .row
+          .col-md-12.col-xs-12
+            span.h3
+              |&nbsp;&nbsp;&nbsp;
+              = t(:terms_of_service)
+            button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true" &times;
+            br
+
+      .modal-body
+        div style="overflow-y: scroll;height: 500px;"
+          = File.read("#{Rails.root}/app/assets/files/Wundercoach_Nutzungsbedingungen.html").html_safe
+
+      .modal-footer
+        .row
+          .col-xs-6.text-left
+            = link_to termsofservice_path
+              = t(:download_terms_of_service_pdf)
+          .col-xs-6
+            p.text-right
+              button.btn.btn-primary type="button" data-dismiss="modal"
+                = t(:close)

@@ -1,0 +1,9 @@
+$popover-color: lighten(#000, 20%);
+.popover {
+  color: #fff;
+  background-color: $popover-color;
+  border-radius: 0;
+}
+.popover.bottom > .arrow::after {
+  border-bottom-color: $popover-color;
+}

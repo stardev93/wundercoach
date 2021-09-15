@@ -1,0 +1,59 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:datevexport)
+      span.add-item
+        = link_to billing_businessdocuments_path, class: "btn btn-sm btn-default"
+          i.fa.fa-arrow-left
+          '&nbsp;
+          = t(:back_to_invoicelist)
+
+.row
+  .col-xs-12
+    - if !current_tenant.has_vat_revenue_accounts
+      .alert.alert-danger.alert-dismissible
+        strong = t(:attention)
+        |!&nbsp;
+        = t(:create_vat_revenue_accounts_first)
+
+
+.row
+  .col-xs-12
+    / = simple_form_for(@account, url: billing_datevdownload_path(format: :xlsx), method: :post) do |f|
+    = simple_form_for(@account, url: billing_datevdownload_path, method: :post) do |f|
+      = f.error_notification
+      .row
+        .col-xs-12
+          = render "shared/section_header", :header_text => t(:export_settings)
+      .row
+        .col-xs-6
+          = f.input :tax_consultant_id, label: t(:tax_consultant), hint: t(:tax_consultant_hint)
+        .col-xs-6
+          = f.input :tax_consultant_client_id, label: t(:tax_consultant_client), hint: t(:tax_consultant_client_hint)
+      .row
+        .col-xs-6
+          = f.input :revenue_account, label: t(:revenue_account), hint: t(:revenue_account_hint)
+        .col-xs-6
+          = f.input :costcenter, label: t(:costcenter), hint: t(:costcenter_hint)
+      .row
+        .col-xs-6
+          = f.input :export_fixed_at_start_date, as: :date_picker, locale: :de, label: t(:export_fixed_at_start_date), hint: t(:export_fixed_at_start_date_hint), :input_html => { :value => f.object.export_fixed_at_start_date}, class: "datepicker"
+        .col-xs-6
+          = f.input :export_fixed_at_end_date, as: :date_picker, locale: :de, label: t(:export_fixed_at_end_date), hint: t(:export_fixed_at_end_date_hint), :input_html => { :value => f.object.export_fixed_at_end_date}, class: "datepicker"
+      .row
+        .col-xs-12.text-right
+          .form-actions
+            label
+              br
+              |&nbsp;
+            - if current_tenant.has_vat_revenue_accounts
+              = f.button :submit, name: "downloadxls", value: t(:datev_export_xls), class: "btn btn-primary", formaction: billing_datevdownload_path(format: :xlsx)
+                = t(:datev_xls)
+              - if current_tenant.id == 660 or current_tenant.id == 86
+                |&nbsp;
+                = f.button :submit, name: "downloadcsv", value: t(:datev_export_csv), class: "btn btn-primary", formaction: billing_datevdownload_path(format: :csv)
+                  = t(:datev_csv)
+            - else
+              a href="#" class="btn btn-primary disabled" role="button"
+                = t(:export)

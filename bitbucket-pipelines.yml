@@ -1,0 +1,82 @@
+# This is a sample build configuration for Ruby.
+# Check our guides at https://confluence.atlassian.com/x/8r-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ruby:2.3.1
+
+pipelines:
+  branches:
+    staging:
+      - step:
+          name: Build and test
+          script:
+            - bundle install
+            - mv config/database.ci.yml config/database.yml
+            - rake db:schema:load
+            - rspec
+      - step:
+          name: Deploy to Registry
+          script:
+            - export IMAGE_NAME=wundercoach/wundercoach_live:$BITBUCKET_COMMIT
+            - docker build -f staging.Dockerfile -t $IMAGE_NAME .
+            - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+            - docker push $IMAGE_NAME
+          services:
+            - docker
+      - step:
+          name: Deploy to staging
+          script:
+            - export IMAGE_NAME=wundercoach/wundercoach_live:$BITBUCKET_COMMIT
+            - pipe: atlassian/ssh-run:0.2.7
+              variables:
+                SSH_USER: $STAGING_SSH_USER
+                SERVER: $STAGING_SSH_SERVER
+                COMMAND: echo "${DOCKER_HUB_PASSWORD}" | docker login --username "${DOCKER_HUB_USERNAME}" --password-stdin &&
+                  docker pull $IMAGE_NAME &&
+                  docker container stop rails_server;
+                  docker container rm rails_server;
+                  docker run -v /var/www/shared/log:/var/www/wundercoach/log -v /var/www/shared/tmp:/var/www/wundercoach/tmp -v /var/www/shared/public/system:/var/www/wundercoach/public/system -v /var/www/shared/public/assets:/var/www/wundercoach/public/assets -v /var/www/shared/private:/var/www/wundercoach/private -e STAGING_DATABASE_NAME='$STAGING_DATABASE_NAME' -e STAGING_DATABASE_USERNAME='$STAGING_DATABASE_USERNAME' -e STAGING_DATABASE_PASSWORD='$STAGING_DATABASE_PASSWORD' -e STAGING_DATABASE_HOST='$STAGING_DATABASE_HOST' --name rails_server  --memory 4g -p $SERVER_PORT:$SERVER_PORT --link mysql-db -d $IMAGE_NAME &&
+                  docker exec -it rails_server bundle exec bin/delayed_job start RAILS_ENV=staging &&
+                  docker exec -it rails_server bundle exec rake db:migrate assets:precompile -j 20
+          services:
+            - docker
+    master:
+      - step:
+          name: Build and test
+          script:
+            - bundle install
+            - mv config/database.ci.yml config/database.yml
+            - rake db:schema:load
+            - rspec
+      - step:
+          deployment: production
+          trigger: manual
+          name: Deploy to Registry
+          script:
+            - export IMAGE_NAME=wundercoach/wundercoach_live:$BITBUCKET_COMMIT
+            - docker build -f production.Dockerfile -t $IMAGE_NAME .
+            - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+            - docker push $IMAGE_NAME
+          services:
+            - docker
+      - step:
+          name: Deploy to production
+          script:
+            - export IMAGE_NAME=wundercoach/wundercoach_live:$BITBUCKET_COMMIT
+            - pipe: atlassian/ssh-run:0.2.7
+              variables:
+                SSH_USER: $LIVE_SSH_USER
+                SERVER: $LIVE_SSH_SERVER
+                COMMAND: echo "${DOCKER_HUB_PASSWORD}" | docker login --username "${DOCKER_HUB_USERNAME}" --password-stdin &&
+                  docker pull $IMAGE_NAME &&
+                  docker stop $CONTAINERS_TO_STOP
+                  docker container rm rails_server;
+                  docker run -v /var/www/shared/log:/var/www/wundercoach/log -v /var/www/shared/tmp:/var/www/wundercoach/tmp -v /var/www/shared/public/system:/var/www/wundercoach/public/system -v /var/www/shared/public/assets:/var/www/wundercoach/public/assets -v /var/www/shared/private:/var/www/wundercoach/private -e LIVE_DATABASE_NAME='$LIVE_DATABASE_NAME' -e LIVE_DATABASE_USERNAME='$LIVE_DATABASE_USERNAME' -e LIVE_DATABASE_PASSWORD='$LIVE_DATABASE_PASSWORD' -e LIVE_DATABASE_HOST='$LIVE_DATABASE_HOST' --name rails_server  --memory 4g -p $SERVER_PORT:$SERVER_PORT -d $IMAGE_NAME &&
+                  docker exec -it rails_server bundle exec bin/delayed_job start RAILS_ENV=production &&
+                  docker exec -it rails_server bundle exec rake db:migrate assets:precompile -j 20
+          services:
+            - docker
+definitions:
+  caches:
+    bundler: ./vendor

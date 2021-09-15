@@ -1,0 +1,198 @@
+/* body */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(https://fonts.gstatic.com/s/roboto/v15/2tsd397wLxj96qwHyNIkxHYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v15/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url(https://fonts.gstatic.com/s/roboto/v15/7m8l7TlFO-S3VkhHuR0at4gp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Roboto Medium Italic'), local('Roboto-MediumItalic'), url(https://fonts.gstatic.com/s/roboto/v15/OLffGBTaF0XFOW1gnuHF0Ygp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(https://fonts.gstatic.com/s/robotocondensed/v13/b9QBgL0iMZfDSpmcXcE8nCqOJfobX9lrC1wFVe9k15E.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v13/Zd2E9abXLFGSr9G3YK2MsH4vxAoi6d67T_UKWi0EoHQ.woff2) format('woff2');
+}
+
+body, html {
+  background-color: #EFEFEF;
+  font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
+}
+
+.page-header .h1 {
+  font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
+}
+
+/* navi */
+
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.open .dropdown-menu {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dropdown-menu {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.35s ease 0s;
+  backface-visibility: hidden;
+  display: block;
+  opacity: 0;
+  transform: scale(0);
+  padding-top: 0;
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  border-radius: 4px;
+}
+
+/* table */
+
+thead, tbody {
+  background: #fff none repeat scroll 0 0;
+}
+
+.table {
+  /* box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.page-header .h1, .page-header .add-item {
+  padding: 20px 0;
+  display: inline-block;
+}
+
+.page-header, .page-header .h1 {
+  margin: 0;
+}
+
+/* from-controls */
+
+.form-control {
+  display: block;
+  width: 100%;
+  color: #3D4051;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #CBD5DD;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s
+}
+
+.form-control:focus {
+  border-color: #507da4;
+  box-shadow: none
+}
+
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1
+}
+
+.form-control:-ms-input-placeholder {
+  color: #999
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #999
+}
+
+
+.btn-primary, .btn-danger, .btn-succsess, .btn-default, .pagination li span, .pagination li a, .label, .progress, .progress-bar, input[type="checkbox"] {
+  /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);*/
+  border: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+.btn-primary:active {
+  color: #000;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  border: 0 none;
+}
+
+.btn-primary:focus {
+  background-color: rgb(250, 250, 250);
+  border: 0 none;
+  color: #000;
+}
+
+#function-feature tr {
+ height: 52px;
+}
+
+#function-feature .fa-reorder {
+  cursor: move;
+}
+
+/* input helper */
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: -1px 0 0;
+
+}
+
+/* well */
+
+.well {
+ /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); */
+ box-shadow: none;
+ border-color: #e2edeb;
+ background-color: #fff;
+ border-radius: 2px;
+}
+
+.nav-tabs {
+  border-bottom: 0px;
+}

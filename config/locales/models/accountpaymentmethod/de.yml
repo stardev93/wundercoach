@@ -1,0 +1,15 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # assets
+  accountpaymentmethod: "Zahlungsmethode"
+  accountpaymentmethods: "Zahlungsmethode"
+  edit_accountpaymentmethod: "Zahlungsmethode bearbeiten"
+  edit_sofort: Sofort.com Zugangsdaten bearbeiten
+  edit_paypal: PayPal.com Zugangsdaten bearbeiten
+  accountpaymentmethod_successfully_created:  'Zahlungsmethode wurde erfolgreich erstellt.'
+  accountpaymentmethod_successfully_updated:  'Zahlungsmethode wurde erfolgreich aktualisiert.'
+  accountpaymentmethod_successfully_deleted:  'Zahlungsmethode wurde erfolgreich gelöscht.'
+  paymentmethod_successfully_activated: "Zahlungsmethode wurde erfolgreich aktiviert."
+  paymentmethod_successfully_deactivated: "Zahlungsmethode wurde erfolgreich aktiviert."
+  paypal_client_id: "PayPal Client ID"
+  paypal_client_id_hint: "Geben Sie hier Ihre PayPal Client ID ein. Sie erhalten Ihre PayPal Client ID in Ihrem PayPal-Kundenkonto auf der PayPal.com-Website."

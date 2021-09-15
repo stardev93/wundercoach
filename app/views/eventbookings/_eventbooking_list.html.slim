@@ -1,0 +1,16 @@
+table.table
+  thead
+    tr
+      th
+        = t(:event)
+      th
+        = t(:start_date)
+      th
+        = t(:end_date)
+      th colspan="2"
+        = t(:participant)
+      th
+        = t(:invoice)
+  tbody
+    - eventbookings.no_bundles.each do |eventbooking|
+      = render "eventbookings/eventbooking_row", :eventbooking => eventbooking

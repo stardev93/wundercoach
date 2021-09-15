@@ -1,0 +1,26 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_text_options), :hint_text => t(:event_text_options_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => event.slug, :field_label => t(:slug), :field_hint => t(:slug_hint)
+.row
+  .col-xs-12
+    - short_desc = truncate(sanitize(event.shortdescription), length: 400, separator: ' ', omission: '...')
+    = render "shared/f_ro_text", :field_value => short_desc, :field_label => t(:shortdescription), :field_hint => t(:shortdescription_hint)
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => event.comments, :field_label => t(:event_comments), :field_hint => t(:event_comments_hint)
+
+.row
+  .col-xs-12
+    hr
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => sanitize(event.longdescription), :field_label => t(:longdescription), :field_hint => t(:longdescription_hint)
+.row
+  .col-xs-12
+    hr
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => sanitize(event.bottom_text), :field_label => t(:bottom_text), :field_hint => t(:bottom_text_hint)

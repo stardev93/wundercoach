@@ -1,0 +1,16 @@
+= simple_form_for(@accountpaymentmethod) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :account, as: :hidden
+    = f.association :paymentmethod, label: t(:paymentmethod), as: :hidden
+    / = f.input :provider
+    = f.input :api_key
+    = f.input :user_id
+    = f.input :project_id
+    / = f.input :is_active
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: payment_path

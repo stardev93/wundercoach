@@ -1,0 +1,68 @@
+javascript:
+  $('#toggle_price_early_signup').click(function(event) {
+    $(".eventtemplate_price_early_signup").toggle()
+  });
+
+= simple_form_for(@eventtemplate) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row.well
+      .col-xs-12.col-md-8
+        = f.input :name
+
+      .col-xs-12.col-md-4
+        = f.association :eventtype, include_blank: false
+    .row
+      .col-xs-12
+        = f.input :slug, :hint => t(:slug_hint) + ' ' + t(:slug_widget_warning)
+    .row
+      .col-xs-12
+        = f.association :product_tags, collection: Product::Tag.by_name, input_html: { class: 'chosen-select', multiple: '' }
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", header_text: t(:event_pricing_options), :hint_text => ""
+
+    .row.well
+      .col-xs-12
+        .row
+          .col-xs-12.col-sm-6
+            = f.input :full_price, label: t(:price), hint: t(:event_price_hint)
+          .col-xs-12.col-sm-6
+            = f.input :currency, as: :currency_picker
+        .row
+          .col-xs-12.col-sm-6
+          .col-xs-12.col-sm-6
+            = f.association :pricingset, collection: Product::Pricingset.active, label: t(:pricingset), hint: t(:pricingsets_hint), include_blank: t(:select_pricing_option)
+
+
+          .col-xs-12.col-md-4
+            = f.input :maxparticipants
+        .row
+          .col-xs-12.col-md-6
+            = render "shared/f_boolean", :form => f, :field => :early_signup_pricing, :field_label => t(:early_signup_pricing), :field_hint => t(:early_signup_pricing_hint), :field_id => "toggle_price_early_signup"
+          .col-xs-12.col-md-6
+            = f.input :price_early_signup
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", header_text: t(:event_invoicing_options), :hint_text => ""
+    .row.well
+      .col-xs-12
+        .row
+          .col-xs-12
+            = f.input :generate_invoice
+
+    = render 'eventtemplates/form_partials/text_options', f: f
+
+    = render 'eventtemplates/form_partials/signup_options', f: f
+
+    / = render 'events/form_partials/location', f: f
+    = render 'events/form_partials/event_location_options', f: f
+
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        = f.button :magic_submit, cancel: eventtemplates_path

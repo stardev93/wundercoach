@@ -1,0 +1,15 @@
+.row.signup-confirm-data-zone
+  .col-xs-12
+    .well.signup_well
+      .row
+        .col-xs-6
+          span.h3 = t(:checkout_participant_information)
+          p.lead
+            = render "signup/orders/address", :address => address, :order => order
+
+        .col-xs-6
+          - if order&.billing_address&.present?
+            span.h3
+              = t(:different_billing_address)
+            p.lead
+              = render "signup/orders/address", :address => order.billing_address, :order => order

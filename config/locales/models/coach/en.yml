@@ -1,0 +1,68 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  coach: Coach
+  coach_hint: "Coaches are the people who perform the seminars. Create one or more coaches and assign them to your seminars. "
+  coach_gender: Salutation
+  coach_gender_hint: Salutation of the coach
+  coach_firstname: Firstname
+  coach_firstname_hint: Firstname of the coach
+  coach_lastname: Lastname
+  coach_lastname_hint: Lastname of the coach
+  coach_image: Image
+  coach_tel: Telephone
+  coach_tel_hint: Telephone number  of the coach
+  coach_email: Email
+  coach_email_hint: Emailadress of the coach
+  coach_price: "Cost"
+  coach_price_hint: "Cost rate"
+  coach_price_unit: "Cost rate unit"
+  coach_price_unit_hint: Choose whether the coach charges per day or per hour.
+  coach_price_unit_short: "Per"
+  coach_active: "Active?"
+  coach_active_hint: "Determines whether the coach is active and can be booked or not."
+  coach_active_yes: "The coach is active and can be booked."
+  coach_active_no: "The coach is inactive and can not be booked. Already set seminars with this coach will not be affected."
+  coach_homepage_url: Homepage
+  coach_homepage_url_hint: Link zur Homepage des Trainers
+  coach_homepage_url_target_blank: Ziel
+  coach_homepage_url_target_blank_hint: Link im neuen Fenster öffnen?
+  coach_title: Title
+  coach_title_hint: Enter title(s) of coach
+  coach_label: Shortdescription
+  coach_label_hint: Shortdescription of the coach
+  coach_description: Coach information
+  coach_description_hint: Information, description about the coach
+
+  per_hour: "Per hour"
+  per_h: "Per hour"
+  per_day: "Per day"
+  per_d: "Per day"
+  are_you_sure_you_want_to_delete_this_coach: 'Are you sure you want to delete this coach? He will then be removed from all seminars. '
+
+  available_coaches: "Available coaches"
+  available_coaches_hint: "These coaches can be assigned to the event."
+
+  assigned_coaches: "Assigned coaches"
+  assigned_coaches_hint: "These coaches are assigned to the event."
+
+  active: "Active"
+  inactive: "Inactive"
+
+  coaches: Coaches
+  coach_infotext: "Manage your coaches here. Coaches appear by name next to the seminars. "
+  no_coaches_created: "There are no active coaches available, click \" Add coach \"to create a new coach, or go to \" Seminars > Coaches \" and activate an existing coach. Return to this mask after. \n (Note: You can also perform this step later.) "
+  all_coaches_assigned: "All active coaches are already asssigned."
+  add_coach: "Add coach"
+  edit_coach: "Edit coach"
+  new_coach: "Add new coach"
+  lastname: Last name
+  firstname: First name
+  gender: Gender
+  simple_form:
+    options:
+      coach:
+        gender:
+          male: Mr
+          female: Ms
+          diverse: diverse
+          noinfo: "No info"

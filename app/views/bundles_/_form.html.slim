@@ -1,0 +1,58 @@
+= simple_form_for(@bundle) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row.well
+      .col-xs-12
+        = f.input :name
+      .col-xs-12
+        = f.input :slug
+    .row
+      .col-xs-12
+        = render "shared/section_header", header_text: t(:event_pricing_options), :hint_text => ""
+    .row.well
+      .col-xs-12
+        .row
+          .col-md-4.col-xs-12
+            = f.input :price
+          .col-md-4.col-xs-12
+            = f.input :currency, as: :currency_picker
+          .col-md-4.col-xs-12
+            = f.association :vat, label_method: :to_s, include_blank: false
+    .row
+      .col-md-12
+        = render "shared/section_header", header_text: t(:event_invoicing_options), :hint_text => ""
+    .row.well
+      .col-md-12
+        .row
+          .col-sm-6
+            - if can? :access, Feature.find_by(key: 'automated_billing')
+              = render "shared/f_boolean", :form => f, :field => :generate_invoice, :field_label => t(:generate_invoice), :field_hint => t(:generate_invoice_hint)
+            - else
+              - f.object.generate_invoice = false
+              = f.input :generate_invoice, as: :hidden
+              = render "shared/f_ro_boolean", :field_value => f.object.generate_invoice, :field_label => t(:generate_invoice), :field_hint => t(:generate_invoice_hint)
+              = render "shared/not_in_plan_button", text: t(:not_in_plan)
+          .col-sm-6
+            = f.association :paymentmethods, collection: Paymentmethod.allowed.non_free, as: :check_boxes
+
+    .row
+      .col-md-12
+        = render "shared/section_header", header_text: t(:event_signup_options), :hint_text => ""
+    .row.well
+      .col-md-12
+        .row
+          .col-sm-6
+            = f.association :onlinestatus, include_blank: false
+          .col-sm-6
+            = f.input :allow_signup
+        - if @account.notification_url.present?
+          .row
+            .col-xs-12
+              = f.input :digimember_id
+
+    = render 'events/form_partials/text_options', f: f
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: bundles_path

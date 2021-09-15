@@ -1,0 +1,13 @@
+User Stories
+
+
+Event booking
+1. User books for himself
+2. User books for another person
+3. User books for multiple persons (including himself )
+4. User books for a company
+5. User is a returning User that has booked before
+
+User creation
+1. new user signs up (i.e. new account)
+2. user is created for existing account

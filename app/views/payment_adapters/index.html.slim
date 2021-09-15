@@ -1,0 +1,44 @@
+= render "accounts/form_header",
+         headline: t(:choose_your_payment_method), hint: t(:choose_your_payment_method_hint)
+
+.row
+  .col-xs-6
+    .well.text-center style="height: 260px;"
+      h2 style="height: 70px;"
+        = t(:credit_card_payment)
+      / do we have a StripePaymentAdapter available?
+      - stripe_payment_adapter = @account.get_payment_adapter("StripePaymentAdapter")
+      - if stripe_payment_adapter
+        - active_payment_adapter = @account.get_active_payment_adapter
+        - if @account.payment_adapter_is_active("StripePaymentAdapter")
+          = render "button_active"
+        - else
+          = render "payment_method", :account => @account, :payment_adapter => stripe_payment_adapter
+        p
+        = link_to destroy_payment_adapter_path(stripe_payment_adapter), data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_payment_adapter)}"}, :method => :delete, :class => ""
+          = t(:credit_card_delete)
+      - else
+        / show link to setup
+        = render "stripe", path_to_create_action: stripe_payment_adapter_path, button_text: t(:configure)
+
+
+  .col-xs-6
+    .well.text-center style="height: 260px;"
+      h2 style="height: 70px;"
+        = t(:sepa_direct_debit_payment)
+      / do we have a GocardlessPaymentAdapter available?
+      - gocardless_payment_adapter = @account.get_payment_adapter("GocardlessPaymentAdapter")
+      - if gocardless_payment_adapter
+        - active_payment_adapter = @account.get_active_payment_adapter
+        - if @account.payment_adapter_is_active("GocardlessPaymentAdapter")
+          = render "button_active"
+        - else
+          = render "payment_method", :account => @account, :payment_adapter => gocardless_payment_adapter
+        p
+        = link_to destroy_payment_adapter_path(gocardless_payment_adapter), data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_payment_adapter)}"}, :method => :delete, :class => ""
+          = t(:sepa_direct_debit_delete)
+
+
+      - else
+        / show link to setup
+        = render "gocardless", redirect_action: redirect_to_gocardless_path, button_text: t(:configure)

@@ -1,0 +1,2 @@
+= mail_to eventbooking.email, html_options = {subject: eventbooking&.event&.name, body: "", cc: current_user&.email}
+  = (eventbooking.email).truncate(25, omission: '...')

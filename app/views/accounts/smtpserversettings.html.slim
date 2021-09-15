@@ -1,0 +1,9 @@
+= render "accounts/form_header",
+          :headline => t(:smtpserver),
+          :hint => t(:smtpserver_hint)
+
+.row
+  .col-sm-12
+    ul.list-group
+      - @smtpservers.each do |smtpserver|
+        = render "smtpserversettings_row", :smtpserver => smtpserver

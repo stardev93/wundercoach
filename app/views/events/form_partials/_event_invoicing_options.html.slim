@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    = render "shared/section_header", header_text: t(:event_invoicing_options), :hint_text => ""
+.row.well
+  .col-md-12
+    .row
+      .col-md-3
+        - if can? :access, Feature.find_by(key: 'automated_billing')
+          = render "shared/f_boolean", :form => f, :field => :generate_invoice, :field_label => t(:generate_invoice), :field_hint => t(:generate_invoice_hint)
+        - else
+          - f.object.generate_invoice = false
+          = f.input :generate_invoice, as: :hidden
+          = render "shared/f_ro_boolean", :field_value => f.object.generate_invoice, :field_label => t(:generate_invoice), :field_hint => t(:generate_invoice_hint)
+          = render "shared/not_in_plan_button", text: t(:not_in_plan)
+        /= f.input :generate_invoice, label: t(:generate_invoice), hint: t(:generate_invoice_hint)
+      .col-md-3
+        = f.association :paymentmethods, collection: Paymentmethod.allowed.non_free, as: :check_boxes, label: t(:allowed_paymentmethods)
+      .col-md-3
+        - unless @event.new_record?
+          = f.simple_fields_for :eventpaymentmethods do |epm|
+            - if epm.object.paymentmethod.key == 'vorkasse'
+              = epm.input :id, as: :hidden
+              = epm.input :paymentmethod_id, as: :hidden
+              = epm.input :available_until, label: "#{epm.object.paymentmethod.to_s} #{t(:available_until)}", as: :date_time_picker, hint: t(:available_until_hint)
+      .col-md-3
+        = f.input :reservation_expiry, as: :date_time_picker, label: t(:reservation_expiry), hint: t(:reservation_expiry_hint)

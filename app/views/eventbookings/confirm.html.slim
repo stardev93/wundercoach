@@ -1,0 +1,218 @@
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-user
+          | &nbsp;
+          = @eventbooking
+        span.add-item
+          = link_to new_eventbooking_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_eventbooking)
+
+  .row
+    .col-md-12
+      p.h3
+        = t(:booking_details)
+      hr style="padding:0px; margin: 5px;"
+  .row
+    .col-md-6
+      address
+        p
+          strong =t(:event)
+          br
+          span.lead = @eventbooking.event
+          '&nbsp;
+    .col-md-3
+      address
+        p
+          strong =t(:eventbookingstatus)
+          br
+          span.lead = @eventbooking.eventbookingstatus
+          '&nbsp;
+        p
+          strong =t(:price)
+          br
+          span.lead = @eventbooking.price
+          '&nbsp;
+    .col-md-3
+      address
+        p
+          strong =t(:booking_date)
+          br
+          span.lead = @eventbooking.booking_date
+          '&nbsp;
+        p
+          strong =t(:price_early_signup)
+          br
+          span.lead = @eventbooking.price_early_signup
+          '&nbsp;
+        p
+          strong =t(:early_booking_applies)
+          br
+          - if @eventbooking.early_booking_applies
+            i.fa.fa-check-square-o
+          - else
+            |nope
+          '&nbsp;
+  .row
+    .col-md-6
+      p.h3
+        = t(:eventbooking_participant_data)
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong =t(:user)
+          br
+          span.lead = @eventbooking.user
+          '&nbsp;
+
+        p
+          strong =t(:paymentmethod)
+          br
+          span.lead = @eventbooking.paymentmethod
+          '&nbsp;
+        p
+          strong =t(:payment_date)
+          br
+          span.lead = @eventbooking.payment_date
+          '&nbsp;
+        p
+          strong =t(:paymentstatus)
+          br
+          span.lead = @eventbooking.paymentstatus
+          '&nbsp;
+        p
+          strong =t(:company)
+          br
+          span.lead = @eventbooking.company
+          '&nbsp;
+        p
+          strong =t(:lastname)
+          br
+          span.lead = @eventbooking.lastname
+          '&nbsp;
+        p
+          strong =t(:firstname)
+          br
+          span.lead = @eventbooking.firstname
+          '&nbsp;
+        p
+          strong =t(:gender)
+          br
+          span.lead = @eventbooking.gender
+          '&nbsp;
+        p
+          strong =t(:tel)
+          br
+          span.lead = @eventbooking.tel
+          '&nbsp;
+        p
+          strong =t(:email)
+          br
+          span.lead = @eventbooking.email
+          '&nbsp;
+        p
+          strong =t(:zip)
+          br
+          span.lead = @eventbooking.zip
+          '&nbsp;
+        p
+          strong =t(:city)
+          br
+          span.lead = @eventbooking.city
+          '&nbsp;
+        p
+          strong =t(:street)
+          br
+          span.lead = @eventbooking.street
+          '&nbsp;
+        p
+          strong =t(:street_no)
+          br
+          span.lead = @eventbooking.street_no
+          '&nbsp;
+        p
+          strong =t(:country)
+          br
+          span.lead = @eventbooking.country_name
+          '&nbsp;
+    .col-md-6
+      p.h3
+        = t(:billing_address)
+      hr style="padding:0px; margin: 5px;"
+        p
+          strong =t(:billing_address)
+          br
+          span.lead = @eventbooking.billing_address
+          '&nbsp;
+        p
+          strong =t(:billing_company)
+          br
+          span.lead = @eventbooking.billing_company
+          '&nbsp;
+        p
+          strong =t(:billing_lastname)
+          br
+          span.lead = @eventbooking.billing_lastname
+          '&nbsp;
+        p
+          strong =t(:billing_firstname)
+          br
+          span.lead = @eventbooking.billing_firstname
+          '&nbsp;
+        p
+          strong =t(:billing_gender)
+          br
+          span.lead = @eventbooking.billing_gender
+          '&nbsp;
+        p
+          strong =t(:billing_email)
+          br
+          span.lead = @eventbooking.billing_email
+          '&nbsp;
+        p
+          strong =t(:billing_zip)
+          br
+          span.lead = @eventbooking.billing_zip
+          '&nbsp;
+        p
+          strong =t(:billing_city)
+          br
+          span.lead = @eventbooking.billing_city
+          '&nbsp;
+        p
+          strong =t(:billing_street)
+          br
+          span.lead = @eventbooking.billing_street
+          '&nbsp;
+        p
+          strong =t(:billing_street_no)
+          br
+          span.lead = @eventbooking.billing_street_no
+          '&nbsp;
+        p
+          strong =t(:billing_country)
+          br
+          span.lead = @eventbooking.billing_country
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to @eventbooking, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      ' &nbsp;
+      = link_to edit_eventbooking_path(@eventbooking), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to eventbookings_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back)

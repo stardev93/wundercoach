@@ -1,0 +1,14 @@
+.form-group
+  = simple_form_for :affiliate_events, url: url_for(controller: controller_name, action: action_name, clear: :filter), method: :get do |f|
+    = f.input :by_account, required: false, label: Account.model_name.human(count: 1),
+              collection: @affiliate.accounts, selected: @filters['by_account'],
+              include_blank: t(:all)
+    |&nbsp;
+    = f.input :by_affiliate_tags, required: false, label: Affiliate::Tag.model_name.human(count: 2),
+              collection: @affiliate.tags, as: :check_boxes, checked: @filters['by_affiliate_tags']
+    |&nbsp;
+    = f.button :button, class: "button btn btn-primary", name: nil
+      i.fa.fa-search
+    - unless @filters.empty?
+      = link_to url_for(controller: controller_name, action: action_name, clear: :filter), class: "btn btn-link"
+        = t(:show_all)

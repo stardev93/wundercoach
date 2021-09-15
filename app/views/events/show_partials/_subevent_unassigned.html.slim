@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    h4
+      = t(:unassigned_subevents)
+
+.row
+  .col-xs-12
+    = render "shared/form_search", :search_path => event_path(@event) + '#subevents'
+.row
+  .col-xs-12
+    ul.list-group
+
+
+    - events.each do |event|
+      - action_link = link_to t(:assign), assignsubevent_event_path(parentevent.id, event.id)
+      = render "events/show_partials/event_small", :event => event, :action_link => action_link
+.row
+  .col-xs-12
+     = will_paginate events, renderer: BootstrapPagination::Rails, :link_path => edit_event_path(@event), :params => {:anchor => "subevents"}, :param_name => "availablesubevents_page"

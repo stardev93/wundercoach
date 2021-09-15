@@ -1,0 +1,88 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-cloud
+        | &nbsp;
+        = @accountinvoiceposition
+      span.add-item
+        = link_to new_accountinvoiceposition_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_accountinvoiceposition)
+    p.lead
+      = @accountinvoiceposition.accountinvoice
+      br
+      = @accountinvoiceposition.position
+      br
+      = @accountinvoiceposition.paymentplan
+      br
+      = @accountinvoiceposition.paymentplan_name
+      br
+      = @accountinvoiceposition.paymentplan_cycle
+      br
+      = @accountinvoiceposition.paymentplan_amount
+      br
+      = @accountinvoiceposition.paymentplan_price
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Accountinvoiceposition
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong =t(:accountinvoice)
+        br
+        span.lead = @accountinvoiceposition.accountinvoice
+        '&nbsp;
+      p
+        strong =t(:position)
+        br
+        span.lead = @accountinvoiceposition.position
+        '&nbsp;
+      p
+        strong =t(:paymentplan)
+        br
+        span.lead = @accountinvoiceposition.paymentplan
+        '&nbsp;
+      p
+        strong =t(:paymentplan_name)
+        br
+        span.lead = @accountinvoiceposition.paymentplan_name
+        '&nbsp;
+      p
+        strong =t(:paymentplan_cycle)
+        br
+        span.lead = @accountinvoiceposition.paymentplan_cycle
+        '&nbsp;
+      p
+        strong =t(:paymentplan_amount)
+        br
+        span.lead = @accountinvoiceposition.paymentplan_amount
+        '&nbsp;
+      p
+        strong =t(:paymentplan_price)
+        br
+        span.lead = @accountinvoiceposition.paymentplan_price
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @accountinvoiceposition, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_accountinvoiceposition_path(@accountinvoiceposition), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to accountinvoicepositions_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

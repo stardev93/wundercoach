@@ -1,0 +1,20 @@
+- add_button = render "shared/button", path: new_coach_path, link_text: t(:add_coach), icon: "fa-plus", classes: "btn btn-link add-item", datatoggle: "tooltip", dataplacement: "top", title: t(:add_coach)
+
+= render "shared/section_header", header_text: t(:assigned_coaches), :hint_text => t(:assigned_coaches_hint), :popover_text => t(:assigned_coaches_hint), :subheadline => true
+.row
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th = t (:name)
+          th
+
+
+      tbody
+        - coaches.each do |coach|
+          tr
+            td
+              = render "coaches/coach_tile", :coach => coach
+            td.text-right
+              = link_to event_removecoach_path(@event, coach)
+                = t(:remove)

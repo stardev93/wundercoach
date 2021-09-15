@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-credit-card
+        '&nbsp;
+        = t(:edit_booking)
+        p.lead
+          = t(:account_name)
+          |&nbsp;
+          = @booking.account
+    
+    == render 'form'

@@ -1,0 +1,68 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  coach: Trainer
+  coach_hint: "Trainer sind die Personen, die die Seminare und Veranstaltungen durchführen. Legen Sie einen oder mehrere Trainer an, und ordnen Sie diese Ihren Seminare und Veranstaltungen zu."
+  coach_gender: Anrede
+  coach_gender_hint: Anrede des Trainers
+  coach_firstname: Vorname
+  coach_firstname_hint: Vorname des Trainers
+  coach_lastname: Nachname
+  coach_lastname_hint: Nachname des Trainers
+  coach_image: Bild
+  coach_tel: Telefon
+  coach_tel_hint: Telefonnummer des Trainers
+  coach_email: Email
+  coach_email_hint: Emailadresse des Trainers
+  coach_price: "Kosten"
+  coach_price_hint: "Kostensatz des Trainers"
+  coach_price_unit: "Einheit Kostensatz"
+  coach_price_unit_hint: "Wählen Sie, ob die Kosten des Trainers pro Tag oder pro Stunde gelten."
+  coach_price_unit_short: "pro"
+  coach_active: "Aktiv?"
+  coach_active_hint: "Legt fest, ob der Trainer aktiv ist und gebucht werden kann oder nicht."
+  coach_active_yes: "Der Trainer ist aktiv und kann gebucht werden."
+  coach_active_no: "Der Trainer ist inaktiv und kann nicht gebucht werden. Bereits angelegte Seminare mit diesem Trainer sind davon nicht betroffen."
+  coach_homepage_url: Homepage
+  coach_homepage_url_hint: Link zur Homepage des Trainers
+  coach_homepage_url_target_blank: Ziel
+  coach_homepage_url_target_blank_hint: Link im neuen Fenster öffnen?
+  coach_title: Titel
+  coach_title_hint: Titel des Coaches
+  coach_label: Kurzbezeichnung
+  coach_label_hint: Bezeichnung für den Coach
+  coach_description: Informationstext
+  coach_description_hint: Informationstext, Beschreibung, Kurzinformation zum Coach
+
+  per_hour: "pro Stunde"
+  per_h: "pro Stunde"
+  per_day: "pro Tag"
+  per_d: "pro Tag"
+  are_you_sure_you_want_to_delete_this_coach: 'Wollen Sie diesen Trainer wirklich löschen? Er wird dann aus allen Seminaren entfernt.'
+
+  available_coaches: "Verfügbare Trainer"
+  available_coaches_hint: "Diese Trainer können der Veranstaltung zugewiesen werden."
+
+  assigned_coaches: "Zugewiesene Trainer"
+  assigned_coaches_hint: "Diese Trainer sind der Veranstaltung zugewiesen."
+
+  active: "Aktiv"
+  inactive: "Inaktiv"
+
+  coaches: Trainer
+  coach_infotext: "Verwalten Sie hier Ihre Trainer. Trainer erscheinen mit Namen neben den Seminaren und Veranstaltungen."
+  no_coaches_created: "Es sind keine aktiven Trainer verfügbar. Klicken Sie auf \"Trainer anlegen\", um einen neuen Trainer anzulegen oder gehen Sie auf \"Seminare > Trainer\" und aktivieren Sie einen vorhandenen Trainer. Kehren Sie dann in diese Maske zurück. (Hinweis: Sie können diesen Schritt auch später ausführen.)"
+  all_coaches_assigned: "Alle aktiven Trainer sind bereits zugewiesen."
+  add_coach: "Trainer anlegen"
+  edit_coach: "Trainer bearbeiten"
+  new_coach: "Neuen Trainer anlegen"
+  lastname: Nachname
+  firstname: Vorname
+  gender: Anrede
+  simple_form:
+    options:
+      coach:
+        gender:
+          male: Herr
+          female: Frau
+          diverse: Divers
+          noinfo: "Keine Angabe"

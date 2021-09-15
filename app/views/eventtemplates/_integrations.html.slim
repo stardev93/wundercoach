@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    .well
+      .row
+        .col-xs-12
+          = t(:widget_eventtemplate_infotext)
+      .row
+        .col-xs-12
+          ul.list-group
+          - Widget.find_each do |widget|
+            li.list-group-item
+              p
+                strong = widget
+              p
+                = widget.description
+              pre id="widgetlink#{widget.id.to_s}"
+                = %Q(<script type="text/javascript" src="#{eventtemplate_widget_script_url(@eventtemplate.slug, widget.token, subdomain: current_tenant.subdomain, locale: nil)}" async="true"></script>)
+              p.text-right
+                = render "eventtemplates/btn_copy_to_clipboard", element: 'widgetlink'+widget.id.to_s

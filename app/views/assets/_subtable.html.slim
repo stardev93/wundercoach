@@ -1,0 +1,47 @@
+.row
+  .col-md-12
+    .page-header
+      span.h4
+        = t(:assets)
+    p.lead
+      small
+        = t(:assets_infotext)
+.row
+  .col-md-12
+    = render "assets/dzmicro", :asset => @asset
+    p
+      |&nbsp;
+.row
+  .col-md-12
+    table.table
+      thead
+        tr
+          th
+            = t (:preview)
+          th
+            = t (:asset_name)
+          th
+            = t (:asset_status)
+          th
+
+      tbody
+        - @assets.each do |asset|
+          tr
+            td
+              = render "assets/thumb", :asset => asset
+            td
+              = link_to asset.name, asset
+              br
+              = t(:uploaded_by_on, username: asset.user, created_at: (asset.created_at.present? ? (l asset.created_at, format: :short) : asset.created_at))
+              
+            td = asset.status
+            td.text-right
+              = link_to asset, class: "btn btn-danger btn-xs", data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_asset)}"}, :method => :delete
+                i.fa.fa-remove
+                '&nbsp;
+                = t(:delete)
+              |&nbsp;
+              = link_to edit_asset_path(asset), class: "btn btn-default btn-xs"
+                i.fa.fa-edit
+                '&nbsp;
+                =t(:edit)

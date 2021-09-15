@@ -1,0 +1,109 @@
+.jumbotron
+  h2
+    |Wundercoach Dashboard
+  p.small
+    |Rails::VERSION::STRING:&nbsp;
+    = Rails::VERSION::STRING
+    |&nbsp;RUBY_VERSION:&nbsp;
+    = RUBY_VERSION
+.row
+  .col-xs-12
+    = simple_form_for(:backend, url: admin_dashboard_path, method: "GET") do |f|
+      .row
+        .col-xs-12.col-sm-5.col-md-2.col-lg-2
+          = f.input :from_date, as: :date_picker, label: t(:from), input_html: {value: @from_date}
+        .col-xs-12.col-sm-5.col-md-2.col-lg-2
+          = f.input :to_date, as: :date_picker, label: t(:to), input_html: {value: @to_date}
+        / hide on mobile
+        .hidden-xs.col-sm-2.col-md-2.col-lg-2
+          label
+            |&nbsp;
+          br
+          button.btn.btn-default
+            |Search
+        / hide on col-sm and above
+        .col-xs-12.hidden-sm.hidden-md.hidden-lg.text-right
+          button.btn.btn-default
+            |Search
+          br
+          br
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6
+          label
+            |Zeitraum
+          br
+          .btn-group role="group" aria-label="..."
+            = link_to admin_dashboard_path + "?backend[filter]=ytd&backend[from_date]=#{Time.now.strftime("%Y-01-01")}&backend[to_date]=#{Date.today}", class: "btn btn-default #{@filter == 'ytd' ? 'active' : ''}"
+              = t(:year_to_date)
+            = link_to admin_dashboard_path + "?backend[filter]=l30d&backend[from_date]=#{Date.today-1.month}&backend[to_date]=#{Date.today}", class: "btn btn-default #{@filter == 'l30d' ? 'active' : ''}"
+              = t(:last_30_days)
+            = link_to admin_dashboard_path + "?backend[filter]=l7d&backend[from_date]=#{Date.today-1.week}&backend[to_date]=#{Date.today}", class: "btn btn-default #{@filter == 'l7d' ? 'active' : ''}"
+              = t(:last_7_days)
+          |&nbsp;
+          = link_to admin_dashboard_path + "?backend[clear]=true"
+            = t(:clear)
+        .col-xs-12
+          br
+.row
+  .col-xs-12.col-sm-6.col-lg-3.text-center
+    = render "key_metric", paneltype: "warning", body_headline: "new signups", body_text: "New customer signups in selected period", value: @key_metrics.signups_count
+
+  .col-xs-12.col-sm-6.col-lg-3.text-center
+    / = render "key_metric", paneltype: "danger", body_text: "new revenue", value: 100
+    = render "key_metric", paneltype: "danger", body_headline: "churn", body_text: "Deleted customer accounts in selected period", value: @key_metrics.churn_count
+    / number_to_currency(Backend.new_accounts_turnover(@from_date, @to_date) / 100, locale: :de)
+
+  .col-xs-12.col-sm-6.col-lg-3.text-center
+    = render "key_metric", paneltype: "success", body_headline: "total accounts", body_text: "Accounts in database", value: @key_metrics.total_accounts_count
+
+  .col-xs-12.col-sm-6.col-lg-3.text-center
+    = render "key_metric", paneltype: "primary", body_headline: "MRR", body_text: "Average Monthly rate of return based on monthly and yearly subscriptions", value: number_to_currency(@key_metrics.estimated_revenue_sum)
+
+.row
+  .col-xs-12
+    h4 signups
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#new_signups_monthly" aria-controls="new_signups_monthly" role="tab" data-toggle="tab"
+          = t(:monthly)
+      li
+        a href="#new_signups_weekly" aria-controls="new_signups_weekly" role="tab" data-toggle="tab"
+          = t(:weekly)
+      li
+        a href="#new_signups_daily" aria-controls="new_signups_daily" role="tab" data-toggle="tab"
+          = t(:daily)
+
+.row
+  .col-md-12
+    .well
+      .tab-content
+        #new_signups_monthly.tab-pane.active role="tabpanel"
+          = column_chart([{ name: "new signups", data: @key_metrics.signups_statistics(:month) }, { name: "churn", data: @key_metrics.churn_statistics }])
+        #new_signups_weekly.tab-pane role="new_signups_weekly"
+          = column_chart([{ name: "new signups", data: @key_metrics.signups_statistics(:week) }, { name: "churn", data: @key_metrics.churn_statistics }])
+        #new_signups_daily.tab-pane role="new_signups_daily"
+          = column_chart([{ name: "new signups", data: @key_metrics.signups_statistics(:day) }, { name: "churn", data: @key_metrics.churn_statistics }])
+
+.row
+  .col-xs-12
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#mrr" aria-controls="mrr" role="tab" data-toggle="tab"
+          | Monthly recurring revenue
+      li
+        a href="#upgrades" aria-controls="upgrades" role="tab" data-toggle="tab"
+          = t(:upgrades)
+      li
+        a href="#downgrades" aria-controls="downgrades" role="tab" data-toggle="tab"
+          = t(:downgrades)
+.row
+  .col-md-12
+    .well
+      .tab-content
+        #mrr.tab-pane.active role="tabpanel"
+          = line_chart([{ name: "MRR", data: @key_metrics.estimated_revenue_statistics }], curve: false)
+        #upgrades.tab-pane role="tabpanel"
+          = line_chart(@key_metrics.paymentplan_statistics, curve: false)
+        #downgrades.tab-pane role="tabpanel"
+          h2 TODO
+
+p.lead This graph works on present data, but it does not look into the future. The data for the current month is not complete its value will increase until the end of the month.

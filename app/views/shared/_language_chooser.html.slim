@@ -1,0 +1,2 @@
+li#language_chooser class="current-locale-#{I18n.locale}"
+  = I18n.available_locales.map {|locale| link_to(locale, url_for(locale: locale), class: locale) }.join(' | ').html_safe

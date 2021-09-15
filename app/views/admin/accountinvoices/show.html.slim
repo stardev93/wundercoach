@@ -1,0 +1,123 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-file-text-o
+        |&nbsp;
+        = @accountinvoice
+      span.add-item
+        = link_to new_admin_accountinvoice_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_accountinvoice)
+.row
+  .col-xs-4
+    address
+      p.lead
+        - unless @accountinvoice.recipient_name_1.blank?
+          br
+          = @accountinvoice.recipient_name_1
+        - unless @accountinvoice.recipient_name_2.blank?
+          br
+          = @accountinvoice.recipient_name_2
+        br
+        = @accountinvoice.street
+        |&nbsp;
+        = @accountinvoice.street_no
+        br
+        = @accountinvoice.zip
+        |&nbsp;
+        = @accountinvoice.city
+        br
+        = @accountinvoice.country_name
+
+  .col-xs-4
+    address
+      p
+        strong =t(:invoice_date)
+        br
+        span.lead = @accountinvoice.invoice_date
+        '&nbsp;
+      p
+        strong =t(:email_to)
+        br
+        span.lead = @accountinvoice.email_to
+        '&nbsp;
+      p
+        strong =t(:vat_number)
+        br
+        span.lead = @accountinvoice.account.vat_number
+        '&nbsp;
+
+  .col-xs-4
+    address
+      p
+        strong
+          = t(:document_number)
+        br
+        span.lead
+          = @accountinvoice.accountinvoicetype
+          |&nbsp;
+          = @accountinvoice.invoice_number
+        / - unless @accountinvoice.successor.nil?
+        /   br
+        /   = link_to accountinvoice_path(@accountinvoice.successor)
+        /     = @accountinvoice.successor
+        / - unless @accountinvoice.predecessor.nil?
+        /   br
+        /   = link_to accountinvoice_path(@accountinvoice.predecessor)
+        /     = @accountinvoice.predecessor
+        '&nbsp;
+      p
+        strong =t(:payment_date)
+        br
+        span.lead = @accountinvoice.payment_date
+        '&nbsp;
+      p
+        strong =t(:invoicetype)
+        br
+        span.lead
+          = @accountinvoice.accountinvoicetype
+        '&nbsp;
+      p
+        strong =t(:invoicestatus_id)
+        br
+        span.lead
+          = @accountinvoice.accountinvoicestatus
+        '&nbsp;
+
+.row
+  .col-xs-12
+    p.lead
+      strong
+        = @accountinvoice.accountinvoicetype.to_s + " " + t(:number_abbr) + " #{@accountinvoice.invoice_number}"
+  .col-xs-12
+    p.lead
+      = @accountinvoice.additional_text
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to admin_accountinvoices_pdf_path(@accountinvoice), class: "btn btn-primary", target: "_blank"
+      i.fa.fa-file-pdf-o
+      '&nbsp;
+      = t(:print)
+    ' &nbsp;
+    = link_to admin_accountinvoice_path(@accountinvoice), data: {confirm: "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_admin_accountinvoice_path(@accountinvoice), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to admin_accountinvoices_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+
+.row
+  .col-xs-12
+    = render "accountinvoicepositions/subtable", accountinvoicepositions: @accountinvoice.accountinvoicepositions, accountinvoice: @accountinvoice

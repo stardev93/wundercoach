@@ -1,0 +1,45 @@
+.row
+  .col-xs-12
+    table.table.table-hover
+      thead
+        tr
+          th nowrap="nowrap"
+            = sort_link(@q, :name, t(:name))
+            br
+            = t(:shortdescription)
+          th nowrap="nowrap"
+            = sort_link(@q, :start_date, t(:start_date))
+            br
+            = sort_link(@q, :end_date, t(:end_date))
+          th nowrap="nowrap"
+            = t(:seats_booked)
+            br
+            = sort_link(@q, :coach, t(:coach))
+            / br
+            / = t(:waiting_list_count)
+
+          th.text-right nowrap="nowrap"
+            = sort_link(@q, :latest_signup_date, t(:latest_signup_date))
+            br
+            = t(:price)
+          th nowrap="nowrap"
+            = t(:onlinestatus)
+            br
+            = t(:planningstatus)
+            br
+            = t(:allow_signup)
+            br
+            = t(:eventtype)
+          th nowrap="nowrap"
+
+      tbody
+        - @events.each do |event|
+          - case event.type
+            - when 'IndividualEvent'
+              = render 'events/index_partials/individual_event_row', event: event.decorate
+            - when 'StandardEvent', 'FreeEvent', 'IndividualAgreedEvent', 'BundleEvent', 'OnlineEvent'
+              = render 'events/index_partials/event_row', event: event.decorate
+
+    .row
+      .col-md-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

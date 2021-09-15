@@ -1,0 +1,63 @@
+- if event.is_a? BundleEvent
+  .row.signup-subevents-zone
+    .col-xs-12
+      .well.signup_well
+        .row
+          .col-xs-9
+            h3
+              = t(:included_subevents_hint)
+          .col-xs-3
+            br
+            button.btn.btn-default.btn-sm onclick="toggleSubevents('subevent_row_#{event.id}');"
+              = t(:show)
+        .row
+          .col-xs-12
+            p &nbsp;
+        .row id="subevent_row_#{event.id}" style="display: none;"
+          .col-xs-12
+            table.table
+              tr
+                th
+                  span.lead
+                    strong
+                      = t(:start_date)
+                  br
+                  span.lead
+                    strong
+                      = t(:end_date)
+                th
+                  span.lead
+                    strong
+                      = t(:event_name)
+                th
+                  span.lead
+                    strong
+                      = t(:event_location)
+              - event.object.subevents.by_date.each do |subevent|
+                tr
+                  td
+                    span.lead
+                      = subevent.subevent.decorate.start_date
+                      br
+                      = subevent.subevent.decorate.start_time
+                    br
+                    |-
+                    br
+                    span.lead
+                      = subevent.subevent.decorate.end_date
+                      br
+                      = subevent.subevent.decorate.end_time
+                  td
+                    span.lead
+                      = subevent.subevent.decorate
+                    br
+                    span.lead
+                      = subevent.subevent.decorate.shortdescription
+                  td
+                    span.lead
+                      = subevent.subevent.decorate.location
+
+        javascript:
+          function toggleSubevents(id) {
+            $('#' + id).toggle();
+          }

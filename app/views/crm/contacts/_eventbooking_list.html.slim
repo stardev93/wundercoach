@@ -1,0 +1,94 @@
+/ .row
+/   .col-xs-12
+/     span.add-item
+/       .btn-group
+/
+table.table
+  thead
+    tr
+      th = t(:status)
+      th = t(:name)
+      th = t(:booking_date)
+      th = t(:price)
+      th
+        = t(:invoice)
+        br
+        = t (:paymentstatus)
+      th
+
+  tbody
+    - EventbookingDecorator.decorate_collection(@eventbookings).each do |eventbooking|
+      tr
+        td = render "eventbookingstatuses/label", eventbookingstatus: eventbooking.eventbookingstatus
+        td
+          = link_to eventbooking
+            = eventbooking
+          br
+          = mail_to eventbooking.email
+          - unless eventbooking.company.blank?
+            br
+            |(
+            = eventbooking.company
+            |)
+        td
+          = eventbooking.booking_date
+          br
+          = eventbooking.booking_time
+        td style="white-space:nowrap"
+          / = check_button(eventbooking.early_booking_applies)
+          = money_to_currency(eventbooking.order.price)
+
+        - if eventbooking.event.additional_participants?
+          td
+            - if eventbooking.additional_participants.present?
+              - eventbooking.additional_participants.each_value do |participant|
+                = "#{participant[:firstname]} #{participant[:lastname]}"
+                br
+            - else
+              |---
+        td
+        td
+          = render "billing/businessdocuments/invoice_controls", :eventbooking => eventbooking
+        td
+          .btn-toolbar role="toolbar"
+            .btn-group.pull-right
+              button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                |...
+              ul.dropdown-menu role="menu"
+                li
+                  = link_to eventbooking_path(eventbooking)
+                    i.fa.fa-eye
+                    '&nbsp;
+                    = t(:show_eventbooking)
+                li
+                  = link_to edit_eventbooking_path(eventbooking)
+                    i.fa.fa-edit
+                    '&nbsp;
+                    = t(:edit_eventbooking)
+                - if eventbooking.destroyable?
+                  li
+                    = link_to eventbooking, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+                - unless eventbooking.status_is? 'cancelled'
+                  li
+                    = link_to cancel_eventbooking_path(eventbooking), data: { confirm: "#{t(:are_you_sure_you_want_to_delete_this_eventbooking)}" }, method: :get
+                      i.fa.fa-ban
+                      '&nbsp;
+                      = t(:cancel_booking)
+                li
+                  = mail_to eventbooking.email
+                    i.fa.fa-envelope-o
+                    '&nbsp;
+                    = t(:contact_customer)
+                - if !eventbooking.event.free? && eventbooking.order.nil? && eventbooking.order.businessdocuments.empty?
+                  li
+                    = link_to eventbookings_createinvoice_path(eventbooking)
+                      = t(:create_invoice)
+                - eventbooking.order.businessdocuments.each do |invoice|
+                  li
+                    = link_to billing_businessdocument_path(invoice)
+                      = t(:invoice)
+                      '&nbsp;
+                      = invoice

@@ -1,0 +1,2 @@
+- if @pdftemplate.footer and File.exists?(@pdftemplate.footer.path)
+  img src="#{@pdftemplate.footer.path(:original)}" style="width: 100%;"

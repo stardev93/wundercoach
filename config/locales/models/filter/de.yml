@@ -1,0 +1,45 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  filters: Filter
+  filter_hint: z.B. "aus Hamburg und Umgebung", "Telefonseminar-Teilnehmer", "Empfänger des Newsletters vom xx.xx.xxxx"
+  PriceFilter: nach Preis
+  TypeFilter: nach Veranstaltungsart
+  CampaignFilter: nach Teilnahme an einer Kampagne
+  LocationFilter: nach dem Ort der Veranstaltung
+  eql: gleich
+  lt: kleiner als
+  gt: größer als
+  gte: größer oder gleich
+  lte: kleiner oder gleich
+  participated_in_an_event_where_price_was_x: Teilnahme an einem Seminar, dessen Preis %{comparator} %{price} war.
+  participated_in_an_event_where_eventtype_was_x: Teilnahme an einem Seminar vom Typ "%{eventtype}".
+  participated_in_campaign_x: Teilnahme an der Kampagne "%{campaign}".
+  participated_in_an_event_close_to_x: Teilnahme an einem Seminar in höchstens %{distance} km Entfernung von %{location}.
+  new_filter: Neuer Filter
+  edit_filter: Filter bearbeiten
+  distance: Entfernung
+  distance_hint: Maximale Entfernung in km
+  amount: Betrag
+  amount_hint: Teilnahmegebühr des Seminars
+  comparator: Vergleich des Preises
+  comparator_hint: größer, kleiner oder gleich?
+  unknown_filter: "Unbekannter Filter"
+  simple_form:
+    options:
+      filter:
+        comparator:
+          eql: gleich
+          lt: kleiner als
+          gt: größer als
+          gte: größer oder gleich
+          lte: kleiner oder gleich
+        price: Preis
+        type:
+          PriceFilter: nach Preis
+          TypeFilter: nach Veranstaltungsart
+          CampaignFilter: nach Teilnahme an einer Kampagne
+          LocationFilter: nach Veranstaltungsort
+    magic_submit:
+      filters:
+        new:
+          submit: "Neuen Filter anlegen"

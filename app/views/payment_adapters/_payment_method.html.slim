@@ -1,0 +1,4 @@
+= simple_form_for(account, url: account_path) do |f|
+  = f.error_notification
+  input type="hidden" value="#{payment_adapter.id}" name="account[payment_adapter_id]" id="account_payment_adapter_id_#{payment_adapter.id}"
+    = f.button :magic_submit

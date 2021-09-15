@@ -1,0 +1,23 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_pricing_options), :hint_text => t(:event_pricing_options_hint)
+
+.row
+  .col-xs-6
+    = render "shared/f_ro_text", :field_value => event.full_price, :field_label => t(:full_price), :field_hint => t(:full_price_hint)
+  .col-xs-4
+    = render "shared/f_ro_text", :field_value => event.price_early_signup, :field_label => t(:price_early_signup), :field_hint => t(:price_early_signup_hint)
+  .col-xs-2
+    = render "shared/f_ro_text", :field_value => event.early_signup_deadline, :field_label => t(:early_signup_deadline), :field_hint => t(:early_signup_deadline_hint)
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:vat_options), :hint_text => t(:vat_hint)
+
+.row
+  .col-xs-6
+    = render "shared/f_ro_text", :field_value => event.vat, :field_label => t(:vat), :field_hint => t(:vat_hint)
+  .col-xs-6
+    = render "shared/f_ro_boolean", :field_value => event.account.vat_included, :field_label => t(:event_vat_included), :field_hint => t(:event_vat_included_hint)
+
+= render "shared/f_ro_text", :field_value => event.currency, :field_label => t(:currency), :field_hint => t(:currency_hint)
+= render "shared/f_ro_text", :field_value => event.pricingset, :field_label => t(:pricingset), :field_hint => t(:pricingsets_hint)

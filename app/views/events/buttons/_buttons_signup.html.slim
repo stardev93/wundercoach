@@ -1,0 +1,9 @@
+= render "shared/button", path: signup_show_event_path(@event), link_text: t(:signup_event_view), icon: "fa-share-square", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:signup_event_view_hint), target: "_blank"
+|&nbsp;
+= render "shared/button", path: signup_index_path, link_text: t(:signup_list), icon: "fa-share-square", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:signup_list_view_hint), target: "_blank"
+
+/ = link_to signup_index_path, :class=>"btn btn-default", :target => "_blank"
+/   i.fa.fa-share-square
+/   '&nbsp;
+/   = t(:signup_list)
+/ |&nbsp;

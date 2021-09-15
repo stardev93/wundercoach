@@ -1,0 +1,28 @@
+.row class=@order.checkout_class
+  .col-sm-4.col-xs-12
+    .well.text-center style="background-color: #aca398;" class="checkout-step-1"
+      h1
+        |1.
+      h3
+        = t(:checkout_participant_information)
+    .visible-step-2 style="position: absolute;right: 20px; top: 0px;background: none;"
+      span.h1
+        i.fa.fa-check.fa-2x
+
+  .col-sm-4.col-xs-12
+    .well.text-center.highlight-step-2
+      h1 2.
+      h3
+        - if @order.product.free?
+          = t(:payment_not_applied)
+        - else
+          = t(:checkout_payment_information)
+    .visible-step-3 style="position: absolute;right: 20px; top: 0px;background: none;"
+      span.h1
+        i.fa.fa-check.fa-2x
+
+  .col-sm-4.col-xs-12
+    .well.text-center.highlight-step-3
+      h1 3.
+      h3
+        = t(:checkout_summary_information)

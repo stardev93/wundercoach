@@ -1,0 +1,67 @@
+.row
+  .col-md-2#files style="background-color: #dddddd;"
+    button.btn.btn-default.btn-xs#files-off
+      | &nbsp;
+      i.fa.fa-toggle-left
+    p.lead Files
+    .panel-group id="accordion" role="tablist" aria-multiselectable="true"
+      .panel.panel-default
+        .panel-heading role="tab" id="headingOne"
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+              = t(:classroom_files)
+        .panel-collapse.collapse.in id="collapseOne" role="tabpanel" aria-labelledby="headingOne"
+          .panel-body
+            ul.list-group
+              li.list-group-item
+                |xyz341_v1.avi
+              li.list-group-item
+                |xyz341_v1.avi
+              li.list-group-item
+                |xyz341_v1.avi
+      
+      - @eventsession.event.eventbookings.each do |eventbooking|
+        .panel.panel-default
+          .panel-heading role="tab" id="eventbooking_#{eventbooking.id}"
+            h4.panel-title
+              a.collapsed data-toggle="collapse" data-parent="#accordion" href="#collapse_#{eventbooking.id}" aria-expanded="false" aria-controls="collapseTwo"
+                = eventbooking.firstname
+          .panel-collapse.collapse id="collapse_#{eventbooking.id}" role="tabpanel" aria-labelledby="eventbooking_#{eventbooking.id}"
+            .panel-body
+              ul.list-group
+                li.list-group-item
+                  |xyz341_v1.avi
+                li.list-group-item
+                  |xyz341_v1.avi
+                li.list-group-item
+                  |xyz341_v1.avi
+
+
+
+
+
+  .col-md-10#main style="background-color: #cccccc;"
+    .row
+      .col-md-12
+        button.btn.btn-default.btn-xs#files-on style="display:none;"
+          | &nbsp;
+          i.fa.fa-toggle-right
+        | &nbsp;
+        button.btn.btn-default#show-video
+          i.fa.fa-video-camera
+          | &nbsp;
+          | on/off
+        | &nbsp;
+        button.btn.btn-default#show-whiteboard
+          i.fa.fa-desktop
+          | &nbsp;
+          | on/off
+    .row#video
+      .col-md-12
+        p.lead Video
+        iframe src="https://appear.in/#{@eventsession.token}" width="800" height="640" frameborder="0"
+    .row#whiteboard style="display:none;"
+      .col-md-12
+        p.lead Whiteboard
+        iframe src="https://awwapp.com/" width="600px" height="600px" frameborder="0"
+                

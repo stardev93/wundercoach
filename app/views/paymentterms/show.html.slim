@@ -1,0 +1,71 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @paymentterm
+      span.add-item
+        = link_to new_paymentterm_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_paymentterm)
+    p.lead
+      = @paymentterm.account
+      br
+      = @paymentterm.paymentmethod
+      br
+      = @paymentterm.context
+      br
+      = @paymentterm.name
+      br
+      = @paymentterm.description
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Paymentterm
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong = t(:account)
+        br
+        span.lead = @paymentterm.account
+        '&nbsp;
+      p
+        strong = t(:paymentmethod)
+        br
+        span.lead = @paymentterm.paymentmethod
+        '&nbsp;
+      p
+        strong = t(:context)
+        br
+        span.lead = @paymentterm.context
+        '&nbsp;
+      p
+        strong = t(:name)
+        br
+        span.lead = @paymentterm.name
+        '&nbsp;
+      p
+        strong = t(:description)
+        br
+        span.lead = @paymentterm.description
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @paymentterm, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_paymentterm_path(@paymentterm), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to paymentterms_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

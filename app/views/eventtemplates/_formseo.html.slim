@@ -1,0 +1,29 @@
+= simple_form_for(@eventtemplate, url: eventtemplate_saveseo_path, method: :patch) do |f|
+  = f.error_notification
+
+  .form-inputs.well
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :name, :field_label => t(:eventtemplate_name), :field_hint => t(:eventtemplate_name_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :slug, :field_label => t(:slug), :field_hint => t(:slug_hint), :field_disabled => true
+        / = f.input :slug
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :meta_title, :field_label => t(:meta_title), :field_hint => t(:meta_title_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_textarea", :form => f, :field => :meta_description, :field_label => t(:meta_description), :field_hint => t(:meta_description_hint), :field_rows => 5
+    .row
+      .col-xs-12
+        = render "shared/f_textarea", :form => f, :field => :meta_keywords, :field_label => t(:meta_keywords), :field_hint => t(:meta_keywords_hint), :field_rows => 5
+
+    .row
+      .col-xs-12
+        = render "shared/f_boolean", :form => f, :field => :use_tracking, :field_label => t(:use_tracking), :field_hint => t(:use_tracking_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: eventtemplates_path

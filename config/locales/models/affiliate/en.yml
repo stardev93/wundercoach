@@ -1,0 +1,8 @@
+en:
+  current_commission: Current commisson rate
+  account_commission: Customer commission rate
+  adpartner_commission: Ad partner commission rate
+  affiliate_commission: Remaining commission
+
+  affiliate_participation: "With your registration you participate at the affiliate program of %{affiliate}."
+  invalid_token: 'The entered token is invalid.'

@@ -1,0 +1,65 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  contact: Kontakt
+  contacts: Kontakte
+  person: Person
+  persons: Personen
+  assigned_persons: Personen in dieser Firma
+  company: Firma
+  companies: Firmen
+  contact_infotext: Liste der Kontakte in der Kontaktverwaltung
+  current_contact: Aktueller Kontakt
+  contact_type: Typ
+  edit_person: "Person bearbeiten"
+  edit_company: "Firma bearbeiten"
+  new_person: "Neue Person anlegen"
+  new_company: "Neue Firma anlegen"
+  add_person_to_company: Person hinzufügen
+
+  vat_id: "Umsatzsteuer-ID"
+  register: "Handelsregister"
+  register_code: "Handelsregister-Nummer"
+  account_receivable_no: "Debitoren-Nr"
+  contact_no: "Kontakt-Nr"
+  account_receivable_no: "Debitorenkonto"
+  contact_vat_id: "UST-ID"
+  is_primary: "Primär"
+  primary_address: "Hauptanschrift"
+
+  address: Adresse
+  addresses: Adressen
+  new_contact_address: "Neue Adresse"
+  address_type: "Art"
+  other_address: "andere"
+  delivery_address: "Lieferadresse"
+  billing_address: "Rechnungsadresse"
+  work_phone: "Telefon Arbeit"
+  private_phone: "Telefon privat"
+  mobile_phone: "Mobil"
+  work_email: "E-Mail"
+  website: "Website"
+  other_detail: "andere"
+
+  contact_details: Details
+
+  contact_tag: Schlagwort
+  contact_tags: Schlagworte
+  contact_tag_infotext: Nutzen Sie Schlagworte, um Ihre Kontakte in Kategorien einzuteilen.
+  contact_tags_hint: Verwenden Sie Schlagworte, um Ihre Kontakte in Kategorien einzuteilen.
+  add_contact_tag: Neues Schlagwort
+  contact_created: "Der Kontakt wurde erstellt"
+  create_contact_from_eventbooking: "Kontakt aus Buchung erstellen"
+  open_contact: "Kontakt öffnen"
+  create_contact: "Kontakt erstellen"
+  error_creating_contact: "Fehler beim Erstellen des Kontakts"
+
+  assign_contact_to_invoice: Kontakt zuweisen
+  invoice_contact: Rechnungskontakt
+  existing_contacts: Bestehende Kontakte
+  contact_count: Anzahl Kontakte
+  company_name: Firmenname
+  company_name2: "Firmenname 2"
+  parent_company: Firma
+  parent_company_id: Firmen-ID
+  contact_searchterm: Suche nach Name, Vorname, Nachname, Kontakt-Nr., Debitorenkonto, Adresse, E-Mail, Telefon...
+  companies_with_persons: Firmen mit Personen

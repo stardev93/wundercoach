@@ -1,0 +1,98 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-copy
+        | &nbsp;
+        = t(:eventtemplates)
+      span.add-item
+        / = link_to new_eventtemplate_path, :class=>"btn btn-primary"
+        /   i.fa.fa-plus
+        /   | &nbsp;
+        /   = t(:add_eventtemplate)
+    p.lead
+      = t(:eventtemplate_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag eventtemplates_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to eventtemplates_path, class: "btn btn-link"
+                = t(:show_all)
+
+
+    table.table
+      thead
+        tr
+          th
+            = t (:name)
+          th
+            = t (:duration)
+          th
+            = t (:maxparticipants)
+          th
+            = t (:price)
+            br
+            = t (:price_early_signup)
+          th
+            = t (:eventtype)
+          th
+            = t (:location)
+          th
+            = t (:coach)
+          th
+
+      tbody
+        - @eventtemplates.each do |eventtemplate|
+          tr
+            td = link_to eventtemplate.name, landingpage_show_path(eventtemplate)
+            td
+              = eventtemplate.duration
+              |&nbsp;
+              = eventtemplate.durationunit
+            td = eventtemplate.maxparticipants
+            td
+              = eventtemplate.price
+              br
+              = eventtemplate.price_early_signup
+            td = eventtemplate.eventtype
+            td = eventtemplate.location
+            td = eventtemplate.coach
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to  eventtemplate_createevent_path (eventtemplate)
+                        i.fa.fa-copy
+                        '&nbsp;
+                        =t(:create_event_from_eventtemplate)
+                    li
+                      = link_to eventtemplate_path(eventtemplate)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        =t(:show)
+                    li
+                      = link_to edit_eventtemplate_path(eventtemplate)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        =t(:edit)
+                    li
+                      = link_to eventtemplate, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_eventtemplate)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+
+    .row
+      .col-xs-12
+        / = will_paginate @collection, renderer: BootstrapPagination::Rails

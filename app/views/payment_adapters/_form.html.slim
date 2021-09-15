@@ -1,0 +1,16 @@
+= simple_form_for(@payment_adapter) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key, label: t(:key), hint: t(:key_hint), readonly: @mailtemplate.is_system
+    = f.input :name, hint: t(:name_hint), readonly: @mailtemplate.is_system
+
+    = f.association :mailskin, include_blank: false, label: t(:mailskin), hint: t(:mailskin_hint)
+
+    = f.input :subject, label: t(:subject), hint: t(:subject_hint)
+    = f.input :message, as: :editor, input_html: { style: 'height: 200px;' }, label: t(:message), hint: t(:message_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: mailtemplates_path

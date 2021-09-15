@@ -1,0 +1,8 @@
+/ synopsis
+/ link-style display: = render "shared/modal_confirm_button", , :button_type => '', :confirm_url => my_confirm_url, :confirm_headline => t(:headline), :confirm_text => t(:textbody)
+/ button-style display: = render "shared/modal_confirm_button", , :button_type => 'btn btn-danger', :confirm_url => my_confirm_url, :confirm_headline => t(:headline), :confirm_text => t(:textbody)
+a data-toggle="modal" data-trigger="hover" data-target="#modalconfirm" class="#{button_type} modal_confirm" style="cursor: pointer;" data-url="#{confirm_url}" data-headline="#{confirm_headline}" data-text="#{confirm_text}" data-button="#{confirm_button}"
+  - if defined? confirm_icon
+    i.fa class="#{confirm_icon}"
+    '&nbsp;
+  = confirm_button

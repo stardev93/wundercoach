@@ -1,0 +1,32 @@
+- if event.is_a? FreeEvent
+  .row.signup-price-zone
+    .col-xs-12
+      .well.signup_well
+        .row
+          .col-xs-12.col-sm-6.text-right
+            span.h3.
+              = t(:price)
+          .col-xs-12.col-sm-6.text-right
+            p.lead
+              = t(:event_is_free_of_charge)
+
+- else
+  .row.signup-price-zone
+    .col-xs-12
+      .well.signup_well
+        - if event.multipricing?
+          .row
+            .col-xs-12
+              span.h3
+                = t(:price)
+          .row
+            .col-xs-12
+              = render "signup/products/pricingoptions", :event => event, :order => order, :enable_row_select => enable_row_select
+        - else
+          .row
+            .col-xs-12.col-sm-6.text-right
+              span.h3.
+                = t(:price)
+            .col-xs-12.col-sm-6.text-right
+              p.lead
+                = render "signup/info_price", :event => event

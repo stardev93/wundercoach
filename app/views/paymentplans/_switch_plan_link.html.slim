@@ -1,0 +1,14 @@
+ruby:
+  plan_expires = @account.bookings.current&.valid_until.present?
+  free = paymentplan.free?
+  current_plan = paymentplan == @account.paymentplan
+  disabled = current_plan || (plan_expires && free)
+
+- if disabled
+  = render 'paymentplans/switch_plan_button', paymentplan: paymentplan, disabled: disabled, current_plan: current_plan, plan_expires: plan_expires, free: free
+- elsif @account.has_stripe?
+  = link_to chooseplan_path(paymentplan), style: "width: 100%;", method: 'post'
+    = render 'paymentplans/switch_plan_button', paymentplan: paymentplan, disabled: disabled, current_plan: current_plan, plan_expires: plan_expires, free: free
+- else
+  = link_to register_payment_path(paymentplan), style: "width: 100%;"
+    = render 'paymentplans/switch_plan_button', paymentplan: paymentplan, disabled: disabled, current_plan: current_plan, plan_expires: plan_expires, free: free

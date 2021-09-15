@@ -1,0 +1,34 @@
+script src="https://checkout.stripe.com/checkout.js"
+
+javascript:
+  var handler = StripeCheckout.configure({
+    key: "#{Rails.configuration.stripe[:publishable_key]}",
+    image: 'https://wundercoach.net/wp-content/uploads/2015/12/wundercoach_logo.png',
+    locale: 'auto',
+    email: "#{@account.email}",
+    token: function(token) {
+      $("#checkoutButton").attr("disabled", "");
+      $("#stripe_token").val(token.id);
+      $("#charge_form").submit();
+    }
+  });
+
+  $(document).ready(function(){
+    $('#checkoutButton').on('click', function(e) {
+      e.preventDefault();
+      // Open Checkout with further options
+      handler.open({
+        name: 'Wundercoach'
+      });
+    });
+  })
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+
+= form_tag path_to_create_action, method: "post", id: "charge_form"
+  = hidden_field_tag "stripeToken", nil, id: "stripe_token"
+
+= button_tag button_text, id: "checkoutButton", class: %w(btn btn-success), style: "width: 80%;"

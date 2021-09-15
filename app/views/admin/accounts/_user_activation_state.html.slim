@@ -1,0 +1,11 @@
+- if user
+  - if user.activation_state == "pending"
+    = link_to "https://#{@account.subdomain}.wundercoach.net/de/users/#{user.activation_token}/activate", target: "_blank"
+      = user.activation_state
+      |&nbsp;(
+      = t(:activate)
+      |)
+  - else
+    = user.activation_state
+- else
+  |No user

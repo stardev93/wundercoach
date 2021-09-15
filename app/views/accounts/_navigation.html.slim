@@ -1,0 +1,46 @@
+ul.nav.nav-pills.nav-stacked
+  li class="#{(controller_name == 'accounts' && action_name == "show") || action_name == "editsettings" ? 'active' : ''}"
+    = link_to t(:accountsettings), account_path
+
+  li class="#{action_name == "domainsettings" || action_name == "domainsettingsedit" ? 'active' : ''}"
+    = link_to t(:domainsettings), domainsettings_path
+
+  li class="#{action_name == "invoicedesign" || action_name == "invoicedesignedit" ? 'active' : ''}"
+    = link_to t(:invoicedesign), invoicedesign_path
+
+  li class="#{controller_name == 'event_design' ? 'active' : ''}"
+    hr
+    = link_to t(:event_checkout_settings), event_design_path
+
+  li class="#{action_name == 'iframe' ? 'active' : ''}"
+    = link_to t(:website_integration_headline), iframe_path
+
+  li class="#{action_name == "payment" ? 'active' : ''}"
+    = link_to t(:payment_methods), payment_path
+
+  - if can? :manage, Account
+  li class="#{action_name == "seosettings" || action_name == "seosettingsedit" ? 'active' : ''}"
+    = link_to t(:seosettings), seosettings_path
+
+  li class="#{action_name == "history" ? 'active' : ''}"
+    hr
+    = link_to t(:account_history), history_path
+
+  li class="#{action_name == "billing" ? 'active' : ''}"
+    = link_to t(:billing_information), billing_path
+
+  li class="#{action_name == "index" ? 'active' : ''}"
+    = link_to t(:payment), payment_account_path
+
+  li class="#{action_name == "smtpserversettings" || action_name == "smtpserversettingsedit" || controller_name == "smtpservers" ? 'active' : ''}"
+    = link_to t(:smtpservers), smtpserversettings_path
+
+  - if can? :destroy, Account
+    li
+      hr
+      = link_to t(:delete_account), confirm_delete_account_path
+
+  - if can? :manage, Account
+    li class="#{action_name == "edit" && controller_name == "accounts" ? 'active' : ''}"
+      hr
+      = link_to t(:admin_edit), edit_account_path

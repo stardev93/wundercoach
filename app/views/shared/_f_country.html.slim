@@ -1,0 +1,17 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+- if defined? field_priority
+  - priority = field_priority
+- else
+  - priority = false
+
+- if !defined? field_include_blank
+  - field_include_blank = false
+= form.input field, label: label, hint: hint, priority: priority, include_blank: field_include_blank

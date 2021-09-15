@@ -1,0 +1,61 @@
+.row
+  .col-md-12
+    h1
+      i.fa.fa-cog
+      = t(:paymentplanfeatures)
+
+.row
+  table.table.table-hover.table-fixed-header#function-feature
+    thead.header
+      tr
+        th style="width: 33%;"
+          div class="btn-group"
+            button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+              |#{session[:current_appversion].blank? ? t(:choose_appversion) : Appversion.find(session[:current_appversion])}
+              span class="caret"
+            ul class="dropdown-menu"
+              - @appversions.each do |list_appversion|
+                li
+                  = link_to main_app.admin_paymentplanfeatures_setappversion_path(list_appversion, locale: I18n.locale)
+                    = list_appversion.name
+          |&nbsp;
+          - unless session[:current_appversion].blank?
+            = link_to main_app.new_admin_feature_path(locale: I18n.locale) + '?appversion=' + session[:current_appversion].to_s, class: "btn btn-default"
+              = t(:add_feature)
+        - @paymentplans.order(sortorder: :asc).each do |paymentplan|
+          th.text-center style="width: 10%;"
+            .th-wrapper
+              .head-cell
+                = link_to paymentplan, main_app.edit_admin_paymentplan_path(paymentplan, locale: I18n.locale)
+    tbody
+      - @features.each do |feature|
+        tr data-id="#{feature.id}" data-position="#{feature.position}"
+          th
+            = feature.position
+            |&nbsp;
+            span
+              i.fa.fa-reorder
+            |&nbsp;
+            = link_to main_app.edit_admin_feature_path(feature, locale: I18n.locale)
+              = feature
+            |&nbsp;(
+            = feature.fieldtype
+            |)&nbsp;
+            = link_to main_app.admin_feature_path(feature, locale: I18n.locale), data: { confirm: 'Are you sure you want to delete this object?' }, method: :delete
+              i.fa.fa-remove
+              |&nbsp;
+              = t(:delete)
+            = link_to main_app.admin_features_populate_path(feature, locale: I18n.locale)
+              |&nbsp;
+              = t(:new)
+            br
+            span style="font-weight: normal;"
+              = feature.description.html_safe
+
+            - feature.paymentplans.each do |paymentplan|
+              td.text-center
+                - paymentplanfeature = Paymentplanfeature.find_by(paymentplan: paymentplan, feature: feature)
+                - if paymentplanfeature.fieldvalue.to_i == 1
+                  = render "admin/paymentplanfeatures/link_destroy", paymentplanfeature: paymentplanfeature
+                - else
+                  = render "admin/paymentplanfeatures/link_create", paymentplanfeature: paymentplanfeature

@@ -1,0 +1,15 @@
+.btn-group
+  button.btn.dropdown-toggle class="btn-#{planningstatus.color} #{btn_size}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    i.fa class="#{planningstatus.icon}"
+    |&nbsp;
+    = planningstatus
+    |&nbsp;
+    span.caret
+  ul.dropdown-menu
+    - Planningstatus.all.each do |planningstatus_to_go|
+      li
+        = link_to event_planningstatus_path(event) + "?planningstatus=#{planningstatus_to_go.key}&redirect=#{redirect}"
+          = planningstatus_to_go
+          - if planningstatus_to_go.key == planningstatus.key
+            |&nbsp;
+            i.fa.fa-check

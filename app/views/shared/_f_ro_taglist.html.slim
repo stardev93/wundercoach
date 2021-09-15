@@ -1,0 +1,9 @@
+- if defined? field_label
+  strong
+    = field_label
+  br
+- taglist.each do |tag|
+  btn.btn.btn-default.btn-xs
+    = tag
+  |&nbsp;
+p.f_ro_text_spacer

@@ -1,0 +1,71 @@
+{{stylesheet}}
+<div id="wundercoach_embedded">
+  <div class="row event_body_zone">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+                <h4 class="event_headline">Seminare</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Datum</th>
+            <th class="event_th">Thema</th>
+            <th class="event_th">Trainer</th>
+            <th class="event_th">Ort</th>
+            <th class="text-right event_th">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for event in events%}
+            <tr class="event_tr">
+              <td class="event_td">
+                <span class="event_start_date">{{event.start_date}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_name">
+                  {{event.show_link}}
+                </span>
+                <br>
+                {{event.shortdescription}}
+              </td>
+              <td class="event_td">
+                <span class="event_coach">{{event.coaches}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_location">
+                  {% if event.eventorganizer %}
+                    {{event.eventorganizer}}
+                    <br />
+                  {% endif %}
+                  {% if event.location %}
+                    {{event.location}}
+                    <br />
+                  {% endif %}
+                  {% if event.city %}
+                    {{event.city}}
+                    <br>
+                  {% endif %}
+                </span>
+              </td>
+              <td class="text-right event_td" nowrap="nowrap">
+                <span class="event_price">{{event.price}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_signup"></span>
+                <p>
+                  {{event.signup_link}}
+                </p>
+                <p>
+                  {{event.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

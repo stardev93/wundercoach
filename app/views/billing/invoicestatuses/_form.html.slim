@@ -1,0 +1,15 @@
+= simple_form_for(@invoicestatus) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key, label: t(:key)
+    = f.input :name, label: t(:name)
+    = f.input :description, label: t(:description)
+    = f.input :position, label: t(:position)
+    = f.input :color, label: t(:color)
+    = f.input :icon, label: t(:icon)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: invoicestatuses_path

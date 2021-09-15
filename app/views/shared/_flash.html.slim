@@ -1,0 +1,42 @@
+.row
+  .col-md-12
+    / if account is incomplete, the current user is logged in as an internal user and we're not in the editsettings or showplans action,
+    / then show an alert, that the user must provide billing data
+
+    - if @account && !@account.complete? && current_user&.internal? && !%w(editsettings showplans payment).include?(action_name) && !%w(signup backend accounts).include?(controller.controller_name)
+      .alert.alert-warning
+        strong = t(:attention)
+        |!&nbsp;
+        = link_to t(:account_data_not_complete), edit_settings_path
+    - if flash[:success]
+      .alert.alert-success.alert-dismissible
+        button.close type="button" data-dismiss="alert"
+          span aria-hidden="true" &times;
+          span class="sr-only" Close
+        strong = t(:success)
+        |:&nbsp;
+        = flash[:success]
+
+    - if flash[:alert]
+      .alert.alert-danger.alert-dismissible
+        button.close type="button" data-dismiss="alert"
+          span aria-hidden="true" &times;
+          span class="sr-only" Close
+        strong = t(:attention)
+        |!&nbsp;
+        = flash[:alert]
+
+    - if flash[:notice]
+      .alert.alert-info.alert-dismissible
+        button.close type="button" data-dismiss="alert"
+          span aria-hidden="true" &times;
+          span class="sr-only" Close
+        strong = t(:notice)
+        |:&nbsp;
+        = flash[:notice]
+
+    - if flash[:feature_check]
+      = render "shared/feature_check", text: flash[:feature_check]
+
+    - if @required_feature.present?
+      = feature_notice @required_feature

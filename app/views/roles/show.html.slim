@@ -1,0 +1,50 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @role
+        span.add-item
+          = link_to new_role_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Role
+      p.lead
+        = @role.name
+        br
+        = @role.desc
+        br
+
+  .row
+    .col-md-12
+      p.h3 
+        'Role 
+        = t(:data) 
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Name
+          br
+          span.lead = @role.name
+          '&nbsp;
+        p
+          strong Desc
+          br
+          span.lead = @role.desc
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_role_path(@role), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to roles_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

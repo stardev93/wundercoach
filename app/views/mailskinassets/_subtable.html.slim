@@ -1,0 +1,19 @@
+.row.mailskinassets
+  .col-md-12
+    - unless @mailskinasset.nil?
+      = render "mailskinassets/dzmicro", :mailskinasset => @mailskinasset
+    ul.list-group
+      - @mailskinassets.each do |mailskinasset|
+        li.list-group-item
+          .row
+            .col-xs-3
+              - if mailskinasset.mailskinasset.exists?
+                = image_tag mailskinasset.mailskinasset(:thumb), :class => "media-object img-responsive"
+              - else
+                = image_tag "default_thumb.png", :class => "media-object img-responsive"
+            .col-xs-7
+              = mailskinasset.mailskinasset_file_name
+            .col-xs-2.text-right
+              - unless @mailskinasset.nil?
+                = link_to  mailskinasset_remove_path(mailskinasset), :class => "btn btn-default btn-xs"
+                  i.fa.fa-close

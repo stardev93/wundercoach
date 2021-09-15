@@ -1,0 +1,8 @@
+h3
+  label
+    = "#{t(:available_paymentmethods)}:"
+ul style="padding: 0px;"
+  - event.paymentmethods.each do |paymentmethod|
+    li style="list-style: none;"
+      p.lead
+        = paymentmethod

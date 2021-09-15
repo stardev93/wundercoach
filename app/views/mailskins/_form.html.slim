@@ -1,0 +1,21 @@
+.row
+  .col-xs-8
+    = simple_form_for(@mailskin) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name, label: t(:name), hint: t(:name_hint)
+        = f.input :key, label: t(:key), hint: t(:key_hint)
+        = f.input :htmlbody, label: t(:htmlbody), hint: t(:htmlbody_hint), :input_html => {:rows => 20}
+        = f.input :textbody, label: t(:textbody), hint: t(:textbody_hint), :input_html => {:rows => 20}
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: mailskins_path
+
+  .col-xs-4
+    .row
+      .col-xs-12
+        - unless @mailskin.new_record?
+          = render "mailskinassets/subtable", :@mailskinassets => @mailskin.mailskinassets

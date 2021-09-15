@@ -1,0 +1,24 @@
+= simple_form_for([@campaign, @target_group, @filter]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    / - if @target_group.present?
+    /   = f.input :target_group_id, as: :hidden, input_html: { value: @target_group.id }
+    = f.input :type, as: :hidden
+    = f.input :name, label: t(:name), hint: t(:filter_hint)
+    - case @filter.class.name
+      - when 'PriceFilter'
+        = render 'form_price_filter', f: f
+      - when 'LocationFilter'
+        = render 'form_location_filter', f: f
+      - when 'CampaignFilter'
+        = render 'form_campaign_filter', f: f
+      - when 'TypeFilter'
+        = render 'form_type_filter', f: f
+      - else
+        |Not yet implemented
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: filters_path

@@ -1,0 +1,25 @@
+= simple_form_for(@product_pricingset) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence
+  = f.input :account_id, as: :hidden
+
+  .form-inputs
+    .row
+      .col-xs-6
+        = render "shared/f_text", :form => f, :field => :name, :field_label => t(:pricingset_name), :field_hint => t(:pricingset_name_hint)
+      .col-xs-6
+        = render "shared/f_boolean", :form => f, :field => :active, :field_label => t(:pricingset_active), :field_hint => t(:pricingset_active_hint)
+
+    .row
+      .col-xs-6
+        = render "shared/f_text", :form => f, :field => :hint_text, :field_label => t(:pricingset_hint_text), :field_hint => t(:pricingset_hint_text_hint)
+
+      .col-xs-6
+        = render "shared/f_text", :form => f, :field => :description, :field_label => t(:pricingset_description), :field_hint => t(:pricingset_description_hint)
+
+
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: product_pricingsets_path

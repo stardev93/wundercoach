@@ -1,0 +1,20 @@
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+- if defined? field_priority
+  - priority = field_priority
+- else
+  - priority = false
+
+label
+  = label
+- if defined? field_id
+  = form.input field, label: false, hint: hint, input_html: { class: "js-switch", "data-switchery": "true", type: "checkbox", id: field_id }
+- else
+  = form.input field, label: false, hint: hint, input_html: { class: "js-switch", "data-switchery": "true", type: "checkbox" }

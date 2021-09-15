@@ -1,0 +1,50 @@
+@import "bootstrap";
+
+pre {
+  background-color: inherit;
+  color: inherit;
+  border: 0 none;
+  font-family: inherit;
+}
+th {
+  font-weight: normal;
+}
+body {
+  font-size: 12px;
+  background-color: #fff;
+}
+tr.total_amount {
+  border-bottom: 2px solid #DCDCDC;
+}
+.sender_address_box {
+  font-weight: normal;
+  font-size: 11px;
+}
+.recipient_address_box {
+  font-weight: normal;
+  font-size: 11px;
+}
+.details_box {
+  font-weight: normal;
+  font-size: 11px;
+}
+.th_position {
+  font-weight: bold;
+  font-size: 11px;
+}
+.td_position {
+  font-weight: normal;
+  font-size: 11px;
+}
+.td_net {
+  font-weight: normal;
+  font-size: 11px;
+}
+.td_vat {
+  font-weight: normal;
+  font-size: 11px;
+}
+.td_total {
+  font-weight: bold;
+  font-size: 11px;
+}

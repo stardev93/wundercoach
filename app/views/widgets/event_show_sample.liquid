@@ -1,0 +1,90 @@
+{{stylesheet}}
+{% assign event = events[0] %}
+<div id="wundercoach_embedded">
+  <div class="container-fluid">
+    <div class="row signup-name-zone">
+      <div class="col-xs-12">
+        <div class="well signup_well">
+          <div class="row">
+            <div class="col-xs-8">
+              <span class="h1">{{event.name}}</span>
+              <p class="lead">{{event.shortdescription}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row signup-detail-zone">
+      <div class="col-xs-12">
+        <div class="well signup_well">
+          <div class="row">
+            <div class="col-sm-5 col-xs-12">
+              <h3>Startdatum</h3>
+              <p class="lead">{{event.start_date}}</p>
+              <p class="lead"></p>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <h3>Preis</h3>
+              <p class="lead">{{event.price}}</p>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+              <h3>Mögliche Bezahlarten:</h3>
+              <ul style="padding: 0px;">
+                {% for paymentmethod in event.paymentmethods%}
+                  <li style="list-style: none;">
+                    <p class="lead">{{paymentmethod}}</p>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row signup-cta-zone">
+      <div class="col-xs-12 text-center">
+        <div class="well signup_well">
+          {% if event.remaining_seats > 0 %}
+            {{event.signup_link}}
+          {% else %}
+          <button class="btn btn-lg btn-default btn-primary">Ausgebucht</button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="row signup-longdescription-zone">
+      <div class="col-xs-12">
+        <div class="well signup_well">
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="lead">{{event.longdescription}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row signup-location-zone">
+      <div class="col-xs-12">
+        <div class="well signup_well">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <h3>Ort</h3>
+              <p class="lead">{{event.location}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row signup-bottom-text-zone">
+      <div class="col-xs-12">
+        <div class="well signup_well">
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="lead">{{event.bottom_text}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

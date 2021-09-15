@@ -1,0 +1,45 @@
+- if @model.product.seats_limited?
+  - if @model.product.free_seats?
+    .alert.alert-success
+      = @model.product.seats_free
+      |&nbsp;
+      = t(:seats_free)
+  - else
+    .alert.alert-warning = t(:max_eventbookings_reached)
+
+= f.error_notification
+
+.form-inputs
+  .row
+    .col-xs-12
+      = render "shared/section_header", header_text: t(:participant_data), hint_text: t(:participant_data_hint)
+  .row
+    .col-xs-12
+      span
+        = t(:mandatory_field_info)
+
+  = render "address_form", f: f
+
+  / - unless @product.free?
+  .row
+    .col-xs-12
+      = f.input :paymentmethod_id, collection: Paymentmethod.where(key: %w(vorkasse banktransfer)), as: :radio_buttons, label: t(:paymentmethods)
+  .row
+    .col-md-12
+      = render "billing_address_form", f: f
+
+.form-actions
+  .row
+    .col-sm-6
+      = link_to signup_index_path, class: "btn btn-default btn-lg signup-button signup-back"
+        = t(:back)
+    .col-sm-6.text-right
+      = f.button :magic_submit,
+                 class: 'btn btn-default btn-lg signup-button signup-submit signup-create-eventbooking',
+                 value: t(:signup_participant),
+                 data: { disable_with: t(:signup_participant) }
+
+javascript:
+  $('#billing_address_toggle').change(function() {
+      $('#eventbooking_billing_fields').toggle();
+  });

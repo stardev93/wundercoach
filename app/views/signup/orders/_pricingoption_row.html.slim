@@ -1,0 +1,22 @@
+li.list-group-item.pricingoption_row class="#{pricingoption.preset && enable_row_select ? 'list-group-item-info pricingoption_active' : 'pricingoption_inactive'}" id="pricingoption_tr_#{pricingoption.id}"
+  / invisible fields for setting order price & additional info on click
+  span.pricingoption_price_cents style="display:none;"
+    = pricingoption.object.price_cents(event.object)
+  span.pricingoption_name style="display:none;"
+    = pricingoption.object.name
+  span.pricingoption_id style="display:none;"
+    = pricingoption.object.id
+  .row
+    .col-xs-12.col-sm-4
+      span.lead
+        = pricingoption.name
+        |&nbsp;
+        - if pricingoption.hint_text
+          br
+          = pricingoption.hint_text
+    .col-xs-12.col-sm-2.text-right
+      span.lead
+        = pricingoption.deduction(event.object)
+    .col-xs-12.col-sm-6.text-right
+      p.lead
+        = render "signup/info_price", :event => event, :pricingoption => pricingoption

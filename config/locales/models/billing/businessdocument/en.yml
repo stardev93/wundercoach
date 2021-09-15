@@ -1,0 +1,117 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  activerecord:
+    models:
+      invoice:
+        one: Invoice
+        other: Invoices
+  simple_form:
+    labels:
+      invoice:
+        invoicestatus: Invoice status
+        invoicetype: Invoice type
+        invoice_number: Invoice number
+        invoice_date: Invoice date
+        due_date: Due date
+        paymentdate: Payment date
+        paymentstatus: Payment status
+
+  # general
+  businessdocument: Document
+  businessdocuments: Documents
+
+  # invoice
+  invoice: "Invoice"
+  invoice_no: "Invoice No. %{invoice_number}"
+  invoices: "Invoices"
+  invoicepositions: "Positions"
+  invoice_name: "Subject"
+  cancel_message: The invoice has been cancelled
+  paymentdate: "Payment date"
+  sum: "Sum"
+  sum_net: "Net sum"
+  sum_vat: "Plus VAT"
+  sum_vat_included: "VAT included"
+  sum_gross: "Gross sum"
+  total_price: "Total"
+  vat: "VAT"
+  back_to_event: "Back to the seminar"
+  invoice_info_text: "Invoice overview"
+  do_you_want_to_delete_this_businessdocument: "Are you sure you want to delete this document? All related documents (cancellations and others) will also be also deleted."
+  do_you_want_to_delete_this_businessdocumentposition: "Are you sure you want to delete this position?"
+  create_invoice: "Create invoice"
+  create_partial_invoice: "Create partial invoice"
+  invoice_creation_successful: "Invoice created."
+  back_to_invoicelist: "All invoices"
+  pos: "Pos"
+  netto_total: "Net total"
+  plus_vat: "Plus %{vat}"
+  total_amount: "Total"
+  vat_included: 'VAT included'
+  vat_rate: "VAT rate"
+  paymentstatus_set_to_open: 'Payment is pending.'
+  paymentstatus_set_to_paid: 'Payment has happened.'
+  paymentstatus_set_to_waiting: 'waiting for invoice.'
+  invoicestatus: invoice status
+  due_date: due date
+  invoicetype: document type
+  invoicelist: Invoicelist
+  set_paid: 'Mark invoice as paid'
+  set_payment_open: 'Mark invoice as unpaid'
+  cancel_invoice: Cancel
+  cancellation_for: "Cancellation for invoice %{invoice_number}"
+  businessdocument_due: Due
+  businessdocument_paid: paid
+  businessdocument_open: open
+  businessdocument_cancelled: cancelled
+  this_is_the_list_of_your_invoices: This is the list of your invoices
+  cannot_delete_sent_invoice: Printed or sent invoices cannot be deleted.
+  invoice_sent_to_customer: The invoice has been sent.
+  error_sending_invoice: An error occured while sending the invoice.
+  document_number: "Document-No."
+  product_amount: Amount
+
+  recipient_name1: "Recipient 1"
+  recipient_name2: "Recipient 2"
+  recipient_person: "Contact person"
+  recipient_street: "Street & No."
+  recipient_zip: Zip
+  recipient_city: City
+  recipient_country: Country
+  recipient_email: "Send to"
+
+  quote: Quote
+  quotes: Quotes
+  quote_number: "Quote No."
+
+  orderconfirmation: Order
+  orderconfirmations: Orders
+  orderconfirmation_number: "Order No."
+
+  cancellation: Cancellation
+  cancellations: Cancellations
+  cancellation_number: "Cancellation No."
+
+  Billing::Invoice: "Invoice"
+  Billing::Cancellation: "Cancellation"
+  Billing::Orderconfirmation: "Order"
+  Billing::Quote: "Quote"
+
+  Billing::Invoice_symbol: "I"
+  Billing::Cancellation_symbol: "C"
+  Billing::Orderconfirmation_symbol: "O"
+  Billing::Quote_symbol: "Q"
+
+  draft: draft
+  successor: Successor
+  predecessor: Predecessor
+  new_position: New Position
+
+  pdf_generation_started: "PDF-generation started"
+  businessdocument_has_been_sent: "The document has been sent"
+  document_duplicated: Element has been duplicated
+  position_duplicated: Position has been duplicated
+  datevexport: Export Datev Format
+  datevexport_csv_filename: "DATEV-Export_from_%{startdate}_to_%{enddate}_created_%{createdate}.zip"
+  datev_export_csv: "Datev-Export (CSV)"
+  datev_export_xls: "Datev-Export (XLS)"

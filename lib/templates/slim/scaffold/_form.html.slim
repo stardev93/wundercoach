@@ -1,0 +1,12 @@
+= simple_form_for(@<%= singular_table_name %>) do |f|
+  = f.error_notification
+
+  .form-inputs
+<%- attributes.each do |attribute| -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+<%- end -%>
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: <%= plural_table_name %>_path

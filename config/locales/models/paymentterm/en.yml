@@ -1,0 +1,5 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  paymentterm: Paymentterm
+  paymentterms: Paymentterms
+  paymentterms_hint: Paymentterms are displayed in your clients checkout dialogue for the separate payment methods you offer.

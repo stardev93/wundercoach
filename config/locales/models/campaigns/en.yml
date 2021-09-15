@@ -1,0 +1,29 @@
+en:
+  campaigns: Campaigns
+  campaign_infotext: To keep your customers up-to-date, you can send newsletters. Here you can define target groups and plan campaigns. These are then sent to Mailchimp, where you can start the campaign.
+  campaign_synced_info_text: This campaign was sent to Mailchimp and can not be edited anymore.
+  start_a_new_campaign: Create a new campaign
+  start_campaign_with_this_target_group: Create a campaign for this target group
+  campaign_needs_a_target_group: Please select one or more target groups for the campaign
+  participant_count: Number of participants
+  campaign: Campaign
+  campaign_hint: Participation in a campaign
+  campaigns_name_hint: Name of the campaign, e.g. "Newsletter May 2016"
+  marketing: Marketing
+  all_data_will_by_synced_to_mailchimp: Create campaign with mailchimp and transfer all recipients?
+  start_campaign: Start campaign!
+  campaign_sync_success: The campaign was successfully transferred to Mailchimp.
+  campaign_not_ready_for_sync: The campaign could not be transferred because no target groups were assigned to it.
+  new_campaign: New campaign
+  edit_campaign: Edit campaign
+  active_campaign_integrated_msg: ActiveCampain has been integrated
+  active_campaign_not_integrated_msg: ActiveCampaign has not been integrated yet
+  transfer_contacts_to: 'New contacts will be transferred to the list "%{list}"'
+  campaign_successfully_created: "The campaign has been successfully created."
+  campaign_successfully_updated: "The campaign has been successfully updated."
+  campaign_successfully_deleted: "The campaign has been successfully deleted."
+  simple_form:
+    magic_submit:
+      campaigns:
+        new:
+          submit: Create new campaign

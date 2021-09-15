@@ -1,0 +1,11 @@
+= form_for(@asset, html: { multipart: true, class: "dropzone new_asset"}) do |f|
+  i.fa.fa-cloud-upload.fa-3x
+  div.fallback
+    = f.file_field :asset
+    br
+    = f.submit "Upload"
+
+- if @response_view
+  input type="hidden" class="responseview" value="#{}{@response_view}" id="responseview"
+- else
+  input type="hidden" class="responseview" value="taskassetlist" id="responseview"

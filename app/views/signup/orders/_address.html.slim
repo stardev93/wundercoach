@@ -1,0 +1,17 @@
+- if address.company.present?
+  = address.company
+  br
+= "#{t(:"#{address.gender}_indirect")} #{address.firstname} #{address.lastname}"
+br
+= address.street
+br
+= "#{address.zip} #{address.city}"
+br
+= address.country_name
+p.lead
+- if order.additional_participants.present?
+  h4 = t(:additional_participants)
+  - if order.additional_participants.present?
+    - order.additional_participants.each_value do |participant|
+      = "#{participant[:firstname]} #{participant[:lastname]}"
+      br

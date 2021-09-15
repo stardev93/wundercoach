@@ -1,0 +1,63 @@
+tr.event_tr
+  td.event_td
+    - unless event.start_date.blank?
+      span.event_start_date
+        = event.start_date
+      - if event.start_time
+        br
+        span.event_start_time
+          = event.start_time
+
+    - unless event.end_date.blank?
+      br
+      |-
+      br
+      span.event_end_date
+        / = l event.end_date, format: :short
+        = event.end_date
+      - if event.end_time
+        br
+        span.event_end_time
+          = event.end_time
+
+  td.event_td
+    p.event_name
+      = link_to event.name, signup_show_event_path(event)
+    p.event_shortdescription
+      = sanitize event.shortdescription
+
+  td.event_td
+    span.event_coach
+      = sanitize event.coaches.join("<br />")
+
+  / location options for online events
+  td.event_td
+    span.event_location
+      - if event.type == "OnlineEvent"
+        - if event.webinar_additional_information_short.present?
+          = event.webinar_additional_information_short.html_safe
+        - else
+          = t(:"#{OnlineEvent}")
+      - elsif event.type == "BundleEvent"
+      - else
+        = render "signup/location", event: event
+
+  td.text-right.event_td nowrap="nowrap"
+
+    = render "signup/events/index_price", :event => event
+
+    = render "signup/events/index_free_seats", :event => event
+
+  td.event_td
+    span.event_signup
+      p
+        = render "signup/buttons/signup_button", event: event, button_type: 'small', width: "100%"
+
+      p
+        = link_to signup_show_event_path(event), class: 'btn btn-default btn-sm btn-warning event_btn_details', style: 'width:100%;'
+          i.fa.fa-eye.icon_details
+          '&nbsp;
+          = t(:details)
+- if event.type == "BundleEvent"
+
+  = render "signup/events/subevent_list", :event => event

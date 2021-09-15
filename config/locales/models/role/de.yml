@@ -1,0 +1,6 @@
+de:
+  roles: Rollen
+  role: Rolle
+  roles_assigned: "zugewiesene Rollen"
+  role_was_successfully_assigned: 'Die Rolle wurde erfolgreich zugewiesen.'
+  role_was_successfully_revoked: 'Die Rolle wurde dem User erfolgreich entzogen.'

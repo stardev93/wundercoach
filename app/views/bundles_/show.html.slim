@@ -1,0 +1,155 @@
+- cancel_button = render "shared/button", path: bundles_path, link_text: t(:cancel), icon: "", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+- new_bundle_button = render "shared/button", path: new_bundle_path, link_text: t(:add_bundle), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:add_bundle_hint)
+
+= render "shared/form_header",
+         header_text: @bundle,
+         buttons: new_bundle_button + ' ' + cancel_button
+
+.row
+  .col-xs-12
+    .row
+      .col-xs-12
+        address
+          p
+            strong = t(:name)
+            br
+            span.lead = @bundle.name
+            '&nbsp;
+    .row
+      .col-xs-12
+        address
+          p
+            strong = t(:slug)
+            br
+            span.lead = @bundle.slug
+            '&nbsp;
+    .row
+      .col-xs-12.col-sm-4
+        address
+          p
+            strong = t(:price)
+            br
+            span.lead = @bundle.price
+            '&nbsp;
+      .col-xs-12.col-sm-4
+        address
+          p
+            strong = t(:start_date)
+            br
+            span.lead = @bundle.start_date
+            '&nbsp;
+      .col-xs-12.col-sm-4
+        address
+          p
+            strong = t(:end_date)
+            br
+            span.lead = @bundle.end_date
+            '&nbsp;
+
+    .row
+      .col-xs-6.text-right style="margin-top: 10px;"
+        = link_to @bundle, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+        ' &nbsp;
+        = link_to edit_bundle_path(@bundle), class: "btn btn-primary"
+          i.fa.fa-edit
+          '&nbsp;
+          = t(:edit)
+      .col-xs-12
+        hr
+.row
+  .col-md-6.col-xs-12#assigned_to_bundle
+    .panel.panel-default
+      .panel-heading
+        label
+          = t(:assigned_events)
+        |&nbsp;
+        input.search.form-control.string.required placeholder=t(:search) id="assigned_events"
+        / ToDo: enable search deletion
+        / a href="#" id="delete_assigned_events"
+        /   = t(:delete)
+        / javascript:
+        /   $("#delete_assigned_events").on("click", function ()
+        /   {
+        /       document.getElementById('assigned_events').value = "";
+        /   });
+      .panel-body
+        ul.list-group.list
+          - events = EventDecorator.decorate_collection(@bundle.events)
+          - events.each do |event|
+            li.list-group-item
+              .row
+                .col-xs-6
+                  p.name
+                    = link_to event_path(event)
+                      = event
+                .col-xs-6
+                  p.price = money_to_currency event.price
+                .col-sm-6.col-xs-12
+                  = render "events/progressbar", event: event
+                .col-sm-6.col-xs-12
+                  = render "onlinestatuses/button", event: event, redirect: "bundle-#{@bundle.id}", onlinestatus: event.onlinestatus, btn_size: 'btn-xs'
+                .col-xs-12
+                  p
+                    time
+                      strong
+                        = t(:start_date)
+                        |:&nbsp;
+                      = event.start_date
+                      |&nbsp;
+                      = event.start_time
+                .col-xs-12
+                  p
+                    = link_to bundle_event_path(@bundle, event.id), method: :delete, :class => "btn btn-default"
+                      = t(:remove)
+
+  .col-md-6.col-xs-12#assignable_events_for_bundle
+    .panel.panel-default
+      .panel-heading
+        label
+          = t(:unassigned_events)
+        / |&nbsp;
+        / input.search.form-control.string.required placeholder=t(:search) id="unassigned_events"
+        = render "shared/form_search", :search_path => bundle_path(@bundle)
+        / ToDo: enable search deletion
+        / a href="#" id="delete_unassigned_events"
+        /   = t(:delete)
+        / javascript:
+        /   $("#delete_unassigned_events").on("click", function ()
+        /   {
+        /       document.getElementById('unassigned_events').value = "";
+        /   });
+      .panel-body
+        ul.list-group.list
+          / - available_events = EventDecorator.decorate_collection(@bundle.available_events)
+          - EventDecorator.decorate_collection(@available_events).each do |event|
+            li.list-group-item
+              .row
+                .col-xs-6
+                  p.name
+                    = link_to event_path(event)
+                      = event
+                .col-xs-6
+                  p.price = money_to_currency event.price
+                .col-sm-6.col-xs-12
+                  = render "events/progressbar", event: event
+                .col-sm-6.col-xs-12
+                  = render "onlinestatuses/button", event: event, redirect: "bundle-#{@bundle.id}", onlinestatus: event.onlinestatus, btn_size: 'btn-xs'
+                .col-xs-12
+                  p
+                    time
+                      strong
+                        = t(:start_date)
+                        |:&nbsp;
+                      = event.start_date
+                      |&nbsp;
+                      = event.start_time
+                .col-xs-12
+                  p.text-right
+                    = link_to bundle_event_path(@bundle, event.id), method: :put, :class => "btn btn-default"
+                      = t(:assign)
+        .row
+          .col-xs-12
+            = will_paginate @available_events, renderer: BootstrapPagination::Rails

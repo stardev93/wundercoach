@@ -1,0 +1,80 @@
+/ Header
+= render "signup/header"
+- if current_tenant.show_signup_search?
+  .row.signup-search
+    .col-xs-12
+      = simple_form_for :event, url: signup_index_path, method: :get do |f|
+        .row
+          .col-md-12
+            h4 = t(:event_search)
+          .col-md-3.col-sm-6
+            = f.input :search, required: false, label: t(:event_search_name),
+                      input_html: { value: @filters['search'], style: "width: 100%;" }
+            = f.input :search_by_tags, collection: Product::Tag.all,
+                      label_method: :to_s, value_method: :id,
+                      selected: @filters['search_by_tags'],
+                      required: false, label: t(:search_by_tags),
+                      input_html: { \
+                        class: 'chosen-select',
+                        multiple: '',
+                        style: 'width: 100%;',
+                        data: { \
+                          placeholder: t(:enter_tags) \
+                        } \
+                      }
+          .col-md-3.col-sm-6
+            = f.input :start_date, required: false, label: t(:start_date),
+                      as: :date_picker,
+                      input_html: { value: @filters['start_date'], style: "width: 100%;" }
+            = f.input :end_date, required: false, label: t(:end_date),
+                      as: :date_picker,
+                      input_html: { value: @filters['end_date'] }
+          .col-md-3.col-sm-6
+            label &nbsp;
+            p
+              - today = Date.today
+              - end_of_month = today.end_of_month
+              = link_to signup_index_path(event: @filters.merge({ start_date: today.beginning_of_month, end_date: end_of_month })), class: "btn btn-default month-filter"
+                i.fa.fa-calendar-check-o
+                |&nbsp;
+                = t(:this_month)
+            p
+              - next_month = end_of_month + 1.day
+              - end_of_next_month = next_month.end_of_month
+              = link_to signup_index_path(event: @filters.merge({ start_date: next_month, end_date: end_of_next_month })), class: "btn btn-default month-filter"
+                i.fa.fa-calendar-check-o
+                |&nbsp;
+                = t(:next_month)
+              - the_month_after_next_month = end_of_next_month + 1.day
+            p
+              = link_to signup_index_path(event: @filters.merge({ start_date: the_month_after_next_month, end_date: the_month_after_next_month.end_of_month })), class: "btn btn-default month-filter"
+                i.fa.fa-calendar-check-o
+                |&nbsp;
+                = t(:the_month_after_next_month)
+          .col-md-3.col-sm-6.text-center
+            label &nbsp;
+            = f.button :button, class: "button btn btn-primary", name: nil, style: "width: 100%;"
+              i.fa.fa-search
+              |&nbsp;
+              = t(:start_search)
+            br
+            - unless @filters.empty?
+              = link_to signup_index_path(clear: :filter), class: "btn btn-link"
+                = t(:show_all)
+
+/ Coachings
+- if @individual_events.exists? && can?(:access, Feature.find_by(key: 'backend_individual_appointments'))
+    = render "signup/coachings/index"
+
+/ Events
+= render "signup/events/index"
+
+/ Bundles
+/ - if @bundles.exists?
+/   = render "signup/bundles/index"
+
+/ Pagination
+.row
+  .col-xs-12.eventpager
+    = will_paginate @events, renderer: BootstrapPagination::Rails
+= render "signup/wundercoachref"

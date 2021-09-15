@@ -1,0 +1,8 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # mailskinasset
+  mailskinasset: "E-Mail-Vorlagenbild"
+  mailskinassets: "E-Mail Vorlagenbilder"
+  mailskinasset_infotext: "E-Mail Vorlagenbilder sind Bilder, die in E-Mail-Vorlagen verwendet werden"
+
+  file_successfully_deleted: "Sie haben die Datei %{file} erfolgreich gelöscht."

@@ -1,0 +1,18 @@
+script src="//maps.google.com/maps/api/js?v=3.37&sensor=false&client=&key=AIzaSyAxjS_O7x8mXyVV6_ftf8qe6YTIGmy0huA&libraries=geometry&language=&hl=&region=" type="text/javascript"
+script src='//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js' type='text/javascript'
+javascript:
+  $(window).load(function(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+      {
+        "lat": "#{event.latitude}",
+        "lng": "#{event.longitude}",
+        "infowindow": "#{event.location}"
+      }
+    ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(18);
+    });
+  });

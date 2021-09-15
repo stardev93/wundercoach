@@ -1,0 +1,28 @@
+h4
+  = headline
+table.table
+  thead
+    tr
+      th = t(:paymentplan)
+      th = t(:booking_date)
+      th = t(:valid_from)
+      th = t(:valid_until)
+      th = t(:paymentcycle)
+      th = t(:price)
+  tbody
+    - bookings.each do |booking|
+      tr
+        td = booking.name
+        td = l booking.created_at.to_date
+        td
+          - if booking.valid_from
+            = l booking.valid_from
+          - else
+            |---
+        td
+          - if booking.valid_until.present?
+            = l booking.valid_until
+          - else
+            |---
+        td = t(booking.cycle)
+        td = number_to_currency booking.paymentplan.price / 100

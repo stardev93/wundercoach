@@ -1,0 +1,5 @@
+.row
+  .col-xs-6
+    = f.input :comparator, label: t(:price), hint: t(:comparator_hint), collection: PriceFilter::ALLOWED_COMPARATORS, include_blank: false
+  .col-xs-6
+    = f.input :price, label: t(:amount), hint: t(:amount_hint)

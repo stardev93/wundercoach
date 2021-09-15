@@ -1,0 +1,60 @@
+<!doctype html>
+<!--[if lt IE 8]>         <html class="no-js lt-ie8"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>wundercoach</title>
+        <base href="<%= root_url + '/' %>">
+
+        <script type="text/javascript">
+          window.I18n = <%= I18n.backend.send(:translations)[I18n.locale][:js].to_json.html_safe %>
+        </script>
+
+        <!-- Needs images, font... therefore can not be part of main.css -->
+        <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,100,500,700,300,300italic,500italic|Roboto+Condensed:400,300', media: "all", "data-turbolinks-track" => true %>
+        <!-- end Needs images -->
+        <%= favicon_link_tag 'favicon.ico' %>
+        <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track" => true %>
+        <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "dashboard/dashboard", "data-turbolinks-track" => true %>
+        <%= csrf_meta_tags %>
+        <%= render "shared/userguiding" %>
+    </head>
+
+    <body style="padding-top: 65px;"
+          data-ng-app="app"
+          id="app"
+          class="app"
+          data-custom-page
+          data-off-canvas-nav
+          data-ng-controller="AppCtrl"
+          data-ng-class=" { 'layout-boxed': main.layout === 'boxed',
+                            'nav-collapsed-min': main.menu === 'collapsed'
+          } ">
+
+      <%= render "shared/freshdesk" %>
+        <!--[if lt IE 9]>
+            <div class="lt-ie9-bg">
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser.</p>
+                <p>Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            </div>
+        <![endif]-->
+
+        <div id="loader-container"></div>
+        <div class="container" id="wc_main">
+          <%= render "shared/sidebar" %>
+          <%= render "shared/navigation" %>
+          <%= render "shared/flash" %>
+        </div>
+
+        <div class="main-container"
+             data-ng-class="{ 'app-nav-horizontal': main.menu === 'horizontal' }">
+            <div id="content">
+                <section class="container"><%= yield %></section>
+                <section data-ui-view
+                         class="view-container container {{main.pageTransition.class}}"></section>
+            </div>
+        </div>
+        <%# <%= render "shared/footerbar" %> %>

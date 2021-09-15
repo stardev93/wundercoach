@@ -1,0 +1,262 @@
+- edit_button = render "shared/button", path: invoicedesignedit_path, link_text: t(:edit), icon: "", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit)
+= render "shared/form_header",
+          :header_text => t(:invoicedesign),
+          :hint_text => t(:invoicedesign_hint),
+          :buttons => edit_button
+
+= render "shared/section_header", :header_text => t(:invoice_design_settings)
+.row
+  .col-xs-12
+    label
+      = t(:invoicelogo)
+
+- if @account.invoicelogo.blank?
+  .row
+    .col-xs-12
+      .alert.alert-info
+        = t(:you_havent_uploaded_an_invoicedesign_yet)
+  .row
+    .col-md-12
+      p
+        = t(:invoicelogo_file_info)
+  .row
+    .col-md-12
+      = render "accounts/dzmicro", account: @account, param: "account[invoicelogo]", text: t(:drop_logo_here_to_upload)
+      p
+- else
+  .row
+    .col-xs-12.text-right
+      p
+        = image_tag @account.invoicelogo.url, width: "100%;"
+        |&nbsp;
+  .row
+    .col-xs-12
+      p.text-right
+        = link_to invoicelogoremove_path, class: "btn btn-danger"
+          i.fa.fa-remove
+          |&nbsp;
+          = t(:remove)
+        |&nbsp;
+        = link_to @account.invoicelogo.url(:original), :target => "_blank", class: "btn btn-default"
+          i.fa.fa-download
+          |&nbsp;
+          = t(:download)
+  .row
+    .col-md-12
+      p
+        = t(:invoicelogo_file_info)
+
+hr
+.row
+  .col-xs-12
+    label
+      = t(:invoicefooter)
+- if @account.invoicefooter.blank?
+  .row
+    .col-xs-12
+      .alert.alert-info
+        = t(:you_havent_uploaded_an_invoicefooter_yet)
+  .row
+    .col-md-12
+      p
+        = t(:invoicefooter_file_info)
+  .row
+    .col-md-12
+      = render "accounts/dzmicro", account: @account, param: "account[invoicefooter]", text: t(:drop_logo_here_to_upload)
+      p
+- else
+  .row
+    .col-xs-12.text-right
+      p
+        = image_tag @account.invoicefooter.url, width: "100%;"
+        |&nbsp;
+  .row
+    .col-xs-12
+      p.text-right
+        = link_to invoicefooterremove_path, class: "btn btn-danger"
+          i.fa.fa-remove
+          |&nbsp;
+          = t(:remove)
+        |&nbsp;
+        = link_to @account.invoicefooter.url(:original), :target => "_blank", class: "btn btn-default"
+          i.fa.fa-download
+          |&nbsp;
+          = t(:download)
+  .row
+    .col-md-12
+      p
+        = t(:invoicefooter_file_info)
+
+.row
+  .col-xs-12
+    label = t(:invoice_from)
+    = simple_format @account.invoice_from
+    |&nbsp;
+
+.row
+  .col-xs-12
+    label = t(:invoice_from_small)
+    pre
+      = @account.invoice_from_small
+      |&nbsp;
+
+.row
+  .col-xs-12
+    label = t(:invoice_footer)
+    = simple_format @account.invoice_footer
+    |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:numbering_settings)
+.row
+  .col-xs-12
+    label = t(:invoice_no_start)
+    pre
+      = @account.invoice_no_start
+      |&nbsp;
+.row
+  .col-xs-12
+    label = t(:cancellation_no_start)
+    pre
+      = @account.cancellation_no_start
+      |&nbsp;
+.row
+  .col-xs-12
+    label = t(:quote_no_start)
+    pre
+      = @account.quote_no_start
+      |&nbsp;
+.row
+  .col-xs-12
+    label = t(:order_no_start)
+    pre
+      = @account.order_no_start
+      |&nbsp;
+.row
+  .col-xs-12
+    label = t(:order_confirmation_no_start)
+    pre
+      = @account.order_confirmation_no_start
+      |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:accounting_settings)
+.row
+  .col-xs-12.col-sm-4
+    label = t(:accounts_chart)
+    pre
+      = @account.accounts_chart
+      |&nbsp;
+  .col-xs-12.col-sm-4
+    label = t(:tax_consultant)
+    pre
+      = @account.tax_consultant_id
+      |&nbsp;
+  .col-xs-12.col-sm-4
+    label = t(:tax_consultant_client)
+    pre
+      = @account.tax_consultant_client_id
+      |&nbsp;
+  .col-xs-12.col-sm-4
+    label = t(:revenue_account)
+    pre
+      = @account.revenue_account
+      |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:export_settings)
+.row
+  .col-xs-12.col-sm-6
+    label = t(:export_fixed_at_start_date)
+    pre
+      = @account.export_fixed_at_start_date
+      |&nbsp;
+  .col-xs-12.col-sm-6
+    label = t(:export_fixed_at_end_date)
+    pre
+      = @account.export_fixed_at_end_date
+      |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:currency_settings)
+.row
+  .col-xs-12
+    label = t(:default_currency_iso_code)
+    pre
+      = @account.default_currency_iso_code
+      |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:tax_settings)
+.row
+  .col-xs-12
+    label = t(:tax_number)
+    pre
+      = @account.tax_id
+      |&nbsp;
+
+
+= render "shared/section_header", :header_text => t(:vat_settings)
+.row
+  .col-xs-12.col-sm-6
+    label = t(:vat_included)
+    p.lead
+      - if @account.vat_included
+        i.fa.fa-check-square-o
+      - else
+        i.fa.fa-minus-square-o
+      |&nbsp;
+    p = t(:vat_included_hint)
+  .col-xs-12.col-sm-6
+    label = t(:vat_net_first)
+    p.lead
+      - if @account.vat_net_first
+        i.fa.fa-check-square-o
+      - else
+        i.fa.fa-minus-square-o
+      |&nbsp;
+    p = t(:vat_net_first_hint)
+.row
+  .col-xs-12.col-sm-6
+    p = link_to(t(:manage_custom_vats), vats_path, class: 'btn btn-primary')
+    p = t(:if_you_need_a_custom_vat_click_here)
+  .col-xs-12.col-sm-6
+    p = link_to(t(:vat_revenue_accounts), vat_revenue_accounts_path, class: 'btn btn-primary')
+    p = t(:vat_revenue_account_hint)
+
+/ - if Paymentterm.all.count == 0
+/   - AccountSetupPaymenterms.new(current_tenant).perform
+/ = render "shared/section_header", :header_text => t(:paymentterms), :hint_text => t(:paymentterms_hint)
+/ .row
+/   .col-xs-12
+/     ul.list-group
+/       - Paymentterm.all.each do |paymentterm|
+/         li.list-group-item
+/           .row
+/             .col-xs-12
+/               strong
+/                 = paymentterm
+/               br
+/               / = paymentterm.description
+/               / = best_in_place paymentterm, :description, tabindex: "1", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right"
+/               = best_in_place paymentterm,
+/                 :description,
+/                 tabindex: "1",
+/                 :as => :textarea,
+/                 :place_holder => t(:click_to_edit),
+/                 display_with: :simple_format,
+/                 :ok_button => t(:save),
+/                 :cancel_button => t(:cancel),
+/                 :inner_class => "form-control",
+/                 :ok_button_class => "btn btn-primary btn-sm text-right",
+/                 :cancel_button_class => "btn btn-secondary btn-sm text-right"
+/
+.row
+  .col-xs-12
+    p &nbsp;
+.row
+  .col-xs-12
+    p.text-right
+      = link_to invoicedesignedit_path
+        button.btn.btn-primary
+          = t(:change_eventheader)

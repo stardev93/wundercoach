@@ -1,0 +1,35 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  if_you_need_a_custom_vat_click_here: 'If a required vat is not listed here, you can add your own here:'
+  manage_custom_vats: Manage custom VATs
+  edit_vat: Edit custom VAT rate
+  add_vat: Add custom VAT rate
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      vat:
+        one: VAT rate
+        other: VAT rates
+    attributes:
+      vat:
+        value: Percentage
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      vat:
+        value: Percentage
+    hints:
+      vat:
+        value: As decimal, e.g. 0.19
+  including_vat: "incl. %{vat_rate} VAT corr. %{vat_sum}"
+  excluding_vat: "excl. %{vat_rate} VAT corr. %{vat_sum}"
+  corrsp_net_price: "net price %{net_price}"
+  corresp_gross_price: "gross price %{gross_price}"
+  vat_revenue_accounts: Revenue accounts
+  vat_revenue_account: Revenue account
+  vat_revenue_account_infotext: Please enter the appropriate revenue accounts for each vat rate your company is using. The accounts will be added to the exports of your billing data. In case of doubt ask your tax advisor. If you enter nothing the standard revenue account from your account settings will be used.
+  vat_revenue_account_hint: revenue accounts for your different vat rates for export of your billing data
+  add_vat_revenue_account: "Add account"
+  new_vat_revenue_account: New revenue account
+  create_vat_revenue_accounts_first: Setup your VAT revenue accounts in the invoicesettings first before using the Datev export.
+  vat_in_use: In use

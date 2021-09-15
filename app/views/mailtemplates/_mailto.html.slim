@@ -1,0 +1,13 @@
+ul.list-group
+  li.list-group-item style="min-height: 200px;"
+    h4
+      = label
+    = render "addresses/address_small", :address => address
+    - if address.email
+      br
+      = mail_to eventbooking.email
+        = address.email
+
+  li.list-group-item.text-right
+    - if address && address.email
+      = render "shared/button", path: mailtemplate_sendmail_path(eventbooking, mailtemplate, address), link_text: t(:send_to, email: address.email), icon: "fa-send", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:send)

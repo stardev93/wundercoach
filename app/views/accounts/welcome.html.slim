@@ -1,0 +1,51 @@
+.row
+  .col-md-12
+    .jumbotron
+      .row
+        .col-md-12.text-center
+          = image_tag "logo.png", :class => "img-responsive", :style => "text-align: center;display: inline;width: 280px;"
+      .row
+        .col-md-12
+          h1.text-center
+            = t(:welcome_greeting)
+          h2.text-center
+            = t(:complete_registration)
+.row
+  .col-md-6
+    .well.text-center style="padding: 30px;height: 380px;#{current_user.activated? ? 'color: #cccccc;' : ''}"
+      - if current_user.activated?
+        span.h1
+          i.fa.fa-check.fa-4x style="color: #000000; position: absolute;z-index:1000;"
+      i.fa.fa-envelope.fa-border.fa-5x
+      p.lead
+        br
+        = t(:please_confirm_your_email)
+      p
+        = t(:we_have_send_you_an_email_with_a_confirmation_link_to)
+        br
+        = current_user.email
+        br
+        |&nbsp;
+      p
+        - if current_user.activated?
+          button.btn.btn-default.disabled
+            = t(:resend)
+        - else
+          = link_to confirm_path, class: "btn btn-primary"
+            = t(:resend)
+
+  .col-md-6
+    .well.text-center style="padding: 30px;height: 380px;#{@account.complete? ? 'color: #cccccc;' : ''}"
+      - if @account.complete?
+        span.h1
+          i.fa.fa-check.fa-4x style="color: #000000; position: absolute;z-index:1000;"
+      i.fa.fa-rocket.fa-border.fa-5x
+      p.lead
+        br
+        = t(:complete_account_setup)
+      = @account.complete?
+      = link_to edit_settings_path
+        button.btn.btn-primary
+          = t(:start)
+
+/ = render "accounts/getting_started"

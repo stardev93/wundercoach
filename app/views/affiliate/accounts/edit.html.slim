@@ -1,0 +1,18 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = t(:edit_account)
+    = simple_form_for(@account, url: affiliate_account_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        .row
+          .col-xs-12.col-sm-6
+            = f.input :affiliate_commission_relative, as: :percentage
+          .col-xs-12.col-sm-6
+            = f.input :affiliate_commission_absolute, as: :currency
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: affiliate_dashboard_path(anchor: 'accounts')

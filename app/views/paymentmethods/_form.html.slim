@@ -1,0 +1,14 @@
+= simple_form_for(@paymentmethod) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key
+    = f.input :name
+    = f.input :comment
+    = f.input :thankyou_text
+    = f.input :image
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: paymentmethods_path

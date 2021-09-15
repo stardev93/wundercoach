@@ -1,0 +1,33 @@
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+  .navbar-header
+    button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navigation-one" aria-expanded="false" aria-controls="navbar"
+      span.sr-only = t(:toggle_navigation)
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+
+    = link_to root_path, class: "navbar-brand" do
+      = image_tag("logo.png", style: "height:40px;")
+  .collapse.navbar-collapse#navigation-one
+    ul.nav.navbar-nav
+      li = link_to t(:dashboard), affiliate_dashboard_path(anchor: 'accounts')
+      li = link_to Affiliate::Tag.model_name.human(count: 2), affiliate_tags_path
+      li = link_to Affiliate::EventList.model_name.human(count: 2), affiliate_event_lists_path
+      li = link_to Event.model_name.human(count: 2), affiliate_events_path
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          = t(:sales)
+          b.caret
+        ul.dropdown-menu.pull-right
+          li = link_to Account.model_name.human(count: 2), affiliate_accounts_path
+          li = link_to Adpartner.model_name.human(count: 2), affiliate_adpartners_path
+
+    ul.nav.navbar-nav.pull-right style="margin-right: 150px;"
+      - if current_user.has_role? 'admin'
+        li = link_to t(:rails_admin), rails_admin_path
+        li = link_to t(:backend), admin_dashboard_path + "?backend[clear]"
+      li
+        = link_to logout_url(subdomain: EXTERNAL_SUBDOMAIN)
+          i.fa.fa-sign-out
+          |&nbsp;
+          = t(:sign_out)

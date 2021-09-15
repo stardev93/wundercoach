@@ -1,0 +1,65 @@
+- goto_to_eventbookings = render "shared/button", path: eventbookings_path, link_text: t(:eventbookings), icon: "fa-arrow-left", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:eventbookings)
+- goto_to_eventbooking = render "shared/button", path: eventbooking_path(@eventbooking), link_text: t(:eventbooking), icon: "fa-arrow-left", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:eventbooking)
+- goto_to_event = render "shared/button", path: event_path(@eventbooking.event), link_text: t(:event), icon: "fa-arrow-left", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:back_to_event)
+
+- if @eventbooking.event
+  - @event = @eventbooking.event
+  - @event_hint = "#{t(:eventbooking)}: #{@eventbooking.event.decorate} #{@eventbooking.event.decorate.start_date} - #{@eventbooking.event.decorate.end_date}"
+- else
+  - @event = nil
+  - @event_hint = ""
+
+= render "shared/form_header",
+         header_text: t(:mail_to) + ' ' + @eventbooking.to_s, hint_text: @event_hint,
+         buttons: goto_to_eventbookings + ' ' + goto_to_eventbooking + ' ' + goto_to_event
+
+
+.row
+  .col-xs-12.col-sm-6
+    - if @eventbooking.address
+      = render "mailtemplates/mailto", :label => t(:address), :eventbooking => @eventbooking, :mailtemplate => @mailtemplate, :address => @eventbooking.address
+
+  .col-xs-12.col-sm-6
+    - if @eventbooking.billing_address
+      = render "mailtemplates/mailto", :label => t(:billing_address), :eventbooking => @eventbooking, :mailtemplate => @mailtemplate, :address => @eventbooking.billing_address
+    - else
+      h4
+        = t(:no_billing_address)
+.row
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-6
+        ul.list-group
+          li.list-group-item
+            h4
+              = t(:mailtemplates)
+          - @mailtemplates.each do |mailtemplate|
+            li.list-group-item class="#{@mailtemplate.id == mailtemplate.id ? 'list-group-item-info' : ''}"
+              .row
+                .col-xs-11
+                  = link_to mailtemplate_mailto_eventbooking_path(@eventbooking, mailtemplate)
+                    = mailtemplate.name
+                .col-xs-1
+                  = link_to mailtemplate_mailto_eventbooking_path(@eventbooking, mailtemplate)
+                    i.fa.fa-arrow-circle-right
+      .col-xs-12.col-sm-6
+        ul.list-group
+          li.list-group-item
+            h4
+              = t(:preview)
+          - if @mailtemplate
+            li.list-group-item
+              .row
+                .col-xs-12
+                  strong
+                    = @mailtemplate.substituted_subject(@eventbooking)
+                    br
+                    br
+              .row
+                .col-xs-12
+                  = @mailtemplate.substituted_html(@eventbooking).html_safe
+
+
+    .row
+      .col-sm-6
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

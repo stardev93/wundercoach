@@ -1,0 +1,82 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:events)
+      span.add-item
+        = render "events/buttons/button_new"
+
+.row
+  .col-xs-12
+    = search_form_for(@q, class: "form", method: :get) do |f|
+      .well
+        .row
+          .col-xs-12
+            h4
+              = t(:event_search_form)
+        .row
+          .col-sm-12.col-md-7.col-lg-8
+            .form-group
+              = f.search_field :name_or_shortdescription_or_longdescription_or_location_or_zip_or_street_or_city_cont, class: "form-control optional", placeholder: t(:searchterm)
+              p.help-block = t(:event_search_hint)
+
+          .col-sm-12.col-md-5.col-lg-4.text-right
+            .form-group
+              = render "events/download_button"
+              |&nbsp;
+              = link_to events_path + '?filter=reset', class: "btn btn-link"
+                = t(:show_all)
+              |&nbsp;
+              button.btn.btn-primary id="searchbutton"
+                i.fa.fa-search
+                |&nbsp;
+                = t(:search)
+
+        .row
+          .col-xs-12.col-md-6
+            .row
+              .col-xs-12
+                .row
+                  .col-xs-4
+                    p = render "events/onlinestatuses_buttons"
+                  .col-xs-4
+                    p = render "eventtypes/eventtypes_buttons"
+                  .col-xs-4
+                    p = render "events/type_buttons"
+            .row
+              .col-xs-12
+                .row
+                  .col-xs-4
+                    p = render "events/coaches_button"
+                  .col-xs-4
+                    p = render "events/tags_button"
+
+          .col-xs-12.col-md-6
+            .row
+              .col-xs-12
+                p = render "events/date_buttons", :f => f
+        .row
+          .col-sm-12
+            p
+
+.row
+  .col-md-12
+    hr
+    ul.nav.nav-tabs role="tablist"
+      li class="active"
+        a href="#eventlist" aria-controls="eventlist" role="tab" data-toggle="tab"
+          = t(:event_list)
+      li
+        a href="#eventcalendar" aria-controls="eventcalendar" role="tab" data-toggle="tab"
+          = t(:event_calendar)
+
+.row
+  .col-md-12
+    .well
+      p
+        |&nbsp;
+      .tab-content
+        .tab-pane.active role="tabpanel" id="eventlist"
+          = render "events/index_partials/eventlist"
+        .tab-pane role="tabpanel" id="eventcalendar"
+          = render "events/index_partials/eventcalendar"

@@ -1,0 +1,21 @@
+.btn-group
+  button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    = t(:new)
+    |&nbsp;
+    span class="caret"
+  ul.dropdown-menu
+    li
+      = link_to new_event_path
+        = t(:new_standard_event)
+    li
+      = link_to new_individual_events_path
+        = t(:new_individual_event)
+    li
+      = link_to new_free_events_path
+        = t(:new_free_event)
+    li
+      = link_to new_bundle_events_path
+        = t(:new_bundle_event)
+    li
+      = link_to new_online_events_path
+        = t(:new_online_event)

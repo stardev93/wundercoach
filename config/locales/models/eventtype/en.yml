@@ -1,0 +1,8 @@
+en:
+  new_eventtype: New event type
+  edit_eventtype: Veranstaltungsart bearbeiten
+  simple_form:
+    magic_submit:
+      eventtypes:
+        new:
+          submit: create new eventtype

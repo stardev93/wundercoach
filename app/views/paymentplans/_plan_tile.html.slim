@@ -1,0 +1,74 @@
+.col-sm-4 class=paymentplan.cycle
+  .well style="margin-top:20px;padding: 0px;" class="#{active ? 'plan_active' : ''}"
+    ul.list-group
+      - if active
+        / on trial plan
+        - if is_trial
+          li.list-group-item.text-center.plan_active_hint style="border: 0px;"
+            span.lead = t(:your_trial_plan)
+        / on free plan
+        - elsif is_free
+          li.list-group-item.text-center.plan_active_hint style="border: 0px;"
+            span.lead = t(:your_free_plan)
+        / on regular paid plan
+        - else
+          li.list-group-item.text-center.plan_active_hint style="border: 0px;"
+            span.lead = t(:your_current_plan)
+      - else
+        li.list-group-item.text-center style="border: 0px;"
+          span.lead &nbsp;
+
+      li.list-group-item.text-center style="border: 0px;" class="#{active ? 'plan_active' : ''}"
+
+      li.list-group-item style="border: 0px;" class="#{active ? 'plan_active' : ''}"
+        h1.text-center = paymentplan.name
+        h3.text-center
+          = number_to_currency(paymentplan.price / 100)
+          br
+          small
+            - if paymentplan.cycle.present?
+              = t("cycle.#{paymentplan.cycle}")
+            - else
+              |&nbsp;
+      li.list-group-item style="border: 0px;margin: 1px 10px 0px 10px;padding: 16px;" class="#{active ? 'plan_active' : ''}"
+        p.lead.text-center
+          = paymentplan.comments
+
+      li.list-group-item.text-center style="border: 0px;" class="#{active ? 'plan_active' : ''}"
+        p
+          a.toggledetails.togglelink href="#"
+            i.fa.fa-caret-down
+            |&nbsp;
+            = t(:show_plan_details)
+          a.toggledetails.togglelink href="#" style="display: none;"
+            i.fa.fa-caret-up
+            |&nbsp;
+            = t(:hide_plan_details)
+          br
+        ul.list-group.functiondetails style="display: none;"
+          - paymentplan.paymentplanfeatures.includes(feature: :translations).order('features.position ASC').references(:features).each do |paymentplanfeature|
+            - feature = paymentplanfeature.feature
+            li.list-group-item.text-left style="padding: 10px 10px 10px 10px;" class="#{active ? 'plan_active' : ''}"
+              .row
+                .col-xs-10
+                  = feature
+                  - if feature.description.present?
+                    |&nbsp;
+                    a href="#" role="button" class="popovers" data-toggle="popover" title="" data-content="#{strip_tags(feature.description.html_safe)}" data-trigger="hover" data-placement="bottom"
+                      span style="color: #666666;"
+                        |&nbsp;
+                        i.fa.fa-question
+                .col-xs-2.text-right
+                  - if feature.fieldtype == 'boolean'
+                    - if paymentplanfeature.fieldvalue == '1'
+                      i.fa.fa-check
+                    - else
+                      i.fa.fa-minus
+                  - else
+                    = paymentplanfeature.fieldvalue
+      li.list-group-item.text-center style="border: 0px;" class="#{active ? 'plan_active' : ''}"
+        br
+        - if active && !is_trial
+          = render "payment_button_inactive", paymentplan: paymentplan
+        - else
+          = render "payment_button_active", paymentplan: paymentplan

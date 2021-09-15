@@ -1,0 +1,13 @@
+.row
+  .col-xs-8
+    .well
+      .page-header
+        span.h1
+          = t(:new_mailtemplate)
+
+      p.lead
+        |&nbsp;
+      = render 'form'
+  .col-xs-4
+    .well
+      = render "mailtemplates/placeholders_subtable"

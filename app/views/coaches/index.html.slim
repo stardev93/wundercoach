@@ -1,0 +1,91 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        = t(:coaches)
+      span.add-item
+        = link_to new_coach_path, class: "btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_coach)
+    p.lead
+      = t(:coach_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag coaches_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to coaches_path, class: "btn btn-link"
+                = t(:show_all)
+
+    table.table
+      thead
+        tr
+          th = t(:coach_image)
+          th = t(:name)
+          th = t(:tel)
+          th
+            = t(:email)
+            br
+            = t(:homepage_url)
+          th = t(:coach_price)
+          th.text-center
+           = t(:active)
+          th
+
+      tbody
+        - @coaches.each do |coach|
+          tr
+            td
+              = render "shared/f_ro_image", :image_url => coach.image.url(:thumb), :image_style => "width: 100px;", :image_border => false, :link => coach
+            td
+              / = link_to (coach.gender.blank? ? '' : t(:"#{coach.gender}_indirect") + " ").to_s + coach.firstname + " " + coach.lastname, coach
+              / br
+              = link_to coach
+                = coach.decorate.reverse_name
+            td
+              = coach.tel
+            td
+              = coach.email
+              - unless coach.homepage_url.blank?
+                br
+                = link_to coach.homepage_url, :target => "#{coach.homepage_url_target_blank ? '_blank' : ''}"
+                  = coach.homepage_url
+            td
+              - if coach.price
+                = number_to_currency(coach.price) + " / " + t("per_#{coach.price_unit}")
+            td.text-center
+              - if coach.active
+                i.fa.fa-check
+              - else
+                i.fa.fa-ban
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    |...
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to coach_path(coach)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        = t(:show)
+                    li
+                      = link_to edit_coach_path(coach)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        = t(:edit)
+                    li
+                      = link_to coach, data: { confirm: t(:are_you_sure_you_want_to_delete_this_coach) }, method: :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

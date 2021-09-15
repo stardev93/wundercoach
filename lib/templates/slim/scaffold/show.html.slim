@@ -1,0 +1,47 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @<%= singular_table_name %>
+      span.add-item
+        = link_to new_<%= singular_table_name %>_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_<%= singular_table_name %>)
+    p.lead
+<% attributes.each do |attribute| -%>
+      = @<%= singular_table_name %>.<%= attribute.name %>
+      br
+<% end -%>
+
+.row
+  .col-xs-12
+    p.h3
+      '<%= human_name %>
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+<% attributes.each do |attribute| -%>
+      p
+        strong = t(:<%= attribute.name %>)
+        br
+        span.lead = @<%= singular_table_name %>.<%= attribute.name %>
+        '&nbsp;
+<% end -%>
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @<%= singular_table_name %>, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to <%= index_helper %>_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)

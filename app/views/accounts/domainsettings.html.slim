@@ -1,0 +1,29 @@
+= render "accounts/form_header",
+          :headline => t(:domain_information),
+          :hint => t(:domain_information_hint),
+          :edit_link => domainsettingsedit_path
+
+
+.row
+  .col-sm-12
+
+    p.lead
+      |&nbsp;
+    / = render "accounts/datarow", :label => t(:domain_name), :value => @account.domain
+    = render "accounts/datarow", :label => t(:subdomain), :value => "https://#{@account.subdomain}.wundercoach.net"
+    .text-center
+      a.btn.btn-success href="https://#{@account.subdomain}.wundercoach.net#{signup_index_path}" target="_blank"
+        = t(:preview_signup_list)
+      br
+      br
+    p.lead
+      = t(:subdomain_hint)
+    
+.row
+  .col-md-12.text-right
+    hr
+    = link_to domainsettingsedit_path, :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;

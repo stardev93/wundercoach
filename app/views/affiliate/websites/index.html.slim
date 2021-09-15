@@ -1,0 +1,4 @@
+= render 'subtable', websites: @websites
+.row
+  .col-xs-12
+    = will_paginate @collection, renderer: BootstrapPagination::Rails

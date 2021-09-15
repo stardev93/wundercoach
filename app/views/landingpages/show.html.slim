@@ -1,0 +1,13 @@
+- landingpagetemplate = @account.landingpagecode.html_safe
+= landingpagetemplate % {account_name: @account.name,
+                      image_src: (@account.eventheader.exists? ? @account.eventheader : "/assets/wundercoach-seminare-#{I18n.locale}.png"),
+                      meta_title: @eventtemplate.meta_title,
+                      meta_description: @eventtemplate.meta_description,
+                      meta_keywords: @eventtemplate.meta_keywords,
+                      name: @eventtemplate.name,
+                      shortdescription: @eventtemplate.shortdescription,
+                      longdescription: @eventtemplate.longdescription,
+                      current_year: Time.now.year,
+                      current_month: Time.now.month,
+                      current_day: Time.now.day,
+                      eventist_partial: (render "eventlist", :layout => false, :events => @events)}

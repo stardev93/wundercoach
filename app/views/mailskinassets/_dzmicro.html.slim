@@ -1,0 +1,13 @@
+= form_for(@mailskinasset, html: { multipart: true, class: "dropzone", id: "new_upload"}) do |f|
+  = f.hidden_field :mailskin_id, value: @mailskin.id
+  span.lead
+    i.fa.fa-cloud-upload
+    |&nbsp;
+    = t(:drop_files_here_to_upload)
+  div.fallback
+    = f.file_field :mailskinasset
+    br
+    = f.submit "Upload"
+
+  input type="hidden" class="response_action" value="mailskinassets" id="response_action"
+  input type="hidden" class="response_element" value="mydivtochange" id="response_element"

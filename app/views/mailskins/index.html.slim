@@ -1,0 +1,69 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:mailskins)
+      span.add-item
+        = link_to new_mailskin_path, :class=>"btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_mailskin)
+    p.lead
+      = t(:mailskin_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag mailskins_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to mailskins_path, class: "btn btn-link"
+                = t(:show_all)
+
+
+    table.table
+      thead
+        tr
+          th
+            = t (:key)
+          th
+            = t (:name)
+          th
+
+      tbody
+        - @mailskins.each do |mailskin|
+          tr
+            td = link_to mailskin.key, mailskin
+            td = mailskin.name
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+
+                    li
+                      = link_to mailskin_preview_path(mailskin), :target => "_blank"
+                        i.fa.fa-eye
+                        '&nbsp;
+                        =t(:preview)
+                    li
+                      = link_to edit_mailskin_path(mailskin)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        =t(:edit)
+                    li
+                      = link_to mailskin, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+
+    .row
+      .col-md-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

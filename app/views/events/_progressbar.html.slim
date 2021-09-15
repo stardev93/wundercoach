@@ -1,0 +1,12 @@
+- if event.maxparticipants.nil? || event.seats_booked == 0 || event.maxparticipants == 0
+  - seats_booked_perc = 0
+- else
+  - seats_booked_perc = ((event.seats_booked.to_f / event.maxparticipants.to_f) * 100).to_i
+
+- seats_booked_perc = 15 if seats_booked_perc < 15
+
+.progress
+  .progress-bar class="#{seats_booked_perc == 100 ? 'progress-bar-danger' : 'progress-bar-success'}" style="min-width: 1em; width: #{seats_booked_perc}%" aria-valuenow="#{seats_booked_perc}" aria-valuemin="1" aria-valuemax="#{event.maxparticipants}"
+    = event.seats_booked
+    |&nbsp;/&nbsp;
+    = event.maxparticipants

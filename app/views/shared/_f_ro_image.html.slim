@@ -1,0 +1,45 @@
+/ display an image with or without link
+/ image_url: the url where the image can be found
+/ image_label: the label of the image
+/ link: the link
+/ link_target: the link target
+/ link_style: any styles for link
+/ link_class: classes to be added to the link
+/ image_style: any styles for image tag
+/ image_class: classes to be added to the image
+
+- unless defined? link_style
+  - link_style = ''
+
+- unless defined? image_label
+  - image_label = ''
+
+- unless defined? link_class
+  - link_class = ''
+
+- if defined? image_border && image_border == true
+  - image_border = 'padding: 3px; border:3px solid #FFFFFF; box-shadow: 5px 5px 5px #999999;'
+- else
+  - image_border = ''
+
+- unless defined? image_style
+  - image_style = ''
+- image_style = image_border + image_style
+
+- unless defined? image_class
+  - image_class = ''
+
+- unless defined? link_target
+  - link_target = "_self"
+
+strong
+  = image_label
+- if defined? image_hint
+  |&nbsp;
+  = render "shared/popover", :position => "top", :popover_text => image_hint
+p
+  - if defined? link
+    = link_to link, target: "#{link_target}", :class => link_class, :style => link_style
+      = image_tag image_url, :class => image_class, :style => image_style
+  - else
+    = image_tag image_url, :class => image_class, :style => image_style

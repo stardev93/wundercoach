@@ -1,0 +1,32 @@
+javascript:
+  $(document).ready(function(){
+    $('.modal_confirm').click(function () {
+      var url = $(this).attr('data-url');
+      var headline = $(this).attr('data-headline');
+      var text = $(this).attr('data-text');
+      var confirm_button = $(this).attr('data-button');
+
+      $('#confirm_button').attr('href', url);
+      $("#confirm_button").text(confirm_button);
+      $('#confirm_headline').text(headline);
+      $("#confirm_text").text(text);
+
+    });
+  });
+.modal.fade id="modalconfirm" tabindex="-1" role="dialog" aria-labelledby="ModalConfirm" aria-hidden="true" style="background-color: rgba(0,0,0,.0001) !important;"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title.text-left#confirm_headline
+          |confirm_headline
+      .modal-body.text-left#confirm_text
+        p
+          |confirm_text
+      .modal-footer
+        .row
+          .col-xs-12.text-right
+            = link_to "#", id: "confirm_button", class: "btn btn-danger"
+              |confirm_button
+            |&nbsp;
+            button.btn.btn-default type="button" data-dismiss="modal"
+              = t(:cancel)

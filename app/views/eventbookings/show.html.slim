@@ -1,0 +1,184 @@
+javascript:
+  function showselect() {
+    $("#eventbooking_event_id_chosen").chosen({ width:"100%" });
+  }
+
+- edit_button = render "shared/button", path: edit_eventbooking_path(@eventbooking), link_text: t(:edit_eventbooking), icon: "fa-edit", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit_eventbooking)
+- move_eventbooking_button = render "shared/button", path: eventbookings_move_path(@eventbooking), link_text: t(:move_eventbooking), icon: "fa-exchange", classes: "btn btn-warning", datatoggle: "tooltip", dataplacement: "top", title: t(:move_eventbooking)
+- event_button = render "shared/button", path: event_path(@eventbooking.event).to_s + '#orders', link_text: t(:event), icon: "fa-show", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:event)
+
+= render "shared/form_header",
+         header_text: t(:eventbooking).to_s + ' ' + @eventbooking.info.to_s, hint_text: @eventbooking.event.decorate.info,
+         buttons: event_button + ' ' + edit_button + ' ' + move_eventbooking_button
+
+.row.well
+  .col-xs-12.col-sm-6
+    strong
+      = t(:participant)
+    br
+    span.lead
+      = render "eventbookings/participant", :eventbooking => @eventbooking
+
+    br
+
+    - if @eventbooking.additional_participants.present?
+      span.lead
+        = t(:additional_participants)
+        |:
+      br
+      span.lead
+        - @eventbooking.additional_participants.each_value do |participant|
+          = "#{participant[:firstname]} #{participant[:lastname]}"
+          br
+  .col-xs-12.col-sm-6
+    = render "eventbookings/order_tile", :order => @eventbooking.order.decorate
+
+
+
+  .col-xs-12
+    br
+    = render "shared/f_ro_text", :field_value => @eventbooking.comment, :field_label => t(:comment), :field_hint => t(:comment_hint)
+
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-7
+        = render "shared/f_ro_text", :field_value => @eventbooking.event, :link => event_path(@eventbooking.event),:field_label => t(:event), :field_hint => t(:event)
+
+      .col-xs-12.col-sm-2
+        = render "shared/f_ro_text", :field_value => @eventbooking.event.decorate.start_date_time, :field_label => t(:start_date_time), :field_hint => t(:start_date_time_hint)
+
+      .col-xs-12.col-sm-2
+        = render "shared/f_ro_text", :field_value => @eventbooking.event.decorate.end_date_time, :field_label => t(:end_date_time), :field_hint => t(:end_date_time_hint)
+      .col-xs-12.col-sm-1.text-right
+        = event_button
+
+
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @eventbooking&.order&.client_order_info, :field_label => t(:order_client_order_info), :field_hint => t(:order_client_order_info_hint)
+
+    / does the booking belong to an BundleEvent?
+    - if @eventbooking.order
+      / && (@eventbooking.order.product.type == "BundleEvent")
+      .row
+        .col-xs-12.col-sm-9
+          span.lead
+            label
+              = t(:eventbooking_is_part_of_a_bundle)
+        .col-xs-12.col-sm-3
+
+      .row
+        .col-xs-12.col-sm-9
+          p.lead
+            = @eventbooking.order.product
+
+        .col-xs-12.col-sm-3.text-right
+          = render "shared/button", path: event_path(@eventbooking.order.product).to_s + '#orders', link_text: t(:bundle_event), icon: "fa-show", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:bundle_event)
+
+      .row
+        .col-xs-12
+          table.table
+            tr
+              th
+                = t(:eventbooking)
+              th
+                = t(:start_date)
+              th
+                = t(:invoice)
+              th
+            / - @eventbooking.order.eventbookings.no_bundles.includes(:event).order("events.start_date ASC").each do |bundle_eventbooking|
+            - @eventbooking.order.eventbookings.includes(:event).order("events.start_date ASC").each do |bundle_eventbooking|
+              tr
+                td
+                  - if bundle_eventbooking.id != @eventbooking.id
+                    = link_to eventbooking_path(bundle_eventbooking)
+                      = bundle_eventbooking.event
+                  - else
+                    = bundle_eventbooking.event
+                td
+                  - unless bundle_eventbooking.event.start_date.blank?
+                    = bundle_eventbooking.event.decorate.start_date
+                    br
+                    = bundle_eventbooking.event.decorate.start_time
+                td
+                  = render "billing/businessdocuments/invoice_controls", :eventbooking => bundle_eventbooking
+                td
+                  = render "eventbookings/controls/eventbooking_button", :eventbooking => bundle_eventbooking
+      .row
+        .col-xs-12
+          p &nbsp;
+
+
+.row.well
+  .col-sm-6.col-xs-12
+    h3 = t(:eventbooking_participant_data)
+    = render "addresses/address", address: @eventbooking.address
+  .col-sm-6.col-xs-12
+    h3 = t(:billing_address)
+    - if @eventbooking.order.businessdocuments.any?
+      = render "addresses/address", address: @eventbooking.order.businessdocuments.first.address
+    - elsif @eventbooking.billing_address
+      = render "addresses/address", address: @eventbooking.billing_address
+
+.row
+  .col-xs-12.text-right
+    hr
+      = render "shared/button", path: mailtemplates_mailto_eventbooking_path(@eventbooking), link_text: t(:send_email), icon: "fa-envelope-o", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:send_email)
+      |&nbsp;
+
+    - if current_tenant.id == 660 || current_tenant.id == 1101 || current_tenant.name == 'Silicon Planet GmbH'
+      - if @eventbooking.contact
+        = link_to crm_contact_path(@eventbooking.contact)+'#eventbookings', class: "btn btn-default"
+            i.fa.fa-user
+            '&nbsp;
+            = t(:open_contact)
+      - else
+        = link_to eventbookings_createcontact_path(@eventbooking), class: "btn btn-default"
+            i.fa.fa-user-plus
+            '&nbsp;
+            = t(:create_contact_from_eventbooking)
+      ' &nbsp;
+
+    - if @eventbooking.destroyable?
+      = link_to eventbooking_path(@eventbooking) + '?r=eventbooking', data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+          i.fa.fa-remove
+          '&nbsp;
+          = t(:delete)
+      ' &nbsp;
+    - if @eventbooking.cancelable?
+      = link_to cancel_eventbooking_path(@eventbooking), data: { confirm: "#{t(:are_you_sure_you_want_to_delete_this_eventbooking)}" }, method: :get, class: "btn btn-danger"
+        i.fa.fa-ban
+        '&nbsp;
+        = t(:cancel_booking)
+      ' &nbsp;
+    = link_to edit_eventbooking_path(@eventbooking), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit_eventbooking)
+    ' &nbsp;
+    = link_to eventbookings_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:eventbookings)
+    ' &nbsp;
+    - if @eventbooking.event
+      = link_to event_path(@eventbooking.event), class: "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        = t(:back_to_event)
+.row
+  .col-xs-12
+    p
+      |&nbsp;
+.row
+  .col-xs-12
+
+    ul.nav.nav-tabs role="tablist"
+      li.active
+        a href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab"
+          = t(:invoices)
+
+    .tab-content
+      .tab-pane.active role="tabpanel" id="invoices"
+        = render "billing/businessdocuments/subtable", :@businessdocuments => @eventbooking.order.businessdocuments

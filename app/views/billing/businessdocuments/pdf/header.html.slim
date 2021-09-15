@@ -1,0 +1,12 @@
+/ offer different headers depending on invoicelogo_updated_at
+- from_date = "2018-01-12".to_date
+- if !@businessdocument.account.invoicelogo_updated_at.blank? and (Date.parse(@businessdocument.account.invoicelogo_updated_at.to_s) > from_date)
+  / - logo_date = Date.parse(@invoice.account.invoicelogo_updated_at.to_s)
+    / Logo älter als Änderungsdatum: Alte Version
+  .row
+    .col-md-12.text-left
+      img src="#{@businessdocument.account.invoicelogo.path(:original)}" style="width: 700px;height: 114px;"
+- else
+  .row
+    .col-md-12.text-center
+      img src="#{@businessdocument.account.invoicelogo.path(:thumb)}"

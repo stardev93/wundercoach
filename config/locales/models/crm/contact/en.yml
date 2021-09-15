@@ -1,0 +1,65 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  contact: Contact
+  contacts: Contacts
+  person: Person
+  persons: Persons
+  assigned_persons: Persons in this company
+  company: Company
+  companies: Companies
+  contact_infotext: List of contacts in the contacts database
+  current_contact: Current contact
+  contact_type: Type
+  edit_person: "edit person"
+  edit_company: "edit company"
+  new_person: "create new person"
+  new_company: "create new company"
+  add_person_to_company: Add person
+
+  vat_id: "Vat-ID"
+  register: "Company register"
+  register_code: "company register no"
+  account_receivable_no: "accounts receivable no"
+  contact_no: "contact-no"
+  account_receivable_no: "account receivable"
+  contact_vat_id: "VAT-ID"
+  is_primary: "primary"
+  primary_address: "Primary address"
+
+  address: Adress
+  addresses: Addresses
+  new_contact_address: "new address"
+  address_type: "type"
+  other_address: "other"
+  delivery_address: "delivery address"
+  billing_address: "billing address"
+  work_phone: "work phone"
+  private_phone: "private phone"
+  mobile_phone: "nobile"
+  work_email: "email"
+  website: "Website"
+  other_detail: "other"
+
+  contact_details: details
+
+  contact_tag: Keyword
+  contact_tags: Keywords
+  contact_tag_infotext: "You can use keywords to categorize your contacts"
+  contact_tags_hint: Use keywords to categorize your contacts
+  add_contact_tag: New keyword
+  contact_created: "The contact has been created"
+  create_contact_from_eventbooking: "Create contact"
+  open_contact: "Open contact"
+  create_contact: "Create contact"
+  error_creating_contact: "Error creating contact"
+
+  assign_contact_to_invoice: Assign contact
+  invoice_contact: Invoice contact
+  existing_contacts: Existing contacts
+  contact_count: Contact count
+  company_name: Company name
+  company_name2: Company name2
+  parent_company: Company
+  parent_company_id: Company-ID
+  contact_searchterm: Search for name, firstname, lastname, contact no., account receivable no, address, email, telephone...
+  companies_with_persons: Companies with persons

@@ -1,0 +1,21 @@
+.form-group
+  = simple_form_for :affiliate_account_sales, url: url_for(controller: controller_name, action: action_name, clear: :filter), method: :get do |f|
+    = f.input :start_date, required: false, label: t(:start_date),
+              as: :date_picker,
+              input_html: { value: @filters['start_date'] }
+    |&nbsp;
+    = f.input :end_date, required: false, label: t(:end_date),
+              as: :date_picker,
+              input_html: { value: @filters['end_date'] }
+    |&nbsp;
+    - current_month = Date.today
+    - one_month_ago = current_month - 1.month
+    button.btn.btn-default.set_pickers data-start_date=one_month_ago.at_beginning_of_month data-end_date=one_month_ago.at_end_of_month = t(:last_month)
+    |&nbsp;
+    button.btn.btn-default.set_pickers data-start_date=current_month.at_beginning_of_month data-end_date=current_month.at_end_of_month = t(:current_month)
+    |&nbsp;
+    = f.button :button, class: "button btn btn-primary", name: nil
+      i.fa.fa-search
+    - unless @filters.empty?
+      = link_to url_for(controller: controller_name, action: action_name, clear: :filter), class: "btn btn-link"
+        = t(:show_all)

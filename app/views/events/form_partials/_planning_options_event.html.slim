@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_planning_options), :hint_text => ""
+
+.row.well
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-4
+        = f.input :start_date, label: t(:start_date), as: :date_time_picker, locale: :de, hint: t(:start_date_hint), class: "datepicker"
+      .col-xs-12.col-sm-4
+        = f.input :end_date, label: t(:end_date), as: :date_time_picker, locale: :de, hint: t(:end_date_hint)
+      .col-xs-12.col-sm-4
+        = f.association :planningstatus, label: t(:planningstatus), include_blank: false, hint: t(:planningstatus_hint)
+
+    .row
+      .col-xs-12.col-sm-4
+        = f.input :latest_signup_date, label: t(:latest_signup_date), as: :date_time_picker, hint: t(:latest_signup_date_hint)
+      .col-xs-12.col-sm-4
+        = f.input :maxparticipants

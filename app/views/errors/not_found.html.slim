@@ -1,0 +1,14 @@
+p.lead
+  |&nbsp;
+h3
+  = t(:page_not_found_error)
+p.lead
+  font color="red"
+    |(
+    = t(:error_404)
+    |)
+p.lead
+  = t(:page_not_found_error_message)
+p.lead
+  a href="javascript:history.back();" class="lead btn btn-link"
+    = t(:back_to_previous_page)

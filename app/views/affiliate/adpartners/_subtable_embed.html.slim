@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    h3 Einbinden
+    - @affiliate.event_lists.each do |event_list|
+      .panel.panel-default
+        .panel-heading
+          strong = %(Liste "#{event_list}")
+        .panel-body
+          - current_user.account.widgets.each do |widget|
+            p = widget
+            textarea.form-control readonly=""
+              = %Q(<script type="text/javascript" src="#{adpartner_widget_script_url(@adpartner.id, event_list.id, widget.token, subdomain: EXTERNAL_SUBDOMAIN, locale: nil)}" async="true"></script>)

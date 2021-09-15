@@ -1,0 +1,10 @@
+.row
+  .col-lg-12.text-center
+    = image_tag "logo.png", style: "width: 100px; margin: 0px 0px 30px 0px;"
+.row
+  .col-xs-12
+    h1 Ihr Wundercoach-Konto wurde erstellt.
+    p.lead Wir haben Ihnen einen Aktivierungslink zugeschickt, mit dem Sie sich direkt in den Wundercoach einloggen können.
+    p
+      = link_to login_path, class: "btn btn-primary"
+        = t(:login_here)

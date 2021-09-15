@@ -1,0 +1,96 @@
+.container
+  .row
+    .col-md-12
+      / = render "assets/dzmicro", :asset => @asset
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud-upload
+          | &nbsp;
+          = t(:assets)
+        span.add-item
+          = link_to assets_destroyall_path, :class=>"btn btn-danger", data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_all_assets)}"}, :method => :deleteall
+            i.fa.fa-remove
+            '&nbsp;
+            = t(:delete_all)
+          | &nbsp;
+          = link_to new_asset_path, :class=>"btn btn-primary"
+            i.fa.fa-plus
+            | &nbsp;
+            = t(:new_asset)
+
+      p.lead
+        = t(:assets_are_files_that_can_be_used_in_all_events)
+
+  .row
+    .col-md-8
+      nav.navbar.navbar-default
+        form.navbar-form.navbar-left
+          .form-group
+            = form_tag assets_path, class: "form form-inline pull-right", method: :get
+              = text_field_tag :search, params[:search], class: "form-control"
+              '&nbsp;
+              button.btn.btn-primary<
+                i.fa.fa-search
+              - if params[:search]
+                = link_to assets_path, class: "btn btn-link"
+                  = t(:show_all)
+    .col-md-4
+      = render "assets/dzmicro", :asset => @asset
+  .row
+    .col-md-12
+      table.table
+        thead
+          tr
+            th
+              = t (:name)
+            th
+              = t (:asset)
+            th
+              = t (:status)
+            th
+              = t (:event)
+            th
+
+        tbody
+          - @assets.each do |asset|
+            tr
+              td
+                = render "assets/thumb", :asset => asset
+              td
+                = link_to asset.name, asset
+              td = asset.status
+              td
+                - if !asset.event.nil?
+                  = link_to asset.event, asset.event
+                - else
+                  i.fa.fa-ban
+              td
+                .btn-toolbar role="toolbar"
+                  .btn-group
+                    button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                      = t(:actions)
+                      '&nbsp;
+                      span.caret
+                    ul.dropdown-menu role="menu"
+                      li
+                        = link_to asset_path(asset)
+                          i.fa.fa-eye
+                          '&nbsp;
+                          =t(:show)
+                      li
+                        = link_to edit_asset_path(asset)
+                          i.fa.fa-edit
+                          '&nbsp;
+                          =t(:edit)
+                      li
+                        = link_to asset, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_asset)}"}, :method => :delete
+                          i.fa.fa-remove
+                          '&nbsp;
+                          = t(:delete)
+
+
+      .row
+        .col-md-12
+          = will_paginate @collection, renderer: BootstrapPagination::Rails

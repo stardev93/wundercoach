@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        i.fa.fa-magic
+        | &nbsp;
+        = t(:marketing)
+        
+  .col-md-12
+    .well
+      - if @account.mailchimp_integrated?
+        = t(:marketing_info_text)
+      - else
+        = render "get_started"

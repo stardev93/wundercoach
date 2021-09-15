@@ -1,0 +1,15 @@
+pre only here: signup/orders/pricing_option
+.row
+  .col-xs-6
+    span.h3
+      = t(:pricingoption_original_price)
+    p.lead
+      = @order&.product&.decorate.price
+  .col-xs-6
+    span.h3
+      = t(:pricingoption_chosen)
+    p.lead
+      = @order.get_pricingoption&.name
+      |&nbsp;
+      - if @order.get_pricingoption&.is_absolute?
+      = @order.get_pricingoption&.decorate&.deduction(@order&.product)

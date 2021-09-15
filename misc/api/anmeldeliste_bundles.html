@@ -1,0 +1,48 @@
+{{stylesheet}}
+<div id="wundercoach_embedded">
+  <div class="row event_body_zone">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+                <h4 class="event_headline">Seminare</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Thema</th>
+            <th class="text-right event_th">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for bundle in bundles%}
+            <tr class="event_tr">
+              <td class="event_td">
+                <span class="event_name">
+                  {{bundle.name}}
+                  {{bundle.show_link}}
+                </span>
+                <br>
+                {{bundle.shortdescription}}
+              </td>
+              <td class="text-right event_td" nowrap="nowrap">
+                <span class="event_price">{{bundle.price}}</span>
+              </td>
+              <td class="event_td">
+                <span class="event_signup"></span>
+                <p>
+                  {{bundle.signup_link}}
+                </p>
+                <p>
+                  {{bundle.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+/ decides which location info to display
+- if event.is_a? OnlineEvent
+  = render "signup/products/location_online_event", :event => event
+
+- elsif event.is_a? BundleEvent
+  = render "signup/products/location_bundle", :event => event
+- else
+  = render "signup/products/location", :event => event

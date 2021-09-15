@@ -1,0 +1,11 @@
+= stylesheet_link_tag "signup/default", media: "all", "data-turbolinks-track" => true
+.row.event_header_zone
+  .col-md-12
+    .eventheader
+      = link_to "https://wundercoach.net"
+        = image_tag "signup-header-default.png", class: "img-responsive event_header_image"
+
+.row.event_body_zone
+  .col-md-12
+    h1 = t(:account_not_found)
+    p = t(:account_not_found_hint)

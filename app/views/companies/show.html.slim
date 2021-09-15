@@ -1,0 +1,183 @@
+
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-cloud
+          | &nbsp;
+          = @company
+        span.add-item
+          = link_to new_company_path, :class=>"btn btn-default"
+            i.fa.fa-plus
+            | &nbsp;
+            | New Company
+      p.lead
+        = @company.account
+        br
+        = @company.name
+        br
+        = @company.name_addon
+        br
+        = @company.comments
+        br
+        = @company.zip
+        br
+        = @company.city
+        br
+        = @company.street
+        br
+        = @company.streetno
+        br
+        = @company.country_name
+        br
+        = @company.gender
+        br
+        = @company.firstname
+        br
+        = @company.lastname
+        br
+        = @company.tel1
+        br
+        = @company.tel2
+        br
+        = @company.fax
+        br
+        = @company.email
+        br
+        = @company.homepage
+        br
+        = @company.logo
+        br
+        = @company.companystatus
+        br
+        = @company.companynumber
+        br
+        = @company.vat_number
+        br
+
+  .row
+    .col-md-12
+      p.h3 
+        'Company 
+        = t(:data) 
+      hr style="padding:0px; margin: 5px;"
+      address
+        p
+          strong Account
+          br
+          span.lead = @company.account
+          '&nbsp;
+        p
+          strong Name
+          br
+          span.lead = @company.name
+          '&nbsp;
+        p
+          strong Name addon
+          br
+          span.lead = @company.name_addon
+          '&nbsp;
+        p
+          strong Comments
+          br
+          span.lead = @company.comments
+          '&nbsp;
+        p
+          strong Zip
+          br
+          span.lead = @company.zip
+          '&nbsp;
+        p
+          strong City
+          br
+          span.lead = @company.city
+          '&nbsp;
+        p
+          strong Street
+          br
+          span.lead = @company.street
+          '&nbsp;
+        p
+          strong Streetno
+          br
+          span.lead = @company.streetno
+          '&nbsp;
+        p
+          strong Country
+          br
+          span.lead = @company.country_name
+          '&nbsp;
+        p
+          strong Gender
+          br
+          span.lead = @company.gender
+          '&nbsp;
+        p
+          strong Firstname
+          br
+          span.lead = @company.firstname
+          '&nbsp;
+        p
+          strong Lastname
+          br
+          span.lead = @company.lastname
+          '&nbsp;
+        p
+          strong Tel1
+          br
+          span.lead = @company.tel1
+          '&nbsp;
+        p
+          strong Tel2
+          br
+          span.lead = @company.tel2
+          '&nbsp;
+        p
+          strong Fax
+          br
+          span.lead = @company.fax
+          '&nbsp;
+        p
+          strong Email
+          br
+          span.lead = @company.email
+          '&nbsp;
+        p
+          strong Homepage
+          br
+          span.lead = @company.homepage
+          '&nbsp;
+        p
+          strong Logo
+          br
+          span.lead = @company.logo
+          '&nbsp;
+        p
+          strong Companystatus
+          br
+          span.lead = @company.companystatus
+          '&nbsp;
+        p
+          strong Companynumber
+          br
+          span.lead = @company.companynumber
+          '&nbsp;
+        p
+          strong Vat number
+          br
+          span.lead = @company.vat_number
+          '&nbsp;
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_company_path(@company), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to companies_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)

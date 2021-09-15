@@ -1,0 +1,67 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  bookings: Bookings
+  booking: Booking
+  booking_date: "Booking date"
+  valid_until: "Valid until"
+  test_valid_until: "Trial period valid until"
+  comments: "Comments"
+  valid_from: Valid from
+
+  your_previous_plans: "Your previous bookings"
+  your_current_plan: "Your current plan"
+  your_trial_plan: "Your free trial plan"
+  your_free_plan: "Your fee plan"
+
+  plan_history: "Booking history"
+  this_is_your_booking_history: "This is the booking history of your account"
+  participants_list: "Participant list"
+  teachers: "Coaches"
+
+  expires_at: Expires at %{expiry}.
+  activates_at: Activates at %{activation}.
+
+  upgrade_now: "Upgrade now"
+  trial_version_hint: "You are using the version %{paymentplan} for a total of %{total_days} days free of charge. If you don't do anything, your account automatically changes to the free basic version."
+  trial_version_remaining_hint: "Your trial period still has %{remaining_days} days remaining."
+  trail_version_cta: "Upgrade now to continue using the advanced features without interruption"
+
+  free_version_hint: "You are using the %{paymentplan}-Version of Wundercoach."
+  free_version_cta: "Upgrade now to unlock the advanced features of the Wundercoach."
+
+  send_expiry_reminder_one_subject: "Your trial period ends in %{remaining_days} days"
+  send_expiry_reminder_two_subject: "Your trial period ends tomorrow"
+  send_trial_expired_one_subject: "Your trial period is expired"
+
+  account_billing_to: "Invoice recipient"
+  account_billing_to_free: "User information"
+  you_are_booking_the_plan: "You are booking the plan"
+
+  terms: "Terms"
+  pricing_strategy: "No hidden charges and no extra cost."
+
+  cancel_terms_headline: "Termination"
+  cancel_terms_monthly: "Monthly notice period"
+  cancel_terms_yearly: "Termination at the maturity date"
+
+  renewal_terms_headline: "Renewal"
+  renewal_terms: "Automatic renewal one day before the maturity date"
+
+  accept_terms_label: "I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#terms_of_service\">terms of service</a>"
+  terms_of_service: "Terms of service"
+  download_terms_of_service_pdf: "Download the terms of service as a PDF file"
+  accept_terms_headline: "Terms of service"
+  accept_terms_hint: "Please accept the contractual terms by clicking on \"I accept the terms and conditions\""
+
+  accept_privacy_policy_terms: I accept the <a href="%{register_privacy_url}" target="_blank">privacy policy terms</a> zu
+
+  plus_vat_amount: "Plus VAT 19%"
+  incl_vat_amount: "Incl. VAT 19%"
+  net_total: "Net total without VAT"
+  gross_total: "Gross total including VAT"
+
+  free_usage: "The use of the Wundercoach in this plan is free."
+  booking_successful: Booking successful
+  booking_transition_at: Your new booking activates on %{date}.
+  booking_transition_immediately: Your new booking has already been activated.
+  trial_booking: "Free trial month"

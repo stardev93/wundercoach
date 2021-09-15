@@ -1,0 +1,24 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # feature
+  feature: "Funktion"
+  features: "Funktionen"
+  key: "Key"
+  key_hint: "Der Schlüssel zur Nutzung der Features. Darf nicht geändert werden."
+  description: "Beschreibung"
+  description_hint: "Beschreibungstext zur Funktion"
+  position: "Position"
+  version: "Version"
+  appversion: "Version"
+  fieldtype: "Typ"
+  feature_is_trial: Dieses Feature steht Ihnen bis zum Ablauf Ihrer Premium-Testversion zur Verfügung.
+  feature_not_activated: Dieses Feature ist im aktuell gebuchten Plan nicht enthalten. Vorgenommene Änderungen werden erst durch ein Upgrade aktiv.
+  eventheader_not_included: Das Anzeigen des eigenen Logos in der Anmeldeliste ist ein Exklusiv-Feature der Pro und Premium Versionen.
+  favicon_not_included: Das Anzeigen Ihres eigenen Favicons während des Seminar-Bestellvorgangs ist ein Exklusiv-Feature der Pro und Premium Versionen.
+  checkout_title_not_included: Das Anzeigen eines individuell gestaltbaren Titels während des Seminar-Bestellvorgangs ist ein Exklusiv-Feature der Pro und Premium Versionen.
+  simple_form:
+    magic_submit:
+      features:
+        feature:
+          new:
+            submit: "Neue Funktion anlegen"

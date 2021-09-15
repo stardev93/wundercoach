@@ -1,0 +1,13 @@
+/ ##########################################
+/ header zone with logo & branding depending on plan
+.row.event_header_zone
+  .col-xs-12 style="padding-left: 0px; padding-right: 0px;"
+    .eventheader
+      / are we on a plan that allows a custom header logo
+      - if can? :access, Feature.find_by(key: "customer_branding")
+        / Does the customer want to show a header image?
+        - if @account.show_header_image
+          = image_tag @account.eventheader, class: "img-responsive event_header_image"
+      - else
+        = link_to "https://wundercoach.net", target: "_blank"
+          = image_tag "signup-header-default.png", class: "img-responsive event_header_image"

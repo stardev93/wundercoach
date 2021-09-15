@@ -1,0 +1,38 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  bundle: Seminar-Paket
+  bundles: Seminar-Pakete
+  edit_bundle: Seminar-Paket bearbeiten
+  add_bundle: Neues Seminar-Paket erstellen
+  add_bundle_hint: Legt ein neues Seminar-Paket an
+  new_bundle: Neues Seminar-Paket
+  bundle_infotext: Seminar-Pakete erlauben es, mehrere Seminare im Paket zusammen zu einem Gesamtpreis anzubieten.
+  eventbooking_is_part_of_a_bundle: Diese Anmeldung gehört zu einem Seminarpaket
+  # ActiveRecord Translations
+  activerecord:
+    models:
+      bundle:
+        one: Seminar-Paket
+        other: Seminar-Pakete
+    attributes:
+      bundle:
+        shortdescription: Kurztext
+        longdescription: Beschreibung
+        bottom_text: Schlusstext
+        price: Preis
+        events: Enthaltene Seminare
+        currency: Währung
+        generate_invoice: Automatische Rechnungsstellung
+        paymentmethods: Erlaubte Bezahlarten
+        allow_signup: "Online-Anmeldung erlauben"
+  # SimpleForm Translations
+  simple_form:
+    labels:
+      bundle: ~
+    hints:
+      bundle:
+        name: Name des Seminarpakets
+        price: Regulärer Preis
+        currency: Bitte verwenden Sie ausschließlich Euro, wenn Sie über den Wundercoach Rechnungen stellen möchten
+        generate_invoice: Für neue Anmeldungen wird automatisch eine Rechnung erstellt und versendet.
+        allow_signup: "Wenn aktiv können sich Ihre Kunden online für diese Veranstaltung anmelden. Die Anzeige in der Anmeldungsansicht ist davon nicht betroffen."

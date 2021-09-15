@@ -1,0 +1,7 @@
+span.h3
+  = t(:end)
+p.lead
+  - unless event.end_date.blank?
+    = event.end_date
+    br
+    = event.end_time

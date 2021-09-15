@@ -1,0 +1,49 @@
+address
+  - unless invoice.company.blank?
+    p
+      strong = t(:billing_company)
+      br
+      span.lead = invoice.company
+      '&nbsp;
+  p
+    strong
+      = t(:billing_firstname)
+      |&nbsp;
+      = t(:billing_lastname)
+    br
+    span.lead
+      = t(:"#{invoice.gender}_indirect")
+      |&nbsp;
+      = invoice.firstname
+      |&nbsp;
+      = invoice.lastname
+  p
+    strong
+      = t(:billing_email)
+    br
+    span.lead = invoice.email
+    '&nbsp;
+  p
+    strong
+      = t(:billing_zip)
+      |&nbsp;
+      strong = t(:billing_city)
+    br
+    span.lead
+      = invoice.zip
+      '&nbsp;
+      = invoice.city
+
+  p
+    strong
+      = t(:street)
+    br
+    span.lead
+      = invoice.street
+      '&nbsp;
+      = invoice.street_no
+  p
+    strong = t(:billing_country)
+    br
+    span.lead = invoice.country_name
+    '&nbsp;

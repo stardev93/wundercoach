@@ -1,0 +1,39 @@
+tr style="border: none;"
+  td
+    p &nbsp;
+
+  td colspan="6"
+    .row
+      .col-xs-12
+        = t(:included_subevents_hint)
+        |&nbsp;
+        button.btn.btn-default.btn-sm onclick="toggleSubevents('subevent_row_#{event.id}');"
+          = t(:show)
+    .row id="subevent_row_#{event.id}" style="display: none;"
+      .col-xs-12
+        p &nbsp;
+        table.table
+          tr
+            th.event_th
+              = t(:start_date)
+            th.event_th
+              = t(:end_date)
+            th.event_th
+              = t(:included_subevents)
+            th.event_th
+              = t(:location)
+
+          - event.subevents.by_date.each do |subevent|
+            tr
+              td
+                = subevent.subevent.decorate.start_date
+                br
+                = subevent.subevent.decorate.start_time
+              td
+                = subevent.subevent.decorate.end_date
+                br
+                = subevent.subevent.decorate.end_time
+              td
+                = subevent.subevent
+              td
+                = render "signup/location", event: subevent.subevent

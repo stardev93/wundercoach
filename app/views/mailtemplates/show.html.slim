@@ -1,0 +1,47 @@
+- back_button = render "shared/button", path: mailtemplates_path, link_text: t(:back), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:back)
+/ - new_button = link_to "i.fa.fa-plus #{t(:add_product_location)}", new_product_location_path, class: "btn btn-default"
+- new_button = render "shared/button", path: new_mailtemplate_path, link_text: t(:new_mailtemplate), icon: "fa-plus", classes: "btn btn-default", datatoggle: "tooltip", dataplacement: "top", title: t(:add_product_location)
+
+= render "shared/form_header",
+         header_text: @mailtemplate, hint_text: @mailtemplate.name,
+         buttons: new_button + back_button
+
+.row
+ .col-xs-12
+   = render "shared/f_ro_text", :field_value => @mailtemplate.subject, :field_label => t(:subject), :field_hint => t(:subject_hint)
+   hr
+
+.row
+  .col-xs-12
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_ro_text", :field_value => @mailtemplate.message.html_safe, :field_label => t(:message), :field_hint => t(:message_hint)
+      .col-xs-12.col-sm-6
+        - unless Eventbooking.all.last.nil?
+          strong
+            = t(:preview)
+          br
+          span.lead
+            = @mailtemplate.substituted_html(Eventbooking.all.last).html_safe
+.row
+  .col-xs-12
+    hr
+    = render "shared/f_ro_text", :field_value => @mailtemplate.mailskin, :field_label => t(:mailskin), :field_hint => t(:mailskin_hint), :link => @mailtemplate.mailskin
+
+
+.row
+  .col-md-12.text-right
+    hr
+    = link_to mailtemplates_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+    ' &nbsp;
+    - unless @mailtemplate.is_system
+      = render "shared/delete_button", :button_type => 'btn-danger', :delete_url => mailtemplate_path(@mailtemplate), :delete_text => t(:delete)
+      ' &nbsp;
+    = link_to edit_mailtemplate_path(@mailtemplate), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;

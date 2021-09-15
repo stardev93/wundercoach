@@ -1,0 +1,6 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # eventsessions
+  eventsession: Session
+  eventsessions: Sessions
+  upcoming_eventsessions: "Upcoming sessions"

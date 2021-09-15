@@ -1,0 +1,300 @@
+<!-- Die CSS-Klassen für die responsive-Darstellung kommen von Bootstrap 3.4 -->
+<!-- https://getbootstrap.com/docs/3.4/ -->
+{{stylesheet}}
+<div class="container-fluid event_container" id="wundercoach_embedded">
+  <!-- angezeigt auf Tablets, Desktops mit 992px oder mehr Bildschirmbreite -->
+  <div class="row hidden-xs event_desktop">
+    <div class="col-sm-12">
+      <table class="table event_table">
+        <thead class="event_thead">
+          <tr>
+            <td colspan="6">
+              <h4 class="event_headline">Fest terminierte Seminare</h4>
+            </td>
+          </tr>
+          <tr class="event_tr">
+            <th class="event_th">Thema</th>
+            <th class="event_th">Datum / Ort</th>
+            <th class="event_th">Trainer</th>
+            <th class="event_th text-right">Seminargebühr</th>
+            <th class="event_th"></th>
+          </tr>
+        </thead>
+        <tbody class="event_tbody">
+          {% for event in events%}
+            <tr class="event_tr">
+              <td class="event_td">
+                <span class="event_name">
+                  {{event.show_link}}
+                </span>
+                <br>
+                <span class="event_shortdescription">
+                {{event.shortdescription}}
+                </span>
+              </td>
+              <td class="event_td">
+                <span class="event_start_date">{{event.start_date}}</span>
+                <br />
+                <span class="event_end_date">{{event.end_date}}</span>
+                <br />
+                <br />
+                <span class="event_location">
+                  {% if event.eventorganizer %}
+                    {{event.eventorganizer}}
+                    <br />
+                  {% endif %}
+                  {% if event.location %}
+                    {{event.location}}
+                    <br />
+                  {% endif %}
+                  {% if event.city %}
+                    {{event.city}}
+                    <br>
+                  {% endif %}
+                </span>
+              </td>
+              <td class="event_td">
+                <span class="event_coach">{{event.coaches}}</span>
+              </td>
+              <td class="event_td text-right" nowrap="nowrap">
+                {% if event.early_signup_pricing %}
+                  <span class="event_price_early_signup_label"><strong>Frühbucherpreis</strong></span>
+                  <br />
+                  <span class="event_price_early_signup">{{event.price}}</span>
+                  <br />
+                  <span class="event_early_signup_deadline_label"><strong>gültig bis</strong></span>
+                  <br />
+                  <span class="event_early_signup_deadline">{{event.early_signup_deadline_date}}
+                  <br />
+                  {{event.early_signup_deadline_time}}
+                  </span>
+                  <br />
+                  <span class="event_full_price">danach: {{event.full_price}}</span>
+
+                {% else %}
+                  <span class="event_full_price">
+                    {{event.price}}
+                  </span>
+                {% endif %}
+              </td>
+              <td class="event_td">
+                <p>
+                  {{event.signup_link}}
+                </p>
+                <p>
+                  {{event.details_link}}
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- angezeigt auf Smartphones, kleiner als 992px Bildschirmbreite -->
+  <div class="row visible-xs-* hidden-sm hidden-md hidden-lg event_list_smartphone">
+    <div class="col-xs-12">
+      <ul class="list-group event_group">
+        <li class="list-group-item event_item">
+          <h4 class="event_headline">Fest terminierte Seminare</h4>
+        </li>
+        {% for event in events%}
+        <li class="list-group-item event_item">
+          <span class="event_name_label"><strong>Veranstaltung</strong></span>
+          <br />
+          <span class="event_name">{{event.show_link}}</span>
+        </li>
+        <li class="list-group-item text-center event_item">
+          {{event.signup_link}}
+          <br />
+          {{event.details_link}}
+        </li>
+        <li class="list-group-item event_item">
+          <span class="event_shortdescription_label"><strong>Beschreibung</strong></span>
+          <br />
+          <span class="event_shortdescription">
+            {{event.shortdescription}}
+          </span>
+        </li>
+        {% if event.early_signup_pricing %}
+        <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-6">
+              <span class="event_price_early_signup_label">
+                <strong>Frühbucherpreis</strong>
+              </span>
+              <br />
+              <span class="event_price_early_signup">
+                {{event.price}}
+              </span>
+              <br />
+              <span class="event_full_price">
+                danach: {{event.full_price}}
+              </span>
+            </div>
+            <div class="col-xs-6">
+              <span class="event_early_signup_deadline_label">
+                <strong>gültig bis</strong>
+              </span>
+              <br />
+              <span class="event_early_signup_deadline">
+                {{event.early_signup_deadline_date}}
+                <br />
+                {{event.early_signup_deadline_time}}
+              </span>
+            </div>
+            <div class="col-xs-6">
+
+            </div>
+          </div>
+        </li>
+        {% else %}
+        <li class="list-group-item event_item">
+          <span class="event_price_label">
+            <strong>Preis</strong>
+          </span>
+          <br />
+          <span class="event_full_price">
+            {{event.price}}
+          </span>
+        </li>
+        {% endif %}
+        <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-6">
+              <span class="event_start_date_label">
+                <strong>Startdatum</strong>
+              </span>
+              <br />
+              <span class="event_start_date">
+                {{event.start_date}}
+              </span>
+            </div>
+            <div class="col-xs-6">
+              <span class="event_end_date_label">
+                <strong>Enddatum</strong>
+              </span>
+              <br />
+              <span class="event_end_date">
+                {{event.start_date}}
+              </span>
+            </div>
+          </div>
+        </li>
+        <!-- <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-12">
+              <strong>Termine</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              Backen ohne Mehl 1, Einführung
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              01.09.2020
+            </div>
+            <div class="col-xs-6 text-right">
+              02.09.2020
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              Backen ohne Mehl 2, Einführung
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              01.09.2020
+            </div>
+            <div class="col-xs-6 text-right">
+              02.09.2020
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              Backen ohne Mehl 3, Einführung
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              01.09.2020
+            </div>
+            <div class="col-xs-6 text-right">
+              02.09.2020
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              Backen ohne Mehl 4, Einführung
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 text-left">
+              01.09.2020
+            </div>
+            <div class="col-xs-6 text-right">
+              02.09.2020
+            </div>
+          </div>
+        </li> -->
+        <li class="list-group-item event_item">
+          <span class="event_coach_label"><strong>Trainer</strong></span>
+          <br />
+          <span class="event_coach">
+            {{event.coaches}}
+          </span>
+        </li>
+        <li class="list-group-item event_item">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="event_location_label">
+                <strong>Veranstaltungsort</strong>
+              </span>
+            </div>
+            {% if event.location %}
+            <div class="col-xs-12">
+              <span class="event_location_name">
+                {{event.location}}
+              </span>
+            </div>
+            {% endif %}
+            {% if event.eventorganizer %}
+            <div class="col-xs-12">
+              <span class="event_location_eventorganizer">
+                {{event.eventorganizer}}
+              </span>
+            </div>
+            {% endif %}
+            {% if event.street %}
+            <div class="col-xs-12">
+              <span class="event_location_street">
+                {{event.street}}
+              </span>
+            </div>
+            {% endif %}
+            {% if event.city %}
+            <div class="col-xs-12">
+              <span class="event_location_zip">
+                {{event.zip}}
+              </span>
+              &nbsp;
+              <span class="event_location_city">
+                {{event.city}}
+              </span>
+            </div>
+            {% endif %}
+          </div>
+        </li>
+        <!-- <li class="list-group-item event_item">
+          <span class="event_location_map">
+            Google Maps
+          </span>
+        </li> -->
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

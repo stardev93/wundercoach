@@ -1,0 +1,34 @@
+- bundleevents = EventDecorator.decorate_collection(bundle.events.by_start_date)
+- if bundleevents.count > 0
+  a role="button" data-toggle="collapse" href="#bundle_#{bundle.id}" aria-expanded="false" aria-controls="bundle_#{bundle.id}"
+    i.fa.fa-ellipsis-h
+
+  .row
+    .col-xs-12
+      .collapse id="bundle_#{bundle.id}"
+        br
+        .well
+          table.table-condensed
+            tr
+              th
+                = t(:start_date)
+              th
+                = t(:end_date)
+              th
+                = t(:event)
+
+            - bundleevents.each do |bundleevent|
+              tr
+                td
+                  = bundleevent.start_date
+                  |&nbsp;
+                  = bundleevent.start_time
+                td
+                  = bundleevent.end_date
+                  |&nbsp;
+                  = bundleevent.end_time
+                td
+                  = bundleevent
+                  |&nbsp;
+                  = link_to event_path(bundleevent)
+                    i.fa.fa.fa-external-link

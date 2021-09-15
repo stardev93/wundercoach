@@ -1,0 +1,66 @@
+.row
+  .col-xs-12
+    .well
+      h1.text-center = t(:choose_a_plan_thats_right_for_you)
+
+      - if @account.current_booking.trial?
+        p.lead.text-center
+          - if @account.current_booking.remaining_days <= -1
+            |Ihre kostenlose Testphase ist abgelaufen
+          - else
+            = t(:trial_version_remaining_hint, remaining_days: @account.current_booking.remaining_days)
+            ' 
+            = t(:trial_version_hint, paymentplan: @account.paymentplan, total_days: @account.bookings.current.total_days, remaining_days: @account.current_booking.remaining_days)
+      - else
+        h2.text-center = "#{t(:your_current_plan)}: #{@account.paymentplan}"
+
+.row
+  .col-xs-12.text-center
+    p.lead
+      span.monthly
+        = t(:choose_most_flexible)
+      span.yearly style="display: none;"
+        = t(:choose_with_discount)
+
+  .col-xs-12.text-center
+    .btn-group data-toggle="buttons"
+      label.btn.btn-lg.btn-primary.toggle_discount_monthly class="#{(@account.paymentplan.cycle == 'monthly' ? 'active' : '')}" id="btn_monthly"
+        input type="radio" name="options" id="toggle_monthly" autocomplete="off"
+          = t(:monthly)
+      label.btn.btn-lg.btn-primary.toggle_discount_yearly class="#{(@account.paymentplan.cycle == 'yearly' ? 'active' : '')}" id="btn_yearly"
+        input type="radio" name="options" id="toggle_yearly" autocomplete="off"
+          = t(:yearly)
+.row
+  - @paymentplans.each do |paymentplan|
+    = render "paymentplans/plan_tile",
+             paymentplan: paymentplan,
+             is_trial: @account.current_booking.trial?,
+             active: @account.bookings.current.name == paymentplan.name,
+             is_free: @account.bookings.current.free?
+
+javascript:
+  if ($("#btn_yearly").hasClass("active")) {
+    $( ".monthly" ).hide();
+    $( ".yearly" ).show();   
+  };
+  
+  $( ".toggledetails" ).click(function(event) {
+    event.preventDefault();
+    $( ".functiondetails" ).slideToggle();
+    $( ".togglelink" ).toggle();
+  });
+
+  $( ".toggle_discount_monthly" ).click(function(event) {
+    event.preventDefault();
+    $( ".monthly" ).addClass( "active" );
+    $( ".yearly" ).removeClass( "active" );
+    $( ".monthly" ).show();
+    $( ".yearly" ).hide();    
+  });
+  $( ".toggle_discount_yearly" ).click(function(event) {
+    event.preventDefault();
+    $( ".yearly" ).addClass( "active" );
+    $( ".monthly" ).removeClass( "active" );
+    $( ".yearly" ).show();
+    $( ".monthly" ).hide();
+  });

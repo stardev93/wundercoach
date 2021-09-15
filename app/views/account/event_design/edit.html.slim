@@ -1,0 +1,105 @@
+- cancel_button = render "shared/button", path: event_design_path, link_text: t(:cancel), icon: "", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: t(:cancel)
+
+= render "shared/form_header",
+         header_text: t(:event_checkout_settings), hint_text: t(:event_settings_hint),
+         buttons: cancel_button
+
+= simple_form_for(@account, url: event_design_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :order_bcc_list, :field_label => t(:order_bcc_list), :field_hint => t(:order_bcc_list_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :index_path, :field_label => t(:index_path), :field_hint => t(:website_integration_index_path_text)
+        .row
+          .col-xs-9
+            pre#backscript_zone
+              |javascript:window.history.back();
+          .col-xs-3
+            a.btn.btn-default#backscript_button href="#"
+              |copy
+
+    .row
+      .col-xs-12
+        = f.input :event_contact, as: :editor, input_html: { rows: 6 }
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:eventdesign), :hint_text => t(:eventdesign_hint)
+
+
+    .row
+      .col-xs-12
+        = f.input :checkout_title
+    .row
+      .col-xs-12
+        = f.input :checkout_footer, as: :editor, input_html: { rows: 6 }
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_boolean", :form => f, :field => :show_header_image, :field_label => t(:show_header_image_headline), :field_hint => t(:show_header_image_hint)
+      .col-xs-12.col-sm-6
+        = render "shared/f_boolean", :form => f, :field => :show_signup_search, :field_label => t(:show_signup_search), :field_hint => t(:show_signup_search_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:checkout_terms), :hint_text => t(:checkout_terms_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_boolean", :form => f, :field => :terms_required, :field_label => t(:terms_required), :field_hint => t(:terms_required_hint)
+        / label for="account_terms_required" = t("simple_form.labels.defaults.terms_required")
+        / br
+        / = f.input :terms_required, input_html: { class: "js-switch" }, label: false
+    .row
+      .col-xs-12
+        / = render "shared/f_text", :form => f, :field => :terms_link, :field_label => t(:terms_link), :field_hint => t(:terms_link)
+        = f.input :terms_link
+    .row
+      .col-xs-12
+        = f.input :terms_link_text
+
+    .row
+      .col-xs-12
+        hr
+        = render "shared/f_boolean", :form => f, :field => :gdpr_required, :field_label => t(:gdpr_required), :field_hint => t(:gdpr_required_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :gdpr_link, :field_label => t(:gdpr_link), :field_hint => t(:gdpr_link_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :gdpr_link_text, :field_label => t(:gdpr_link_text), :field_hint => t(:gdpr_link_text_hint)
+
+    .row
+      .col-xs-12
+        hr
+        = render "shared/f_boolean", :form => f, :field => :revocation_required, :field_label => t(:revocation_required), :field_hint => t(:revocation_required_hint)
+
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :revocation_link, :field_label => t(:revocation_link), :field_hint => t(:revocation_link_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_text", :form => f, :field => :revocation_link_text, :field_label => t(:revocation_link_text), :field_hint => t(:revocation_link_text_hint)
+
+
+    .row
+      .col-xs-12
+        = render "shared/section_header", :header_text => t(:css_code_for_sign_up_list_formatting), :hint_text => t(:css_code_hint)
+    .row
+      .col-xs-12
+        = render "shared/f_textarea", :form => f, :field => :css_code, :field_label => t(:css_code)
+        / = f.input :css_code, input_html: { rows: 20 }, label: t(:css_code)
+
+  .form-actions
+    .row
+      .col-xs-12.text-right
+        = f.button :magic_submit, cancel: event_design_path
+javascript:
+  $("#backscript_button").click(function(event) {
+    event.preventDefault();
+    backscript = $("#backscript_zone").text();
+    $("#account_index_path").val(backscript);
+  });

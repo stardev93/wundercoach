@@ -1,0 +1,86 @@
+- new_booking_present = (Booking.last != Booking.current)
+.row
+  .col-md-12
+    - if @account.bookings.current.trial?
+      - unless new_booking_present
+        h4 = t (:your_trial_plan)
+        p.lead
+          - valid_until = ""
+          - if @current_booking.valid_until.present?
+            - valid_until = l @current_booking.valid_until
+          - else
+            - valid_until = t(:error)
+          - remaining_days = @current_booking.remaining_days
+          = t(:free_trial_status_text, valid_until: valid_until)
+          
+        p.text-center
+          = link_to showplans_path
+            button.btn.btn-primary.btn-lg
+              = t(:upgrade_now)
+
+      h4 = t (:your_current_plan)
+      table.table
+        thead
+          tr
+            th = t(:paymentplan)
+            th = t(:booking_date)
+            th = t(:valid_until)
+            th = t(:price)
+            - unless new_booking_present
+              th
+        tbody
+          tr
+            td = @current_booking.name
+            td = l @current_booking.created_at.to_date
+            td
+              - if @current_booking.valid_until.present?
+                = l @current_booking.valid_until
+              - else
+                |---
+            td = t(:free_plan)
+            - unless new_booking_present
+              td
+                = link_to showplans_path
+                  button.btn.btn-primary.btn-sm
+                    = t(:upgrade_now)
+                  
+      - if new_booking_present
+        .row
+          .col-md-12
+            = render "history_table", headline: t(:your_upcoming_plan), bookings: [Booking.last]
+    / no trial
+    - else
+      h4
+        = t(:your_current_plan)
+      table.table
+        thead
+          tr
+            th = t(:paymentplan)
+            th = t(:booking_date)
+            th = t(:valid_until)
+            th = t(:paymentcycle)
+            th = t(:price)
+            th
+        tbody
+          tr
+            td = @current_booking.name
+            td = l @current_booking.created_at.to_date
+            td
+              - if @current_booking.valid_until.present?
+                = l @current_booking.valid_until
+              - else
+                |---
+            td = t(@current_booking.cycle)
+            td = number_to_currency @current_booking.paymentplan.price / 100
+              
+            td.text-right
+              = link_to showplans_path
+                = t(:change)
+      - unless Booking.last == Booking.current
+        .row
+          .col-md-12
+            = render "history_table", headline: t(:your_upcoming_plan), bookings: [Booking.last]
+
+      .row
+        .col-md-12
+          = render "history_table", headline: t(:your_previous_plans), bookings: Booking.history

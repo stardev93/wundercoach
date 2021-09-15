@@ -1,0 +1,8 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # mailskin
+  mailskin: "E-Mail-Briefpapier"
+  mailskins: "E-Mail-Briefpapiere"
+  mailskin_infotext: "E-Mail-Briefpapiere sind Vorlagen, die als Briefpapier für versendete Emails genutzt werden können."
+  enter_htmlbody_here: "Geben Sie den HTML-Code der Emailvorlage ein"
+  enter_textbody_here: "Geben Sie den Text-Teil der Emailvorlage ein"

@@ -1,0 +1,66 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_location_options), :hint_text => t(:event_location_options_hint)
+.row
+  .col-xs-12
+    .row
+      .col-xs-12
+        = render "shared/f_ro_boolean", :field_value => event.use_product_location, :field_label => t(:event_use_product_location), :field_hint => t(:event_use_product_location_hint)
+      .col-xs-12
+        p.lead
+          - if event.use_product_location
+            = t(:event_use_product_location_from_location)
+          - else
+            = t(:event_use_product_location_from_event)
+    .row
+      .col-xs-12
+        label
+          = t(:address)
+        p.lead
+          = render "events/show_partials/location_address", :event => event
+
+    .row
+      .col-xs-12
+        = render "events/googlemap", event: event
+
+    .row
+      .col-xs-12.text-right
+        = link_to "https://maps.google.com/?ll=" + "#{event.get_latitude},#{event.get_longitude}", :target => "_blank", class: "btn btn-primary"
+          = t(:open_in_google_maps)
+        |&nbsp;
+        = link_to regenerate_map_event_path(event), method: "put", class: "btn btn-default btn-success"
+          = t(:recalculate_map)
+
+    .row
+      .col-xs-12
+        hr
+
+    .row
+      .col-xs-6
+        - if event.use_product_location
+          label
+            = t(:location_directions)
+          p.lead
+            = event.get_directions
+      .col-xs-6
+        - if event.use_product_location && event&.product_location && event&.product_location&.directionspdf&.exists?
+          .row
+            .col-xs-12
+            label
+              = t(:location_directionspdf)
+            p.lead
+              = link_to product_location_downloaddirectionspdf_path(event.product_location), :target => "_blank", :class => "btn btn-default"
+                = t(:download)
+                |&nbsp;
+                = event&.product_location&.directionspdf_file_name
+
+    .row
+      .col-xs-12
+        hr
+
+    .row
+      .col-xs-3
+        = render "shared/f_ro_text", :field_value => event.get_latitude, :field_label => t(:location_latitude), :field_hint => t(:location_latitude_hint)
+      .col-xs-3
+        = render "shared/f_ro_text", :field_value => event.get_longitude, :field_label => t(:location_longitude), :field_hint => t(:location_longitude_hint)
+      .col-xs-6

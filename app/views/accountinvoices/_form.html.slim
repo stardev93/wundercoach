@@ -1,0 +1,30 @@
+= simple_form_for(@accountinvoice) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :account, label: t(:account_name), hint: t(:account_hint)
+    = f.association :booking, label: t(:booking), hint: t(:booking_hint)
+    = f.input :invoice_date, label: t(:invoice_date), hint: t(:invoice_date_hint)
+    = f.input :email_to, label: t(:email_to), hint: t(:email_to_hint)
+    = f.input :invoice_number, label: t(:invoice_number), hint: t(:invoice_number_hint)
+    = f.input :payment_date, label: t(:payment_date), hint: t(:payment_date_hint)
+    = f.input :recipient_name_1, label: t(:recipient_name_1), hint: t(:recipient_name_1_hint)
+    = f.input :recipient_name_2, label: t(:recipient_name_2), hint: t(:recipient_name_2_hint)
+    = f.input :street, label: t(:street), hint: t(:street_hint)
+    = f.input :street_no, label: t(:street_no), hint: t(:street_no_hint)
+    = f.input :zip, label: t(:zip), hint: t(:zip_hint)
+    = f.input :city, label: t(:city), hint: t(:city_hint)
+    = f.input :country, label: t(:country), hint: t(:country_hint)
+    = f.input :invoicetype_id, label: t(:invoicetype_id), hint: t(:invoicetype_id_hint)
+    = f.input :invoicestatus_id, label: t(:invoicestatus_id), hint: t(:invoicestatus_id_hint)
+    = f.input :successor, label: t(:successor), hint: t(:successor_hint)
+    = f.input :predecessor, label: t(:predecessor), hint: t(:predecessor_hint)
+    = f.input :pdf_file_name, label: t(:pdf_file_name), hint: t(:pdf_file_name_hint)
+    = f.input :pdf_content_type, label: t(:pdf_content_type), hint: t(:pdf_content_type_hint)
+    = f.input :pdf_file_size, label: t(:pdf_file_size), hint: t(:pdf_file_size_hint)
+    = f.input :pdf_updated_at, label: t(:pdf_updated_at), hint: t(:pdf_updated_at_hint)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: accountinvoices_path

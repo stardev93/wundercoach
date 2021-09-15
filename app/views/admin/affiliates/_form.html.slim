@@ -1,0 +1,18 @@
+= simple_form_for(@affiliate, :url => affiliate_adpartner_path(@affiliate), :method => :post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :name_addon
+    = f.input :lastname
+    = f.input :firstname
+    = f.input :street
+    = f.input :zip
+    = f.input :city
+    = f.input :country
+    = f.input :email
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: affiliates_path

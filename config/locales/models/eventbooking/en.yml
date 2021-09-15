@@ -1,0 +1,152 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # eventbooking
+  signup_list: "Signup list"
+  signup_list_hint: "List of your events as it appears on your website."
+  signup_list_view: "Signup list"
+  signup_list_view_hint: "Shows your eventlist as it appears on your website."
+  signup_event_view: "Signup single view"
+  signup_event_view_hint: "Shows the event as it appears on your website."
+  eventbooking: "Booking"
+  eventbookings: "Bookings"
+  new_eventbooking: "New booking"
+  new_eventbookings: "New bookings"
+  pick_an_event_from_the_list: 'Please choose a seminar from the list first.'
+  new_user_signup: "Signup new participant"
+  edit_user_signup: "Edit participant"
+  existing_user_signup: "Signup existing participant"
+  max_eventbookings_reached: "The maxmimum number of bookings for this event has been reached. Maybe you want to increase the allowed number of participants."
+  seats_free: "seats are availabe."
+  remaining_seats_count: "%{free_seats} seats available"
+  open: "Open"
+  paid: "Paid"
+  account_id: "Client"
+  eventbookingstatus: "Booking status"
+  eventbookingstatuses: "Booking status"
+  edit_eventbookingstatus: "Edit booking status"
+  eventbookingstatus_hint: "Status of the booking"
+  eventbookingstatus_infotext: "List of the availabe booking statuses"
+  booking_date: "Booking date"
+  booking_date_hint: "The date when the even was booked"
+  price: "Price"
+  price_hint: "Price to be paid"
+  price_early_signup: "Early booking price"
+  early_booking_applies: "Allow early booking price"
+  early_booking_applies_hint: "Do you want to grant a lower price for booking early?"
+  no_early_booking: "No early booking"
+  early_booking: "Early booking"
+  additional_participants: 'Additional participants'
+  all_bookings: All bookings
+
+  paymentmethod: Payment method
+  paymentmethod_hint: Payment method used for the booking
+  payment_date: Payed at
+  payment_date_hint: "Date of the payment"
+  paymentstatus: "Payment status"
+  paymentstatus_hint: "Payment status of the booking"
+  company: "Company"
+  company_hint: "Company name (if applicable)"
+  lastname: "Last name"
+  lastname_hint: "Last name"
+  firstname: "First name"
+  firstname_hint: "First name"
+  participant: "Participant"
+
+  gender: "Salutation"
+  gender_hint: "Choose title"
+  gender_direct_m: "Dear Mr."
+  gender_direct_f: "Dear Ms."
+  gender_direct_diverse: "Dear Mrs./Mr."
+  gender_direct_noinfo: "Dear Mrs./Mr."
+
+  gender_indirect_m: "Mr."
+  gender_indirect_f: "Ms."
+  gender_indirect_diverse: "Mrs./Mr."
+  gender_indirect_noinfo: "Mrs./Mr."
+
+  tel: "Telephone"
+  tel_hint: "Telephone number for queries"
+  email: "Email"
+  email_hint: "Email address for communication"
+  billing_email_hint: "Email address for invoices"
+  zip: "ZIP"
+  zip_hint: "ZIP code"
+  city: "City"
+  city_hint: "City"
+  street: "Street"
+  street_hint: "Street"
+  street_no: "No."
+  street_no_hint: "House number"
+  country: "Country"
+  country_hint: "Country"
+
+  billing_address: "Invoice address"
+  different_billing_address: "Different invoice address"
+  billing_address__hint: "Do you want to use a differing invoice address"
+  i_need_a_different_billing_address: "I want to specify a differing invoice address"
+  i_need_a_different_billing_address_hint: "Here you can specify a differing invoice address"
+  billing_company: "Company"
+  billing_lastname: "Last name"
+  billing_firstname: "Fist name"
+  billing_gender: "Salutation"
+  billing_email: "Email"
+  billing_zip: "ZIP"
+  billing_city: "City"
+  billing_street: "Street"
+  billing_street_no: "Number"
+  billing_country: "Country"
+  created_at: "Created"
+  updated_at: "Edited"
+  new_signup_headline: "Register"
+  sign_up_now: "Register now"
+  sign_up_now_cta: "Secure youre early booking discount"
+  please_enter_your_data: "Please enter your data"
+  are_you_sure_you_want_to_delete_this_eventbooking: "Do you really want to cancel this booking?"
+  cancel_booking: "Cancel booking"
+
+  move_eventbooking: "Move"
+  move_eventbooking_choose_target_event: Choose a target event
+  move_eventbooking_choose_target_event_hint: Choose a target event to move the participant to.
+  move_eventbooking_successful: The participant was sucessfully moved to a new event.
+
+  participant_data: "Participant data"
+  participant_data_hint: "Please enter the information of the participant here."
+  participant_data_multi_hint: "Please enter the information of the participants here."
+
+  send_confirmation: "Send"
+  open_user: "Show user account"
+  show_eventbooking: "Show booking data"
+  edit_eventbooking: "Edit booking data"
+
+  eventbooking_information: "Booking details"
+  payment_details: "Payment details"
+  no_invoice_yet: 'No invoice yet'
+  eventbooking_already_has_invoice: 'Eventbooking already invoice. Edit invoice instead.'
+  booking_successfully_cancelled: 'The booking got cancelled. Please also cancel the invoice if necessary'
+  contact_customer: 'Contact customer'
+  you_already_booked_this_event: You already booked this seminar.
+
+  simple_form:
+    labels:
+      defaults:
+        search: "Search term"
+        start_date: "Booking from"
+        end_date: "to"
+        status: "Status"
+    options:
+      eventbooking:
+        gender:
+          male: Mr
+          female: Ms
+        billing_gender:
+          male: Mr
+          female: Ms
+
+  eventbooking_participant_data: "Participant data"
+  bookings_with_status_confirmed_and_waiting_cannot_be_deleted: "Bookings with the status \"confirmed\" und \"waiting\" cannot be deleted. Cancel these bookings first."
+  event_is_fully_booked: "The event is fully booked."
+  bookinglist: Bookings
+  bookinglist_short: "Bookings (short)"
+  certificate: Certificate
+  comment: "Notes"
+  comment_hint: "Notes regarding this booking"

@@ -1,0 +1,44 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  filters: Filters
+  filter_hint: 'E.g. "from Hamburg and the surrounding area", "telephone seminar participants", "recipients of the newsletter from xx.xx.xxxx"'
+  PriceFilter: By price
+  TypeFilter: By seminar type
+  CampaignFilter: By participation in a campaign
+  LocationFilter: By location of the seminar
+  eql: Equals
+  lt: Less than
+  gt: Greater than
+  gte: Greater than or equals
+  lte: Less than or equals
+  participated_in_an_event_where_price_was_x: Participation in a seminar with a price that is %{comparator} %{price} .
+  participated_in_an_event_where_eventtype_was_x: 'Participation of the seminar of the type "%{eventtype}".'
+  participated_in_campaign_x: 'Participation in the campaign "%{campaign}".'
+  participated_in_an_event_close_to_x: Participation in a seminar at a distance of at most %{distance} km to %{location}.
+  new_filter: New filter
+  edit_filter: Edit filter
+  distance: Distance
+  distance_hint: Maximum distance in km
+  amount: Amount
+  amount_hint: Participation price of the seminar
+  comparator: Comparison of the price
+  comparator_hint: Less, greater or equal?
+  unknown_filter: "Unknown filter"
+  simple_form:
+    options:
+      filter:
+        modifier:
+          eql: Equals
+          lt: Less than
+          gt: Greater than
+          gte: Greater than or equals
+          lte: Less than or equals
+        price: Price
+        type:
+          PriceFilter: By price
+          TypeFilter: By seminar type
+          CampaignFilter: By participation in a campaign
+          LocationFilter: By location of the seminar
+      filters:
+        new:
+          submit: "Create new filter"

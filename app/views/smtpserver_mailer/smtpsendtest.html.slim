@@ -1,0 +1,85 @@
+html lang="en"
+head
+  meta http-equiv="Content-Type" content="text/html; charsetUTF-8"
+  meta name="viewport" content="initial-scale1.0"
+  meta name="format-detection" content="telephoneno"
+  title = t(:wundercoach_smtpserver_testemail)
+  style
+    .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; }
+
+body style="width: 100%;background-color: #ffffff;padding: 0px:margin:0px;"
+  span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;"
+    = t(:this_is_a_test_email_to)
+    |&nbsp;
+    = @user.email
+  table style="width: 100%;" border="0" cellpadding="0" cellspacing="0"
+    tr
+      td style="width: 10%;"
+      td style="width: 80%;background-color: #ffffff;text-align: center;"
+        p
+          = t(:smtpserver_testing_settings)
+          br
+          strong
+            = t("#{@smtpserver.name}")
+          br
+        p
+          strong
+            = t(:smtpserver_this_is_a_test_email_to)
+          br
+          = @user.email
+          br
+        p
+          strong
+            = t(:smtpserver_custom_from_address)
+          br
+          = @smtpserver.from_address
+        p
+          strong
+            = t(:smtpserver_custom_from_name)
+          br
+          = @smtpserver.from_name
+        p
+          strong
+            = t(:smtpserver_custom_replyto_address)
+          br
+          = @smtpserver.replyto_address
+        - if @smtpserver.custom?
+          p
+            strong
+              = t(:smtpserver_custom_username)
+            br
+            = @smtpserver.username
+          p
+            strong
+              = t(:smtpserver_custom_password)
+            br
+            |******
+          p
+            strong
+              = t(:smtpserver_custom_server)
+            br
+            = @smtpserver.server
+          p
+            strong
+              = t(:smtpserver_custom_port)
+            br
+            = @smtpserver.port
+          p
+            strong
+              = t(:smtpserver_custom_ssl)
+            br
+            = @smtpserver.ssl
+          p
+            strong
+              = t(:authentication)
+            br
+            |login
+          p
+            strong
+              = t(:openssl_verify_mode)
+            br
+            |none
+          p
+            br
+
+      td style="width: 10%;"

@@ -1,0 +1,22 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # feature
+  feature: "Function"
+  features: "Functions"
+  key: "Key"
+  key_hint: "The key to using the features. Must not be changed."
+  description: "Description"
+  description_hint: "Description text for the function"
+  position: "Position"
+  version: "Version"
+  appversion: "Version"
+  fieldtype: "Type"
+  feature_is_trial: This feature is available until the expiration of your premium trial.
+  feature_not_activated: This feature is not part of your current plan. All changes made here will not activate until you upgrade your plan.
+  eventheader_not_included: Showing your own logo in the signup list is an exclusive feature of the Pro and Premium versions.
+  simple_form:
+    magic_submit:
+      features:
+        feature:
+          new:
+            submit: "Create new function"

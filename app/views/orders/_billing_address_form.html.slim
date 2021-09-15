@@ -1,0 +1,30 @@
+= f.simple_fields_for :billing_address do |billing_address|
+  .row
+    .col-md-12
+      label
+        = t(:i_need_a_different_billing_address)
+        br
+        = billing_address.input_field :different_billing_address, as: :boolean, required: false, id: "billing_address_toggle", autocomplete: "off"
+
+  .row#eventbooking_billing_fields style=('display: none;' unless @form.billing_address.different_billing_address)
+    .col-md-12
+      = render "shared/section_header", header_text: t(:billing_information), hint_text: t(:i_need_a_different_billing_address_hint)
+    .col-md-12
+      = billing_address.input :company, label: t(:billing_company), hint: t(:company_hint), required: false
+    .col-md-5
+      = billing_address.input :lastname, label: t(:billing_lastname), hint: t(:lastname_hint), required: true
+    .col-md-5
+      = billing_address.input :firstname, label: t(:billing_firstname), hint: t(:firstname_hint), required: true
+    .col-md-2
+      / = billing_address.input :gender, as: :select, collection: %i(female male), include_blank: "--", label: t(:billing_gender), hint: t(:gender_hint), required: true
+      = render "shared/f_gender", :form => billing_address, :field => :gender, :field_label => t(:gender), :field_hint => t(:gender_hint)
+    .col-md-12
+      = billing_address.input :street, label: t(:billing_street), hint: t(:street_hint), required: true
+    .col-md-3
+      = billing_address.input :zip, label: t(:billing_zip), hint: t(:zip_hint), required: true
+    .col-md-9
+      = billing_address.input :city, label: t(:billing_city), hint: t(:city_hint), required: true
+    .col-md-12
+      = billing_address.input :country, priority: %w(Deutschland), label: t(:billing_country), hint: t(:country_hint), required: true
+    .col-md-12
+      = billing_address.input :email, label: t(:billing_email), hint: t(:billing_email_hint), required: true

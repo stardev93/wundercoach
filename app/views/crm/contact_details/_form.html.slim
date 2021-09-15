@@ -1,0 +1,19 @@
+= simple_form_for(@crm_contact_detail) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :account, as: :hidden
+    = f.association :contact, as: :hidden
+    .row
+      .col-xs-12.col-sm-6
+        = f.input :detail_value, label: t(:detail_value)
+      .col-xs-12.col-sm-6
+        = f.input :detail_type, as: :select, :collection => (Crm::ContactDetailDecorator::CONTACT_DETAIL_TYPES_HASH.map { |key, val| [t(:"#{key}"), val] }), :include_blank => false, label: t(:type)
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit
+        |&nbsp;
+        = link_to crm_contact_path(@crm_contact_detail.contact)+"#addresses"
+          = t(:cancel)

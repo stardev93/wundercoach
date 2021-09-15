@@ -1,0 +1,16 @@
+.alert.alert-warning.alert-dismissible
+  button.close type="button" data-dismiss="alert"
+    span aria-hidden="true" &times;
+    span class="sr-only" Close
+  .row
+    .col-xs-8
+      h4.text-left
+        = t(:not_in_plan)
+      p.lead.text-left
+        = text
+        / = link_to t(:learn_more), showplans_path
+    .col-xs-4
+      p.text-right
+        br
+        = link_to showplans_path, target: "_blank", class: "btn btn-success"
+          = t(:change_plan)

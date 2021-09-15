@@ -1,0 +1,70 @@
+.container
+  .row
+    .col-md-12
+      .page-header
+        span.h1
+          i.fa.fa-calendar
+          |&nbsp;
+          = @eventsession
+        span.add-item
+          = link_to event_path(@eventsession.event), :class => "btn btn-default"
+            i.fa.fa-arrow-left
+            '&nbsp;
+            =t(:back)
+
+  .row
+    .col-md-12
+      address
+        p
+          strong = t(:event)
+          br
+          span.lead
+            = link_to event_path(@eventsession.event)
+              = @eventsession.event
+          '&nbsp;
+        p
+          strong = t(:start_date)
+          br
+          span.lead
+            - if !@eventsession.start_date.blank?
+              = l @eventsession.start_date
+          '&nbsp;
+        p
+          strong = t(:duration)
+          br
+          span.lead
+            = @eventsession.duration
+            '&nbsp;
+            = @eventsession.durationunit
+
+  .row
+    .col-md-12.text-right
+      hr
+      = link_to edit_eventsession_path(@eventsession), :class => "btn btn-primary"
+        i.fa.fa-edit
+        '&nbsp;
+        = t(:edit)
+      ' &nbsp;
+      = link_to eventsessions_path, :class => "btn btn-default"
+        i.fa.fa-arrow-left
+        '&nbsp;
+        =t(:back)
+
+  .row
+    .col-md-12
+
+      ul.nav.nav-tabs role="tablist"
+        li class="active"
+          a href="#eventsessionbookings" aria-controls="eventsessionbookings" role="tab" data-toggle="tab"
+            = t (:eventsessionbookings)
+        li
+          a href="#eventsessionuploads" aria-controls="eventsessionuploads" role="tab" data-toggle="tab"
+            = t(:uploads)
+
+      <!-- Tab panes -->
+      .tab-content
+        .tab-pane.active role="tabpanel" id="eventsessionbookings"
+          = render "eventsessionbookings/subtable", :@eventsessionbookings => @eventsession.eventsessionbookings.all
+
+        .tab-pane role="tabpanel" id="eventsessionuploads"
+          = render "assets/subtable", :@assets => @eventsession.assets

@@ -1,0 +1,27 @@
+.row
+  .col-xs-12
+    h1 = Account.model_name.human(count: 2)
+
+= render 'search_form'
+
+.row
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th = Account.model_name.human(count: 1)
+          th
+            = t(:current_commission)
+            |&nbsp;(% / €)
+          th.text-right = t(:sum)
+
+      tbody
+        - @sales.each do |id, sum|
+          - account = @accounts.find(id)
+          tr
+            td = link_to account, affiliate_account_path(account)
+            td
+              = number_to_percentage(account.affiliate_commission_relative)
+              = ' / '
+              = number_to_currency(account.affiliate_commission_absolute)
+            td.text-right = money_to_currency(Money.new(sum))

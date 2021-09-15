@@ -1,0 +1,52 @@
+/ do we have a Product::Pricingset attached?
+- if event.pricingset
+  p class="#{!event.pricingset.active ? 'text-muted' : ''}"
+    strong
+      = t(:pricingset)
+      |&nbsp;
+      = link_to product_pricingset_path(event.pricingset)
+        span class="#{!event.pricingset.active ? 'text-muted' : ''}"
+          = event.pricingset
+      = render "shared/button", path: product_pricingset_path(event.pricingset), link_text: '', icon: "fa-external-link", classes: "btn btn-link", datatoggle: "tooltip", dataplacement: "top", title: event.pricingset
+    br
+    - if event.pricingset.active
+      = t(:pricingset_in_place)
+    - else
+      = t(:pricingset_inactive)
+      br
+
+/ show only if pricingset is active
+- if event.pricingset&.active
+  ul.list-group
+    li.list-group-item
+      .row
+        .col-xs-5
+          strong
+            = t(:pricingoption_name)
+        .col-xs-2.text-right
+          strong
+            = t(:pricingoption_deduction)
+        .col-xs-5.text-right
+          strong
+            = t(:pricingoption_price_including_deduction)
+            |&nbsp;/&nbsp;
+            = t(:price_early_signup)
+
+    - Product::PricingoptionDecorator.decorate_collection(event.pricingset.pricingoptions.by_position).each do |pricingoption|
+      li.list-group-item class="#{pricingoption.preset ? 'list-group-item-info' : ''}"
+        .row
+          .col-xs-5
+            = pricingoption.position
+            |.&nbsp;
+            = pricingoption
+          .col-xs-2.text-right
+            - if pricingoption.is_absolute?
+              = pricingoption.full_price_deduct
+            - else
+              = pricingoption.full_price_deduct_perc
+          .col-xs-5.text-right
+            / = pricingoption.full_price_deduct
+            = pricingoption.full_price(event)
+            |&nbsp;/&nbsp;
+            = pricingoption.price_early_signup(event)
+            / = @event.full_price - (pricingoption.object.full_price_deduct_perc * @event.full_price)

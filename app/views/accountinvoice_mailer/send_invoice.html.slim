@@ -1,0 +1,20 @@
+h2
+  |Hallo&nbsp;
+  = @accountinvoice.account.greeting
+  |,
+p
+  |anbei erhalten Sie Ihre Rechnung für den Wundercoach für den Zeitraum vom&nbsp;
+  = l @accountinvoice.billing_period.start_date
+  |&nbsp;bis&nbsp;
+  = l (@accountinvoice.billing_period.end_date - 1.days)
+  |.
+  br
+  |Sie können die Rechnung auch unter "Kontoeinstellungen / Rechnungen" in Ihrem Wundercoach-Backend herunterladen.
+  br
+  br
+
+p Mit herzlichen Grüßen,
+p Ihr Wundercoach Team
+p
+  br
+  |Bei Fragen wenden Sie sich gerne an office@wundercoach.net

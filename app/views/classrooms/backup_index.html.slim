@@ -1,0 +1,80 @@
+.row
+  .col-md-12
+    .page-header
+      span.h3
+        = t(:eventsession)
+        |&nbsp;
+        = @eventsession
+      span.lead
+        |&nbsp;
+        = t(:event)
+        |&nbsp;
+        = @eventsession.event
+
+.row
+  col-md-12
+    h3
+
+.row
+  .col-md-12
+    .row
+      .col-md-12
+
+        ul.nav.nav-tabs role="tablist"
+          li class="active"
+            a href="#home" aria-controls="home" role="tab" data-toggle="tab"
+              = t (:video)
+          li
+            a href="#eventuploads" aria-controls="eventuploads" role="tab" data-toggle="tab"
+              = t(:whiteboard)
+          li
+            a href="#eventbookings" aria-controls="eventbookings" role="tab" data-toggle="tab"
+              = t(:bookings)
+          li role="presentation"
+            a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
+              |Messages
+          li role="presentation"
+            a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"
+              |Settings
+
+        <!-- Tab panes -->
+        .tab-content
+          .tab-pane.active role="tabpanel" id="home"
+            .row
+              .col-md-12
+                h3
+                  = t(:video)
+
+            .row
+              .col-md-12
+                iframe src="https://appear.in/#{@eventsession.token}" width="800" height="640" frameborder="0"
+            .row
+              .col-md-12
+                label
+                  = t(:copy_and_send_link)
+                pre https://appear.in/#{@eventsession.token}
+
+          .tab-pane role="tabpanel" id="eventuploads"
+            .row
+              .col-md-3
+                h3 files
+                ul.list-group
+                  li.list-group-item
+                    |video-1.mpg
+                  li.list-group-item
+                    |video-1.mpg
+                  li.list-group-item
+                    |video-1.mpg
+                  li.list-group-item
+                    |video-1.mpg
+              .col-md-9
+                .well
+                  h1 whiteboard
+                  iframe src="https://awwapp.com/" width="600px" height="600px" frameborder="0"
+
+
+          .tab-pane role="tabpanel" id="eventbookings"
+            |2
+
+          .tab-pane role="tabpanel" id="messages"
+          .tab-pane role="tabpanel" id="settings"

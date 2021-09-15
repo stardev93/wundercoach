@@ -1,0 +1,74 @@
+de:
+  activerecord:
+    attributes:
+      widget:
+        description: Beschreibung
+        html: HTML-Code
+  simple_form:
+    labels:
+      widget:
+        html: Widget-Code
+    hints:
+      widget:
+        html: Für die Gestaltung der Widgets steht Ihnen Liquid zur Verfügung, eine auf HTML basierende Template-Sprache.
+  liquid_placeholders:
+    eventtemplate:
+      stylesheet:
+        description: Ihr eigener Stylesheet, den Sie unter Kontoeinstellungen -> Seminar-Bestellablauf anpassen können, kann auch in Widgets eingebunden werden. Verwenden Sie dafür diesen Platzhalter.
+      events:
+        description: Eine Liste aller kommende Seminare.
+      name:
+        description: Name der Seminarvorlage
+    event:
+      name:
+        description: Name der Seminars
+      start_date:
+        description: Datum, an dem das Seminar beginnt.
+      start_time:
+        description: Uhrzeit, zu der das Seminar beginnt.
+      price:
+        description: Preis des Seminars.
+      account:
+        description: Ihre Firma
+      street:
+        description: Straße und Hausnummer des Veranstaltungsortes
+      zip:
+        description: PLZ des Veranstaltungsortes
+      city:
+        description: Stadt des Veranstaltungsortes
+      eventorganizer:
+        description: Veranstalter
+      location:
+        description: Veranstaltungsort
+      country:
+        description: Land des Veranstaltungsortes
+      shortdescription:
+        description: Kurze Beschreibung
+      longdescription:
+        description: Lange Beschreibung
+      bottom_text:
+        description: Text mit zusätzlichen Informationen, der für gewöhnlich ganz unten angezeigt wird
+      paymentmethods:
+        description: Verfügbare Bezahlarten
+      coaches:
+        description: Trainer, die dieses Seminar leiten
+      maxparticipants:
+        description: Maximale Anzahl der Teilnehmer
+      remaining_seats:
+        description: Anzahl der freien Plätze für dieses Seminar
+      show_link:
+        description: Ein einfacher Link auf die vom Wundercoach generierte Info-Seite zu Ihrem Seminar
+      details_link:
+        description: Ein Link auf die vom Wundercoach generierte Info-Seite zu Ihrem Seminar, in Form eines Buttons
+      signup_link:
+        description: Ein Link zur Anmeldung für dieses Seminar
+      widget_token_label: Token
+      widget_token_hint: "Der Token wird automatisch generiert und dazu benutzt, dieses Widget in Ihrer Website zu laden."
+
+  widget_infotext: Widgets erlauben die suchmaschinenfreundliche Einbindung Ihrer Seminare in Ihre Website und in Internetportale. Nutzen Sie die vorhandenen Widgets, um z.B. eine Liste aller kommenden Seminare oder das nächste Seminar anzuzeigen. Sie können auch Ihre eigenen Widgets erstellen. Dafür steht Ihnen %{link_to_liquid} zur Verfügung, eine einfache, auf HTML basierende Template-Sprache. Für eine Darstellung einzelner Seminare mit ihren Terminen verwenden Sie die Widgets unter dem Menüpunkt Seminarvorlagen >> Klicken Sie dann auf eine Ihrer Seminarvorlagen und wählen Sie den Reiter \"Einbinden\". Zögern Sie bitte nicht, uns dazu anzusprechen, wenn Sie Hilfe benötigen.
+  widget_eventtemplate_infotext: Sie können mit diesen Widgets komplette Seminarvorlagen (Texte, Preise usw.) in Ihrer Website und Internetportalen ausgeben, z.B. als Landingpages für eine optimierte Darstellung Ihres Seminarangebotes in den Suchmaschinen. Zusätzlich lassen sich alle Termine zu einzelnen Seminarvorlagen als Liste ausgeben. Damit können Sie komplette Produktseiten mit Beschreibungen und Terminen zu Ihren einzelnen Semianrangeboten aufbauen. Die EInbindung erfolgt per Javascript. Zögern Sie bitte nicht, uns dazu anzusprechen, wenn Sie Hilfe benötigen. Für eine Listendarstellung aller Ihrer Seminare verwenden Sie die Widgets unter dem Menüpunkt Seminare/Widgets.
+  edit_widget: Widget bearbeiten
+  available_placeholders_for_eventtemplates: 'Folgende Platzhalter stellen Seminarvorlagen zur Verfügung:'
+  available_placeholders_for_events: 'Folgende Platzhalter stellen Seminare zur Verfügung:'
+  widget_html: "Widget-Code"
+  widget_html_hint: "HTML-Code des Widgets"

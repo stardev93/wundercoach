@@ -1,0 +1,1 @@
+Wundercoach::Application.config.secret_key_base = '6e0ad6b6f32889506cb6a95495b6d91ecafaa519c6114e16c068b8c1a37ab2a8da063c353ce9549e9e8fb3a34e72980d3f435c4b65e50ddca07ef15a47c51957'

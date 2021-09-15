@@ -1,0 +1,17 @@
+# Files in the config/locales directory are used for internationalization
+de:
+  # Eventbookingstatus
+  new_bookings: 'Neue Buchungen'
+  new_booking: 'Neue Buchung'
+  new_booking_hint: 'Der Status neu kann für Buchungen bei der manuellen Eingabe über das Backend vergeben werden. Diese sind noch unverbindlich und können in bestätigte Buchungen verwandelt werden. Stellen Sie dafür einfach den Status um.'
+
+  confirmed_booking: 'Bestätigte Buchung'
+  confirmed_bookings: 'Bestätigte Buchungen'
+
+  waiting_booking: 'Auf Zahlungseingang wartend'
+  waiting_bookings: 'Auf Zahlungseingang wartend'
+
+  waitinglist_booking: 'Auf Warteliste'
+
+  cancelled_booking: 'Stornierte Buchung'
+  cancelled_bookings: 'Stornierte Buchungen'

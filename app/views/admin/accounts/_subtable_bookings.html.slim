@@ -1,0 +1,56 @@
+.row
+  .col-md-12
+
+    table.table.table-hover
+      thead
+        tr
+          th
+            = t (:active)
+          th
+            = t (:bookings)
+          th
+            = t (:info)
+          th
+            = t (:valid_from)
+          th
+            = t (:valid_until)
+          th
+
+      tbody
+        - @bookings.each do |booking|
+          tr
+            td
+              = link_to makecurrent_admin_booking_path(booking)
+                - if booking.is_current
+                  i.fa.fa-check
+
+                - else
+                  i.fa.fa-minus
+            td
+              = booking
+            td
+              = booking.paymentplan
+              |&nbsp;
+              = number_to_currency(booking.paymentplan.gross_price)
+              |&nbsp;(
+              = t(:"#{booking.paymentplan.cycle}")
+              |)
+            td
+              - if booking.valid_from.blank?
+                - unless booking.account.registration_date.blank?
+                  = l booking.account.registration_date, format: :short
+              - else
+                = l booking.valid_from
+            td
+              - unless booking.valid_until.blank?
+                = l booking.valid_until
+            td
+              = link_to edit_admin_booking_path(booking), class: "btn btn-default"
+                = t(:edit)
+              = link_to admin_booking_path(booking), data: { confirm: t(:are_you_sure_you_want_to_delete_this_payment_adapter) }, method: :delete, class: "btn btn-default"
+                = t(:delete)
+
+
+.row
+  .col-xs-12
+    = will_paginate @bookings, renderer: BootstrapPagination::Rails, :link_path => admin_account_path(@account), :params => {:anchor => "bookings"}, :param_name => "bookingspage"

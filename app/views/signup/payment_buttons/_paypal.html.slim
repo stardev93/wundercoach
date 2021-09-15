@@ -1,0 +1,57 @@
+script src=("https://www.paypal.com/sdk/js?client-id=#{ @account.paypal_client_id}&currency=#{@order.currency}")
+/! Add the checkout buttons, set up the order and approve the order
+javascript:
+  $(document).ready(function() {
+    paypal.Buttons({
+        style: {
+            layout:  'horizontal',
+            color:   'blue',
+            shape:   'rect',
+            label:   'paypal'
+          } ,  
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            reference_id: "#{@order.id}",
+            amount: {
+              value: "#{@order.price_cents/100}",
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          $("#checkoutButton").attr("disabled", "");
+          $("#paypal_token").val(details.id);
+          $("#paypal_status").val(details.status);
+          $("#charge_form").submit();          
+        });
+      }
+    }).render('#paypal-button-container'); // Display payment options on your web page
+  });
+
+  $(document).ready(function(){
+    // Enable/disable stripe button
+
+    $('#checkoutButton').on('click', function(e) {
+      e.preventDefault();
+      // Open Checkout with further options
+      $('#buttons-container').click();      
+    });
+  })
+
+javascript:
+= simple_form_for @order, url: signup_paypal_path, method: :post, html: { id: "charge_form" } do |f|
+  = hidden_field_tag "paypalChargeID", nil, id: "paypal_token"
+  = hidden_field_tag "paypalStatus", nil, id: "paypal_status"
+  / - if @account.terms_required
+  /   = f.input :terms_of_service, as: :boolean, value: 0, label: t(:i_agree_to_the_terms_of_service, terms: link_to(@account.terms_link_text, @account.terms_link, target: '_blank')).html_safe
+  .row
+    .col-xs-12
+      = render "signup/terms", :account => @account, :f => f        
+  .row
+    .col-xs-12
+      = button_tag "Pay with Paypal", id: "checkoutButton", class: %w(btn btn-primary btn-lg signup-button signup-submit), disabled: @account.any_terms_required?
+      #paypal-button-container
+css:
+  #paypal-button-container{display: none;}

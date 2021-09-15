@@ -1,0 +1,8 @@
+/ requires
+/ = render "shared/modal_confirm"
+= render "shared/modal_confirm_button", :button_type => '',
+      :confirm_button => t(:cancel_booking),
+      :confirm_icon => "fa-ban",
+      :confirm_url => cancel_eventbooking_path(eventbooking) + '#bookings?returl=event',
+      :confirm_headline => t(:are_you_sure_you_want_to_delete_this_eventbooking),
+      :confirm_text => t(:are_you_sure_you_want_to_delete_this_eventbooking)

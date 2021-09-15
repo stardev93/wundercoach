@@ -1,0 +1,14 @@
+- if @businessdocument.address.company
+  = @businessdocument.address.company
+  br
+= @businessdocument.address.firstname
+|&nbsp;
+= @businessdocument.address.lastname
+br
+= @businessdocument.address.street
+br
+= @businessdocument.address.country
+|&nbsp;-&nbsp;
+= @businessdocument.address.zip
+|&nbsp;
+= @businessdocument.address.city

@@ -1,0 +1,45 @@
+javascript:
+  $(function() {
+    $('#companylabel').on('change', function() {
+      $(this).addClass('btn-primary');
+      $('#personlabel').removeClass('btn-primary');
+      $('.company').show();
+      $('.person').hide();
+    });
+    $('#personlabel').on('change', function() {
+      $(this).addClass('btn-primary');
+      $('#companylabel').removeClass('btn-primary');
+      $('.company').hide();
+      $('.person').show();
+    });
+  });
+.row
+  .col-xs-12
+    .page-header
+      span.company.h1 style="#{(@contact.type == 'Company' ? '' : 'display:none;')}"
+        = t(:new_company)
+      span.person.h1 style="#{(@contact.type == 'Person' ? '' : 'display:none;')}"
+        = t(:new_person)
+      - if @contact.contact_id
+        br
+        span.h3
+          |(
+          = @contact.company.name
+          |)
+      span.add-item
+        .btn-group data-toggle="buttons"
+          label.typetoggle.btn.btn-default id="companylabel" class="#{(@contact.type == 'Company' ? 'btn-primary' : '')}"
+            input type="radio" name="options" id="company" autocomplete="off"
+              = t(:company)
+          label.typetoggle.btn.btn-default id="personlabel" class="#{(@contact.type == 'Person' ? 'btn-primary' : '')}"
+            input type="radio" name="options" id="person" autocomplete="off"
+              = t(:person)
+    .row
+      .col-md-12.person style="#{(@contact.type == 'Person' ? '' : 'display:none;')}"
+        p.lead
+          |&nbsp;
+        = render 'form_person'
+      .col-md-12.company style="#{(@contact.type == 'Company' ? '' : 'display:none;')}"
+        p.lead
+          |&nbsp;
+        = render 'form_company'

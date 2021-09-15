@@ -1,0 +1,25 @@
+= render "accounts/form_header",
+              :headline => t(:seo_settings), :hint => t(:seo_settings_hint),
+              :cancel_link => seosettings_path
+= simple_form_for(@account, url: account_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :tracking_code, label: t(:tracking_code), hint: t(:tracking_code_hint), input_html: { style: 'height: 240px;' }
+    / = f.input :tracking_code_location, as: :select, collection: Account::TRACKING_CODE_LOCATION_HASH.map {|k,v| [t(:"#{k}"),v]}, label: t(:tracking_code_location), include_blank: t(:please_choose), hint: t(:tracking_code_location_hint)
+    .row
+      .col-xs-12.col-sm-6
+        = render "shared/f_select", :form => f, :field => :tracking_code_location, field_collection: Account::TRACKING_CODE_LOCATION_HASH.map {|k,v| [t(:"#{k}"),v]}, field_label: t(:tracking_code_location), field_include_blank: t(:please_choose), field_hint: t(:tracking_code_location_hint), field_disabled: false
+      .col-xs-12.col-sm-6
+        = render "shared/f_boolean", :form => f, :field => :tracking_code_active, field_label: t(:tracking_code_active), hint: t(:tracking_code_active_hint), field_disabled: false
+        
+    / tracking_code_active
+    = f.input :robots_txt, label: t(:robots_txt), hint: t(:robots_txt_hint), input_html: { style: 'height: 240px;' }
+    = f.input :landingpagecode, label: t(:landingpagecode), hint: t(:landingpagecode_hint), input_html: { style: 'height: 240px;' }
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: seosettings_path

@@ -1,0 +1,136 @@
+- edit_button = render "shared/button", path: edit_event_design_path, link_text: t(:edit), icon: "", classes: "btn btn-primary", datatoggle: "tooltip", dataplacement: "top", title: t(:edit)
+
+= render "shared/form_header",
+         header_text: t(:event_checkout_settings), hint_text: t(:event_settings_hint),
+         buttons: edit_button
+
+/ define row and col settings
+.row
+  .col-xs-12
+    / set the section header, headline with comment an HR line as separator, slightly smaller than shared/form_header
+    = render "shared/section_header", :header_text => t(:eventdesign_general_settings), :hint_text => t(:eventdesign_general_settings_hint)
+    .row
+      .col-xs-12
+        / set read-only field
+        = render "shared/f_ro_text", :field_value => @account.order_bcc_list, :field_label => t(:order_bcc_list), :field_hint => t(:order_bcc_list_hint), :field_default_value => t(:no_bcc_address_given)
+    .row
+      .col-xs-12
+        = render "shared/f_ro_text", :field_value => @account.index_path, :field_label => t(:website_integration_index_path_headline), :field_hint => t(:website_integration_index_path_text)
+
+    .row
+      .col-xs-12
+        / set read-only field
+        = render "shared/f_ro_text", :field_value => @account.event_contact.html_safe, :field_label => t(:event_contact), :field_hint => t(:event_contact_hint), :field_default_value => t(:you_havent_provided_an_event_contact_yet)
+
+    / p.lead
+    /   - if @account.event_contact.present?
+    /     = simple_format(@account.event_contact)
+    /   - else
+    /     = t(:you_havent_provided_an_event_contact_yet)
+
+
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:eventdesign), hint_text: t(:eventdesign_hint)
+
+.row
+  .col-xs-12
+    = render "shared/f_ro_text", :field_value => @account.custom_checkout_title, :field_label => t(:page_title)
+
+.row
+  .col-xs-12
+    - if @account.checkout_footer
+      - checkout_footer = sanitize @account.checkout_footer, attributes: %w(href target)
+    - else
+      - checkout_footer = t(:no_checkout_footer_given)
+
+    = render "shared/f_ro_text", :field_value => checkout_footer, :field_label => t(:checkout_footer), :field_hint => t(:order_bcc_list_hint)
+
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:signup_list_header_image), hint_text: t(:signup_list_header_image_recommended_size)
+
+.row
+  .col-xs-12
+    p.text-right
+      = render "events/signup_preview_btn"
+    = feature_notice Feature.find_by(key: "customer_branding")
+      = t(:eventheader_not_included)
+    p
+      label
+        = t(:show_header_image_headline)
+      |&nbsp;
+      input type="checkbox" class="js-switch" checked=@account.show_header_image readonly="true"
+      |&nbsp;
+    p.help-block
+      = t(:show_header_image_hint_ro)
+
+.row
+  .col-xs-12
+    - if @account.eventheader.exists?
+      p
+        = image_tag @account.eventheader.url, width: "100%;"
+        |&nbsp;
+      p.text-right
+        = link_to eventdesignremove_path, class: "btn btn-danger"
+          i.fa.fa-remove
+          |&nbsp;
+          = t(:remove)
+    - else
+      .alert.alert-info
+        = t(:you_havent_uploaded_an_image_yet, image: t(:header_image_for_your_signup_list))
+      = render "accounts/dzmicro", param: "account[eventheader]", text: t(:drop_headerimage_here_to_upload)
+      p
+
+
+
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:favicon), hint_text: t(:favicon_recommended_size)
+  .col-xs-12
+     = feature_notice Feature.find_by(key: "customer_branding")
+       = t(:favicon_not_included)
+  .col-xs-12
+     - if @account.favicon.exists?
+       p
+         = image_tag @account.favicon.url(:icon)
+         |&nbsp;
+       p.text-right
+         = link_to event_design_path(account: { favicon: '' }), class: "btn btn-danger", method: :put
+           i.fa.fa-remove
+           |&nbsp;
+           = t(:remove)
+     - else
+       .alert.alert-info
+         = t(:you_havent_uploaded_an_image_yet, image: t(:favicon))
+       = render "accounts/dzmicro", param: "account[favicon]", text: t(:drop_favicon_here_to_upload)
+       p &nbsp;
+
+
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:css_code), hint_text: t(:css_code_hint)
+
+.row
+  .col-xs-12
+    = render "shared/f_ro_pre", :field_value => @account.css_code.html_safe, :field_label => t(:css_code), :field_hint => t(:css_code_hint)
+
+.row
+  .col-xs-12
+
+    p.text-right
+      = link_to signup_index_path, :class=>"btn btn-default", target: "_blank"
+        i.fa.fa-share-square
+        '&nbsp;
+        = t(:signup_list)
+      |&nbsp;
+      = link_to edit_event_design_path
+        button.btn.btn-primary
+          = t(:change_eventheader)
+
+
+// javascript:
+//   $(function() {
+//     var elem = document.querySelector('.js-switch');
+//     var init = new Switchery(elem, { size: "small", disabled: true });
+//   });

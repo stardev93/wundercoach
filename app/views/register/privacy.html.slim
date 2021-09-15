@@ -1,0 +1,13 @@
+.row
+  .col-lg-12.text-center
+    = image_tag "logo.png", style: "width: 100px; margin: 0px 0px 30px 0px;"
+.row
+  .col-xs-12
+    h1
+      |Wundercoach
+      br
+      |Datenschutz
+    p.lead
+      |Diese Datenschutzerklärung gibt Ihnen einen Überblick über die Verarbeitung Ihrer Daten bei Wundercoach. Sie gilt für alle Websites, Apps und weiteren Dienste und Leistungen, die von Wundercoach angeboten werden.
+    p
+      = File.read("#{Rails.root}/app/assets/files/Wundercoach_Datenschutz.html").html_safe

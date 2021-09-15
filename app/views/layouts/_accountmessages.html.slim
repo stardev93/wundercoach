@@ -1,0 +1,20 @@
+/ do we have a trial account? include trial information / upgrade header
+- if account.trial? and (controller_name != "paymentplans" and action_name != "showplans" and action_name != "payment" and action_name != "ordersuccess")
+  p
+    .alert.alert-success.text-center
+      = t(:trial_version_hint, paymentplan: @account.paymentplan, total_days: total_days, remaining_days: remaining_days).html_safe
+      |&nbsp;
+      = t(:trial_version_remaining_hint, remaining_days: remaining_days)
+      |&nbsp;
+      = link_to(t(:trail_version_cta), showplans_path)
+- if account.paymentplan.free? and (controller_name != "paymentplans" and action_name != "showplans" and action_name != "payment" and action_name != "ordersuccess")
+  p
+    .alert.alert-info.text-center
+      = t(:free_version_hint, paymentplan: @account.paymentplan, total_days: total_days, remaining_days: remaining_days)
+      |&nbsp;
+      = link_to(t(:free_version_cta), showplans_path)
+      |&nbsp;
+      = link_to showplans_path, class: "btn btn-sm btn-success"
+        =t(:ok)
+        |&nbsp;
+        i.fa.fa-arrow-right

@@ -1,0 +1,8 @@
+- if event.new_record?
+  - return_path = events_path
+- else
+  - return_path = event_path(event)
+.form-actions
+  .row
+    .col-md-12.text-right
+      = f.button :magic_submit, cancel: return_path

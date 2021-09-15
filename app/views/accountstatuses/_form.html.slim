@@ -1,0 +1,13 @@
+= simple_form_for(@accountstatus) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :key
+    = f.input :sortorder
+    = f.input :name
+    = f.input :comments
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: accountstatuses_path

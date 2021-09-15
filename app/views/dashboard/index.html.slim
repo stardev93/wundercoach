@@ -1,0 +1,82 @@
+/ see dashboard.html.slim for graphs
+.page.page-dashboard
+  / = render "dashboard/getting_started"
+  .well
+    / Dashboard Headline
+    .row
+      .col-md-12.hidden-xs.hidden-lg
+        br
+        br
+    .row
+      .col-sm-12.col-md-6
+        span.h3
+          = t(:dashboard)
+      .col-sm-12.col-md-6.text-right
+        = link_to new_event_path, :class => "btn btn-default"
+          i.fa.fa-plus
+          |&nbsp;
+          = t(:add_event)
+        |&nbsp;
+        = link_to eventtemplates_path, :class => "btn btn-default"
+          i.fa.fa-plus
+          |&nbsp;
+          = t(:new_event_from_template)
+
+  .row
+    / Upcoming Events
+    .col-md-4
+      .well
+        h4
+          i.fa.fa-graduation-cap
+          |&nbsp;
+          = t(:upcoming_appointments)
+        ul.list-group.dashboard-widget-small
+          - @next_events.each do |event|
+            li.list-group-item
+              = link_to event
+                = event.decorate
+              br
+              - unless event.start_date.blank?
+                = link_to event
+                  = event.decorate.start_date + ' ' + event.decorate.start_time
+
+          - if @next_events.count == 0
+            li.list-group-item
+              = t(:no_next_events)
+
+    / Latest Orders
+    .col-md-4
+      .well
+        h4
+          i.fa.fa-user
+          |&nbsp;
+          = t(:new_orders)
+        ul.list-group.dashboard-widget-small
+          - @new_orders.each do |order|
+            li.list-group-item
+              = link_to order.fullname_backwards, order.product
+              br
+              = order&.decorate&.order_date + ' ' + order&.decorate&.order_time
+              br
+              = link_to order&.product_name, order&.product
+
+    .col-md-4
+      .well
+        h4
+          span.fa-stack style="font-size: 0.5em;"
+            i.fa.fa-comment-o.fa-stack-2x
+            i.fa.fa-question.fa-stack-1x
+          |&nbsp;
+          = t(:new_requests)
+        ul.list-group.dashboard-widget-small
+          - @new_requests.each do |request|
+            li.list-group-item
+              = link_to request, event_path(request.event, anchor: 'requests')
+
+          - if @new_requests.count == 0
+            li.list-group-item
+              = t(:no_new_requests)
+
+/ - if @show_get_started_modal
+/   javascript:
+/     $('#getting_started').modal('show');

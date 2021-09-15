@@ -1,0 +1,29 @@
+de:
+  campaigns: Kampagnen
+  campaign_infotext: Um Ihre Kunden auf dem aktuellen Stand zu halten, können Sie Newsletter versenden. Hier können Sie Zielgruppen festlegen und Kampagnen planen. Diese werden dann an Mailchimp übergeben, von wo aus Sie die Kampagne starten können.
+  campaign_synced_info_text: Diese Kampagne wurde an Mailchimp übergeben und kann nicht mehr bearbeitet werden.
+  start_a_new_campaign: Neue Kampagne anlegen
+  start_campaign_with_this_target_group: Kampagne für diese Zielgruppe anlegen
+  campaign_needs_a_target_group: Bitte wählen Sie eine oder mehrere Zielgruppen für die Kampagne
+  participant_count: Anzahl der Teilnehmer
+  campaign: Kampagne
+  campaign_hint: Teilnahme an einer Kampagne
+  campaigns_name_hint: Name der Kampagne, z.B. "Newsletter Mai 2016"
+  marketing: Marketing
+  all_data_will_by_synced_to_mailchimp: Kampagne bei Mailchimp anlegen und alle Empfänger übertragen?
+  start_campaign: Kampagne starten!
+  campaign_sync_success: Die Kampagne wurde erfolgreich an Mailchimp übertragen.
+  campaign_not_ready_for_sync: Die Kampagne konnte nicht übertragen werden, da ihr keine Zielgruppen zugewiesen sind.
+  new_campaign: Neue Kampagne
+  edit_campaign: Kampagne bearbeiten
+  active_campaign_integrated_msg: ActiveCampaign wurde integriert
+  active_campaign_not_integrated_msg: ActiveCampaign wurde noch nicht integriert
+  transfer_contacts_to: 'Neue Kontakte werden an die Liste "%{list}" übergeben'
+  campaign_successfully_created: "Die Kampagne wurde erfolgreich erstellt."
+  campaign_successfully_updated: "Die Kampagne wurde erfolgreich aktualisiert."
+  campaign_successfully_deleted: "Die Kampagne wurde erfolgreich gelöscht."
+  simple_form:
+    magic_submit:
+      campaigns:
+        new:
+          submit: Neue Kampagne anlegen

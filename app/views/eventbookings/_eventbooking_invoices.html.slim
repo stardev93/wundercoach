@@ -1,0 +1,14 @@
+/ new mode: eventbookings are related to businessdocumentpositions
+- if eventbooking&.businessdocumentpositions&.any?
+  - eventbooking.businessdocumentpositions.each do |businessdocumentposition|
+    = link_to billing_businessdocument_path(businessdocumentposition.businessdocument)
+      = businessdocumentposition.businessdocument
+    br
+/ old mode: eventbooking.order.businessdocuments
+- elsif eventbooking.order.businessdocuments.any?
+  - eventbooking.order.businessdocuments.each do |businessdocument|
+    = link_to billing_businessdocument_path(businessdocument)
+      = businessdocument
+    br
+- else
+  = t(:no_invoice_yet)

@@ -1,0 +1,12 @@
+= simple_form_for(@event_list) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.association :tags, as: :check_boxes, collection: @affiliate.tags
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: affiliate_event_lists_path

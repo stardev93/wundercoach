@@ -1,0 +1,76 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-gears
+        | &nbsp;
+        = t(:accountinvoicetypes)
+      span.add-item
+        = link_to new_accountinvoicetype_path, :class=>"btn btn-primary"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_accountinvoicetype)
+    p.helper_text
+      = t(:accountinvoicetype_infotext)
+
+    nav.navbar.navbar-default
+      form.navbar-form.navbar-left
+        .form-group
+          = form_tag accountinvoicetypes_path, class: "form form-inline pull-right", method: :get
+            = text_field_tag :search, params[:search], class: "form-control"
+            '&nbsp;
+            button.btn.btn-primary<
+              i.fa.fa-search
+            - if params[:search]
+              = link_to accountinvoicetypes_path, class: "btn btn-link"
+                = t(:show_all)
+
+
+    table.table
+      thead
+        tr
+          th
+            = t (:key)
+          th
+            = t (:name)
+          th
+            = t (:description)
+          th
+            = t (:position)
+          th
+
+      tbody
+        - @accountinvoicetypes.each do |accountinvoicetype|
+          tr
+            td = link_to accountinvoicetype.key, accountinvoicetype
+            td = accountinvoicetype.name
+            td = accountinvoicetype.description
+            td = accountinvoicetype.position
+            td
+              .btn-toolbar role="toolbar"
+                .btn-group
+                  button.btn.btn-default.btn-sm.dropdown-toggle type="button" data-toggle="dropdown"
+                    = t(:actions)
+                    '&nbsp;
+                    span.caret
+                  ul.dropdown-menu role="menu"
+                    li
+                      = link_to accountinvoicetype_path(accountinvoicetype)
+                        i.fa.fa-eye
+                        '&nbsp;
+                        =t(:show)
+                    li
+                      = link_to edit_accountinvoicetype_path(accountinvoicetype)
+                        i.fa.fa-edit
+                        '&nbsp;
+                        =t(:edit)
+                    li
+                      = link_to accountinvoicetype, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete
+                        i.fa.fa-remove
+                        '&nbsp;
+                        = t(:delete)
+
+
+    .row
+      .col-xs-12
+        = will_paginate @collection, renderer: BootstrapPagination::Rails

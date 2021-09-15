@@ -1,0 +1,36 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = @event_list
+      span.add-item
+        = link_to new_affiliate_event_list_path, class: "btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_event_list)
+    p.lead
+      = @event_list.description
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @event_list, data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete, class: "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_affiliate_event_list_path(@event_list), class: "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to affiliate_event_lists_path, class: "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
+.row
+  .col-xs-12
+    h3 Einbinden:
+    p
+      - current_user.account.widgets.each do |widget|
+        = widget
+        pre = %Q(<script type="text/javascript" src="#{event_list_widget_script_url(@event_list.id, widget.token, subdomain: EXTERNAL_SUBDOMAIN, locale: nil)}" async="true"></script>)

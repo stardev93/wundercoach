@@ -1,0 +1,24 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1 = Order.model_name.human(count: 2)
+
+    table.table
+      thead
+        tr
+          th = Account.model_name.human(count: 1)
+          th = Order.model_name.human(count: 1)
+          th = Adpartner.model_name.human(count: 1)
+          th
+
+      tbody
+        - orders.each do |order|
+          tr
+            td = order.account
+            td = order
+            td = order.adpartner
+            td
+
+.row
+  .col-md-12
+    = will_paginate orders, renderer: BootstrapPagination::Rails, params: { anchor: 'orders' }

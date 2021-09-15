@@ -1,0 +1,40 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        span.h3
+          = t(:contact_details)
+      / span.add-item
+      /   = link_to new_crm_contact_detail_path+'?contact_id='+@contact.id.to_s, class: "btn btn-primary"
+      /     i.fa.fa-plus
+      /     | &nbsp;
+      /     = t(:add_contact_detail)
+
+.row
+  .col-xs-12.col-sm-8
+    table.table
+      thead
+        tr
+          th = t(:value)
+          th = t(:type)
+          th
+
+      tbody
+        - @contact.contact_details.each do |contact_detail|
+          tr
+            td
+              / = link_to crm_contact_detail_path(contact_detail)
+              /   = contact_detail.detail_value
+              = best_in_place contact_detail, :detail_value, tabindex: "1", :as => :input, :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm"
+            td
+              / = contact_detail.detail_type
+              = best_in_place contact_detail, :detail_type, tabindex: "2", :as => :select, :collection => (Crm::ContactDetailDecorator::CONTACT_DETAIL_TYPES_HASH.map { |key, val| [val, key] }), :ok_button => t(:save), :cancel_button => t(:cancel), :inner_class => "form-control", :ok_button_class => "btn btn-primary btn-sm text-right", :cancel_button_class => "btn btn-secondary btn-sm text-right", label: t(:type)
+
+            td
+              = link_to crm_contact_detail_path(contact_detail), data: { confirm: t(:are_you_sure_you_want_to_delete_this_object) }, method: :delete
+                = t(:delete)
+  .col-xs-12.col-sm-4
+    - @crm_contact_detail = Crm::ContactDetail.new
+    - @crm_contact_detail.account_id = @contact.account_id
+    - @crm_contact_detail.contact = @contact
+    = render "form_contact_details", :@crm_contact_detail => @crm_contact_detail

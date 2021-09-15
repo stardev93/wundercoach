@@ -1,0 +1,7 @@
+li
+  a href="#" type="button" data-toggle="modal" onclick="toggleSidebar()"
+    / = t(:news)
+    i.fa.fa-envelope-o
+    |&nbsp;
+    span.badge style="background-color: #337ab7;"
+      = current_user.unread_message_count

@@ -1,0 +1,14 @@
+= render "accounts/form_header",
+         :headline => t(:design_information), :hint => t(:design_information_hint),
+         :cancel_link => design_path
+= simple_form_for(@account, url: account_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :logo, :label => t(:account_logo)
+
+
+  .form-actions
+    .row
+      .col-md-12.text-right
+        = f.button :magic_submit, cancel: design_path

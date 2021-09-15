@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    .page-header
+      span.h1
+        = t(:edit_active_campaign)
+      p.lead Api Key und URL finden Sie in Ihrem ActiveCampaign Account. Öffnen sie über das Menü rechts oben die Einstellungen ('My Settings'). Dort finden Sie die benötigten Daten unter 'Developer'.
+  .col-md-12
+    p
+      br
+    = simple_form_for(@form, as: :account, url: account_active_campaign_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        .row
+          .col-xs-12.col-sm-6
+            = f.input :active_campaign_api_endpoint
+          .col-xs-12.col-sm-6
+            = f.input :active_campaign_api_key
+          - if @account.active_campaign_integrated?
+            .col-xs-12
+              = f.input :active_campaign_default_list, required: false, collection: @lists, value_method: :id, label_method: :name
+
+      .form-actions
+        .row
+          .col-md-12.text-right
+            = f.button :magic_submit, cancel: account_active_campaign_path

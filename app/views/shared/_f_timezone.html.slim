@@ -1,0 +1,28 @@
+/ Custom input for ActiveSupport::TimeZone
+- if defined? field_label
+  - label = field_label
+- else
+  - label = false
+
+- if defined? required
+  - req = true
+- else
+  - req = false
+
+- if defined? field_hint
+  - hint = field_hint
+- else
+  - hint = false
+- if defined? field_priority
+  - priority = field_priority
+- else
+  - priority = false
+
+/ get timezone default from ApplicationController helper get_browser_time_zone
+- if form.object.time_zone == ''
+  - form.object.time_zone = get_browser_time_zone.tzinfo.name
+
+/ = form.input :time_zone, label: label, include_blank: true, hint: field_hint
+/ custom select for timezones
+/ standard simple_form helper delivers only "Brussels" instead of "Europe/Brussels"
+= form.input :time_zone, :collection => ActiveSupport::TimeZone.all.map {|v| [v.name + ' (UTC ' + v.formatted_offset + ')', v.tzinfo.name]}, label: label, include_blank: true, hint: field_hint, selected: form.object.time_zone

@@ -1,0 +1,98 @@
+.page[data-ng-controller="FlotChartCtrl"]
+  .row.ui-section
+    .col-lg-8.clearfix
+      h2.section-header
+        | Line and Area Charts
+    .col-md-12
+      .row
+        .col-md-4
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="line2.data" data-options="line2.options" style="width: 100%; height: 350px;"]
+        .col-md-4
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="line1.data" data-options="line1.options" style="width: 100%; height: 350px;"]
+        .col-md-4
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="area.data" data-options="area.options" style="width: 100%; height: 350px;"]
+  .row.ui-section
+    .col-lg-8.clearfix
+      h2.section-header
+        | Bar Charts
+    .col-md-12
+      .row
+        .col-md-6
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="barChartCleanH.data" data-options="barChartCleanH.options" style="width: 100%; height: 350px;"]
+        .col-md-6
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="barChartCleanV.data" data-options="barChartCleanV.options" style="width: 100%; height: 350px;"]
+      .row
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="barChartStacked.data" data-options="barChartStacked.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Stacked
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="barChartVertical.data" data-options="barChartVertical.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Vertical
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="barChartHorizontal.data" data-options="barChartHorizontal.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Horizontal
+  .row.ui-section
+    .col-lg-8.clearfix
+      h2.section-header
+        | Combo Charts
+    .col-md-12
+      .row
+        .col-md-6
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="combo1.data" data-options="combo1.options" style="width: 100%; height: 350px;"]
+        .col-md-6
+          .panel.panel-default
+            .panel-body
+              div[data-flot-chart data-data="combo2.data" data-options="combo2.options" style="width: 100%; height: 350px;"]
+  .row.ui-section
+    .col-lg-8.clearfix
+      h2.section-header
+        | Pie and Donut Charts
+    .col-md-12
+      .row
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="pieChart.data" data-options="pieChart.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Pie Chart
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="donutChart.data" data-options="donutChart.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Donut Chart
+        .col-md-4
+          .panel.panel-default.panel-labeled
+            .panel-body
+              div[data-flot-chart data-data="donutChartHarmony.data" data-options="donutChartHarmony.options" style="width: 100%; height: 300px;"]
+              span.panel-label
+                | Styled Donut Chart
+  .row
+    .col-lg-8.clearfix
+      h2.section-header
+        | Realtime Chart
+    .col-md-12
+      .panel.panel-default
+        .panel-body
+          div[data-flot-chart-realtime data-type="realtime" style="width: 100%; height: 500px;"]

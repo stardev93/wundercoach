@@ -1,0 +1,12 @@
+.well
+  = form_for(object, url: upload_path, html: { multipart: true, data: { param: param.to_s }, class: "account dropzone dropzone-micro"}) do |f|
+    = f.hidden_field :id, value: object.id
+    p.text-center
+      i.fa.fa-cloud-upload.fa-2x
+    p.lead.text-center
+      - if defined? hint_text
+        = hint_text
+    .fallback
+      = f.file_field "icon"
+      br
+      = f.submit "Upload"

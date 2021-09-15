@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    = render "shared/section_header", header_text: t(:event_date_options), :hint_text => t(:event_date_options_hint)
+.row
+  .col-xs-12
+    .row
+      .col-xs-4
+        = render "shared/f_ro_text", :field_value => event.start_date_time, :field_label => t(:start_date_time), :field_hint => t(:start_date_time_hint)
+      .col-xs-4
+        = render "shared/f_ro_text", :field_value => event.end_date_time, :field_label => t(:end_date_time), :field_hint => t(:end_date_time_hint)
+      .col-xs-4
+        = render "shared/f_ro_text", :field_value => event.latest_signup_date_time, :field_label => t(:latest_signup_date), :field_hint => t(:latest_signup_date_hint)

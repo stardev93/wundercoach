@@ -1,0 +1,93 @@
+body {
+color: #E95315;
+}
+a {
+color: #E95315;
+}
+a:hover {
+color: #3658A4;
+}
+.event_header_zone {
+background-color: #CCCCCC;
+}
+.event_header_image {
+display: block;
+margin: auto;
+height: auto;
+max-width: 100%;
+}
+.event_body_zone {
+background-color: #FFFFFF;
+}
+.event_footer_zone {
+background-color: #FFFFFF;
+}
+.event_table {
+background-color: #FFFFFF;
+}
+.event_thead {
+
+}
+.event_tr {
+
+}
+.event_th {
+color: #3658A4;
+}
+.event_tbody {
+
+}
+.event_td {
+
+}
+.event_headline {
+  color: #3658A4;
+  font-weight: bold;
+  font-size: 26px;
+}
+.event_start_date {
+
+}
+.event_name {
+
+}
+.event_coach {
+
+}
+.event_location {
+
+}
+.event_price {
+
+}
+.event_signup {
+
+}
+.event_btn_signup {
+color: #FFFFFF;
+background-color: #CA1483;
+}
+.event_btn_signup:hover {
+background-color: #AA1483;
+}
+.event_btn_details {
+  background-color: #FECD0E;
+}
+.event_btn_details:hover {
+  background-color: #ECCD0E;
+}
+.event_btn_signup_early {
+
+}
+.event_btn_signup_early_cta {
+
+}
+.event_btn_signup_early_text {
+
+}
+.event_btn_fully_booked {
+  background-color: #E95315;
+}
+.event_btn_fully_booked:hover {
+  background-color: #C85315;
+}

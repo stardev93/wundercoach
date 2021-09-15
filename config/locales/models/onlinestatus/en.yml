@@ -1,0 +1,10 @@
+# Files in the config/locales directory are used for internationalization
+en:
+  # onlinestatus
+  onlinestatus: Online status
+  onlinestatuses: Online statuses
+  online: "Online"
+  online_desc: "The seminar is online"
+  onlinestatus_hint: "Determines whether the seminar is visible online or not."
+  offline: "Offline"
+  offline_desc: "The seminar is offline"

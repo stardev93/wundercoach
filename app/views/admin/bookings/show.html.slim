@@ -1,0 +1,109 @@
+.row
+  .col-xs-12
+    .page-header
+      span.h1
+        i.fa.fa-cloud
+        | &nbsp;
+        = @booking
+      span.add-item
+        = link_to new_booking_path, :class=>"btn btn-default"
+          i.fa.fa-plus
+          | &nbsp;
+          = t(:add_booking)
+    p.lead
+      = @booking.account
+      br
+      = @booking.name
+      br
+      = @booking.comments
+      br
+      = @booking.key
+      br
+      = @booking.price_m
+      br
+      = @booking.price_y
+      br
+      = @booking.valid_until
+      br
+      = @booking.active
+      br
+      = @booking.paymentcycle
+      br
+      = @booking.currency
+      br
+
+.row
+  .col-xs-12
+    p.h3
+      'Booking
+      = t(:data)
+    hr style="padding:0px; margin: 5px;"
+    address
+      p
+        strong =t(:account)
+        br
+        span.lead = @booking.account
+        '&nbsp;
+      p
+        strong =t(:name)
+        br
+        span.lead = @booking.name
+        '&nbsp;
+      p
+        strong =t(:comments)
+        br
+        span.lead = @booking.comments
+        '&nbsp;
+      p
+        strong =t(:key)
+        br
+        span.lead = @booking.key
+        '&nbsp;
+      p
+        strong =t(:price_m)
+        br
+        span.lead = @booking.price_m
+        '&nbsp;
+      p
+        strong =t(:price_y)
+        br
+        span.lead = @booking.price_y
+        '&nbsp;
+      p
+        strong =t(:valid_until)
+        br
+        span.lead = @booking.valid_until
+        '&nbsp;
+      p
+        strong =t(:active)
+        br
+        span.lead = @booking.active
+        '&nbsp;
+      p
+        strong =t(:paymentcycle)
+        br
+        span.lead = @booking.paymentcycle
+        '&nbsp;
+      p
+        strong =t(:currency)
+        br
+        span.lead = @booking.currency
+        '&nbsp;
+
+.row
+  .col-xs-12.text-right
+    hr
+    = link_to @booking, data: {:confirm => "#{t(:are_you_sure_you_want_to_delete_this_object)}"}, :method => :delete, :class => "btn btn-danger"
+        i.fa.fa-remove
+        '&nbsp;
+        = t(:delete)
+    ' &nbsp;
+    = link_to edit_booking_path(@booking), :class => "btn btn-primary"
+      i.fa.fa-edit
+      '&nbsp;
+      = t(:edit)
+    ' &nbsp;
+    = link_to bookings_path, :class => "btn btn-default"
+      i.fa.fa-arrow-left
+      '&nbsp;
+      = t(:back)
